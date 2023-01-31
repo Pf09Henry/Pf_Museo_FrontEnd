@@ -1,7 +1,11 @@
 import React from 'react'
+import Galery from '../Galery/Galery'
 
 export default function Home() {
   return (
-    <div>This is the Home</div>
+    <div>
+      <h1>This is the home</h1>
+      <Galery/>
+    </div>
   )
 }
