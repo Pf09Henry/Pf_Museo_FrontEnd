@@ -1,7 +1,11 @@
 import React from 'react'
+import Nav from '../Nav/Nav'
+
 
 export default function Home() {
   return (
-    <div>This is the Home</div>
+  <div>
+    <Nav/>
+  </div>
   )
 }
