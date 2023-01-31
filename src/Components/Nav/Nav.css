@@ -1,0 +1,31 @@
+.logo-nav{
+    width: 20%;
+}
+
+
+.btn-primario{
+    
+    background-color: rgb(56, 102, 103) !important
+}
+
+.btn-secundario{
+    border-color: rgb(92, 152, 89) !important
+}
+
+.btn-secundario:hover{
+
+    border-color: rgb(56, 102, 103) !important;
+    background-color: rgb(92, 152, 89) !important;
+}
+
+.btn-primario:hover{
+    background-color: rgb(0, 66, 91) !important;
+}
+
+.nav-item{
+   margin-left: 1.5rem !important; 
+}
+
+.fin-nav{
+    margin-right: 2rem !important;
+}
