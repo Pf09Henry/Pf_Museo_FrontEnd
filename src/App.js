@@ -1,15 +1,16 @@
 import './App.css';
 import {Route, Routes} from 'react-router-dom';
 import Home from './Components/Home/Home';
-import Layout from './Components/Layout/Layout';
+import Footer from './Components/Footer/Footer';
+
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path='/' element={<Layout/>}/>
-        <Route path='/home' element={<Home/>}/>
+        <Route path='/' element={<Home/>}/>
       </Routes>
+      <Footer/>
     </div>
   );
 }
