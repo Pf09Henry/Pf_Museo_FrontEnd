@@ -1,13 +1,12 @@
 import React from 'react'
-import Nav from '../Nav/Nav'
+import Galery from '../Galery/Galery'
 import Carrousell from '../Carrousel/Carrousell'
-
 
 export default function Home() {
   return (
   <div>
-    <Nav/>
     <Carrousell/>
+    <Galery/>
   </div>
   )
 }
