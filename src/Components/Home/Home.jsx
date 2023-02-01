@@ -1,11 +1,11 @@
 import React from 'react'
 import Galery from '../Galery/Galery'
+import Nav from '../Nav/Nav'
 
 export default function Home() {
   return (
     <div>
-      <h1>This is the home</h1>
+      <Nav/>
       <Galery/>
     </div>
-  )
-}
+)}
