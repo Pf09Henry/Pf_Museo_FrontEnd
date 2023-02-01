@@ -2,8 +2,11 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Home from './Components/Home/Home';
 import Footer from './Components/Footer/Footer';
+
 import Exhibits from './Components/Exhibits/Exhibits';
 import Details from './Components/Details/Details';
+
+
 
 import Layout from './Components/Layout/Layout';
 import Login from './Components/Login/Login';
