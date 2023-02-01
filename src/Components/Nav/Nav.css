@@ -24,8 +24,14 @@
 
 .nav-item{
    margin-left: 1.5rem !important; 
+   
 }
 
 .fin-nav{
     margin-right: 2rem !important;
+}
+
+.contenedor-nav{
+    justify-content: space-around !important;
+    width: 100% !important;
 }
