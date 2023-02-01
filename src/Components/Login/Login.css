@@ -1,0 +1,36 @@
+.contenedor-form{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+    margin-left: 15%;
+    border: 1px solid rgba(114, 112, 112, 0.237);
+    width: 70%;
+    margin-top: 5%;
+}
+
+.login-form{
+    padding: 10%;
+}
+
+.login-form-button{
+    margin-right: 0.5rem;
+}
+
+.img-logo-login{
+    margin-top: 2rem;
+    width: 30%;
+}
+
+.btn-google{
+   
+    border-color:rgba(146, 144, 144, 0.825);
+    color:black;
+    background-color: white;
+}
+
+.btn-google:hover{
+    border-color:rgba(146, 144, 144, 0.825);
+    color:black !important;
+    background-color: rgba(200, 197, 253, 0.893) !important;
+}
