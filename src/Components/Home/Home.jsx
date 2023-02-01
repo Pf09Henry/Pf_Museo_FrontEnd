@@ -4,9 +4,11 @@ import Carrousell from '../Carrousel/Carrousell'
 
 export default function Home() {
   return (
+
   <div>
     <Carrousell/>
     <Galery/>
   </div>
+
   )
 }
