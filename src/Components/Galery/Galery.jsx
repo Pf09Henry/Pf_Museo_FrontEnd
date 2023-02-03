@@ -11,8 +11,8 @@ import './Styles/Galery.css'
 export default function Galery() {
   return (
     <div>
-      <section className='container-sm align-items-center justify-content-center'>
-        <h2 className='py-3' >Palentologia</h2>
+      <section className='container-sm align-items-center justify-content-center '>
+        <h2 className='text-center' >Palentologia</h2>
       </section>
     <section>
         <img src= {firstFosil} alt="logo" />
