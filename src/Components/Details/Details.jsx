@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import Nav from '../Nav/Nav'
 import './Details.css'
 //import banner_paleo from '../../Imagenes/banner_paleo.jpg'
 
@@ -8,9 +7,6 @@ import './Details.css'
 export default function Exhibits() {
     return (
         <div>
-            <div>
-                <Nav />
-            </div>
             <div>
                 <h1 class="card-title">NOMBRE DE EXHIBICION</h1>
                 {/* <img className="banner_paleo" src={banner_paleo} alt="banner_paleo" /> */}

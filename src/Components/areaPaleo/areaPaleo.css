@@ -1,0 +1,22 @@
+.card-body{
+    background-color:rgba(243, 243, 243, 0.822);
+    width: 80%;
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.fossil1-img{
+    width: 50%;
+    height: 50%;
+}
+
+.fossil2-img{
+    width: 48%;
+    height: 48%;
+}
+
+.sketch-img{
+    width: 40%;
+    height: 40%;
+}

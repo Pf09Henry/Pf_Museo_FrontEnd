@@ -1,0 +1,17 @@
+.card-body{
+    background-color:rgba(243, 243, 243, 0.822);
+    width: 80%;
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.course1-img{
+    width: 60%;
+    height: 60%;
+}
+
+.school_visits-img{
+    width: 60%;
+    height: 60%;
+}

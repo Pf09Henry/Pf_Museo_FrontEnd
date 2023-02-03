@@ -7,13 +7,11 @@ import mineral from '../../Imagenes/mineral.jpg'
 import fundador from '../../Imagenes/fundador.jpg'
 import geologia from '../../Imagenes/geologia.jpg'
 
-import Nav from '../Nav/Nav'
 
 
 export default function Exhibits() {
     return (
         <div>
-            <Nav />
             <div class="card mb-3" >
                 <div class="row g-0">
                     <div class="col-md-4">
