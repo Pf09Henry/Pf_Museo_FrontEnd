@@ -28,8 +28,6 @@ function Crear(){
     guide:[{name:"",image:""}],
     category:[{name:""}]
   })
-
-
   const { TextArea } = Input;
 
   const { RangePicker } = DatePicker;
@@ -279,4 +277,6 @@ return(
   </Form>
   </div>
 )};
+
+
 export default Crear;
