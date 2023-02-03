@@ -1,0 +1,41 @@
+.img-historia{
+    width: 80%;
+}
+
+.row-contenedor-historia{
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    padding: 2rem !important;
+    font-family: 'Baskervville' !important;
+    background-color: rgb(227, 228, 227);
+}
+
+.titulo-historia{
+    margin-bottom: 2rem !important;
+    align-items: flex-start !important;
+    font-family: 'Baskervville' !important;
+}
+
+.texto-historia{
+    font-family: 'Baskervville' !important;
+    font-size: 15px;
+}
+
+.subtitulo-historia{
+    margin-top: 3rem;
+}
+
+.lista-historia{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-left: 20%;
+    margin-top: 1rem;
+}
+
+.img-historia-2{
+    width: 40%;
+}
+

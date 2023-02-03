@@ -1,0 +1,8 @@
+.titulo-form-evento{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.ant-form-item{
+    text-align: start !important;
+}
