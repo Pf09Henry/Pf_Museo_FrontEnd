@@ -12,10 +12,23 @@ export default function Nav() {
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <img className="logo-nav" src={logo} alt="logo" />
+
+          <a href="/home">
+            <img className="logo-nav" src={logo} alt="logo" />
+          </a>
 
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 contenedor-nav">
 
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href=" " role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Programá tu visita
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href=" ">Información General</a></li>
+                <li><a class="dropdown-item" href="/exhibits">Exhibiciones</a></li>
+                <li><a class="dropdown-item" href=" ">Eventos</a></li>
+              </ul>
+            </li>
 
 
             <li class="nav-item dropdown">
@@ -23,24 +36,13 @@ export default function Nav() {
                 Institucional
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href=" ">Nuestra Historia</a></li>
-                <li><a class="dropdown-item" href=" ">Misión y Objetivos</a></li>
-                <li><a class="dropdown-item" href=" ">Instalaciones</a></li>
+                <li><a class="dropdown-item" href="/history ">Nuestra Historia</a></li>
+                <li><a class="dropdown-item" href="/history ">Misión y Objetivos</a></li>
+                <li><a class="dropdown-item" href="/history ">Instalaciones</a></li>
               </ul>
             </li>
 
 
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href=" " role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Programá tu visita
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href=" ">Como llegar</a></li>
-                <li><a class="dropdown-item" href=" ">Horarios</a></li>
-                <li><a class="dropdown-item" href=" ">Tarifas</a></li>
-                <li><a class="dropdown-item" href=" ">Visitantes</a></li>
-              </ul>
-            </li>
 
 
             <li class="nav-item dropdown">
@@ -48,9 +50,9 @@ export default function Nav() {
                 Áreas de trabajo
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href=" ">Dia Internacional de los Museos</a></li>
-                <li><a class="dropdown-item" href=" ">Talleres Sensoriales</a></li>
-                <li><a class="dropdown-item" href=" ">Pequeños Paleontólogos </a></li>
+                <li><a class="dropdown-item" href="/areaPaleo ">Paleontología</a></li>
+                <li><a class="dropdown-item" href="/areaBio ">Biodiversidad</a></li>
+                <li><a class="dropdown-item" href="/areaEducation ">Educación</a></li>
               </ul>
             </li>
 
@@ -60,9 +62,9 @@ export default function Nav() {
                 Actividades
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href=" ">Protejamos lo nuestro  (Campaña de socios)</a></li>
-                <li><a class="dropdown-item" href=" ">Dona ahora</a></li>
-                <li><a class="dropdown-item" href=" ">Voluntariado</a></li>
+                <li><a class="dropdown-item" href="/holidays ">Vacaciones de Invierno</a></li>
+                <li><a class="dropdown-item" href="/culture ">Ciclos Culturales</a></li>
+                <li><a class="dropdown-item" href="/night ">Noche en el Museo</a></li>
               </ul>
             </li>
 
@@ -72,17 +74,20 @@ export default function Nav() {
                 Protejamos lo nuestro
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href=" ">Protejamos lo nuestro  (Campaña de socios)</a></li>
-                <li><a class="dropdown-item" href=" ">Dona ahora</a></li>
+                <li><a class="dropdown-item" href=" ">Voluntariado</a></li>
+                <li><a class="dropdown-item" href=" ">Afiliate</a></li>
+                <li><a class="dropdown-item" href=" ">Donaciones</a></li>
+
               </ul>
             </li>
+
 
 
             <button type="button" class="btn btn-outline-success btn-secundario">Iniciar Sesión</button>
             <button type="button" class="btn btn-success btn-primario">Crear Cuenta</button>
 
-
           </ul>
+
 
         </div>
       </div>
