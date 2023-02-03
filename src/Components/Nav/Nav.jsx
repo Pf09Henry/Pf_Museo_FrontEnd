@@ -13,9 +13,13 @@ export default function Nav() {
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 
-          <a href="/home">
-            <img className="logo-nav" src={logo} alt="logo" />
-          </a>
+         
+          <img className="logo-nav" src={logo} alt="logo" />
+          
+              <a class="nav-link" href="/" role="button" >
+                Inicio
+              </a>
+          
 
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 contenedor-nav">
 
@@ -36,9 +40,9 @@ export default function Nav() {
                 Institucional
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/history ">Nuestra Historia</a></li>
-                <li><a class="dropdown-item" href="/history ">Misión y Objetivos</a></li>
-                <li><a class="dropdown-item" href="/history ">Instalaciones</a></li>
+                <li><a class="dropdown-item" href="/history">Nuestra Historia</a></li>
+                <li><a class="dropdown-item" href="/history">Misión y Objetivos</a></li>
+                <li><a class="dropdown-item" href="/history">Instalaciones</a></li>
               </ul>
             </li>
 
@@ -69,7 +73,7 @@ export default function Nav() {
             </li>
 
 
-            <li class="nav-item dropdown fin-nav">
+           {/*  <li class="nav-item dropdown fin-nav">
               <a class="nav-link dropdown-toggle" href=" " role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Protejamos lo nuestro
               </a>
@@ -79,12 +83,12 @@ export default function Nav() {
                 <li><a class="dropdown-item" href=" ">Donaciones</a></li>
 
               </ul>
-            </li>
+            </li> */}
 
 
-
-            <button type="button" class="btn btn-outline-success btn-secundario">Iniciar Sesión</button>
-            <button type="button" class="btn btn-success btn-primario">Crear Cuenta</button>
+            <a href='/create-activitie'><button type="button" class="btn btn-outline-success btn-secundario">Crear Evento</button></a>
+            <a href="/login"><button type="button" class="btn btn-outline-success btn-secundario">Iniciar Sesión</button></a>
+            <a href="/register"><button type="button" class="btn btn-success btn-primario">Crear Cuenta</button></a>
 
           </ul>
 
