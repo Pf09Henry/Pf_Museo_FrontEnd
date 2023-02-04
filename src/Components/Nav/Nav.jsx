@@ -28,7 +28,7 @@ export default function Nav() {
                 Programá tu visita
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href=" ">Información General</a></li>
+                <li><a class="dropdown-item" href="/general ">Información General</a></li>
                 <li><a class="dropdown-item" href="/exhibits">Exhibiciones</a></li>
                 <li><a class="dropdown-item" href=" ">Eventos</a></li>
               </ul>

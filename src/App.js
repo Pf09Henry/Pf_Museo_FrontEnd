@@ -15,6 +15,7 @@ import Register from './Components/Register/Register';
 import Nav from './Components/Nav/Nav';
 import Historia from './Components/Historia/Historia';
 import Crear from './Components/FormCreacion/CrearEvento';
+import InfoGeneral from './Components/InfoGeneral/InfoGeneral';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path='/night' element={<Night />} />
         <Route path='/history' element={<Historia/>} />
         <Route path='/create-activitie' element={<Crear/>} />
+        <Route path='/general' element={<InfoGeneral/>} />
       </Routes>
       <Footer />
     </div>
