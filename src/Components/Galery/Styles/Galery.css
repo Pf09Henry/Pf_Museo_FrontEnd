@@ -2,6 +2,7 @@ section {
     display: flex;
     width: 100%;
     height: 430px;
+    margin-bottom: 10px;
 }
 
 section img{ 
@@ -17,4 +18,81 @@ section img:hover{
     width: 300px;
     opacity: 1;
     filter: contrast(120%);
+}
+
+
+
+.titleSection{
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 94%, rgba(56,102,103,1) 100%); 
+    /* background-color: linear-gradient(90deg, rgba(183,206,144,1) 0%, rgba(176,200,118,1) 57%, rgba(136,180,109,1) 100%); */
+    height: 150px !important;
+    border-radius: 10px !important;
+    position: relative;
+    transition: 0.5s;
+    padding: 10px 30px;
+}
+
+.titleSection :hover{
+    letter-spacing: 0.1em;
+}
+
+.titleSection ::before{
+    content: '';
+    position: absolute;
+    inset: 2px;
+    /* background-color: rgba(255, 255, 255, 0); */
+}
+
+.titleSection a{
+    position: relative;
+    z-index: 1;
+}
+
+.titleSection a i{
+    position: absolute;
+    inset: 0;
+    display: block;
+}
+
+.titleSection a i::before{
+    content: '';
+    position: absolute;
+    top: -3.5px;
+    width: 10px;
+    left: 90%;
+    height: 5px;
+    border: 1px solid black;
+    
+    transition: 0.5s;
+}
+
+.titleSection a:hover i::before{
+    width: 20px;
+    left: 20%;
+}
+
+.titleSection a i::after{
+    content: '';
+    position: absolute;
+    bottom: -3.5px;
+    left: 10%;
+    width: 10px;
+    height: 5px;
+    border: 1px solid black;
+    background-color: white;
+    transition: 0.5s;
+}
+
+.titleSection a:hover i::after{
+    width: 20px;
+    left: 80%;
+}
+
+/* Cards next Map */
+
+.cardsInformacion{
+    width: 80% !important ; 
+    height: 300px !important; 
+    border-radius: 21px 21px 0 0 !important;
 }
