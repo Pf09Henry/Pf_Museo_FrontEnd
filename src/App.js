@@ -16,6 +16,7 @@ import Nav from './Components/Nav/Nav';
 import Historia from './Components/Historia/Historia';
 import Crear from './Components/FormCreacion/CrearEvento';
 import InfoGeneral from './Components/InfoGeneral/InfoGeneral';
+import EventoList from './Components/Eventos/EventosList';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path='/history' element={<Historia/>} />
         <Route path='/create-activitie' element={<Crear/>} />
         <Route path='/general' element={<InfoGeneral/>} />
+        <Route path='/eventos' element={<EventoList/>} />
       </Routes>
       <Footer />
     </div>
