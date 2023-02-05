@@ -97,7 +97,7 @@ const initialState = {
             price: 520,
             img:"https://www.cultura.gob.ar/media/uploads/taller_de_fotografia_-_mhnor.jpeg",
             information:"Se enseñará al público asistente técnicas de conservación a fotografías antiguas que guardan imágenes con valiosa información que  atesoramos. ",
-            guide:[{name:"",image:""}],
+            guide:[{name:"Soledad",image:"https://previews.123rf.com/images/rawpixel/rawpixel1704/rawpixel170441704/76561515-retrato-de-personas-estudio-disparar-con-expresi%C3%B3n-de-cara-sonriente.jpg"}],
             category:[{name:"Ecológico"}]
           },
           {
@@ -317,6 +317,12 @@ function rootReducer (state = initialState, action) {
                 ...state,
                 eventos: statusFiltered,
             }
+
+            case 'POST_EVENT':
+              return {
+                  ...state,
+                  eventos: action.payload
+              }
 
         case 'ORDER_BY_NAME':
                 

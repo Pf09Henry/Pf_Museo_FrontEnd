@@ -13,11 +13,15 @@ import {
 } from 'antd';
 import Swal from 'sweetalert2'
 import './../FormCreacion/CrearEvento.css'
-
+import { useDispatch } from "react-redux";
+import { postEvent } from "../../Actions/AppActions/appActions";
 
 
 function Crear(){ 
 
+
+  const dispatch = useDispatch();
+  
   const [inicialValues, setValues] = useState({
     name:"",
     startDay:"",
@@ -51,6 +55,8 @@ function Crear(){
       let diaInicio=diaIn.slice(4,15)
       let diaF=(values.dias[1].$d).toString()
       let diaFin=diaF.slice(4,15)
+
+
     setValues({
     name:values.username,
     startDay:diaInicio,
@@ -67,6 +73,16 @@ function Crear(){
       icon: 'success',
       confirmButtonText: 'OK'
     })
+
+
+    var form = true;
+
+    if (form) {
+      dispatch(postEvent(values))
+        .then(() => alert("Evento agregado"));
+    } else {
+      return alert(" A tu actividad le faltan detalles");
+    }
     console.log(inicialValues)
   };
   
@@ -130,8 +146,9 @@ return(
     >
       <Select placeholder="Categoria del evento">
     
-        <Option value="Categoria 1">Categoria 1</Option>
-        <Option value="Categoria 2">Categoria 2</Option>
+        <Option value="Social">Social</Option>
+        <Option value="Arte">Arte</Option>
+        <Option value="Ciencias">Ciencias</Option>
       </Select>
     </Form.Item>
 
@@ -178,8 +195,10 @@ return(
     >
       <Select placeholder="Guia del evento">
     
-    <Option value="Guia 1">Guia 1</Option>
-    <Option value="Guia 2">Guia 2</Option>
+    <Option value="Claudio">Claudio</Option>
+    <Option value="Karen">Karen</Option>
+    <Option value="Soledad">Soledad</Option>
+    <Option value="Martin">Martin</Option>
   </Select>
     </Form.Item>
 
