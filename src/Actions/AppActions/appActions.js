@@ -18,7 +18,7 @@ export function getCategories() {
         var json = await axios.get('https://pfmuseobackend.up.railway.app/category');
         console.log(json.data)
         return dispatch({
-            type: 'ET_CATEGORIES',
+            type: 'GET_CATEGORIES',
             payload: json.data
         })
     }

@@ -50,7 +50,7 @@ export default function EventoList(){
             <div>
         <Tag color="green">{activity.startDay} - {activity.endDay}</Tag>
         <br></br>
-     <Tag color="#015129">{activity.category[0].name}</Tag>
+        <Tag color="#015129">{activity.category[0].name}</Tag>
         <hr></hr>
         <Tag color="#87d068">${activity.price}</Tag>
         </div>
