@@ -16,6 +16,8 @@ import Nav from './Components/Nav/Nav';
 import Historia from './Components/Historia/Historia';
 import Crear from './Components/FormCreacion/CrearEvento';
 
+
+
 function App() {
   return (
     <div className="App">
@@ -32,8 +34,9 @@ function App() {
         <Route path='/culture' element={<Culture />} />
         <Route path='/holidays' element={<Holidays />} />
         <Route path='/night' element={<Night />} />
-        <Route path='/history' element={<Historia/>} />
-        <Route path='/create-activitie' element={<Crear/>} />
+        <Route path='/history' element={<Historia />} />
+        <Route path='/create-activitie' element={<Crear />} />
+
       </Routes>
       <Footer />
     </div>
