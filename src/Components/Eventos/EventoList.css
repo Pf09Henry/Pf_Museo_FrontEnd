@@ -1,0 +1,22 @@
+.evento{
+    display: flex;
+    flex-direction: column;
+    margin:2rem;
+    
+}
+
+.list-card-eventos{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.carta-evento-list{
+    margin:1rem;
+
+}
+
+.img-list-card{
+    height: 200px !important;
+}

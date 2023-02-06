@@ -15,6 +15,8 @@ import Register from './Components/Register/Register';
 import Nav from './Components/Nav/Nav';
 import Historia from './Components/Historia/Historia';
 import Crear from './Components/FormCreacion/CrearEvento';
+import InfoGeneral from './Components/InfoGeneral/InfoGeneral';
+import EventoList from './Components/Eventos/EventosList';
 
 
 
@@ -34,8 +36,11 @@ function App() {
         <Route path='/culture' element={<Culture />} />
         <Route path='/holidays' element={<Holidays />} />
         <Route path='/night' element={<Night />} />
-        <Route path='/history' element={<Historia />} />
-        <Route path='/create-activitie' element={<Crear />} />
+
+        <Route path='/history' element={<Historia/>} />
+        <Route path='/create-activitie' element={<Crear/>} />
+        <Route path='/general' element={<InfoGeneral/>} />
+        <Route path='/eventos' element={<EventoList/>} />
 
       </Routes>
       <Footer />
