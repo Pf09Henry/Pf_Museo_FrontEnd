@@ -1,0 +1,23 @@
+.page-error{
+    background-image: url('../../Imagenes/pluma-transparencia.png');
+    background-size: cover;
+    width: 500px;
+    height: 500px;
+    margin: auto;
+        display: flex;
+        align-items: center;
+      }
+
+
+  .btn-404{
+    border-color: rgb(92, 152, 89) !important
+}
+
+.btn-404:hover{
+
+    border-color: rgb(56, 102, 103) !important;
+    background-color: rgb(92, 152, 89) !important;
+}
+
+
+

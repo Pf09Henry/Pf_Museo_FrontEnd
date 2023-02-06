@@ -38,10 +38,12 @@ export default function areaPaleo() {
                     <li>	Estudio de los reptiles fósiles y la fauna asociada de la Formación Chichinales (Mioceno, Gral. Roca, Río Negro).</li>
                     <li>	Estudio de los invertebrados fósiles del límite Cretácico/Terciario (K/P) de Río Negro.</li>
                     <li>	Estudio del material fósil procedente de la localidad Campo de Fernández, Salitral Moreno y aledaños (Cretácico, Gral. Roca, Río Negro).</li>
-
+                    <br />
                 </div>
+                <br />
                 <button type="button" class="btn btn-outline-success btn-secundario">Compra tu Entrada</button>
-
+                <br />
+                <br />
             </div>
             <br />
 
