@@ -3,7 +3,9 @@ import { Card } from 'antd';
 import './../Eventos/EventoList.css'
 import { Tag } from 'antd';
 import Filtros from "../Filtros/Filtros";
-import {  useSelector } from "react-redux";
+import {  useSelector, useDispatch } from "react-redux";
+import { useEffect } from 'react';
+import { getEvents,getCategories } from "../../Actions/AppActions/appActions";
 
 
 
@@ -12,6 +14,15 @@ const { Meta } = Card;
 
 export default function EventoList(){
     const Eventos = useSelector((state) => state.eventos);
+    
+    const dispatch = useDispatch();
+
+    useEffect (()=>{
+        dispatch(getEvents());
+    },[dispatch])
+
+   
+
   
     return(<div className='evento'>
     <div >
@@ -32,14 +43,14 @@ export default function EventoList(){
             }}
             cover={<img className="img-list-card" alt="example" src={activity.img} />}
         >
-            <Meta title={activity.name} /* description={`${activity.startDay} - ${activity.endDay}} $${activity.price}`} */
+            <Meta title={activity.name} 
         
         
         description={
             <div>
         <Tag color="green">{activity.startDay} - {activity.endDay}</Tag>
         <br></br>
-        <Tag color="#015129">{activity.category[0].name}</Tag>
+     <Tag color="#015129">{activity.category[0].name}</Tag>
         <hr></hr>
         <Tag color="#87d068">${activity.price}</Tag>
         </div>

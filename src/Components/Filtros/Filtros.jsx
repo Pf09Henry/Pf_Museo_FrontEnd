@@ -1,7 +1,7 @@
 import React from "react"
-import { useState} from 'react';
+import { useState , useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterEventByPrice, filterEventByCategory, orderByName} from './../../Actions/AppActions/appActions';
+import { filterEventByPrice, filterEventByCategory, orderByName , getCategories} from './../../Actions/AppActions/appActions';
 import Paginado from './../Paginado/Paginado'
 import './../Filtros/Filtros.css'
 
@@ -17,13 +17,16 @@ export default function Filtros(){
     const currentEvents = eventos.slice(indexOfFirstCountry, indexOfLastCountry);
     const[continent, setContinent] = useState('All');
     const[order, setOrder] = useState('');
-
+    const Categorias = useSelector((state) => state.categorias);
 
 
     function onClickRadio(e){
         setContinent(e.target.value)
     }
 
+    useEffect (()=>{
+        dispatch(getCategories());
+    },[dispatch])
 
 
     function onClickRadioOrder(e){
@@ -81,12 +84,16 @@ export default function Filtros(){
 
         <div className="menudefiltros">
             <div><p className="menu-title">Filtro por categoría</p></div>
-        
+            
             <div className="menu-input-filtro"><input type = 'radio' checked={continent === 'All' ? true : false} onClick={e => onClickRadio(e)} onChange={e => handleFilterContinent(e)} value = 'All'/><p className="menu-p">Todas las categorías</p></div>
             <div className="menu-input-filtro"><input type = 'radio' checked={continent === 'Social' ? true : false} onClick={e => onClickRadio(e)}onChange={e => handleFilterContinent(e)} value = 'Social'/><p className="menu-p">Social</p></div>
             <div className="menu-input-filtro"><input type = 'radio' checked={continent === 'Arte' ? true : false} onClick={e => onClickRadio(e)}onChange={e => handleFilterContinent(e)} value = 'Arte'/><p className="menu-p">Arte</p></div>
             <div className="menu-input-filtro"> <input type = 'radio' checked={continent === 'Ciencias' ? true : false} onClick={e => onClickRadio(e)}onChange={e => handleFilterContinent(e)} value = 'Ciencias'/><p className="menu-p">Ciencias</p> </div> 
-        </div>
+            <div className="menu-input-filtro"> <input type = 'radio' checked={continent === 'Ecológico' ? true : false} onClick={e => onClickRadio(e)}onChange={e => handleFilterContinent(e)} value = 'Ecológico'/><p className="menu-p">Ecológico</p> </div> 
+            </div>
+
+
+            
         
         {/* <div className="menu-buscador-input-gral">
             <p className="menu-title">Filtros ordenamiento</p>

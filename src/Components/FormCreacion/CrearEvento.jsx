@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import {  UploadOutlined } from '@ant-design/icons';
+import {  InboxOutlined } from '@ant-design/icons';
 import {
   Button,
    Form,
   InputNumber,
   Select,
-   Upload,
   Input,
   DatePicker,
   Space,
+ 
   
 } from 'antd';
 import Swal from 'sweetalert2'
@@ -17,7 +17,10 @@ import { useDispatch } from "react-redux";
 import { postEvent } from "../../Actions/AppActions/appActions";
 
 
+
 function Crear(){ 
+
+  
 
 
   const dispatch = useDispatch();
@@ -29,7 +32,7 @@ function Crear(){
     price: 0,
     img:"",
     information:"",
-    guide:[{name:"",image:""}],
+    guide:[{name:""}],
     category:[{name:""}]
   })
   const { TextArea } = Input;
@@ -55,16 +58,25 @@ function Crear(){
       let diaInicio=diaIn.slice(4,15)
       let diaF=(values.dias[1].$d).toString()
       let diaFin=diaF.slice(4,15)
-
+    let valores={
+      name:values.username,
+      startDay:diaInicio,
+      endDay:diaFin,
+      price: values.precio,
+      img:values.upload,
+      information:values.description,
+      guide:values.selectGuia,
+      category:values.select
+      }
 
     setValues({
     name:values.username,
     startDay:diaInicio,
     endDay:diaFin,
     price: values.precio,
-    img:values.upload[0].thumbUrl,
+    img:values.upload,
     information:values.description,
-    guide:[{name:values.selectGuia,image:values.fotoGuia[0].thumbUrl}],
+    guide:[{name:values.selectGuia}],
     category:[{name:values.select}]
     })
     Swal.fire({
@@ -78,7 +90,7 @@ function Crear(){
     var form = true;
 
     if (form) {
-      dispatch(postEvent(values))
+      dispatch(postEvent(valores))
         .then(() => alert("Evento agregado"));
     } else {
       return alert(" A tu actividad le faltan detalles");
@@ -202,7 +214,7 @@ return(
   </Select>
     </Form.Item>
 
-    <Form.Item
+    {/* <Form.Item
       name="fotoGuia"
       label="Foto Guia"
       valuePropName="fileList"
@@ -218,7 +230,7 @@ return(
       <Upload name="logo" action="/upload.do" listType="picture">
         <Button icon={<UploadOutlined />}>Subir</Button>
       </Upload>
-    </Form.Item>
+    </Form.Item> */}
 
 
 
@@ -242,7 +254,7 @@ return(
       </span>
     </Form.Item>
 
-    <Form.Item
+   {/*  <Form.Item
       name="upload"
       label="Foto del evento"
       valuePropName="fileList"
@@ -257,7 +269,22 @@ return(
       <Upload name="logo"  listType="picture">
         <Button icon={<UploadOutlined />}>Subir</Button>
       </Upload>
+    </Form.Item> */}
+
+  <Form.Item
+      label="Foto del evento"
+      name="upload"
+      placeholder="url de la foto"
+      rules={[
+        {
+          required: true,
+          message: 'Por favor escribir una url de la foto',
+        },
+      ]}
+    >
+      <Input />
     </Form.Item>
+    
 
 
 
