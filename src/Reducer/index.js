@@ -1,5 +1,5 @@
 const initialState = {
-    eventos : [
+/*     eventos : [
         {
             name:"Ayudanos a limpiar el dinosaurio",
             startDay:"1/2/2023",
@@ -303,12 +303,37 @@ const initialState = {
             guide:[{name:"Karen",image:"https://img.freepik.com/foto-gratis/retrato-hermoso-mujer-joven-posicion-pared-gris_231208-10760.jpg"}],
             category:[{name:"Social"}]
           },
-    ],
+    ], */
+
+    eventos:[],
+    alleventos:[],
+    categorias:[],
+    guias:[]
 }
 
 
 function rootReducer (state = initialState, action) {
     switch (action.type) {
+      case 'GET_EVENTS':
+        return {
+            ...state,
+            eventos: action.payload, // cuando se dispara la accion, me va a llenar los dos estados
+            alleventos: action.payload
+        }
+
+        case 'GET_CATEGORIES':
+          return {
+              ...state,
+              categorias: action.payload
+           
+          }
+
+          case 'GET_GUIDES':
+          return {
+              ...state,
+              guias: action.payload
+           
+          }
         
         case 'FILTER_EVENT_BY_CATEGORY':
             const alleventos = state.alleventos;
