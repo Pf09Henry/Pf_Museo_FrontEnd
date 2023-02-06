@@ -12,20 +12,38 @@
 
 .card-paleo {
     width: 100% !important;
+    border-radius: 1%;
  }
 
  .card-bio {
     width: 100% !important;
+    border-radius: 1%;
  }
 
  .card-mineral {
     width: 100% !important;
+    border-radius: 1%;
  }
 
  .card-fundador {
     width: 70% !important;
+    border-radius: 1%;
  }
 
+ .col-md-8{
+    background-color: rgb(243, 243, 243);
+ }
+
+ .col-md-4{
+   background-color: rgb(243, 243, 243);
+}
+
+.mb-3{
+   width: 90%;
+   height: 90%;
+margin: auto;   }
+
+   
 
 
   

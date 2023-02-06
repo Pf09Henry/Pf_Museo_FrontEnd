@@ -11,7 +11,9 @@ import geologia from '../../Imagenes/geologia.jpg'
 
 export default function Exhibits() {
     return (
-        <div>
+        <div class="exhi">
+            <br />
+
             <div class="card mb-3" >
                 <div class="row g-0">
                     <div class="col-md-4">

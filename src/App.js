@@ -18,6 +18,8 @@ import Crear from './Components/FormCreacion/CrearEvento';
 import InfoGeneral from './Components/InfoGeneral/InfoGeneral';
 import EventoList from './Components/Eventos/EventosList';
 
+
+
 function App() {
   return (
     <div className="App">
@@ -34,10 +36,12 @@ function App() {
         <Route path='/culture' element={<Culture />} />
         <Route path='/holidays' element={<Holidays />} />
         <Route path='/night' element={<Night />} />
+
         <Route path='/history' element={<Historia/>} />
         <Route path='/create-activitie' element={<Crear/>} />
         <Route path='/general' element={<InfoGeneral/>} />
         <Route path='/eventos' element={<EventoList/>} />
+
       </Routes>
       <Footer />
     </div>
