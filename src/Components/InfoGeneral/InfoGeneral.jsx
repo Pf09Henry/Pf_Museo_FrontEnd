@@ -1,8 +1,11 @@
 import React from 'react'
 import './Styles/InfoGeneral.css'
-// import fachada1 from '../../Imagenes/Pictures_fachada_museo/MuseoFachada1.jpg'
+import fachada1 from '../../Imagenes/Pictures_fachada_museo/MuseoFachada1.jpg'
+import fachada2 from '../../Imagenes/Pictures_fachada_museo/fachadaLateral.jpg'
+import fachada3 from '../../Imagenes/Pictures_fachada_museo/FachadaFar.jpg'
 import dinosaurs from '../../Imagenes/Pictures_fossils/Dinosaurios.jpg'
 import lagartija from '../../Imagenes/Pictures_Biologia/BiologiaNueve.jpg'
+import Servicies from '../Servicies/Servicies'
 
 
 
@@ -21,30 +24,68 @@ export default function InfoGeneral() {
                     </div>
             </div>
             {/* Tarjetas de Horarios */}
+
             <div className="position-relative overflow-hidden p-3 p-lg-5 m-md-3 text-center" >
-            <h1 className="display-4 fw-normal">Horarios</h1>
-            <div className="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3 justify-content-center  ">
-                <div className="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-                    <div className="my-3 py-3">
-                        <h2 className="display-5">Martes a Viernes:</h2>
-                        <p className="lead">10:00 a.m - 5:00 p.m</p>
+                <h1 className="display-4 fw-normal">Horarios</h1>
+                <div className="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3 justify-content-center  ">
+                    <div className="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden rounded">
+                        <div className="my-3 py-3">
+                            <h2 className="display-5">Martes a Viernes:</h2>
+                            <p className="lead">10:00 a.m - 5:00 p.m</p>
+                        </div>
+                        <div className="bg-light shadow-sm mx-auto cardsInformacion">
+                            <img src={lagartija} alt="dinosaurios" className='imagenContenedor' />
+                        </div>
                     </div>
-                    <div className="bg-light shadow-sm mx-auto cardsInformacion">
-                        <img src={lagartija} alt="dinosaurios" className='imagenContenedor' />
-                    </div>
+                    <div className="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden rounded">
+                        <div className="my-3 p-3">
+                            <h2 className="display-5">Sábado y domingo:</h2>
+                            <p className="lead">11:00 a.m - 6:00 p.m</p>
+                        </div>
+                        <div className="bg-dark shadow-sm mx-auto cardsInformacion">
+                            <img src={dinosaurs} alt="dinosaurios" className='imagenContenedor' />
+                        </div>
+                    </div>                
                 </div>
-                <div className="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-                    <div className="my-3 p-3">
-                        <h2 className="display-5">Sábado y domingo:</h2>
-                        <p className="lead">11:00 a.m - 6:00 p.m</p>
+
+                 {/* Tarjetas de Servicios en un componente independiente */}
+
+                <Servicies/>           
+
+                  {/* Carrusel con imagenes de la fachada del museo */}
+                <div className="bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden rounded">
+                    <h1 className='display-5 fw-normal text-light' > ¡ Te esperamos ! </h1>
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div className="carousel-item active">
+                                <img src={fachada1} class="d-block w-50 mx-auto" alt="fachada"/>
+                            </div>
+                            <div class="carousel-item">
+                            <img src={fachada2} class="d-block w-50 mx-auto" alt="fachada"/>
+                            </div>
+                            <div class="carousel-item">
+                            <img src={fachada3} class="d-block w-50 mx-auto" alt="fachada"/>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
-                    <div className="bg-dark shadow-sm mx-auto cardsInformacion">
-                        <img src={dinosaurs} alt="dinosaurios" className='imagenContenedor' />
-                    </div>
+                            
+
                 </div>
             </div>
         </div>
-    </div>
-
-  )
+)
 }
