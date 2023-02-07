@@ -72,6 +72,21 @@ export function postEvent(payload) {
     }
 }
 
+export function getEventsById(id) {
+    return async function (dispatch) {
+        try {
+            var json = await axios.get('https://pfmuseobackend.up.railway.app/event/' + id);
+            return dispatch ({
+                type: 'GET_EVENT_DETAILS',
+                payload: json.data
+            })
+    } catch (error) {
+        console.log(error)
+        }
+    }
+       
+}
+
 
 
 

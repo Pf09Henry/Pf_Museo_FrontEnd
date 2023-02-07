@@ -308,7 +308,8 @@ const initialState = {
     eventos:[],
     alleventos:[],
     categorias:[],
-    guias:[]
+    guias:[],
+    details:[]
 }
 
 
@@ -334,6 +335,12 @@ function rootReducer (state = initialState, action) {
               guias: action.payload
            
           }
+
+          case 'GET_EVENT_DETAILS':
+              return {
+                  ...state,
+                  details: action.payload
+              }
         
         case 'FILTER_EVENT_BY_CATEGORY':
             const alleventos = state.alleventos;
@@ -399,6 +406,9 @@ function rootReducer (state = initialState, action) {
                 ...state,
                 eventos: filterPrice
             }
+
+
+            
 
 
             default: return state;
