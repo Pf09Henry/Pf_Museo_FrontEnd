@@ -17,8 +17,8 @@ import Historia from './Components/Historia/Historia';
 import Crear from './Components/FormCreacion/CrearEvento';
 import InfoGeneral from './Components/InfoGeneral/InfoGeneral';
 import EventoList from './Components/Eventos/EventosList';
-
-
+import EventDetails from './Components/EventDetails/EventDetails';
+import Error404 from './Components/Error404/Error404';
 
 function App() {
   return (
@@ -41,7 +41,8 @@ function App() {
         <Route path='/create-activitie' element={<Crear/>} />
         <Route path='/general' element={<InfoGeneral/>} />
         <Route path='/eventos' element={<EventoList/>} />
-
+        <Route path='/event/:id' element={<EventDetails/>} />
+        <Route path='*' element={<Error404/>} />
       </Routes>
       <Footer />
     </div>
