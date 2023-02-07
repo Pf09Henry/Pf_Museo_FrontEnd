@@ -37,6 +37,7 @@ export default function EventoList(){
     <div className="list-card-eventos">
     { Eventos?.length > 0 ? (
         Eventos?.map((activity, index) =>
+        <Link to={`/event/${activity.id}`}>
         <Card
         className="carta-evento-list"
             hoverable
@@ -60,8 +61,9 @@ export default function EventoList(){
         </div>
         }
 
-    />  <button className="boton-card"> <Link to={`/event/${activity.id}`}>Ver Detalle</Link></button>
+    /> 
         </Card>
+        </Link>
 
         )) : (
         <h3  className="actividades-disponibles">No se encontraron eventos</h3>

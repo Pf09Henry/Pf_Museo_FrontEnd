@@ -1,15 +1,18 @@
 import React from "react";
+import { Pagination } from 'antd';
 
 
 
-export default function Paginado ({ currentEvents, eventos, currentPage,setCurrentPage }) {
+export default function Paginado({ currentEvents, eventos, currentPage,setCurrentPage }){
+
+
     const pageNumbers = [];
-    const pageSecToFinish = eventos -5 ;
+    const pageSecToFinish = eventos ;
     pageNumbers.push(1);
    
     
 
-    for (let i=2; i<=Math.ceil(pageSecToFinish/3); i++) {
+    for (let i=2; i<=Math.ceil(pageSecToFinish/5); i++) {
         pageNumbers.push(i);
     }
 
@@ -23,9 +26,9 @@ export default function Paginado ({ currentEvents, eventos, currentPage,setCurre
     return(
         <div className="paginado-conteiner">
 
-
+        <Pagination defaultCurrent={paginated} total={pageSecToFinish} />;
             
-            <ul className="paginado-clase">
+           {/*  <ul className="paginado-clase">
             <button className="boton-paginado" onClick={() =>
                  pageNumbers && 
                  paginated(currentPage-1)}>{'<<'}</button> 
@@ -41,7 +44,7 @@ export default function Paginado ({ currentEvents, eventos, currentPage,setCurre
                 ))}
                  <button className="boton-paginado"  onClick={() => 
                     pageNumbers && paginated(currentPage+1)}>{'>>'}</button> 
-            </ul>
+            </ul> */}
             
         </div>
     )
