@@ -1,0 +1,59 @@
+
+
+.img-evento-detail{
+    width: 50% !important;
+    border-radius: 15px;  
+    margin-bottom: 2rem;  
+}
+
+.contenedor-detalle-evento{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin:4rem;
+   
+}
+
+.card-title{
+    margin-bottom: 2rem;
+}
+
+.img-guide{
+    width: 30%;
+    border-radius: 15px; 
+}
+
+.precio-evento{
+    font-size: large;
+}
+
+.card-text{
+    font-size: large;
+
+}
+
+.detalle-evento-info{
+    padding-left: 5rem;
+    padding-right: 5rem;
+    margin-bottom: 2rem;
+}
+
+
+
+.detalle-guia{
+    display: flex;
+    justify-content: end;
+    margin-left: 2rem;
+    width:70%;
+}
+
+.detalle-ev{
+    background-color:rgba(243, 243, 243, 0.822);
+}
+
+.fondo-guide{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color:rgba(243, 243, 243, 0.822);
+}

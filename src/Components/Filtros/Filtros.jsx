@@ -105,7 +105,7 @@ export default function Filtros(){
         
 
         </div> */}
-        {/* <div className="paginado">
+         {/* <div className="paginado">
                 <Paginado
             countriesPerPage = { countriesPerPage }
             eventos = { eventos.length }
@@ -113,7 +113,7 @@ export default function Filtros(){
             setCurrentPage={setCurrentPage}
             currentEvents={currentEvents}
             /> 
-        </div> */}
+        </div>  */}
         </div>
 
     )
