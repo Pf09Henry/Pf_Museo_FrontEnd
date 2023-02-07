@@ -5,7 +5,8 @@ import { Tag } from 'antd';
 import Filtros from "../Filtros/Filtros";
 import {  useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react';
-import { getEvents,getCategories } from "../../Actions/AppActions/appActions";
+import { getEvents } from "../../Actions/AppActions/appActions";
+import { Link } from "react-router-dom";
 
 
 
@@ -21,6 +22,7 @@ export default function EventoList(){
         dispatch(getEvents());
     },[dispatch])
 
+    
    
 
   
@@ -41,9 +43,11 @@ export default function EventoList(){
             style={{
             width: 240,
             }}
+            key={activity.id}
+            
             cover={<img className="img-list-card" alt="example" src={activity.img} />}
         >
-            <Meta title={activity.name} 
+        <Meta title={activity.name} 
         
         
         description={
@@ -56,7 +60,7 @@ export default function EventoList(){
         </div>
         }
 
-    />
+    />  <button className="boton-card"> <Link to={`/event/${activity.id}`}>Ver Detalle</Link></button>
         </Card>
 
         )) : (
@@ -66,3 +70,4 @@ export default function EventoList(){
     </div>
     </div>)
 }
+

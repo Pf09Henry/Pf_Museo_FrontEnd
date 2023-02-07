@@ -42,7 +42,7 @@ export default function Login(){
           <Checkbox>Recuérdame</Checkbox>
         </Form.Item>
 
-        <a className="login-form-forgot" href=" ">
+        <a className="login-form-forgot" href="*">
           Has olvidado tu contraseña
         </a>
       </Form.Item>
@@ -51,10 +51,10 @@ export default function Login(){
         <Button type="primary" htmlType="submit" className="login-form-button btn-primario">
           Iniciar Sesión
         </Button>
-         O <a href=" ">Registrate</a>
+         O <a href="*">Registrate</a>
       </Form.Item>
       <Form.Item>
-      <Button type="primary" htmlType="submit" className="login-form-button btn-google"><FcGoogle/> Google </Button>
+      <a href="*"><Button type="primary" htmlType="submit" className="login-form-button btn-google"><FcGoogle/> Google </Button></a>
       </Form.Item>
     </Form>
     </div>
