@@ -17,6 +17,9 @@ import Historia from './Components/Historia/Historia';
 import Crear from './Components/FormCreacion/CrearEvento';
 import InfoGeneral from './Components/InfoGeneral/InfoGeneral';
 import EventoList from './Components/Eventos/EventosList';
+import Checkout from './Components/Checkout/Checkout';
+import InformationCheckout from './Components/informationCheckout/InformationCheckout';
+import Payment from './Components/Payment/Payment';
 
 
 
@@ -41,6 +44,13 @@ function App() {
         <Route path='/create-activitie' element={<Crear/>} />
         <Route path='/general' element={<InfoGeneral/>} />
         <Route path='/eventos' element={<EventoList/>} />
+
+        <Route path='/checkout' element={<Checkout/>} />
+        <Route path='/shipping_info' element={<InformationCheckout/>} />
+        <Route path='/payment' element={<Payment/>}/>
+
+
+
 
       </Routes>
       <Footer />
