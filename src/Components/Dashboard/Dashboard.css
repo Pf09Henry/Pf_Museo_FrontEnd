@@ -5,9 +5,6 @@
     
 }
 
- .canva{
-    padding: 2rem;
-} 
 
 .contenedor-porcentajes{
     display: flex;
@@ -18,11 +15,6 @@
 .card{
     margin-bottom: 2rem !important;
 }
-#components-layout-demo-responsive .logo {
-    height: 32px;
-    margin: 16px;
-    background: rgba(255, 255, 255, 0.2);
-  }
 
 .contenedor-dash{
     margin-top: 1rem;
@@ -33,4 +25,17 @@
     font-family:"Baskervville" ;
 }
 
+
+@media (max-width: 600px) {
+   .ant-layout{
+        min-height: 300vh !important;
+   }
+
+   .contenedor-dashboard{
+ 
+    margin: 0rem !important;
+    
+}
+
+}
 
