@@ -308,7 +308,8 @@ const initialState = {
     eventos:[],
     alleventos:[],
     categorias:[],
-    guias:[]
+    guias:[],
+    cart:[]
 }
 
 

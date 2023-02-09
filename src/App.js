@@ -46,7 +46,7 @@ function App() {
         <Route path='/eventos' element={<EventoList/>} />
 
         <Route path='/checkout' element={<Checkout/>} />
-        <Route path='/shipping_info' element={<InformationCheckout/>} />
+        <Route path='/checkoutInfo' element={<InformationCheckout/>} />
         <Route path='/payment' element={<Payment/>}/>
 
 
