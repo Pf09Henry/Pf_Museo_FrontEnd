@@ -42,6 +42,7 @@ const Dashboard = () => {
   } = theme.useToken();
   return (
     <Layout
+    className='layout-dashboard'
       style={{
         minHeight: '275vh',
       }}
