@@ -1,7 +1,7 @@
 .menudefiltros{
     display: flex;
    flex-direction:row;
-   justify-content: space-between;
+   justify-content: space-around;
    border: 1px solid rgba(180, 178, 178, 0.205) ;
    align-items:  center;
 }
@@ -9,3 +9,11 @@
 .menu-input-filtro{
     margin-left:2rem;
 }
+
+@media (max-width: 600px) {
+    .menudefiltros{
+        display: flex;
+       flex-direction:column !important;
+    }
+ 
+ }

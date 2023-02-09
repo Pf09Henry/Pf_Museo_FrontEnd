@@ -37,7 +37,7 @@ export default function EventoList(){
     <div className="list-card-eventos">
     { Eventos?.length > 0 ? (
         Eventos?.map((activity, index) =>
-        <Link to={`/event/${activity.id}`}>
+        
         <Card
         className="carta-evento-list"
             hoverable
@@ -48,7 +48,7 @@ export default function EventoList(){
             
             cover={<img className="img-list-card" alt="example" src={activity.img} />}
         >
-        <Meta title={activity.name} 
+        <a href={`/event/${activity.id}`}><Meta title={activity.name} 
         
         
         description={
@@ -61,9 +61,9 @@ export default function EventoList(){
         </div>
         }
 
-    /> 
+    />  </a>
         </Card>
-        </Link>
+       
 
         )) : (
         <h3  className="actividades-disponibles">No se encontraron eventos</h3>

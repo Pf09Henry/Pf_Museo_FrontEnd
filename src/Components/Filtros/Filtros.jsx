@@ -69,7 +69,7 @@ export default function Filtros(){
           }; */
 
     return(
-        <div className="menudefiltros">
+        <div>
          
       {/*   <div className="menu-buscador-input">
             <p className="menu-title">Nombre del pais</p>
