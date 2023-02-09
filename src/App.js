@@ -19,12 +19,15 @@ import InfoGeneral from './Components/InfoGeneral/InfoGeneral';
 import EventoList from './Components/Eventos/EventosList';
 import EventDetails from './Components/EventDetails/EventDetails';
 import Error404 from './Components/Error404/Error404';
+import Dashboard from './Components/Dashboard/Dashboard';
 
 function App() {
   return (
     <div className="App">
-      <Nav />
+    <Nav />
       <Routes>
+     
+     
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
@@ -43,8 +46,14 @@ function App() {
         <Route path='/eventos' element={<EventoList/>} />
         <Route path='/event/:id' element={<EventDetails/>} />
         <Route path='*' element={<Error404/>} />
+        <Route path='/dashboard' element={<Dashboard/>} />
       </Routes>
       <Footer />
+
+
+     
+      
+     
     </div>
   );
 }
