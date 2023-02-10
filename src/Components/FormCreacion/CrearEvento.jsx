@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import {  InboxOutlined } from '@ant-design/icons';
 import {
   Button,
    Form,
@@ -41,15 +40,7 @@ function Crear(){
   
   const { Option } = Select;
   
-  
-  const normFile = (e) => {
-    console.log('Upload event:', e);
-    if (Array.isArray(e)) {
-      return e;
-    }
-    return e?.fileList;
-  };
-  
+
   
   const onFinish = (values) => {
     console.log('Received values of form: ', values);

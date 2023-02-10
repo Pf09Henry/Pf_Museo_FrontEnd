@@ -57,3 +57,24 @@
     justify-content: center;
     background-color:rgba(243, 243, 243, 0.822);
 }
+
+
+@media (max-width: 1000px) {
+   .contenedor-detalle-evento{
+    display: flex;
+    flex-direction: column !important
+   }
+
+   .detalle-guia{
+    display: flex;
+    justify-content: end;
+    margin-left: 0rem !important;
+    width:70%;
+    margin-top:2rem !important
+}
+
+.col{
+    padding: 0px !important;
+}
+ 
+ }
