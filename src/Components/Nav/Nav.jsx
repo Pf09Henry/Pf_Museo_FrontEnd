@@ -1,6 +1,7 @@
 import React from "react";
 import logo from '../../Imagenes/logo.png'
 import './Nav.css'
+import {MdShoppingCart} from 'react-icons/md'
 
 
 
@@ -89,6 +90,7 @@ export default function Nav() {
             <a href='/create-activitie'><button type="button" class="btn btn-outline-success btn-secundario">Crear Evento</button></a>
             <a href="/login"><button type="button" class="btn btn-outline-success btn-secundario">Iniciar Sesión</button></a>
             <a href="/register"><button type="button" class="btn btn-success btn-primario">Crear Cuenta</button></a>
+            <a href="/checkout" className="btn btn-primary" ><MdShoppingCart/></a>
 
           </ul>
 
