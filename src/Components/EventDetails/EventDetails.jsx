@@ -6,6 +6,8 @@ import {  useParams } from "react-router-dom";
 import { getEventsById } from "../../Actions/AppActions/appActions";
 import './../EventDetails/EventDetail.css'
 import { Tag } from 'antd';
+import Stars from "../Comentarios/Stars";
+import CommentForm from "../Comentarios/CommentForm";
 
 export default function EventDetails() {
 
@@ -38,6 +40,9 @@ export default function EventDetails() {
                 <p class="card-text detalle-evento-info">{detalles[0].information} </p>
                 </div>
                 <Tag color="#87d068" className="precio-evento">${detalles[0].price}</Tag>
+                <hr></hr>
+                <Stars />
+                <CommentForm />
             </div>
             </div>
 
