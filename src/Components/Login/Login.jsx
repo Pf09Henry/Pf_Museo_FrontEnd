@@ -23,7 +23,7 @@ export default function Login(){
   
     return (
       <button className="button__login" onClick={handleLogin}>
-        Log In
+        Login
       </button>
     );
   
