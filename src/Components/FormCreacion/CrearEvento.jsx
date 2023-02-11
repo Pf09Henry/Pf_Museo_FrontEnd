@@ -7,9 +7,10 @@ import {
   Input,
   DatePicker,
   Space,
- 
+  Upload
   
 } from 'antd';
+import { InboxOutlined, UploadOutlined } from '@ant-design/icons';
 import Swal from 'sweetalert2'
 import './../FormCreacion/CrearEvento.css'
 import { useDispatch } from "react-redux";
@@ -29,10 +30,11 @@ function Crear(){
     startDay:"",
     endDay:"",
     price: 0,
-    img:"",
+    img:{img:{}},
     information:"",
     guide:[{name:""}],
-    category:[{name:""}]
+    category:[{name:""}],
+    availability:0,
   })
   const { TextArea } = Input;
 
@@ -55,6 +57,7 @@ function Crear(){
       endDay:diaFin,
       price: values.precio,
       img:values.upload,
+      availability:values.availability,
       information:values.description,
       guide:values.selectGuia,
       category:values.select
@@ -66,6 +69,7 @@ function Crear(){
     endDay:diaFin,
     price: values.precio,
     img:values.upload,
+    availability:values.availability,
     information:values.description,
     guide:[{name:values.selectGuia}],
     category:[{name:values.select}]
@@ -99,6 +103,17 @@ function Crear(){
         })
     };
   
+    const agregarFoto = (e) =>{
+      console.log(e.target.files[0])
+      let imgvalue = e.target.files[0]
+      setValues({
+        img:{
+          img:{
+            imgvalue
+        }
+      }
+      })
+    }
 
 return(
   <div className='contenedor-form'>
@@ -246,6 +261,29 @@ return(
       </span>
     </Form.Item>
 
+    <Form.Item
+      name="upload"
+      label="Upload"
+    >
+      <input type="file" onChange={(e)=> agregarFoto(e)}/>
+       
+   
+    </Form.Item>
+
+
+    <Form.Item label="Cupos">
+      <Form.Item name="availability" noStyle
+      rules={[
+        {
+          required: true,
+          message: 'Por favor indicar un cupo',
+        },
+      ]}>
+        <InputNumber  min={1}/>
+      </Form.Item>
+      
+    </Form.Item>
+
    {/*  <Form.Item
       name="upload"
       label="Foto del evento"
@@ -263,19 +301,7 @@ return(
       </Upload>
     </Form.Item> */}
 
-  <Form.Item
-      label="Foto del evento"
-      name="upload"
-      placeholder="url de la foto"
-      rules={[
-        {
-          required: true,
-          message: 'Por favor escribir una url de la foto',
-        },
-      ]}
-    >
-      <Input />
-    </Form.Item>
+  
     
 
 
