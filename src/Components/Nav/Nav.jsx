@@ -1,10 +1,16 @@
 import React from "react";
 import logo from '../../Imagenes/logo.png'
 import './Nav.css'
+import Login from "../Login/Login";
+import Logout from "../Login/Logout";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Profile } from "../Login/Profile";
 
 
 
 export default function Nav() {
+  const { isAuthenticated } = useAuth0();
+
   return (
     <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid">
@@ -13,13 +19,13 @@ export default function Nav() {
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 
-         
+
           <img className="logo-nav" src={logo} alt="logo" />
-          
-              <a class="nav-link" href="/" role="button" >
-                Inicio
-              </a>
-          
+
+          <a class="nav-link" href="/" role="button" >
+            Inicio
+          </a>
+
 
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 contenedor-nav">
 
@@ -73,7 +79,7 @@ export default function Nav() {
             </li>
 
 
-           {/*  <li class="nav-item dropdown fin-nav">
+            {/*  <li class="nav-item dropdown fin-nav">
               <a class="nav-link dropdown-toggle" href=" " role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Protejamos lo nuestro
               </a>
@@ -84,11 +90,24 @@ export default function Nav() {
 
               </ul>
             </li> */}
+            <Profile/>
 
 
             <a href='/create-activitie'><button type="button" class="btn btn-outline-success btn-secundario">Crear Evento</button></a>
-            <a href="/login"><button type="button" class="btn btn-outline-success btn-secundario">Iniciar Sesión</button></a>
+            {/* <a href="/login"><button type="button" class="btn btn-outline-success btn-secundario">Iniciar Sesión</button></a> */}
             {/* <a href="/register"><button type="button" class="btn btn-success btn-primario">Crear Cuenta</button></a> */}
+            <div className="nav-bar__buttons">
+              {!isAuthenticated && (
+                <>        
+                  <Login/>
+                </>
+              )}
+              {isAuthenticated && (
+                <>            
+                  <Logout/>
+                </>
+              )}
+            </div>
 
           </ul>
 
