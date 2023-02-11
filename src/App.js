@@ -19,11 +19,15 @@ import InfoGeneral from './Components/InfoGeneral/InfoGeneral';
 import EventoList from './Components/Eventos/EventosList';
 import EventDetails from './Components/EventDetails/EventDetails';
 import Error404 from './Components/Error404/Error404';
-import Dashboard from './Components/Dashboard/Dashboard';
 import { useAuth0 } from "@auth0/auth0-react";
 //import { PageLoader } from "./components/page-loader";
 import { AuthenticationGuard } from "./Components/Authentication/authentication";
 import {Profile} from './Components/Login/Profile';
+import MenuDesplegable from './Components/Dashboard/Menu-desplegable';
+import AgregarEvento from './Components/Dashboard/Eventos/Agregar';
+import ModificarEvento from './Components/Dashboard/Eventos/Modificar'
+import AgregarUsuario from './Components/Dashboard/Usuarios/Agregar';
+import ModificarUsuario from './Components/Dashboard/Usuarios/Modificar'
 
 function App() {
   const { isLoading } = useAuth0();
@@ -59,7 +63,12 @@ function App() {
         <Route path='/eventos' element={<EventoList/>} />
         <Route path='/event/:id' element={<EventDetails/>} />
         <Route path='*' element={<Error404/>} />
-        <Route path='/dashboard' element={<Dashboard/>} />
+  
+        <Route path='/dashboard' element={<MenuDesplegable/>} />
+        <Route path='/dashoboard-eventos-agregar' element={<AgregarEvento/>} />
+        <Route path='/dashoboard-eventos-modificar' element={<ModificarEvento/>} />
+        <Route path='/dashoboard-user-agregar' element={<AgregarUsuario/>} />
+        <Route path='/dashoboard-user-modificar' element={<ModificarUsuario/>} />
       </Routes>
       <Footer />
 
