@@ -86,9 +86,9 @@ export default function Nav() {
             </li> */}
 
 
-            <a href='/create-activitie'><button type="button" class="btn btn-outline-success btn-secundario">Crear Evento</button></a>
-            <a href="/login"><button type="button" class="btn btn-outline-success btn-secundario">Iniciar Sesión</button></a>
-            {/* <a href="/register"><button type="button" class="btn btn-success btn-primario">Crear Cuenta</button></a> */}
+           {/*  <a href='/create-activitie'><button type="button" class="btn btn-outline-success btn-secundario">Crear Evento</button></a> */}
+            {/* <a href="/login"><button type="button" class="btn btn-outline-success btn-secundario">Iniciar Sesión</button></a> */}
+            <a href="/dashboard"><button type="button" class="btn btn-success btn-primario">Perfil</button></a>
 
           </ul>
 

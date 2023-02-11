@@ -7,7 +7,9 @@ import {
   Input,
   DatePicker,
   Space,
- 
+  Checkbox,
+  Dropdown,
+  Menu
   
 } from 'antd';
 import Swal from 'sweetalert2'
@@ -17,7 +19,7 @@ import { postEvent } from "../../Actions/AppActions/appActions";
 
 
 
-function Crear(){ 
+function Modificar(){ 
 
   
 
@@ -25,14 +27,14 @@ function Crear(){
   const dispatch = useDispatch();
   
   const [inicialValues, setValues] = useState({
-    name:"",
+    name:"No hay evento",
     startDay:"",
     endDay:"",
-    price: 0,
-    img:"",
-    information:"",
-    guide:[{name:""}],
-    category:[{name:""}]
+    price: "No hay evento",
+    img:"No hay evento",
+    information:"No hay evento",
+    guide:[{name:"No hay evento"}],
+    category:[{name:"No hay evento"}]
   })
   const { TextArea } = Input;
 
@@ -82,7 +84,7 @@ function Crear(){
 
     if (form) {
       dispatch(postEvent(valores))
-       
+        .then(() => alert("Evento agregado"));
     } else {
       return alert(" A tu actividad le faltan detalles");
     }
@@ -98,13 +100,62 @@ function Crear(){
           confirmButtonText: 'OK'
         })
     };
+  const [componentDisabled, setComponentDisabled] = useState(true);
+  const onFormLayoutChange = ({ disabled }) => {
+    setComponentDisabled(disabled);
+  };
   
 
 return(
   <div className='contenedor-form'>
-    <h3 className='titulo-form-evento'>Crear Evento</h3>
+ 
+    <h3 className='titulo-form-evento'>Modificar Evento</h3>
     <hr></hr>
+
+    <Form.Item
+      label="Buscar"
+      name="username-buscado"
+    >
+      <Input />
+      {/* <div >
+      
+      <>
+        <Dropdown
+          overlay={(
+            <Menu>
+              <Menu.Item key="0">
+                Menu Item One
+              </Menu.Item>
+              <Menu.Item key="1">
+              Menu Item Two
+              </Menu.Item>
+              <Menu.Item key="1">
+              Menu Item Three
+              </Menu.Item>
+            </Menu>
+          )}
+          trigger={['click']}>
+          <a href=" "className="ant-dropdown-link" 
+             onClick={e => e.preventDefault()}>
+            Open Dropdown
+          </a>
+        </Dropdown>
+      </>
+    </div> */}
+    </Form.Item>
+    <hr></hr>
+
+    <Checkbox
+        checked={componentDisabled}
+        onChange={(e) => setComponentDisabled(e.target.checked)}
+      >
+        Editar
+      </Checkbox>
+      <hr></hr>
     <Form
+
+    onValuesChange={onFormLayoutChange}
+    disabled={componentDisabled}
     name="basic"
     labelCol={{
       span: 8,
@@ -126,28 +177,16 @@ return(
     <Form.Item
       label="Nombre"
       name="username"
-      rules={[
-        {
-          required: true,
-          message: 'Por favor escribir un nombre al evento',
-        },
-      ]}
     >
-      <Input />
+      <Input placeholder={inicialValues.name}/>
     </Form.Item>
 
     <Form.Item
       name="select"
       label="Categoria"
       hasFeedback
-      rules={[
-        {
-          required: true,
-          message: 'Por favor elegir una categoria',
-        },
-      ]}
     >
-      <Select placeholder="Categoria del evento">
+      <Select placeholder={inicialValues.category[0].name}>
     
         <Option value="Social">Social</Option>
         <Option value="Arte">Arte</Option>
@@ -162,12 +201,6 @@ return(
       name="dias"
       label="Fecha"
       hasFeedback
-      rules={[
-        {
-          required:true,
-          message: 'Por favor elegir una fecha',
-        },
-      ]}
     >
       <RangePicker
       dateRender={(current) => {
@@ -190,14 +223,8 @@ return(
     <Form.Item
       name="selectGuia"
       label="Guia"
-      rules={[
-        {
-          required: true,
-          message: 'Por favor elegir un guia',
-        },
-      ]}
     >
-      <Select placeholder="Guia del evento">
+      <Select placeholder={inicialValues.guide[0].name}>
     
     <Option value="Claudio">Claudio</Option>
     <Option value="Karen">Karen</Option>
@@ -206,35 +233,11 @@ return(
   </Select>
     </Form.Item>
 
-    {/* <Form.Item
-      name="fotoGuia"
-      label="Foto Guia"
-      valuePropName="fileList"
-      getValueFromEvent={normFile}
-      rules={[
-        {
-          required: true,
-          message: 'Por favor elegir una foto del guia',
-        },
-      ]}
-     
-    >
-      <Upload name="logo" action="/upload.do" listType="picture">
-        <Button icon={<UploadOutlined />}>Subir</Button>
-      </Upload>
-    </Form.Item> */}
-
-
 
     <Form.Item label="Precio">
       <Form.Item name="precio" noStyle
-      rules={[
-        {
-          required: true,
-          message: 'Por favor indicar un precio',
-        },
-      ]}>
-        <InputNumber  min={1}/>
+     >
+        <InputNumber  min={1} placeholder={inicialValues.price}/>
       </Form.Item>
       <span
         className="ant-form-text"
@@ -246,46 +249,19 @@ return(
       </span>
     </Form.Item>
 
-   {/*  <Form.Item
-      name="upload"
-      label="Foto del evento"
-      valuePropName="fileList"
-      getValueFromEvent={normFile}
-      rules={[
-        {
-          required: true,
-          message: 'Por favor subir una foto del evento',
-        },
-      ]}
-    >
-      <Upload name="logo"  listType="picture">
-        <Button icon={<UploadOutlined />}>Subir</Button>
-      </Upload>
-    </Form.Item> */}
 
   <Form.Item
       label="Foto del evento"
       name="upload"
       placeholder="url de la foto"
-      rules={[
-        {
-          required: true,
-          message: 'Por favor escribir una url de la foto',
-        },
-      ]}
     >
-      <Input />
+      <Input placeholder={inicialValues.img}/>
     </Form.Item>
     
 
 
 
-    <Form.Item name="description" label="Descripción" rules={[
-        {
-          required: true,
-          message: 'Por favor indicar una descripción',
-        },
-      ]}>
+    <Form.Item name="description" label="Descripción" >
     <TextArea
         showCount
         maxLength={400}
@@ -294,7 +270,7 @@ return(
           marginBottom: 24,
         }}
        
-        placeholder="Descripción del evento"
+        placeholder={inicialValues.information}
       />
     </Form.Item>
 
@@ -309,7 +285,7 @@ return(
       }}
     >
       <Button type="primary" htmlType="submit" className='btn-secundario' style={{backgroundColor:"rgb(56, 102, 103"}}>
-        Agregar
+      Modificar
       </Button>
     </Form.Item>
   </Form>
@@ -317,4 +293,4 @@ return(
 )};
 
 
-export default Crear;
+export default Modificar;
