@@ -20,3 +20,8 @@
 .img-list-card{
     height: 200px !important;
 }
+
+a{
+    text-decoration: none;
+    cursor: pointer;
+}

@@ -5,7 +5,8 @@ import { Tag } from 'antd';
 import Filtros from "../Filtros/Filtros";
 import {  useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react';
-import { getEvents,getCategories } from "../../Actions/AppActions/appActions";
+import { getEvents } from "../../Actions/AppActions/appActions";
+//import { Link } from "react-router-dom";
 
 
 
@@ -21,6 +22,7 @@ export default function EventoList(){
         dispatch(getEvents());
     },[dispatch])
 
+    
    
 
   
@@ -35,29 +37,33 @@ export default function EventoList(){
     <div className="list-card-eventos">
     { Eventos?.length > 0 ? (
         Eventos?.map((activity, index) =>
+        
         <Card
         className="carta-evento-list"
             hoverable
             style={{
             width: 240,
             }}
+            key={activity.id}
+            
             cover={<img className="img-list-card" alt="example" src={activity.img} />}
         >
-            <Meta title={activity.name} 
+        <a href={`/event/${activity.id}`}><Meta title={activity.name} 
         
         
         description={
             <div>
         <Tag color="green">{activity.startDay} - {activity.endDay}</Tag>
         <br></br>
-        <Tag color="#015129">{activity.category[0].name}</Tag>
-        <hr></hr>
+        {/* <Tag color="#015129">{activity.category[0].name}</Tag>
+        <hr></hr> */}
         <Tag color="#87d068">${activity.price}</Tag>
         </div>
         }
 
-    />
+    />  </a>
         </Card>
+       
 
         )) : (
         <h3  className="actividades-disponibles">No se encontraron eventos</h3>
@@ -66,3 +72,4 @@ export default function EventoList(){
     </div>
     </div>)
 }
+

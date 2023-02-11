@@ -69,7 +69,7 @@ export default function Filtros(){
           }; */
 
     return(
-        <div className="menudefiltros">
+        <div>
          
       {/*   <div className="menu-buscador-input">
             <p className="menu-title">Nombre del pais</p>
@@ -105,7 +105,7 @@ export default function Filtros(){
         
 
         </div> */}
-        {/* <div className="paginado">
+         {/* <div className="paginado">
                 <Paginado
             countriesPerPage = { countriesPerPage }
             eventos = { eventos.length }
@@ -113,7 +113,7 @@ export default function Filtros(){
             setCurrentPage={setCurrentPage}
             currentEvents={currentEvents}
             /> 
-        </div> */}
+        </div>  */}
         </div>
 
     )

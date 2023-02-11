@@ -1,0 +1,41 @@
+.contenedor-dashboard{
+    display: flex;
+    flex-direction: column;
+    margin: 5rem;
+    
+}
+
+
+.contenedor-porcentajes{
+    display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+}
+
+.card{
+    margin-bottom: 2rem !important;
+}
+
+.contenedor-dash{
+    margin-top: 1rem;
+}
+
+.titulo-dashboard{
+    padding-top: 2rem;
+    font-family:"Baskervville" ;
+}
+
+
+@media (max-width: 600px) {
+   .ant-layout{
+        min-height: 300vh !important;
+   }
+
+   .contenedor-dashboard{
+ 
+    margin: 0rem !important;
+    
+}
+
+}
+
