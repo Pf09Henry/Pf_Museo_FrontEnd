@@ -44,6 +44,7 @@ export default function CommentForm({ commentInitial, buttonText, buttonSend }) 
                     <textarea placeholder='Dejanos tu Comentario'
                         className='answerTextarea'
                         onChange={(e) => handleChange(e)}
+
                         onBlur={() => validateComment()}
                         value={commentItem.comment}
                         name={'comment'}

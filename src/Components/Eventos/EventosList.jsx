@@ -7,6 +7,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react';
 import { getEvents } from "../../Actions/AppActions/appActions";
 import { Link } from "react-router-dom";
+import Pagination from "../Paginado/Paginado";
+import { useState } from "react";
 
 
 
@@ -15,14 +17,22 @@ const { Meta } = Card;
 
 export default function EventoList() {
     const Eventos = useSelector((state) => state.eventos);
-
     const dispatch = useDispatch();
+
+    const [currentPage, setCurrent] = useState(1);
+    const eventsPerPage = 4;
+
+    const indexOfLastEvet = currentPage * eventsPerPage;
+    const indexOfFirstEvet = indexOfLastEvet - eventsPerPage;
+    const currentEvents = Eventos.slice(indexOfFirstEvet, indexOfLastEvet);
+
+    const pagination = currentPage => {
+        setCurrent(currentPage)
+    };
 
     useEffect(() => {
         dispatch(getEvents());
     }, [dispatch])
-
-
 
 
 
@@ -35,8 +45,8 @@ export default function EventoList() {
             <Filtros />
         </div>
         <div className="list-card-eventos">
-            {Eventos?.length > 0 ? (
-                Eventos?.map((activity, index) =>
+            {currentEvents?.length > 0 ? (
+                currentEvents?.map((activity, index) =>
                     <Link to={`/event/${activity.id}`}>
                         <Card
                             className="carta-evento-list"
@@ -50,7 +60,6 @@ export default function EventoList() {
                         >
                             <Meta title={activity.name}
 
-
                                 description={
                                     <div>
                                         <Tag color="green">{activity.startDay} - {activity.endDay}</Tag>
@@ -62,15 +71,18 @@ export default function EventoList() {
 
                                     </div>
                                 }
-
                             />
-
                         </Card>
                     </Link>
                 )) : (
                 <h3 className="actividades-disponibles">No se encontraron eventos</h3>
-
             )}
+            <Pagination
+                eventsPerPage={eventsPerPage}
+                eventos={Eventos.length}
+                pagination={pagination}
+                currentPage={currentPage}
+            />
         </div>
     </div>)
 }

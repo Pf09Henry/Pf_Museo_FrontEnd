@@ -1,35 +1,34 @@
 import React from "react"
-import { useState , useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterEventByPrice, filterEventByCategory, orderByName , getCategories} from './../../Actions/AppActions/appActions';
-import Paginado from './../Paginado/Paginado'
+import { filterEventByPrice, filterEventByCategory, orderByName, getCategories } from './../../Actions/AppActions/appActions';
 import './../Filtros/Filtros.css'
 
 
-export default function Filtros(){
-    const dispatch = useDispatch();
-    const eventos = useSelector((state) => state.eventos);
-    const[orden, setOrden] = useState ('');
-    const[currentPage, setCurrentPage] = useState(1);
-    const countriesPerPage=9;
-    const indexOfLastCountry = currentPage * countriesPerPage;
-    const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
-    const currentEvents = eventos.slice(indexOfFirstCountry, indexOfLastCountry);
-    const[continent, setContinent] = useState('All');
-    const[order, setOrder] = useState('');
+export default function Filtros() {
+    const dispatch = useDispatch(); //////////////////////////////////////
+    const eventos = useSelector((state) => state.eventos); //////////////////////////////////////
+    //const [orden, setOrden] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);/////////////////////
+    //const countriesPerPage = 9;
+    //const indexOfLastCountry = currentPage * countriesPerPage;
+    //const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
+    //const currentEvents = eventos.slice(indexOfFirstCountry, indexOfLastCountry);
+    const [continent, setContinent] = useState('All');
+    const [order, setOrder] = useState('');
     const Categorias = useSelector((state) => state.categorias);
 
 
-    function onClickRadio(e){
+    function onClickRadio(e) {
         setContinent(e.target.value)
     }
 
-    useEffect (()=>{
+    useEffect(() => {
         dispatch(getCategories());
-    },[dispatch])
+    }, [dispatch])
 
 
-    function onClickRadioOrder(e){
+    function onClickRadioOrder(e) {
         setOrder(e.target.value)
     }
 
@@ -40,80 +39,64 @@ export default function Filtros(){
 
 
 
-    function handleSort (e) {
+    function handleSort(e) {
+        e.preventDefault();
         dispatch(orderByName(e.target.value));
         setCurrentPage(1); // cuando hago el ordenamiento lo hago desde la pagina 1, 
-        setOrden(`Ordenado ${e.target.value}`) // setOrden es un estado local que en un inicio va a estar vacio, para cuando seteo en la pagina 1, me modifica el estado local y renderiza
+        setOrder(e.target.value) // setOrden es un estado local que en un inicio va a estar vacio, para cuando seteo en la pagina 1, me modifica el estado local y renderiza
     };
+    ////////////////////////////////REVISAR
 
-    function handleSortPop (e) {
+    function handleSortPop(e) {
+        e.preventDefault();
         dispatch(filterEventByPrice(e.target.value));
-        setCurrentPage(1); // cuando hago el ordenamiento lo hago desde la pagina 1, 
-        setOrden(`Ordenado ${e.target.value}`) // setOrden es un estado local que en un inicio va a estar vacio, para cuando seteo en la pagina 1, me modifica el estado local y renderiza
+        setCurrentPage(1);
+        setOrder(e.target.value)
     };
 
- 
-    
+    ////////////////////////////
 
-   /*      //tengo que guardar en mi estado local, lo que vaya apareciendo en el input 
-    function handleInputChange(e) {
-            e.preventDefault();
-            setName(e.target.value);
-            
-    } 
- 
+    // function handleSortPop(e) {
+    //     dispatch(filterEventByPrice(e.target.value));
+    //     setCurrentPage(1); // cuando hago el ordenamiento lo hago desde la pagina 1, 
+    //     setOrder(e.target.value) // setOrden es un estado local que en un inicio va a estar vacio, para cuando seteo en la pagina 1, me modifica el estado local y renderiza
+    // };
 
-        const handleSubmit = (e) => {
-            e.preventDefault();
-            setName(e.target.value);
-          }; */
 
-    return(
+    /*      //tengo que guardar en mi estado local, lo que vaya apareciendo en el input 
+     function handleInputChange(e) {
+             e.preventDefault();
+             setName(e.target.value);
+             
+     } 
+     
+     
+         const handleSubmit = (e) => {
+             e.preventDefault();
+             setName(e.target.value);
+           }; */
+
+    return (
         <div className="menudefiltros">
-         
-      {/*   <div className="menu-buscador-input">
-            <p className="menu-title">Nombre del pais</p>
-            <div>
-                <input className="menu-buscador"onClick = {(e) => handleSubmit(e)} type = 'text' placeholder = 'Ingrese el pais que quiere buscar' onChange={handleInputChange} />            
-            </div>
-            
-            {/* {console.log(error.data)} 
-        <br></br>
-       
-        </div> */}
 
-        <div className="menudefiltros">
-            <div><p className="menu-title">Filtro por categoría</p></div>
-            
-            <div className="menu-input-filtro"><input type = 'radio' checked={continent === 'All' ? true : false} onClick={e => onClickRadio(e)} onChange={e => handleFilterContinent(e)} value = 'All'/><p className="menu-p">Todas las categorías</p></div>
-            <div className="menu-input-filtro"><input type = 'radio' checked={continent === 'Social' ? true : false} onClick={e => onClickRadio(e)}onChange={e => handleFilterContinent(e)} value = 'Social'/><p className="menu-p">Social</p></div>
-            <div className="menu-input-filtro"><input type = 'radio' checked={continent === 'Arte' ? true : false} onClick={e => onClickRadio(e)}onChange={e => handleFilterContinent(e)} value = 'Arte'/><p className="menu-p">Arte</p></div>
-            <div className="menu-input-filtro"> <input type = 'radio' checked={continent === 'Ciencias' ? true : false} onClick={e => onClickRadio(e)}onChange={e => handleFilterContinent(e)} value = 'Ciencias'/><p className="menu-p">Ciencias</p> </div> 
-            <div className="menu-input-filtro"> <input type = 'radio' checked={continent === 'Ecológico' ? true : false} onClick={e => onClickRadio(e)}onChange={e => handleFilterContinent(e)} value = 'Ecológico'/><p className="menu-p">Ecológico</p> </div> 
-            </div>
+            {/* <div className='col-md-8 filtrado'> */}
+            {/* <div className="categoria"> */}
+            {/* <div><p className="menu-title">Filtro por categoría</p></div> */}
+            <div className="menu-input-filtro"><input type='radio' checked={continent === 'All' ? true : false} onClick={e => onClickRadio(e)} onChange={e => handleFilterContinent(e)} value='All' /><p className="menu-p">Todas las categorías</p></div>
+            <div className="menu-input-filtro"><input type='radio' checked={continent === 'Social' ? true : false} onClick={e => onClickRadio(e)} onChange={e => handleFilterContinent(e)} value='Social' /><p className="menu-p">Social</p></div>
+            <div className="menu-input-filtro"><input type='radio' checked={continent === 'Arte' ? true : false} onClick={e => onClickRadio(e)} onChange={e => handleFilterContinent(e)} value='Arte' /><p className="menu-p">Arte</p></div>
+            <div className="menu-input-filtro"> <input type='radio' checked={continent === 'Ciencias' ? true : false} onClick={e => onClickRadio(e)} onChange={e => handleFilterContinent(e)} value='Ciencias' /><p className="menu-p">Ciencias</p> </div>
+            <div className="menu-input-filtro"> <input type='radio' checked={continent === 'Ecológico' ? true : false} onClick={e => onClickRadio(e)} onChange={e => handleFilterContinent(e)} value='Ecológico' /><p className="menu-p">Ecológico</p> </div>
+            {/* </div>
 
+            <div className="nombre"> */}
+            {/* <p className="menu-title">Filtros ordenamiento</p> */}
+            <div className="menu-input-filtro"><input type='radio' value='asc' checked={order === 'asc' ? true : false} onClick={e => onClickRadioOrder(e)} onChange={e => handleSort(e)} /><p >Nombres ascendente</p></div>
+            <div className="menu-input-filtro"><input type='radio' value='desc' checked={order === 'desc' ? true : false} onClick={e => onClickRadioOrder(e)} onChange={e => handleSort(e)} /><p >Nombres descendente</p></div>
+            <div className="menu-input-filtro"><input type='radio' value='ascprec' checked={order === 'ascprec' ? true : false} onClick={e => onClickRadioOrder(e)} onChange={e => handleSortPop(e)} /><p >Mayor precio</p></div>
+            <div className="menu-input-filtro"><input type='radio' value='descprec' checked={order === 'descprec' ? true : false} onClick={e => onClickRadioOrder(e)} onChange={e => handleSortPop(e)} /><p >Menor precio</p></div>
+            {/* </div> */}
 
-            
-        
-        {/* <div className="menu-buscador-input-gral">
-            <p className="menu-title">Filtros ordenamiento</p>
-       
-            <input type = 'radio' value = 'asc' checked={order === 'asc' ? true : false}  onClick={e => onClickRadioOrder(e)} onChange={e => handleSort(e)}/><p className="menu-p">Nombres ascendente</p>
-            <input type = 'radio' value = 'desc' checked={order === 'desc' ? true : false} onClick={e => onClickRadioOrder(e)} onChange={e => handleSort(e)}/><p className="menu-p">Nombres descendente</p>
-            <input type = 'radio' value = 'ascprec' checked={order === 'ascprec' ? true : false} onClick={e => onClickRadioOrder(e)} onChange={e => handleSortPop(e)}/><p className="menu-p">Mayor precio</p>  
-            <input type = 'radio' value = 'descprec'checked={order === 'descprec' ? true : false} onClick={e => onClickRadioOrder(e)}  onChange={e => handleSortPop(e)}/><p className="menu-p">Menor precio</p>           
-        
-
-        </div> */}
-         {/* <div className="paginado">
-                <Paginado
-            countriesPerPage = { countriesPerPage }
-            eventos = { eventos.length }
-            currentPage = {currentPage}
-            setCurrentPage={setCurrentPage}
-            currentEvents={currentEvents}
-            /> 
-        </div>  */}
         </div>
 
     )
