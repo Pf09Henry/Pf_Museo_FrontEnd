@@ -263,7 +263,13 @@ return(
 
     <Form.Item
       name="upload"
-      label="Upload"
+      label="Foto del evento"
+      rules={[
+        {
+          required: true,
+          message: 'Por favor subir la foto de un evento',
+        },
+      ]}
     >
       <input type="file" onChange={(e)=> agregarFoto(e)}/>
        
@@ -271,15 +277,17 @@ return(
     </Form.Item>
 
 
-    <Form.Item label="Cupos">
+    <Form.Item label="Cupos"
+    rules={[
+      {
+        required: true,
+        message: 'Por favor indicar un cupo',
+      },
+    ]}
+    >
       <Form.Item name="availability" noStyle
-      rules={[
-        {
-          required: true,
-          message: 'Por favor indicar un cupo',
-        },
-      ]}>
-        <InputNumber  min={1}/>
+      >
+        <InputNumber  min={1} />
       </Form.Item>
       
     </Form.Item>

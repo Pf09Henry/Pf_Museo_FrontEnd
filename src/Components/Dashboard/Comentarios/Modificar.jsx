@@ -8,14 +8,15 @@ import {BsPersonBadge} from "react-icons/bs";
 import {BiCategory} from "react-icons/bi";
 import SubMenu from 'antd/es/menu/SubMenu';
 import { Content } from 'antd/es/layout/layout';
-import ModificarUsuario from '../../FormCreacion/ModificarUsuario';
+import ModificarComentario from '../../FormCreacion/ModificarComentario';
+
 
 
 const { Sider } = Layout;
 
 
 
-export default function AgregarUsuario() {
+export default function Modificar() {
 
   const [collapsed, setCollapsed] = useState(false);
 
@@ -135,25 +136,25 @@ export default function AgregarUsuario() {
 
         <SubMenu icon={< BiCategory />} title="Categorias" >
 
-            <Menu.Item icon={<SlPlus /> }>
-            
-                <span>Agregar</span>
-                <Link to="/dashoboard-categorias-agregar"></Link>
-            </Menu.Item>
+<Menu.Item icon={<SlPlus /> }>
 
-            <Menu.Item icon={<SlPencil /> }>
-                
-                <span>Modificar</span>
-                <Link to="/dashoboard-categorias-modificar"></Link>
-            </Menu.Item>
+    <span>Agregar</span>
+    <Link to="/dashoboard-categorias-agregar"></Link>
+</Menu.Item>
 
-            <Menu.Item icon={<SlTrash /> }>
-            
-                <span>Borrar</span>
-                <Link to="/dashoboard-categorias-borrar"></Link>
-            </Menu.Item>
+<Menu.Item icon={<SlPencil /> }>
+    
+    <span>Modificar</span>
+    <Link to="/dashoboard-categorias-modificar"></Link>
+</Menu.Item>
 
-        </SubMenu>  
+<Menu.Item icon={<SlTrash /> }>
+
+    <span>Borrar</span>
+    <Link to="/dashoboard-categorias-borrar"></Link>
+</Menu.Item>
+
+</SubMenu>  
      
       </Menu>
 
@@ -161,7 +162,7 @@ export default function AgregarUsuario() {
      
     </Sider>
       
-    <Content><ModificarUsuario/></Content>
+    <Content><ModificarComentario/></Content>
     </Layout>
   );
 };

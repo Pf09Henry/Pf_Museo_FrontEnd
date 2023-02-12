@@ -22,7 +22,7 @@ export default function Login(){
     };
   
     return (
-      <button className="button__login" onClick={handleLogin}>
+      <button className="button__login btn btn-success btn-secundario" onClick={handleLogin}>
         Login
       </button>
     );

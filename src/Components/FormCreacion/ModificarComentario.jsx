@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import {
   Button,
    Form,
-  InputNumber,
+
   Select,
   Input,
   DatePicker,
-  Space,
+
   Checkbox,
-  Dropdown,
-  Menu
+
   
 } from 'antd';
 import Swal from 'sweetalert2'
@@ -19,7 +18,7 @@ import { postEvent } from "../../Actions/AppActions/appActions";
 
 
 
-function Modificar(){ 
+function ModificarComentario(){ 
 
   
 
@@ -32,7 +31,7 @@ function Modificar(){
     endDay:"",
     price: "No hay evento",
     img:"No hay evento",
-    information:"No hay evento",
+    information:"No hay comentario",
     guide:[{name:"No hay evento"}],
     category:[{name:"No hay evento"}]
   })
@@ -109,12 +108,12 @@ function Modificar(){
 return(
   <div className='contenedor-form'>
  
-    <h3 className='titulo-form-evento'>Modificar Evento</h3>
+    <h3 className='titulo-form-evento'>Modificar Comentario</h3>
     <hr></hr>
 
     <Form.Item
       label="Buscar"
-      name="username-buscado"
+      name="comentario-buscado"
     >
       <Input />
       {/* <div >
@@ -174,101 +173,6 @@ return(
     autoComplete="off"
   >
 
-    <Form.Item
-      label="Nombre"
-      name="username"
-    >
-      <Input placeholder={inicialValues.name}/>
-    </Form.Item>
-
-    <Form.Item
-      name="select"
-      label="Categoria"
-      hasFeedback
-    >
-      <Select placeholder={inicialValues.category[0].name}>
-    
-        <Option value="Social">Social</Option>
-        <Option value="Arte">Arte</Option>
-        <Option value="Ciencias">Ciencias</Option>
-        <Option value="Ecológico">Ecológico</Option>
-      </Select>
-    </Form.Item>
-
-
-    <Space direction="vertical" size={12}>
-    <Form.Item
-      name="dias"
-      label="Fecha"
-      hasFeedback
-    >
-      <RangePicker
-      dateRender={(current) => {
-        const style = {};
-        if (current.date() === 1) {
-          style.border = '1px solid #1890ff';
-          style.borderRadius = '50%';
-        }
-        return (
-          <div className="ant-picker-cell-inner" style={style}>
-            {current.date()}
-          </div>
-        );
-      }}
-    />
-    </Form.Item>
-  </Space>
-  
-
-    <Form.Item
-      name="selectGuia"
-      label="Guia"
-    >
-      <Select placeholder={inicialValues.guide[0].name}>
-    
-    <Option value="Claudio">Claudio</Option>
-    <Option value="Karen">Karen</Option>
-    <Option value="Soledad">Soledad</Option>
-    <Option value="Martin">Martin</Option>
-  </Select>
-    </Form.Item>
-
-
-    <Form.Item label="Precio">
-      <Form.Item name="precio" noStyle
-     >
-        <InputNumber  min={1} placeholder={inicialValues.price}/>
-      </Form.Item>
-      <span
-        className="ant-form-text"
-        style={{
-          marginLeft: 8,
-        }}
-      >
-        $
-      </span>
-    </Form.Item>
-
-
-  <Form.Item
-      label="Foto del evento"
-      name="upload"
-     
-    >
-      <Input type='file'/>
-    </Form.Item>
-
-
-    <Form.Item label="Cupos">
-      <Form.Item name="availability" noStyle
-     >
-        <InputNumber  min={1}/>
-      </Form.Item>
-      
-    </Form.Item>
-    
-
-
 
     <Form.Item name="description" label="Descripción" >
     <TextArea
@@ -302,4 +206,4 @@ return(
 )};
 
 
-export default Modificar;
+export default ModificarComentario;

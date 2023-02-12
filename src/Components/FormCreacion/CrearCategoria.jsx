@@ -2,13 +2,10 @@ import React, { useState } from 'react';
 import {
   Button,
    Form,
-  InputNumber,
   Select,
   Input,
   DatePicker,
-  Row,
-  Col
-  
+
 } from 'antd';
 import Swal from 'sweetalert2'
 import './../FormCreacion/CrearEvento.css'
@@ -17,7 +14,7 @@ import { postEvent } from "../../Actions/AppActions/appActions";
 
 
 
-function CrearUsuario(){ 
+function CrearCategoria(){ 
 
   
 
@@ -112,11 +109,10 @@ function CrearUsuario(){
       })
     }
   
-  
 
 return(
   <div className='contenedor-form'>
-    <h3 className='titulo-form-evento'>Crear Usuario</h3>
+    <h3 className='titulo-form-evento'>Crear Categoria</h3>
     <hr></hr>
     <Form
     name="basic"
@@ -150,90 +146,6 @@ return(
       <Input  placeholder='Nombre'/>
     </Form.Item>
 
-    <Form.Item
-      name="upload"
-      label="Foto de perfil"
-    >
-      <input type="file" onChange={(e)=> agregarFoto(e)}/>
-       
-   
-    </Form.Item>
-
-
-
-
-    <Form.Item label="Teléfono"
-       name="teléfono"
-       rules={[
-         {
-           required: true,
-           message: 'Por favor escribir un número de teléfono',
-         },
-       ]}>
-    <Input.Group >
-      <Row gutter={8}>
-        <Col span={5}>
-          <Input placeholder="011" />
-        </Col>
-        <Col span={8}>
-          <Input placeholder="26888888" />
-        </Col>
-      </Row>
-    </Input.Group>
-    </Form.Item>
-
-
-
-    <Form.Item
-      label="Email"
-      name="email"
-      rules={[
-        {
-          required: true,
-          message: 'Por favor escribir un email',
-        },
-      ]}
-    >
-      <Input placeholder='ejemplo@ejemplo.com'/>
-    </Form.Item>
-
-    
-
-    <Form.Item
-      label="Contraseña"
-      name="contraseña"
-      rules={[
-        {
-          required: true,
-          message: 'Por favor escribir una contraseña',
-        },
-      ]}
-    >
-      <Input placeholder='*******'/>
-    </Form.Item>
-    
-
-    <Form.Item
-      name="rol"
-      label="Rol"
-      hasFeedback
-      rules={[
-        {
-          required: true,
-          message: 'Por favor elegir un rol',
-        },
-      ]}
-    >
-      <Select placeholder="Rol">
-    
-        <Option value="Usuario">Usuario</Option>
-        <Option value="Finanzas">Finanzas</Option>
-        <Option value="Administrador">Administrador</Option>
-        <Option value="Contenido">Contenido</Option>
-      </Select>
-    </Form.Item>
-
-
     
     <Form.Item
       wrapperCol={{
@@ -250,4 +162,4 @@ return(
 )};
 
 
-export default CrearUsuario;
+export default CrearCategoria;
