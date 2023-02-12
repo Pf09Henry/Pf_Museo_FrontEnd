@@ -1,13 +1,35 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+//import { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import './CartSidebar.css'
+import { removeToCart } from '../../Actions/AppActions/appActions'
+
 
 export default function CartSidebar() {
 
+    const dispatch = useDispatch()
+
     const carrito = useSelector(state => state.cart)
+
+    const localStorageCarrito = localStorage.getItem('CART_V1',);
+    let parsedCarrito;
+    
+    if(!localStorageCarrito){
+        localStorage.setItem('CART_V1', JSON.stringify([]));
+        parsedCarrito = [];
+    } else{
+        parsedCarrito = JSON.parse(localStorageCarrito);
+    }
+    
+    //const carrito = useSelector(state => state.cart)
+    // const [products, setProducts] = useState(parsedCarrito)
     
     // const handleRemoveCart = (id)=> {
     // }
+
+    const handleRemoveCart = (e) => {
+        dispatch(removeToCart(e.target.value))        
+    }
 
     return (
         <div className="offcanvas offcanvas-end" id="cart">
@@ -19,19 +41,20 @@ export default function CartSidebar() {
             </div>
 
             <div className="offcanvas-body">
-                {carrito && carrito.length >0  ? 
-                carrito.map(product => (
+                {carrito && carrito.length >0  ?
                 <div>
-                    <div className="card">
-                        <h3 className='card-title'>{product[0].name}</h3>
+                    {carrito.map((product,index) => (                
+                    <div key={index} className="card">
+                        <h3 className='card-title'>{product.name}</h3>
                         <div className="card-body">
-                            <img className='rounded-circle mx-auto img-fluid mb-2' src={product[0].img} alt="imagenProducto"/>
-                            <h4 className='mt-1' >Valor: $ {product[0].price}</h4>
+                            <img className='rounded-circle mx-auto img-fluid mb-2' src={product.img} alt="imagenProducto"/>
+                            <h4 className='mt-1' >Valor: $ {product.price}</h4>
                         </div>
-                    </div>
-                    <a href="/checkout" className="btn btn-primary">Continuar</a>
-                </div>
-                ))
+                        <button value={product.id} className='btn btn-danger' onClick={handleRemoveCart}>Eliminar</button>
+                    </div>                
+                    ))}
+                    <a href="/checkout" className="btn btn-primary">Continuar con la compra</a>
+                </div>                 
                 :
                 <div className='card-body' >
                     <img className='img-fluid rounded-circle mx-auto' src="https://img.freepik.com/premium-vector/cute-baby-triceratops-cartoon-character-animal-dino-isolated_138676-3160.jpg" alt="sad" />

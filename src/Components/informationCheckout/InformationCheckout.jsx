@@ -3,45 +3,45 @@ import React from "react";
 export default function InformationCheckout(){
     return(
         <div>
-            <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <div className="accordion" id="accordionExample">
+                <div className="accordion-item">
+                    <h2 className="accordion-header" id="headingOne">
+                    <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                         Informacion de Contacto
                     </button>
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
+                    <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div className="accordion-body">
                         <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Nombres</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
+                            <label for="exampleFormControlInput1" className="form-label">Nombres</label>
+                            <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
                             <label for="exampleFormControlInput1" class="form-label">Apellidos</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
-                            <label for="exampleFormControlInput1" class="form-label">Edad</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
-                            <label for="exampleFormControlInput1" class="form-label">Telefono</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
-                            <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
+                            <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
+                            <label for="exampleFormControlInput1" className="form-label">Edad</label>
+                            <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
+                            <label for="exampleFormControlInput1" className="form-label">Telefono</label>
+                            <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
+                            <label for="exampleFormControlInput1" className="form-label">Email address</label>
+                            <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
                         </div>
                     </div>
                     </div>
                 </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <div className="accordion-item">
+                    <h2 className="accordion-header" id="headingTwo">
+                    <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                         Informacion de Residencia
                     </button>
                     </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Direccion de Residencia</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
-                            <label for="exampleFormControlInput1" class="form-label">Provincia</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
-                            <label for="exampleFormControlInput1" class="form-label">Codigo Postal</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
+                    <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div className="accordion-body">
+                        <div className="mb-3">
+                            <label for="exampleFormControlInput1" className="form-label">Direccion de Residencia</label>
+                            <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
+                            <label for="exampleFormControlInput1" className="form-label">Provincia</label>
+                            <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
+                            <label for="exampleFormControlInput1" className="form-label">Codigo Postal</label>
+                            <input type="email" clclassNameass="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
                         </div>                        
                     </div>
                     </div>

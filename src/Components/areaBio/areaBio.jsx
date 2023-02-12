@@ -8,11 +8,11 @@ export default function areaBio() {
         <div>
 
             <br />
-            <div class="card-body">
-                <div calss="text-img">
-                    <h1 class="card-title">Area de Biodiversidad</h1>
+            <div className="card-body">
+                <div className="text-img">
+                    <h1 className="card-title">Area de Biodiversidad</h1>
                     <br />
-                    <p class="card-text">Constituido por un equipo profesional multidisciplinario formado por biólogos, agrónomos y naturalistas es un área del MPCN que trabaja en investigación, divulgación y conservación de la vida silvestre norpatagónica.
+                    <p className="card-text">Constituido por un equipo profesional multidisciplinario formado por biólogos, agrónomos y naturalistas es un área del MPCN que trabaja en investigación, divulgación y conservación de la vida silvestre norpatagónica.
                         También tiene por objetivos incrementar las colecciones biológicas del MPCN, determinar especímenes, describir nuevas especies, apoyar a otras áreas del Museo en la generación de textos y la preparación de una base de fotografías sistematizadas de flora, fauna y ambientes de la Patagonia.
                         Asesoramos a organismos públicos y privados sobre temas de conservación, realizamos determinaciones taxonómicas, monitoreos de biodiversidad, presencia y ausencia de especies de interés sanitario, dictamos capacitaciones sobre fauna e interpretación de la naturaleza, entre otros temas.
                         En el laboratorio se trabaja en estudios sobre; morfología, sistemática, taxonomía, genética, anatomía comparada, educación, estudios ecológicos, estudios sobre cambio climático, filogeografía, taxonomía, biogeografía y evolución. Además de muestreo, etiquetado, acondicionamiento de ejemplares y el preparado de materiales para la colección y las exhibiciones del Museo.
@@ -34,7 +34,7 @@ export default function areaBio() {
 
                     <br />
 
-                    <div class="img-card">
+                    <div className="img-card">
                         <img className="yarara-img" src={yarara} alt="yarara" />
                         {/* <img className="fossil2-img" src={fossil2} alt="fossil2" /> */}
                     </div>
@@ -42,7 +42,7 @@ export default function areaBio() {
                     <br />
 
                 </div>
-                <button type="button" class="btn btn-outline-success btn-secundario">Compra tu Entrada</button>
+                <button type="button" className="btn btn-outline-success btn-secundario">Compra tu Entrada</button>
 
             </div>
             <br />

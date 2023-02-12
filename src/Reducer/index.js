@@ -121,10 +121,18 @@ function rootReducer (state = initialState, action) {
         case 'ADD_TO_CART':
             return {
                 ...state,
-                cart: [...state.cart, action.payload] 
+                cart: state.cart.concat(action.payload)
             }
+        
+        case 'REMOVE_TO_CART':
+            const posicionCarrito = state.cart.findIndex(pr => pr === action.payload)
+            const productos = [...state.cart]
+            productos.splice(posicionCarrito,1);
 
-
+            return{
+                ...state,
+                cart: productos
+            }
             default: return state;
 
 }

@@ -99,18 +99,18 @@ export function addToCart(event){
     }
 }
 
-// export function removeToCart(id){
-//     return function (dispatch) {
-//         try{
-//             return dispatch({
-//                 type: 'REMOVE_TO_CART',
-//                 payload: id
-//             })
-//         }catch(error){
-//             console.log(error)
-//         }
-//     }
-// }
+export function removeToCart(id){
+    return function (dispatch) {
+        try{            
+            return dispatch({
+                type: 'REMOVE_TO_CART',
+                payload: id
+            })
+        }catch(error){
+            console.log(error)
+        }
+    }
+}
 
 
 

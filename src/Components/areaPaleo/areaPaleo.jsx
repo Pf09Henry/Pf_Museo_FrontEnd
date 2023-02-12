@@ -11,14 +11,14 @@ export default function areaPaleo() {
         <div>
 
             <br />
-            <div class="card-body">
-                <h1 class="card-title">Area de Paleontología</h1>
+            <div className="card-body">
+                <h1 className="card-title">Area de Paleontología</h1>
                 <br />
-                <p class="card-text">El Área de Paleontología está constituida por jóvenes profesionales, estudiantes y aficionados voluntarios del MPCN. Se ocupa principalmente de conservar, mantener y enriquecer las colecciones del Museo, para lograrlo realiza campañas de recolección y rescate de materiales, prepara y restaura a los mismos en los laboratorios y debidamente catalogados e inventariados los resguarda, previendo siempre cumplir con las legislaciones vigentes en cuanto a la protección del patrimonio tanto del ámbito de la provincia de Río Negro (Ley Nº 3041/96 de protección de patrimonio arqueológico y paleontológico), como del ámbito nacional (Ley Nº 25743/02 de protección del patrimonio arqueológico y paleontológico).
+                <p className="card-text">El Área de Paleontología está constituida por jóvenes profesionales, estudiantes y aficionados voluntarios del MPCN. Se ocupa principalmente de conservar, mantener y enriquecer las colecciones del Museo, para lograrlo realiza campañas de recolección y rescate de materiales, prepara y restaura a los mismos en los laboratorios y debidamente catalogados e inventariados los resguarda, previendo siempre cumplir con las legislaciones vigentes en cuanto a la protección del patrimonio tanto del ámbito de la provincia de Río Negro (Ley Nº 3041/96 de protección de patrimonio arqueológico y paleontológico), como del ámbito nacional (Ley Nº 25743/02 de protección del patrimonio arqueológico y paleontológico).
 
                     En área se desarrolla también tareas de extensión, trabajando en la concientización de los lugareños y pobladores de los campos y regiones ricas en fósiles del vasto territorio de Río Negro, buscando lograr una real conciencia de la importancia de proteger nuestro patrimonio.</p>
                 <br />
-                <div class="img-card">
+                <div className="img-card">
                     <img className="fossil1-img" src={fossil1} alt="fossil1" />
                     <img className="fossil2-img" src={fossil2} alt="fossil2" />
                 </div>
@@ -41,7 +41,7 @@ export default function areaPaleo() {
                     <br />
                 </div>
                 <br />
-                <button type="button" class="btn btn-outline-success btn-secundario">Compra tu Entrada</button>
+                <button type="button" className="btn btn-outline-success btn-secundario">Compra tu Entrada</button>
                 <br />
                 <br />
             </div>
