@@ -174,12 +174,7 @@ return(
     <Form.Item
       label="Nombre"
       name="username"
-      rules={[
-        {
-          required: true,
-          message: 'Por favor escribir un nombre',
-        },
-      ]}
+      
     >
       <Input  placeholder='Nombre'/>
     </Form.Item>
@@ -187,14 +182,9 @@ return(
     <Form.Item
       label="Foto de perfil"
       name="upload"
-      rules={[
-        {
-          required: true,
-          message: 'Por favor escribir una url de la foto',
-        },
-      ]}
+     
     >
-      <Input placeholder='http://'/>
+      <Input type='file'/>
     </Form.Item>
 
 
@@ -202,12 +192,7 @@ return(
 
     <Form.Item label="Teléfono"
        name="teléfono"
-       rules={[
-         {
-           required: true,
-           message: 'Por favor escribir un número de teléfono',
-         },
-       ]}>
+       >
     <Input.Group >
       <Row gutter={8}>
         <Col span={5}>
@@ -225,12 +210,7 @@ return(
     <Form.Item
       label="Email"
       name="email"
-      rules={[
-        {
-          required: true,
-          message: 'Por favor escribir un email',
-        },
-      ]}
+      
     >
       <Input placeholder='ejemplo@ejemplo.com'/>
     </Form.Item>
@@ -240,12 +220,7 @@ return(
     <Form.Item
       label="Contraseña"
       name="contraseña"
-      rules={[
-        {
-          required: true,
-          message: 'Por favor escribir una contraseña',
-        },
-      ]}
+      
     >
       <Input placeholder='*******'/>
     </Form.Item>
@@ -255,12 +230,7 @@ return(
       name="rol"
       label="Rol"
       hasFeedback
-      rules={[
-        {
-          required: true,
-          message: 'Por favor elegir un rol',
-        },
-      ]}
+      
     >
       <Select placeholder="Rol">
     

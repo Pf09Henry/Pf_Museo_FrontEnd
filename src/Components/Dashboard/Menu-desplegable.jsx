@@ -93,22 +93,18 @@ export default function MenuDesplegable() {
 
         <SubMenu icon={< TfiComment />} title="Comentarios" >
 
-            <Menu.Item icon={<SlPlus /> }>
-            
-                <span>Agregar</span>
-                <Link to="/dashoboard-eventos-agregar"></Link>
-            </Menu.Item>
+          
 
             <Menu.Item icon={<SlPencil /> }>
                 
                 <span>Modificar</span>
-                <Link to="/dashoboard-eventos-modificar"></Link>
+                <Link to="/dashoboard-comentarios-modificar"></Link>
             </Menu.Item>
 
             <Menu.Item icon={<SlTrash /> }>
             
                 <span>Borrar</span>
-                <Link to="/dashoboard-eventos-borrar"></Link>
+                <Link to="/dashoboard-comentarios-borrar"></Link>
             </Menu.Item>
 
         </SubMenu>
@@ -142,19 +138,19 @@ export default function MenuDesplegable() {
             <Menu.Item icon={<SlPlus /> }>
             
                 <span>Agregar</span>
-                <Link to="/dashoboard-guias-agregar"></Link>
+                <Link to="/dashoboard-categorias-agregar"></Link>
             </Menu.Item>
 
             <Menu.Item icon={<SlPencil /> }>
                 
                 <span>Modificar</span>
-                <Link to="/dashoboard-guias-modificar"></Link>
+                <Link to="/dashoboard-categorias-modificar"></Link>
             </Menu.Item>
 
             <Menu.Item icon={<SlTrash /> }>
             
                 <span>Borrar</span>
-                <Link to="/dashoboard-guias-borrar"></Link>
+                <Link to="/dashoboard-categorias-borrar"></Link>
             </Menu.Item>
 
         </SubMenu>  

@@ -8,14 +8,14 @@ import {BsPersonBadge} from "react-icons/bs";
 import {BiCategory} from "react-icons/bi";
 import SubMenu from 'antd/es/menu/SubMenu';
 import { Content } from 'antd/es/layout/layout';
-import ModificarUsuario from '../../FormCreacion/ModificarUsuario';
+import CrearGuia from '../../FormCreacion/CrearGuia';
 
 
 const { Sider } = Layout;
 
 
 
-export default function AgregarUsuario() {
+export default function AgregarGuia() {
 
   const [collapsed, setCollapsed] = useState(false);
 
@@ -91,6 +91,7 @@ export default function AgregarUsuario() {
         </SubMenu>
 
 
+     
         <SubMenu icon={< TfiComment />} title="Comentarios" >
 
     
@@ -161,7 +162,7 @@ export default function AgregarUsuario() {
      
     </Sider>
       
-    <Content><ModificarUsuario/></Content>
+    <Content><CrearGuia/></Content>
     </Layout>
   );
 };

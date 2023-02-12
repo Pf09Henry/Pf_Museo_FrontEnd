@@ -94,22 +94,18 @@ export default function ModificarEvento() {
 
         <SubMenu icon={< TfiComment />} title="Comentarios" >
 
-            <Menu.Item icon={<SlPlus /> }>
-            
-                <span>Agregar</span>
-                <Link to="/dashoboard-eventos-agregar"></Link>
-            </Menu.Item>
+    
 
             <Menu.Item icon={<SlPencil /> }>
                 
                 <span>Modificar</span>
-                <Link to="/dashoboard-eventos-modificar"></Link>
+                <Link to="/dashoboard-comentarios-modificar"></Link>
             </Menu.Item>
 
             <Menu.Item icon={<SlTrash /> }>
             
                 <span>Borrar</span>
-                <Link to="/dashoboard-eventos-borrar"></Link>
+                <Link to="/dashoboard-comentarios-borrar"></Link>
             </Menu.Item>
 
         </SubMenu>
@@ -140,25 +136,25 @@ export default function ModificarEvento() {
 
         <SubMenu icon={< BiCategory />} title="Categorias" >
 
-            <Menu.Item icon={<SlPlus /> }>
-            
-                <span>Agregar</span>
-                <Link to="/dashoboard-guias-agregar"></Link>
-            </Menu.Item>
+<Menu.Item icon={<SlPlus /> }>
 
-            <Menu.Item icon={<SlPencil /> }>
-                
-                <span>Modificar</span>
-                <Link to="/dashoboard-guias-modificar"></Link>
-            </Menu.Item>
+    <span>Agregar</span>
+    <Link to="/dashoboard-categorias-agregar"></Link>
+</Menu.Item>
 
-            <Menu.Item icon={<SlTrash /> }>
-            
-                <span>Borrar</span>
-                <Link to="/dashoboard-guias-borrar"></Link>
-            </Menu.Item>
+<Menu.Item icon={<SlPencil /> }>
+    
+    <span>Modificar</span>
+    <Link to="/dashoboard-categorias-modificar"></Link>
+</Menu.Item>
 
-        </SubMenu>  
+<Menu.Item icon={<SlTrash /> }>
+
+    <span>Borrar</span>
+    <Link to="/dashoboard-categorias-borrar"></Link>
+</Menu.Item>
+
+</SubMenu>  
      
       </Menu>
 

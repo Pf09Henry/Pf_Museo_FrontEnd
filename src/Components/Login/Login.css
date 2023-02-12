@@ -34,3 +34,11 @@
     color:black !important;
     background-color: rgba(200, 197, 253, 0.893) !important;
 }
+
+.button__login{
+    border-radius: 5px;
+}
+
+.button__logout{
+    border-radius: 5px;
+}

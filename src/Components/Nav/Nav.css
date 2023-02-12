@@ -38,3 +38,7 @@
     width: 100% !important;
 }
 
+
+.button__login{
+    border-radius: 3px;
+}

@@ -8,14 +8,15 @@ import {BsPersonBadge} from "react-icons/bs";
 import {BiCategory} from "react-icons/bi";
 import SubMenu from 'antd/es/menu/SubMenu';
 import { Content } from 'antd/es/layout/layout';
-import ModificarUsuario from '../../FormCreacion/ModificarUsuario';
+import ModificarGuia from '../../FormCreacion/ModificarGuia';
+
 
 
 const { Sider } = Layout;
 
 
 
-export default function AgregarUsuario() {
+export default function MofificarGuia() {
 
   const [collapsed, setCollapsed] = useState(false);
 
@@ -153,7 +154,7 @@ export default function AgregarUsuario() {
                 <Link to="/dashoboard-categorias-borrar"></Link>
             </Menu.Item>
 
-        </SubMenu>  
+        </SubMenu>   
      
       </Menu>
 
@@ -161,7 +162,7 @@ export default function AgregarUsuario() {
      
     </Sider>
       
-    <Content><ModificarUsuario/></Content>
+    <Content><ModificarGuia/></Content>
     </Layout>
   );
 };

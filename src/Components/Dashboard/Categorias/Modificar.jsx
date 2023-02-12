@@ -8,14 +8,15 @@ import {BsPersonBadge} from "react-icons/bs";
 import {BiCategory} from "react-icons/bi";
 import SubMenu from 'antd/es/menu/SubMenu';
 import { Content } from 'antd/es/layout/layout';
-import ModificarUsuario from '../../FormCreacion/ModificarUsuario';
+
+import Modificar from '../../FormCreacion/ModificarCategoria';
 
 
 const { Sider } = Layout;
 
 
 
-export default function AgregarUsuario() {
+export default function ModificarCategoria() {
 
   const [collapsed, setCollapsed] = useState(false);
 
@@ -161,7 +162,7 @@ export default function AgregarUsuario() {
      
     </Sider>
       
-    <Content><ModificarUsuario/></Content>
+    <Content><Modificar/></Content>
     </Layout>
   );
 };
