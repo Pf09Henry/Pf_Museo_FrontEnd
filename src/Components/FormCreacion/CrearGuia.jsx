@@ -83,7 +83,7 @@ function CrearGuia(){
         reader.readAsDataURL(file);
         reader.onloadend = () => {
           setValues({
-            img: reader.result
+            image: reader.result
           })
         };
       }

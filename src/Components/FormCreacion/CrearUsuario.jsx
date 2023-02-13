@@ -95,7 +95,7 @@ function CrearUsuario(){
         reader.readAsDataURL(file);
         reader.onloadend = () => {
           setValues({
-            img: reader.result
+            image: reader.result
           })
         };
       }
@@ -147,7 +147,7 @@ return(
       rules={[
         {
           required: true,
-          message: 'Por favor escribir una url',
+          message: 'Por favor subir una imagen',
         },
       ]}
     >

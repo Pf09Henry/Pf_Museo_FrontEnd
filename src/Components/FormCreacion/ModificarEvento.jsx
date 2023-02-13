@@ -16,12 +16,13 @@ import Swal from 'sweetalert2'
 import './../FormCreacion/CrearEvento.css'
 import { useDispatch } from "react-redux";
 import { postEvent } from "../../Actions/AppActions/appActions";
+import SmallEvent from '../EventDetails/SmallEvent';
 
 
 
 function Modificar(){ 
 
-  
+  const [nameEvent, setName] = useState("")
 
 
   const dispatch = useDispatch();
@@ -144,6 +145,8 @@ return(
     </div> */}
     </Form.Item>
     <hr></hr>
+
+   {/*  <SmallEvent name={nameEvent}/> */}
 
     <Checkbox
         checked={componentDisabled}
