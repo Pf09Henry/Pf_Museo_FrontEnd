@@ -72,6 +72,39 @@ export function postEvent(payload) {
     }
 }
 
+export function postCategory(payload) {
+    return async function (dispatch) {
+        const response = await axios.post('https://pfmuseobackend.up.railway.app/category/post', payload)
+        console.log(response)
+        return {
+            type: 'POST_CATEGORY',
+            response
+        }
+    }
+}
+
+export function postGuide(payload) {
+    return async function (dispatch) {
+        const response = await axios.post('https://pfmuseobackend.up.railway.app/guide/post', payload)
+        console.log(response)
+        return {
+            type: 'POST_GUIDE',
+            response
+        }
+    }
+}
+
+export function postUser(payload) {
+    return async function (dispatch) {
+        const response = await axios.post('https://pfmuseobackend.up.railway.app/users/post', payload)
+        console.log(response)
+        return {
+            type: 'POST_USER',
+            response
+        }
+    }
+}
+
 export function getEventsById(id) {
     return async function (dispatch) {
         try {
@@ -133,12 +166,3 @@ export function getUsers() {
 //         }
 //     }
 // }
-
-
-
-
-
-
-
-
-

@@ -12,7 +12,7 @@ export  function Profile() {
       <div>
         <div className='componente-login'>
         <img className="foto-login" src={user.picture} width='300px' height='300px' alt={user.name} />    
-          <h5 className='texto-login'>¡Hola {user.given_name}, Bienvenido a nuestro museo!</h5>
+          <h6 className='texto-login'>¡Hola {user.given_name}, Bienvenido a nuestro museo!</h6>
         </div>  
       </div>
   ))

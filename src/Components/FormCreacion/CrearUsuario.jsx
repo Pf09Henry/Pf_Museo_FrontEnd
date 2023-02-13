@@ -13,7 +13,7 @@ import {
 import Swal from 'sweetalert2'
 import './../FormCreacion/CrearEvento.css'
 import { useDispatch } from "react-redux";
-import { postEvent } from "../../Actions/AppActions/appActions";
+import { postEvent, postUser } from "../../Actions/AppActions/appActions";
 
 
 
@@ -26,13 +26,10 @@ function CrearUsuario(){
   
   const [inicialValues, setValues] = useState({
     name:"",
-    startDay:"",
-    endDay:"",
-    price: 0,
-    img:"",
-    information:"",
-    guide:[{name:""}],
-    category:[{name:""}]
+    email:"",
+    image:"",
+    password:"",
+    phone:"",
   })
   const { TextArea } = Input;
 
@@ -45,30 +42,21 @@ function CrearUsuario(){
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
  
-      let diaIn=(values.dias[0].$d).toString()
-      let diaInicio=diaIn.slice(4,15)
-      let diaF=(values.dias[1].$d).toString()
-      let diaFin=diaF.slice(4,15)
     let valores={
       name:values.username,
-      startDay:diaInicio,
-      endDay:diaFin,
-      price: values.precio,
-      img:values.upload,
-      information:values.description,
-      guide:values.selectGuia,
-      category:values.select
+      email: values.email,
+      image:inicialValues.image,
+      password:values.contraseña,
+      phone:values.teléfono,
+     
       }
 
     setValues({
     name:values.username,
-    startDay:diaInicio,
-    endDay:diaFin,
-    price: values.precio,
-    img:values.upload,
-    information:values.description,
-    guide:[{name:values.selectGuia}],
-    category:[{name:values.select}]
+    email: values.email,
+  
+    password:values.contraseña,
+    phone:values.teléfono,
     })
     Swal.fire({
       title: 'Éxito',
@@ -81,7 +69,7 @@ function CrearUsuario(){
     var form = true;
 
     if (form) {
-      dispatch(postEvent(valores))
+      dispatch(postUser(valores))
        
     } else {
       return alert(" A tu usuario le faltan detalles");
@@ -100,17 +88,20 @@ function CrearUsuario(){
     };
 
 
-    const agregarFoto = (e) =>{
-      console.log(e.target.files[0])
-      let imgvalue = e.target.files[0]
-      setValues({
-        img:{
-          img:{
-            imgvalue
-        }
+    const agregarFoto = (e) => {
+      let file = e.target.files[0]
+      const reader = new FileReader();
+      if (file) {
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+          setValues({
+            img: reader.result
+          })
+        };
       }
-      })
     }
+
+  
   
   
 
@@ -153,8 +144,14 @@ return(
     <Form.Item
       name="upload"
       label="Foto de perfil"
+      rules={[
+        {
+          required: true,
+          message: 'Por favor escribir una url',
+        },
+      ]}
     >
-      <input type="file" onChange={(e)=> agregarFoto(e)}/>
+      <input type='file' onChange={agregarFoto} />
        
    
     </Form.Item>
@@ -170,16 +167,7 @@ return(
            message: 'Por favor escribir un número de teléfono',
          },
        ]}>
-    <Input.Group >
-      <Row gutter={8}>
-        <Col span={5}>
-          <Input placeholder="011" />
-        </Col>
-        <Col span={8}>
-          <Input placeholder="26888888" />
-        </Col>
-      </Row>
-    </Input.Group>
+          <Input placeholder="0112233445566" />
     </Form.Item>
 
 
@@ -209,11 +197,11 @@ return(
         },
       ]}
     >
-      <Input placeholder='*******'/>
+      <Input placeholder='***'/>
     </Form.Item>
     
 
-    <Form.Item
+{/*     <Form.Item
       name="rol"
       label="Rol"
       hasFeedback
@@ -231,7 +219,7 @@ return(
         <Option value="Administrador">Administrador</Option>
         <Option value="Contenido">Contenido</Option>
       </Select>
-    </Form.Item>
+    </Form.Item> */}
 
 
     
