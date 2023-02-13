@@ -5,6 +5,7 @@ import Login from "../Login/Login";
 import Logout from "../Login/Logout";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Profile } from "../Login/Profile";
+import Singup from "../Login/Singup";
 
 
 
@@ -99,8 +100,9 @@ export default function Nav() {
             {/* <a href="/register"><button type="button" class="btn btn-success btn-primario">Crear Cuenta</button></a> */}
             <div className="nav-bar__buttons">
               {!isAuthenticated && (
-                <>        
+                <>
                   <Login/>
+                  <Singup/>        
                 </>
               )}
               {isAuthenticated && (
@@ -111,8 +113,8 @@ export default function Nav() {
             </div>
            {/*  <a href='/create-activitie'><button type="button" class="btn btn-outline-success btn-secundario">Crear Evento</button></a> */}
             {/* <a href="/login"><button type="button" class="btn btn-outline-success btn-secundario">Iniciar Sesión</button></a> */}
-            <a href="/dashboard"><button type="button" class="btn btn-success btn-primario">Perfil</button></a>
-
+           {isAuthenticated &&(<a href="/dashboard"><button type="button" class="btn btn-success btn-primario">Perfil</button></a>)
+}
 
           </ul>
 

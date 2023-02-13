@@ -21,7 +21,7 @@ import EventDetails from './Components/EventDetails/EventDetails';
 import Error404 from './Components/Error404/Error404';
 import { useAuth0 } from "@auth0/auth0-react";
 //import { PageLoader } from "./components/page-loader";
-import { AuthenticationGuard } from "./Components/Authentication/authentication";
+import  {AuthenticationGuard}  from "./Auth0/authentication";
 import {Profile} from './Components/Login/Profile';
 import MenuDesplegable from './Components/Dashboard/Menu-desplegable';
 import AgregarEvento from './Components/Dashboard/Eventos/Agregar';
@@ -33,6 +33,7 @@ import ModificarGuia from './Components/Dashboard/Guias/Modificar';
 import Modificar from './Components/Dashboard/Comentarios/Modificar';
 import AgregarCategoria from './Components/Dashboard/Categorias/Agregar';
 import ModificarCategoria from './Components/Dashboard/Categorias/Modificar';
+import { LoginForm } from './Components/Login/LoginForm';
 
 function App() {
   const { isLoading } = useAuth0();
@@ -52,7 +53,8 @@ function App() {
      
         <Route path='/' element={<Home />} />
         {/* <Route path='/login' element={<Login />} /> */}
-        <Route path='/profile' element={<AuthenticationGuard componet= {Profile} />} />
+        <Route path='/profile' element={<AuthenticationGuard component= {Profile} />} />
+        <Route path='/loginform' element=  {<LoginForm/>} />
         <Route path='/exhibits' element={<Exhibits />} />
         <Route path='/details' element={<Details />} />
         <Route path='/areaPaleo' element={<AreaPaleo />} />
