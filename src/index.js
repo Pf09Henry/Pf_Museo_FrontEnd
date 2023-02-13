@@ -6,16 +6,16 @@ import { Provider } from 'react-redux'
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { Auth0ProviderWithNavigate } from './auth0Provider';
+import { Auth0ProviderWithNavigate } from '../src/Auth0/auth0Provider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <Provider store={store}>
-      <Auth0ProviderWithNavigate>
+    <Auth0ProviderWithNavigate>
+      <Provider store={store}>
         <App />
-      </Auth0ProviderWithNavigate>
-    </Provider>
+      </Provider>
+    </Auth0ProviderWithNavigate>
   </BrowserRouter>
 );
 

@@ -15,7 +15,7 @@ export default function Logout() {
 
   return (
     <button className="button__logout btn btn-success btn-secundario" onClick={handleLogout}>
-      Logout
+      Cerrar Sesion
     </button>
   );
 }

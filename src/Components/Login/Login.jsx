@@ -8,13 +8,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Login(){
 
-    const { loginWithRedirect } = useAuth0();
+    const { loginWithPopup } = useAuth0();
   
     const handleLogin = async () => {
-      await loginWithRedirect({
-        appState: {
-          returnTo: "/",
-        },
+      await loginWithPopup({
         authorizationParams: {
           screen_hint: "signup",
         },
@@ -23,7 +20,7 @@ export default function Login(){
   
     return (
       <button className="button__login btn btn-success btn-secundario" onClick={handleLogin}>
-        Login
+        Ingresar
       </button>
     );
   
