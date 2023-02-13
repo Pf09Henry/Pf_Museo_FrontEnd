@@ -72,3 +72,7 @@
    width: 100%;
   
 }
+
+.foto-login:hover{
+    transform: scale(1.2);
+}

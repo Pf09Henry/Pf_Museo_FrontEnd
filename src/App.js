@@ -27,7 +27,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 //import { PageLoader } from "./components/page-loader";
 import  {AuthenticationGuard}  from "./Auth0/authentication";
 import {Profile} from './Components/Login/Profile';
-import MenuDesplegable from './Components/Dashboard/Menu-desplegable';
 import AgregarEvento from './Components/Dashboard/Eventos/Agregar';
 import ModificarEvento from './Components/Dashboard/Eventos/Modificar'
 import AgregarUsuario from './Components/Dashboard/Usuarios/Agregar';
@@ -38,6 +37,7 @@ import Modificar from './Components/Dashboard/Comentarios/Modificar';
 import AgregarCategoria from './Components/Dashboard/Categorias/Agregar';
 import ModificarCategoria from './Components/Dashboard/Categorias/Modificar';
 import { LoginForm } from './Components/Login/LoginForm';
+import Dash from './Components/Dashboard/Dashboard/Dashboard-Inicio';
 
 
 // function useLocalStorage(itemName, initialValue){
@@ -125,7 +125,7 @@ function App() {
                                   saveProducts={saveProducts}/>} />
         <Route path='*' element={<Error404/>} />
   
-        <Route path='/dashboard' element={<MenuDesplegable/>} />
+        <Route path='/dashboard' element={<Dash/>} />
         <Route path='/dashoboard-eventos-agregar' element={<AgregarEvento/>} />
         <Route path='/dashoboard-eventos-modificar' element={<ModificarEvento/>} />
         <Route path='/dashoboard-user-agregar' element={<AgregarUsuario/>} />
