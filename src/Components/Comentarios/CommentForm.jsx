@@ -17,7 +17,7 @@ export default function CommentForm({ commentInitial, buttonText, buttonSend }) 
     //No enviar form vacio
     function validateComment() {
         if (!commentItem.comment || commentItem.comment.length === 0) {
-            setErrorComment('No Puedes enviar un comentario vacio');
+            setErrorComment('No Puédes enviar un comentario vacio');
             return true;
         } else {
             setErrorComment('');
@@ -44,7 +44,7 @@ export default function CommentForm({ commentInitial, buttonText, buttonSend }) 
                     <textarea placeholder='Dejanos tu Comentario'
                         className='answerTextarea'
                         onChange={(e) => handleChange(e)}
-                        
+
                         onBlur={() => validateComment()}
                         value={commentItem.comment}
                         name={'comment'}
