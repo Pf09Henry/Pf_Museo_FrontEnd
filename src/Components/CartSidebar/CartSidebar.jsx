@@ -57,17 +57,24 @@ export default function CartSidebar({saveProducts}) {
                         <button value={product.id} className='btn btn-danger' onClick={handleRemoveCart}>Eliminar</button>
                     </div>                
                     ))}
-                    <div>
-                        <a href="/checkout" className="btn btn-primary">Continuar con la compra</a>
-                        <button onClick={cleanCart} className='btn btn-danger'>Limpiar Carrito</button>
-                    </div>
-                    <div>
+
+                    <div className='mt-2 card bg-dark text-light' >
                         {arrayProducts.length> 1 ?                 
                             <h4>Total a pagar: $ {sum}</h4>
                         :                       
                         <h3>Total a pagar: $ {arrayProducts[0].price}</h3>
                         }
-
+                    </div>
+                    
+                    <div className='d-grid'>
+                        <div className='row'>
+                            <div className='col' >
+                                <a href="/checkout" className="btn btn-primary">Continuar</a>
+                            </div>
+                            <div className='col'>
+                                <button onClick={cleanCart} className='btn btn-danger'>Limpiar Carrito</button>
+                            </div>
+                        </div>
                     </div>
                 </div>                 
                 :

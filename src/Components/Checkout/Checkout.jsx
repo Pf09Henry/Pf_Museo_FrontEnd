@@ -25,7 +25,8 @@ export default function Checkout (){
                     <div className='card-body'>
                     <img className="img-fluid rounded img-thumbnail" src={pr.img} alt="ImagenEvento" />
                         <h2 className='card-title'>{pr.name}</h2>
-                        <h3 className='card-text fs-3'>Fecha {pr.startDay}</h3>
+                        <h3 className='card-text fs-3 '>Fecha del evento:</h3>
+                        <h3 className='card-text fs-3 border'>{pr.startDay}</h3>
                     </div>
                 </div>
                 ))}                                                                        
