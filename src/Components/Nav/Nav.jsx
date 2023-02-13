@@ -111,16 +111,16 @@ export default function Nav({saveProducts}) {
                   <Singup/>        
                 </>
               )}
-              {isAuthenticated && (
+             {/*  {isAuthenticated && (
                 <>            
                   <Logout/>
                 </>
-              )}
+              )} */}
             </div>
            {/*  <a href='/create-activitie'><button type="button" class="btn btn-outline-success btn-secundario">Crear Evento</button></a> */}
             {/* <a href="/login"><button type="button" class="btn btn-outline-success btn-secundario">Iniciar Sesión</button></a> */}
-           {isAuthenticated &&(<a href="/dashboard"><button type="button" class="btn btn-success btn-primario usuario">Perfil</button></a>)
-}
+          {/*  {isAuthenticated &&(<a href="/dashboard"><button type="button" class="btn btn-success btn-primario usuario">Perfil</button></a>) */}
+
           <button className="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#cart"><MdShoppingCart/></button>
 
             </ul>
