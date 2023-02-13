@@ -1,0 +1,48 @@
+.container {
+    background: none;
+    width: 95%;
+    border-radius: 10px;
+    display: flex; /*con display, justify-content, aling-items -> dejo centrados los filtros*/
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .navigate{
+    width: 8px;
+    height: 8px;
+    border-radius: 10px;
+    border-color: rgb(92, 152, 89)
+  }
+
+  .navigate:hover{
+
+    background-color: rgb(92, 152, 89) !important;
+}
+
+.page {
+  width: 40px;
+  padding: 5px;
+  background-color:#87d068;
+  color:   rgb(255, 255, 255);
+  margin: 5px 10px;
+  font-weight: lighter;
+  border-radius: 10%;
+  border-color: transparent;
+}
+
+.page:hover{
+  background-color: rgb(92, 152, 89) !important;
+}
+
+.pageSelected {
+  width: 40px;
+  padding: 5px;
+  background-color:rgb(92, 152, 89);
+  color: rgb(223, 222, 222);
+  margin: 1%;
+  border: 1px solid #b3b5b6;
+  border-radius: 5px;
+  font-weight: bold;
+}
+/*   
+   */

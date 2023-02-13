@@ -1,5 +1,6 @@
 import React from 'react'
 import { useAuth0 } from "@auth0/auth0-react";
+import './Login.css'
 
 export  function Profile() {
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -9,10 +10,9 @@ export  function Profile() {
   return (
     isAuthenticated && (
       <div>
-        <div>
-          <h3>¡Hola {user.given_name}, Bienvenido a nuestro museo!</h3>
-          
-        <img src={user.picture} width='300px' height='300px' alt={user.name} />     
+        <div className='componente-login'>
+        <img className="foto-login" src={user.picture} width='300px' height='300px' alt={user.name} />    
+          <h5 className='texto-login'>¡Hola {user.given_name}, Bienvenido a nuestro museo!</h5>
         </div>  
       </div>
   ))
