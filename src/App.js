@@ -11,8 +11,8 @@ import AreaEducation from './Components/areaEducation/areaEducation';
 import Culture from './Components/Activities/Culture/Culture'
 import Holidays from './Components/Activities/Holidays/Holidays'
 import Night from "./Components/Activities/Night/Night";
-import Login from './Components/Login/Login';
-import Register from './Components/Register/Register';
+//import Login from './Components/Login/Login';
+//import Register from './Components/Register/Register';
 import Nav from './Components/Nav/Nav';
 import Historia from './Components/Historia/Historia';
 import Crear from './Components/FormCreacion/CrearEvento';
@@ -23,7 +23,21 @@ import InformationCheckout from './Components/informationCheckout/InformationChe
 import Payment from './Components/Payment/Payment';
 import EventDetails from './Components/EventDetails/EventDetails';
 import Error404 from './Components/Error404/Error404';
-import Dashboard from './Components/Dashboard/Dashboard';
+import { useAuth0 } from "@auth0/auth0-react";
+//import { PageLoader } from "./components/page-loader";
+import  {AuthenticationGuard}  from "./Auth0/authentication";
+import {Profile} from './Components/Login/Profile';
+import MenuDesplegable from './Components/Dashboard/Menu-desplegable';
+import AgregarEvento from './Components/Dashboard/Eventos/Agregar';
+import ModificarEvento from './Components/Dashboard/Eventos/Modificar'
+import AgregarUsuario from './Components/Dashboard/Usuarios/Agregar';
+import ModificarUsuario from './Components/Dashboard/Usuarios/Modificar'
+import AgregarGuia from './Components/Dashboard/Guias/Agregar';
+import ModificarGuia from './Components/Dashboard/Guias/Modificar';
+import Modificar from './Components/Dashboard/Comentarios/Modificar';
+import AgregarCategoria from './Components/Dashboard/Categorias/Agregar';
+import ModificarCategoria from './Components/Dashboard/Categorias/Modificar';
+import { LoginForm } from './Components/Login/LoginForm';
 
 
 // function useLocalStorage(itemName, initialValue){
@@ -51,6 +65,7 @@ import Dashboard from './Components/Dashboard/Dashboard';
 // }
 
 function App() {
+  const { isLoading } = useAuth0();
 
   const localStorageItem = localStorage.getItem('CART_V1');
   let parsedItem;
@@ -70,14 +85,23 @@ function App() {
     localStorage.setItem('CART_V1', stringifyProducts );
     setProducts(newProducts);
   }
+  
+  if (isLoading) {
+    return (
+      <div className="page-layout">
+        ...{ isLoading}
+      </div>
+    );
+  }
 
   return (
     <div className="App">
     <Nav saveProducts={saveProducts} />
       <Routes>         
         <Route path='/' element={<Home />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
+        {/* <Route path='/login' element={<Login />} /> */}
+        <Route path='/profile' element={<AuthenticationGuard component= {Profile} />} />
+        <Route path='/loginform' element=  {<LoginForm/>} />
         <Route path='/exhibits' element={<Exhibits />} />
         <Route path='/details' element={<Details />} />
         <Route path='/areaPaleo' element={<AreaPaleo />} />
@@ -100,7 +124,17 @@ function App() {
                                   products={products}
                                   saveProducts={saveProducts}/>} />
         <Route path='*' element={<Error404/>} />
-        <Route path='/dashboard' element={<Dashboard/>} />
+  
+        <Route path='/dashboard' element={<MenuDesplegable/>} />
+        <Route path='/dashoboard-eventos-agregar' element={<AgregarEvento/>} />
+        <Route path='/dashoboard-eventos-modificar' element={<ModificarEvento/>} />
+        <Route path='/dashoboard-user-agregar' element={<AgregarUsuario/>} />
+        <Route path='/dashoboard-user-modificar' element={<ModificarUsuario/>} />
+        <Route path='/dashoboard-guias-agregar' element={<AgregarGuia />} />
+        <Route path='/dashoboard-guias-modificar' element={<ModificarGuia />} />
+        <Route path='/dashoboard-comentarios-modificar' element={<Modificar />} />
+        <Route path='/dashoboard-categorias-agregar' element={<AgregarCategoria />} />
+        <Route path='/dashoboard-categorias-modificar' element={<ModificarCategoria />} />
       </Routes>
       <Footer />
 

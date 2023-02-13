@@ -1,12 +1,19 @@
 import React from "react";
 import logo from '../../Imagenes/logo.png'
 import './Nav.css'
+import Login from "../Login/Login";
+import Logout from "../Login/Logout";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Profile } from "../Login/Profile";
+import Singup from "../Login/Singup";
 import {MdShoppingCart} from 'react-icons/md'
 import CartSidebar from "../CartSidebar/CartSidebar";
 
 
 
 export default function Nav({saveProducts}) {
+  const { isAuthenticated } = useAuth0();
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-light">
@@ -16,13 +23,13 @@ export default function Nav({saveProducts}) {
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
 
-          
+ 
             <img className="logo-nav" src={logo} alt="logo" />
-            
-                <a className="nav-link" href="/" role="button" >
-                  Inicio
-                </a>
-            
+  
+            <a className="nav-link" href="/" role="button" >
+              Inicio
+            </a>
+  
 
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 contenedor-nav">
 
@@ -76,7 +83,7 @@ export default function Nav({saveProducts}) {
               </li>
 
 
-            {/*  <li class="nav-item dropdown fin-nav">
+             {/*  <li class="nav-item dropdown fin-nav">
                 <a class="nav-link dropdown-toggle" href=" " role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Protejamos lo nuestro
                 </a>
@@ -87,12 +94,31 @@ export default function Nav({saveProducts}) {
 
                 </ul>
               </li> */}
+            <Profile/>
 
 
-              <a href='/create-activitie'><button type="button" className="btn btn-outline-success btn-secundario">Crear Evento</button></a>
-              <a href="/login"><button type="button" className="btn btn-outline-success btn-secundario">Iniciar Sesión</button></a>
+
+              {/* <a href='/create-activitie'><button type="button" className="btn btn-outline-success btn-secundario">Crear Evento</button></a> */}
+              {/* <a href="/login"><button type="button" className="btn btn-outline-success btn-secundario">Iniciar Sesión</button></a> */}
               <a href="/register"><button type="button" className="btn btn-success btn-primario">Crear Cuenta</button></a>
               <button className="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#cart"><MdShoppingCart/></button>
+            <div className="nav-bar__buttons">
+              {!isAuthenticated && (
+                <>
+                  <Login/>
+                  <Singup/>        
+                </>
+              )}
+              {isAuthenticated && (
+                <>            
+                  <Logout/>
+                </>
+              )}
+            </div>
+           {/*  <a href='/create-activitie'><button type="button" class="btn btn-outline-success btn-secundario">Crear Evento</button></a> */}
+            {/* <a href="/login"><button type="button" class="btn btn-outline-success btn-secundario">Iniciar Sesión</button></a> */}
+           {isAuthenticated &&(<a href="/dashboard"><button type="button" class="btn btn-success btn-primario">Perfil</button></a>)
+}
 
             </ul>
 

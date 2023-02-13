@@ -113,6 +113,29 @@ export function removeToCart(id){
 }
 
 
+export function getUsers() {
+    return async function (dispatch) {
+      let json = await axios.get("http://localhost:3001/users");
+      dispatch({
+        type: 'GET_USERS',
+        payload: json.data
+      })
+    }
+  }
+
+//   export function postUser(payload) {
+//     return async function () {
+//         const res = await axios.post('http:localhost:3001/users/post', payload)
+//         console.log(res)
+//         return {
+//             type: 'POST_USER',
+//             payload: res.data
+//         }
+//     }
+// }
+
+
+
 
 
 

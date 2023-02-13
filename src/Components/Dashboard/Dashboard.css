@@ -12,7 +12,7 @@
    justify-content: space-around;
 }
 
-.card{
+.card-dashboard{
     margin-bottom: 2rem !important;
 }
 
@@ -23,6 +23,10 @@
 .titulo-dashboard{
     padding-top: 2rem;
     font-family:"Baskervville" ;
+}
+
+ol{
+    display: block !important;
 }
 
 

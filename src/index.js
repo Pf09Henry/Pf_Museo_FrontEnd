@@ -1,18 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { store } from './store';
-import {BrowserRouter} from 'react-router-dom'
-import {Provider} from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Auth0ProviderWithNavigate } from '../src/Auth0/auth0Provider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <Auth0ProviderWithNavigate>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </Auth0ProviderWithNavigate>
   </BrowserRouter>
 );
 

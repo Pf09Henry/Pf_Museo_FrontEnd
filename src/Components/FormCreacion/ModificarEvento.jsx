@@ -7,10 +7,11 @@ import {
   Input,
   DatePicker,
   Space,
-  Upload
+  Checkbox,
+  Dropdown,
+  Menu
   
 } from 'antd';
-import { InboxOutlined, UploadOutlined } from '@ant-design/icons';
 import Swal from 'sweetalert2'
 import './../FormCreacion/CrearEvento.css'
 import { useDispatch } from "react-redux";
@@ -18,7 +19,7 @@ import { postEvent } from "../../Actions/AppActions/appActions";
 
 
 
-function Crear(){ 
+function Modificar(){ 
 
   
 
@@ -26,15 +27,14 @@ function Crear(){
   const dispatch = useDispatch();
   
   const [inicialValues, setValues] = useState({
-    name:"",
+    name:"No hay evento",
     startDay:"",
     endDay:"",
-    price: 0,
-    img:{img:{}},
-    information:"",
-    guide:[{name:""}],
-    category:[{name:""}],
-    availability:0,
+    price: "No hay evento",
+    img:"No hay evento",
+    information:"No hay evento",
+    guide:[{name:"No hay evento"}],
+    category:[{name:"No hay evento"}]
   })
   const { TextArea } = Input;
 
@@ -57,7 +57,6 @@ function Crear(){
       endDay:diaFin,
       price: values.precio,
       img:values.upload,
-      availability:values.availability,
       information:values.description,
       guide:values.selectGuia,
       category:values.select
@@ -69,7 +68,6 @@ function Crear(){
     endDay:diaFin,
     price: values.precio,
     img:values.upload,
-    availability:values.availability,
     information:values.description,
     guide:[{name:values.selectGuia}],
     category:[{name:values.select}]
@@ -86,7 +84,7 @@ function Crear(){
 
     if (form) {
       dispatch(postEvent(valores))
-       
+        .then(() => alert("Evento agregado"));
     } else {
       return alert(" A tu actividad le faltan detalles");
     }
@@ -102,24 +100,62 @@ function Crear(){
           confirmButtonText: 'OK'
         })
     };
+  const [componentDisabled, setComponentDisabled] = useState(true);
+  const onFormLayoutChange = ({ disabled }) => {
+    setComponentDisabled(disabled);
+  };
   
-    const agregarFoto = (e) =>{
-      console.log(e.target.files[0])
-      let imgvalue = e.target.files[0]
-      setValues({
-        img:{
-          img:{
-            imgvalue
-        }
-      }
-      })
-    }
 
 return(
   <div className='contenedor-form'>
-    <h3 className='titulo-form-evento'>Crear Evento</h3>
+ 
+    <h3 className='titulo-form-evento'>Modificar Evento</h3>
     <hr></hr>
+
+    <Form.Item
+      label="Buscar"
+      name="username-buscado"
+    >
+      <Input />
+      {/* <div >
+      
+      <>
+        <Dropdown
+          overlay={(
+            <Menu>
+              <Menu.Item key="0">
+                Menu Item One
+              </Menu.Item>
+              <Menu.Item key="1">
+              Menu Item Two
+              </Menu.Item>
+              <Menu.Item key="1">
+              Menu Item Three
+              </Menu.Item>
+            </Menu>
+          )}
+          trigger={['click']}>
+          <a href=" "className="ant-dropdown-link" 
+             onClick={e => e.preventDefault()}>
+            Open Dropdown
+          </a>
+        </Dropdown>
+      </>
+    </div> */}
+    </Form.Item>
+    <hr></hr>
+
+    <Checkbox
+        checked={componentDisabled}
+        onChange={(e) => setComponentDisabled(e.target.checked)}
+      >
+        Editar
+      </Checkbox>
+      <hr></hr>
     <Form
+
+    onValuesChange={onFormLayoutChange}
+    disabled={componentDisabled}
     name="basic"
     labelCol={{
       span: 8,
@@ -141,28 +177,16 @@ return(
     <Form.Item
       label="Nombre"
       name="username"
-      rules={[
-        {
-          required: true,
-          message: 'Por favor escribir un nombre al evento',
-        },
-      ]}
     >
-      <Input />
+      <Input placeholder={inicialValues.name}/>
     </Form.Item>
 
     <Form.Item
       name="select"
       label="Categoria"
       hasFeedback
-      rules={[
-        {
-          required: true,
-          message: 'Por favor elegir una categoria',
-        },
-      ]}
     >
-      <Select placeholder="Categoria del evento">
+      <Select placeholder={inicialValues.category[0].name}>
     
         <Option value="Social">Social</Option>
         <Option value="Arte">Arte</Option>
@@ -177,12 +201,6 @@ return(
       name="dias"
       label="Fecha"
       hasFeedback
-      rules={[
-        {
-          required:true,
-          message: 'Por favor elegir una fecha',
-        },
-      ]}
     >
       <RangePicker
       dateRender={(current) => {
@@ -205,14 +223,8 @@ return(
     <Form.Item
       name="selectGuia"
       label="Guia"
-      rules={[
-        {
-          required: true,
-          message: 'Por favor elegir un guia',
-        },
-      ]}
     >
-      <Select placeholder="Guia del evento">
+      <Select placeholder={inicialValues.guide[0].name}>
     
     <Option value="Claudio">Claudio</Option>
     <Option value="Karen">Karen</Option>
@@ -221,35 +233,11 @@ return(
   </Select>
     </Form.Item>
 
-    {/* <Form.Item
-      name="fotoGuia"
-      label="Foto Guia"
-      valuePropName="fileList"
-      getValueFromEvent={normFile}
-      rules={[
-        {
-          required: true,
-          message: 'Por favor elegir una foto del guia',
-        },
-      ]}
-     
-    >
-      <Upload name="logo" action="/upload.do" listType="picture">
-        <Button icon={<UploadOutlined />}>Subir</Button>
-      </Upload>
-    </Form.Item> */}
-
-
 
     <Form.Item label="Precio">
       <Form.Item name="precio" noStyle
-      rules={[
-        {
-          required: true,
-          message: 'Por favor indicar un precio',
-        },
-      ]}>
-        <InputNumber  min={1}/>
+     >
+        <InputNumber  min={1} placeholder={inicialValues.price}/>
       </Form.Item>
       <span
         className="ant-form-text"
@@ -261,65 +249,28 @@ return(
       </span>
     </Form.Item>
 
-    <Form.Item
-      name="upload"
+
+  <Form.Item
       label="Foto del evento"
-      rules={[
-        {
-          required: true,
-          message: 'Por favor subir la foto de un evento',
-        },
-      ]}
+      name="upload"
+     
     >
-      <input type="file" onChange={(e)=> agregarFoto(e)}/>
-       
-   
+      <Input type='file'/>
     </Form.Item>
 
 
-    <Form.Item label="Cupos"
-    rules={[
-      {
-        required: true,
-        message: 'Por favor indicar un cupo',
-      },
-    ]}
-    >
+    <Form.Item label="Cupos">
       <Form.Item name="availability" noStyle
-      >
-        <InputNumber  min={1} />
+     >
+        <InputNumber  min={1}/>
       </Form.Item>
       
     </Form.Item>
-
-   {/*  <Form.Item
-      name="upload"
-      label="Foto del evento"
-      valuePropName="fileList"
-      getValueFromEvent={normFile}
-      rules={[
-        {
-          required: true,
-          message: 'Por favor subir una foto del evento',
-        },
-      ]}
-    >
-      <Upload name="logo"  listType="picture">
-        <Button icon={<UploadOutlined />}>Subir</Button>
-      </Upload>
-    </Form.Item> */}
-
-  
     
 
 
 
-    <Form.Item name="description" label="Descripción" rules={[
-        {
-          required: true,
-          message: 'Por favor indicar una descripción',
-        },
-      ]}>
+    <Form.Item name="description" label="Descripción" >
     <TextArea
         showCount
         maxLength={400}
@@ -328,7 +279,7 @@ return(
           marginBottom: 24,
         }}
        
-        placeholder="Descripción del evento"
+        placeholder={inicialValues.information}
       />
     </Form.Item>
 
@@ -343,7 +294,7 @@ return(
       }}
     >
       <Button type="primary" htmlType="submit" className='btn-secundario' style={{backgroundColor:"rgb(56, 102, 103"}}>
-        Agregar
+      Modificar
       </Button>
     </Form.Item>
   </Form>
@@ -351,4 +302,4 @@ return(
 )};
 
 
-export default Crear;
+export default Modificar;

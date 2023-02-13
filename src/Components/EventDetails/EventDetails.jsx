@@ -6,6 +6,8 @@ import {  useParams } from "react-router-dom";
 import { getEventsById, /*addToCart*/ } from "../../Actions/AppActions/appActions";
 import './../EventDetails/EventDetail.css'
 import { Tag, Button } from 'antd';
+import Stars from "../Comentarios/Stars";
+import CommentForm from "../Comentarios/CommentForm";
 
 export default function EventDetails({saveProducts}) {
 
@@ -43,6 +45,9 @@ export default function EventDetails({saveProducts}) {
                 <p className="card-text detalle-evento-info">{detalles[0].information} </p>
                 </div>
                 <Tag color="#87d068" className="precio-evento">${detalles[0].price}</Tag>
+                <hr></hr>
+                <Stars />
+                <CommentForm />
             </div>
                 <Button type="primary" style={{backgroundColor:"rgb(56, 102, 103"}} onClick={handleAddToCart} >Agregar al Carrito</Button>
             </div>
