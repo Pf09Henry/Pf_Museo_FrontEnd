@@ -1,50 +1,56 @@
 //import React, { useState } from 'react'
 //import { useSelector } from 'react-redux'
 //import InformationCheckout from '../informationCheckout/InformationCheckout'
+import './Checkout.css'
 
 export default function Checkout (){
         
     
     const localStorageCarrito = JSON.parse(localStorage.getItem('CART_V1'))
+    let sum = 0;
+    if(localStorageCarrito && localStorageCarrito.length > 1){
+        localStorageCarrito.forEach((item)=>{
+            sum += item.price
+        })
+    }
 
     return(
-        <div>
-            <h1>Productos Carrito</h1>
-            {/* {localStorageCarrito && localStorageCarrito.length>0 ? 
-            <div>
-                <div className='card-body' >
-                    <h3 className='card-title'>Lista de Productos</h3>                
-                    <div className='card-body'>
-                        <img className='card-img-top' src="https://creativekatarsis.com/wp-content/uploads/2017/05/el-concierto-del-ano-en-bilbao-1.jpg" alt="" />
-                        <h4 className='card-text'>Item Name</h4>
-                        <h5>$100</h5>
-                        <a href=' ' className='btn btn-danger' >Eliminar</a>
-                    </div>
-                    
-                </div>
-                <a href='/checkoutInfo' className='btn btn-dark' >Continuar</a>
-            </div>
-                :
-                <div className='card-body' >
-                    <img className='img-fluid rounded-circle mx-auto' src="https://img.freepik.com/premium-vector/cute-baby-triceratops-cartoon-character-animal-dino-isolated_138676-3160.jpg" alt="sad" />
-                    <h3 className='badge bg-dark text-wrap fw-bold fs-4 mt-4' >No hay productos agregados al carrito de compras</h3>
-                </div>                
-            } */}
-
+        <div className='d-grid justify-content-center' >
+            
             {localStorageCarrito && localStorageCarrito.length>0 ? 
-            <div>
-                <div className='card'>
-                    <h3 className='card-title'>Lista de Productos</h3>                
-                        {localStorageCarrito.map((pr) => (
-                            <div key={pr.id} className='card'>
-                                <div className='card-body'>
-                                    <h2 className='card-title'>{pr.name}</h2>
-                                    <img src={pr.img} alt="ImagenEvento" />
-                                </div>
-                            </div>
-                        ))}                                                                        
+            <div className="container my-3 row" >
+                <h1>Productos Carrito</h1>
+                {localStorageCarrito.map((pr) => (
+                <div key={pr.id} className='card col cardCheckout '>
+                    <div className='card-body'>
+                    <img className="img-fluid rounded img-thumbnail" src={pr.img} alt="ImagenEvento" />
+                        <h2 className='card-title'>{pr.name}</h2>
+                        <h3 className='card-text fs-3'>Fecha {pr.startDay}</h3>
+                    </div>
                 </div>
-                <a href='/checkoutInfo' className='btn btn-dark' >Continuar</a>
+                ))}                                                                        
+
+                <div className="card bg-dark text-light col-3">
+                    <h1>Resumen</h1>
+                    {localStorageCarrito.length> 1 ?
+                    <div>
+                        {localStorageCarrito.map((p,i)=>(
+                            <div key={i} className="card-body bg-dark text-ligth border">
+                                <h6>{p.name}</h6>
+                                <h5>$ {p.price}</h5>
+                            </div>
+                        ))}
+
+                        <div className="card-body bg-dark text-ligth">
+                            <h3 className="card-text fs-3">Total a pagar:</h3>
+                            <h3 className="card-text fs-3">$ {sum}</h3>
+                        </div>
+                    </div>                                        
+                    :                       
+                    <h3>Total a pagar: $ {localStorageCarrito[0].price}</h3>
+                    }
+                </div>
+                <a href='/checkoutInfo' className='btn btn-success' >Continuar</a>
             </div>
                 :
                 <div className='card-body' >
@@ -52,12 +58,6 @@ export default function Checkout (){
                     <h3 className='badge bg-dark text-wrap fw-bold fs-4 mt-4' >No hay productos agregados al carrito de compras</h3>
                 </div>                
             }
-
-                <div className='card'>
-                    <div className='card-body'>
-                        <h3 className='card-title'>Precio Total: $ 0 </h3>
-                    </div>
-                </div>
             
             {/* <div>
                 <InformationCheckout/>
