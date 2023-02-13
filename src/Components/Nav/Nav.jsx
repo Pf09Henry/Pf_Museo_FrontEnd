@@ -6,7 +6,7 @@ import CartSidebar from "../CartSidebar/CartSidebar";
 
 
 
-export default function Nav() {
+export default function Nav({saveProducts}) {
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-light">
@@ -101,7 +101,7 @@ export default function Nav() {
         </div>
 
       </nav>
-      <CartSidebar id='cart'/>
+      <CartSidebar saveProducts={saveProducts} id='cart'/>
     </div>
   )
 }

@@ -43,7 +43,7 @@ export default function InfoGeneral() {
                             <p className="lead">11:00 a.m - 6:00 p.m</p>
                         </div>
                         <div className="bg-dark shadow-sm mx-auto cardsInformacion">
-                            <img src={dinosaurs} alt="dinosaurios" className='imagenContenedor' />
+                            <img src={dinosaurs} alt="dinosaurios" className='img-fluid imagenContenedor' />
                         </div>
                     </div>                
                 </div>
@@ -64,13 +64,13 @@ export default function InfoGeneral() {
                         </div>
                         <div class="carousel-inner">
                             <div className="carousel-item active">
-                                <img src={fachada1} class="d-block w-50 mx-auto" alt="fachada"/>
+                                <img src={fachada1} class="d-block w-50 mx-auto img-fluid" alt="fachada"/>
                             </div>
                             <div class="carousel-item">
-                            <img src={fachada2} class="d-block w-50 mx-auto" alt="fachada"/>
+                            <img src={fachada2} className="d-block w-50 mx-auto img-fluid" alt="fachada"/>
                             </div>
                             <div class="carousel-item">
-                            <img src={fachada3} class="d-block w-50 mx-auto" alt="fachada"/>
+                            <img src={fachada3} className="d-block w-50 mx-auto img-fluid" alt="fachada"/>
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

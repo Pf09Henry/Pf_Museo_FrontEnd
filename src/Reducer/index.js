@@ -119,9 +119,13 @@ function rootReducer (state = initialState, action) {
             }
         
         case 'ADD_TO_CART':
+            const carritoLocalStorage = localStorage.getItem('CART_V1')
+            let carritoCopy = JSON.parse(carritoLocalStorage).concat(action.payload)
+            const stringifyProduct = JSON.stringify(carritoCopy);
+            localStorage.setItem('CART_V1', stringifyProduct)
             return {
                 ...state,
-                cart: state.cart.concat(action.payload)
+                cart: carritoCopy
             }
         
         case 'REMOVE_TO_CART':

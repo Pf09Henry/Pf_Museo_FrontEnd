@@ -86,12 +86,12 @@ export function getEventsById(id) {
     }      
 }
 
-export function addToCart(event){
+export function addToCart(payload){
     return function (dispatch) {
         try{
             return dispatch({
                 type: 'ADD_TO_CART',
-                payload: event
+                payload: payload
             })
         }catch(error){
             console.log(error)

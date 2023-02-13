@@ -3,11 +3,11 @@ import {  useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useDispatch} from "react-redux";
 import {  useParams } from "react-router-dom";
-import { getEventsById, addToCart } from "../../Actions/AppActions/appActions";
+import { getEventsById, /*addToCart*/ } from "../../Actions/AppActions/appActions";
 import './../EventDetails/EventDetail.css'
 import { Tag, Button } from 'antd';
 
-export default function EventDetails() {
+export default function EventDetails({saveProducts}) {
 
     const detalles = useSelector((state) => state.details);
     const dispatch = useDispatch();
@@ -17,22 +17,16 @@ export default function EventDetails() {
     useEffect (()=>{
         dispatch(getEventsById(id));
         //eslint-disable-next-line 
-    },[dispatch])
-   
+    },[dispatch]) 
+    
     const handleAddToCart = () =>{
-        dispatch(addToCart(detalles))
+        const arrayProducts = JSON.parse(localStorage.getItem('CART_V1'))
+        const productos = arrayProducts.concat(detalles)
+        saveProducts(productos)
     }
-
-    // const saveProducts = (newProductos) => {
-    //     const strinfiedProducts = JSON.stringify(newProductos);
-    //     localStorage.setItem('CART_V1', strinfiedProducts);
-
-
-    // }
 
     return (
         <div>
-
 
             <div className="contenedor-detalle-evento">
             <div className="card text-center detalle-ev">
@@ -66,21 +60,6 @@ export default function EventDetails() {
             </div>
 
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         {/*     <div className="titulo-img">

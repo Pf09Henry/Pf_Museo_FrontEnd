@@ -1,27 +1,16 @@
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+//import React, { useState } from 'react'
+//import { useSelector } from 'react-redux'
 //import InformationCheckout from '../informationCheckout/InformationCheckout'
 
 export default function Checkout (){
         
     
-    const localStorageCarrito = localStorage.getItem('CART_V1',);
-    let parsedCarrito;
-    
-    if(!localStorageCarrito){
-        localStorage.setItem('CART_V1', JSON.stringify([]));
-        parsedCarrito = [];
-    } else{
-        parsedCarrito = JSON.parse(localStorageCarrito);
-    }
-    
-    //const carrito = useSelector(state => state.cart)
-    const [products, setProducts] = useState(parsedCarrito)
+    const localStorageCarrito = JSON.parse(localStorage.getItem('CART_V1'))
 
     return(
         <div>
             <h1>Productos Carrito</h1>
-            {/* {carrito && carrito.length>0 ? 
+            {/* {localStorageCarrito && localStorageCarrito.length>0 ? 
             <div>
                 <div className='card-body' >
                     <h3 className='card-title'>Lista de Productos</h3>                
@@ -42,14 +31,15 @@ export default function Checkout (){
                 </div>                
             } */}
 
-            {products && products.length>0 ? 
+            {localStorageCarrito && localStorageCarrito.length>0 ? 
             <div>
                 <div className='card'>
                     <h3 className='card-title'>Lista de Productos</h3>                
-                        {products.map(pr => (
-                            <div className='card'>
+                        {localStorageCarrito.map((pr) => (
+                            <div key={pr.id} className='card'>
                                 <div className='card-body'>
                                     <h2 className='card-title'>{pr.name}</h2>
+                                    <img src={pr.img} alt="ImagenEvento" />
                                 </div>
                             </div>
                         ))}                                                                        
