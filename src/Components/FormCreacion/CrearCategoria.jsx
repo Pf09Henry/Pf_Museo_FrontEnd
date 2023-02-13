@@ -10,7 +10,7 @@ import {
 import Swal from 'sweetalert2'
 import './../FormCreacion/CrearEvento.css'
 import { useDispatch } from "react-redux";
-import { postEvent } from "../../Actions/AppActions/appActions";
+import { postCategory } from "../../Actions/AppActions/appActions";
 
 
 
@@ -23,13 +23,6 @@ function CrearCategoria(){
   
   const [inicialValues, setValues] = useState({
     name:"",
-    startDay:"",
-    endDay:"",
-    price: 0,
-    img:"",
-    information:"",
-    guide:[{name:""}],
-    category:[{name:""}]
   })
   const { TextArea } = Input;
 
@@ -42,30 +35,12 @@ function CrearCategoria(){
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
  
-      let diaIn=(values.dias[0].$d).toString()
-      let diaInicio=diaIn.slice(4,15)
-      let diaF=(values.dias[1].$d).toString()
-      let diaFin=diaF.slice(4,15)
     let valores={
       name:values.username,
-      startDay:diaInicio,
-      endDay:diaFin,
-      price: values.precio,
-      img:values.upload,
-      information:values.description,
-      guide:values.selectGuia,
-      category:values.select
       }
 
     setValues({
     name:values.username,
-    startDay:diaInicio,
-    endDay:diaFin,
-    price: values.precio,
-    img:values.upload,
-    information:values.description,
-    guide:[{name:values.selectGuia}],
-    category:[{name:values.select}]
     })
     Swal.fire({
       title: 'Éxito',
@@ -78,7 +53,7 @@ function CrearCategoria(){
     var form = true;
 
     if (form) {
-      dispatch(postEvent(valores))
+      dispatch(postCategory(valores))
        
     } else {
       return alert(" A tu usuario le faltan detalles");
@@ -97,17 +72,6 @@ function CrearCategoria(){
     };
 
 
-    const agregarFoto = (e) =>{
-      console.log(e.target.files[0])
-      let imgvalue = e.target.files[0]
-      setValues({
-        img:{
-          img:{
-            imgvalue
-        }
-      }
-      })
-    }
   
 
 return(

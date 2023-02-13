@@ -10,7 +10,7 @@ import {
 import Swal from 'sweetalert2'
 import './../FormCreacion/CrearEvento.css'
 import { useDispatch } from "react-redux";
-import { postEvent } from "../../Actions/AppActions/appActions";
+import { postGuide } from "../../Actions/AppActions/appActions";
 
 
 
@@ -23,13 +23,7 @@ function CrearGuia(){
   
   const [inicialValues, setValues] = useState({
     name:"",
-    startDay:"",
-    endDay:"",
-    price: 0,
-    img:"",
-    information:"",
-    guide:[{name:""}],
-    category:[{name:""}]
+    image:"",
   })
   const { TextArea } = Input;
 
@@ -42,34 +36,19 @@ function CrearGuia(){
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
  
-      let diaIn=(values.dias[0].$d).toString()
-      let diaInicio=diaIn.slice(4,15)
-      let diaF=(values.dias[1].$d).toString()
-      let diaFin=diaF.slice(4,15)
     let valores={
       name:values.username,
-      startDay:diaInicio,
-      endDay:diaFin,
-      price: values.precio,
-      img:values.upload,
-      information:values.description,
-      guide:values.selectGuia,
-      category:values.select
+      image:inicialValues.image
+    
       }
 
     setValues({
     name:values.username,
-    startDay:diaInicio,
-    endDay:diaFin,
-    price: values.precio,
-    img:values.upload,
-    information:values.description,
-    guide:[{name:values.selectGuia}],
-    category:[{name:values.select}]
+   
     })
     Swal.fire({
       title: 'Éxito',
-      text: 'Tu usuario se creó con éxito',
+      text: 'Tu guia se creó con éxito',
       icon: 'success',
       confirmButtonText: 'OK'
     })
@@ -78,10 +57,10 @@ function CrearGuia(){
     var form = true;
 
     if (form) {
-      dispatch(postEvent(valores))
+      dispatch(postGuide(valores))
        
     } else {
-      return alert(" A tu usuario le faltan detalles");
+      return alert(" A tu guia le faltan detalles");
     }
     console.log(inicialValues)
   };
@@ -97,16 +76,17 @@ function CrearGuia(){
     };
 
 
-    const agregarFoto = (e) =>{
-      console.log(e.target.files[0])
-      let imgvalue = e.target.files[0]
-      setValues({
-        img:{
-          img:{
-            imgvalue
-        }
+    const agregarFoto = (e) => {
+      let file = e.target.files[0]
+      const reader = new FileReader();
+      if (file) {
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+          setValues({
+            img: reader.result
+          })
+        };
       }
-      })
     }
   
 
@@ -149,8 +129,13 @@ return(
     <Form.Item
       name="upload"
       label="Foto de perfil"
-    >
-      <input type="file" onChange={(e)=> agregarFoto(e)}/>
+      rules={[
+        {
+          required: true,
+          message: 'Por favor escribir una url',
+        },
+      ]}>
+      <input type='file' onChange={agregarFoto} />
        
    
     </Form.Item>

@@ -55,9 +55,20 @@
     justify-content: space-between;
     text-align: center;
     align-items: center;
+    width: 90%;
 }
 
 .texto-login{
     text-align: center;
     align-items: center;
+}
+
+.usuario{
+    height: 2.5rem;
+    margin-right: 1rem;
+}
+
+.cerrar-sesion{
+   width: 100%;
+  
 }

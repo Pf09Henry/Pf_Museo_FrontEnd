@@ -26,12 +26,14 @@ export default function Nav({saveProducts}) {
  
             <img className="logo-nav" src={logo} alt="logo" />
   
-            <a className="nav-link" href="/" role="button" >
-              Inicio
-            </a>
+           
   
 
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 contenedor-nav">
+
+            <a className="nav-link" href="/" role="button" >
+              Inicio
+            </a>
 
               <li className="nav-item dropdown">
                 <a className="nav-link dropdown-toggle" href=" " role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -100,8 +102,8 @@ export default function Nav({saveProducts}) {
 
               {/* <a href='/create-activitie'><button type="button" className="btn btn-outline-success btn-secundario">Crear Evento</button></a> */}
               {/* <a href="/login"><button type="button" className="btn btn-outline-success btn-secundario">Iniciar Sesión</button></a> */}
-              <a href="/register"><button type="button" className="btn btn-success btn-primario">Crear Cuenta</button></a>
-              <button className="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#cart"><MdShoppingCart/></button>
+            {/*   <a href="/register"><button type="button" className="btn btn-success btn-primario">Crear Cuenta</button></a> */}
+            
             <div className="nav-bar__buttons">
               {!isAuthenticated && (
                 <>
@@ -117,8 +119,9 @@ export default function Nav({saveProducts}) {
             </div>
            {/*  <a href='/create-activitie'><button type="button" class="btn btn-outline-success btn-secundario">Crear Evento</button></a> */}
             {/* <a href="/login"><button type="button" class="btn btn-outline-success btn-secundario">Iniciar Sesión</button></a> */}
-           {isAuthenticated &&(<a href="/dashboard"><button type="button" class="btn btn-success btn-primario">Perfil</button></a>)
+           {isAuthenticated &&(<a href="/dashboard"><button type="button" class="btn btn-success btn-primario usuario">Perfil</button></a>)
 }
+          <button className="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#cart"><MdShoppingCart/></button>
 
             </ul>
 

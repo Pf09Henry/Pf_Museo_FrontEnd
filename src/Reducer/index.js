@@ -27,7 +27,7 @@ const initialState = {
     categorias: [],
     guias: [],
     user: [],
-
+    cart:[],
 }
 
 
@@ -69,11 +69,30 @@ function rootReducer(state = initialState, action) {
                 eventos: statusFiltered,
             }
 
-        case 'POST_EVENT':
-            return {
-                ...state,
-                eventos: action.payload
-            }
+        
+            case 'POST_EVENT':
+                return {
+                    ...state,
+                    eventos: action.payload
+                }
+    
+                case 'POST_CATEGORY':
+                    return {
+                        ...state,
+                        categorias: action.payload
+                    }
+    
+            case 'POST_GUIDE':
+                    return {
+                    ...state,
+                    guias: action.payload
+                }
+                
+                case 'POST_USER':
+                    return {
+                    ...state,
+                    user: action.payload
+                }
 
         case 'ORDER_BY_NAME':
 

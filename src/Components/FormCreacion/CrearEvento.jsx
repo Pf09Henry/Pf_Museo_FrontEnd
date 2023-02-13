@@ -30,7 +30,7 @@ function Crear(){
     startDay:"",
     endDay:"",
     price: 0,
-    img:{img:{}},
+    img:"",
     information:"",
     guide:[{name:""}],
     category:[{name:""}],
@@ -51,29 +51,28 @@ function Crear(){
       let diaInicio=diaIn.slice(4,15)
       let diaF=(values.dias[1].$d).toString()
       let diaFin=diaF.slice(4,15)
-    let valores={
-      name:values.username,
-      startDay:diaInicio,
-      endDay:diaFin,
-      price: values.precio,
-      img:values.upload,
-      availability:values.availability,
-      information:values.description,
-      guide:values.selectGuia,
-      category:values.select
+      let valores = {
+        name: values.username,
+        startDay: diaInicio,
+        endDay: diaFin,
+        price: values.precio,
+        img: inicialValues.img,
+        availability: values.availability,
+        information: values.description,
+        guide: values.selectGuia,
+        category: values.select
       }
-
-    setValues({
-    name:values.username,
-    startDay:diaInicio,
-    endDay:diaFin,
-    price: values.precio,
-    img:values.upload,
-    availability:values.availability,
-    information:values.description,
-    guide:[{name:values.selectGuia}],
-    category:[{name:values.select}]
-    })
+  
+      setValues({
+        name: values.username,
+        startDay: diaInicio,
+        endDay: diaFin,
+        price: values.precio,
+        availability: values.availability,
+        information: values.description,
+        guide: [{ name: values.selectGuia }],
+        category: [{ name: values.select }]
+      })
     Swal.fire({
       title: 'Éxito',
       text: 'Tu actividad se creó con éxito',
@@ -102,18 +101,21 @@ function Crear(){
           confirmButtonText: 'OK'
         })
     };
-  
-    const agregarFoto = (e) =>{
-      console.log(e.target.files[0])
-      let imgvalue = e.target.files[0]
-      setValues({
-        img:{
-          img:{
-            imgvalue
-        }
+
+    const agregarFoto = (e) => {
+      let file = e.target.files[0]
+      const reader = new FileReader();
+      if (file) {
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+          setValues({
+            img: reader.result
+          })
+        };
       }
-      })
     }
+  
+    
 
 return(
   <div className='contenedor-form'>
@@ -148,7 +150,7 @@ return(
         },
       ]}
     >
-      <Input />
+      <Input placeholder='Nombre del evento'/>
     </Form.Item>
 
     <Form.Item
@@ -271,7 +273,7 @@ return(
         },
       ]}
     >
-      <input type="file" onChange={(e)=> agregarFoto(e)}/>
+       <input type='file' onChange={agregarFoto} />
        
    
     </Form.Item>

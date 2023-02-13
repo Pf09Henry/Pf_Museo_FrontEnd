@@ -36,6 +36,8 @@
 .contenedor-nav{
     justify-content: space-around !important;
     width: 100% !important;
+    align-items: center;
+    text-align: center;
 }
 
 .btn-primary{
@@ -48,4 +50,9 @@
 
 .button__login{
     border-radius: 3px;
+}
+
+.btn{
+  
+    height: 100%
 }
