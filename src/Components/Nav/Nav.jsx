@@ -14,6 +14,8 @@ import CartSidebar from "../CartSidebar/CartSidebar";
 export default function Nav({saveProducts}) {
   const { isAuthenticated } = useAuth0();
 
+  const arrayProducts = JSON.parse(localStorage.getItem('CART_V1')); 
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-light">
@@ -121,7 +123,13 @@ export default function Nav({saveProducts}) {
             {/* <a href="/login"><button type="button" class="btn btn-outline-success btn-secundario">Iniciar Sesión</button></a> */}
            {isAuthenticated &&(<a href="/dashboard"><button type="button" class="btn btn-success btn-primario usuario">Perfil</button></a>)
 }
-          <button className="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#cart"><MdShoppingCart/></button>
+          <div className="d-grid">
+            <div className="row">
+              <button className="btn btn-primary position-relative" data-bs-toggle="offcanvas" data-bs-target="#cart"><MdShoppingCart/></button>
+              {!arrayProducts ? <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">0</span>: 
+              <span className="position-absolute  badge rounded-pill bg-secondary">{arrayProducts.length}</span> }
+            </div>
+          </div>
 
             </ul>
 
@@ -130,7 +138,9 @@ export default function Nav({saveProducts}) {
         </div>
 
       </nav>
-      <CartSidebar saveProducts={saveProducts} id='cart'/>
+      <div>
+        <CartSidebar saveProducts={saveProducts} id='cart'/>
+      </div>
     </div>
   )
 }
