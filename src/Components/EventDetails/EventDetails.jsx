@@ -3,13 +3,13 @@ import {  useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useDispatch} from "react-redux";
 import {  useParams } from "react-router-dom";
-import { getEventsById } from "../../Actions/AppActions/appActions";
+import { getEventsById, /*addToCart*/ } from "../../Actions/AppActions/appActions";
 import './../EventDetails/EventDetail.css'
-import { Tag } from 'antd';
+import { Tag, Button } from 'antd';
 import Stars from "../Comentarios/Stars";
 import CommentForm from "../Comentarios/CommentForm";
 
-export default function EventDetails() {
+export default function EventDetails({saveProducts}) {
 
     const detalles = useSelector((state) => state.details);
     const dispatch = useDispatch();
@@ -18,62 +18,53 @@ export default function EventDetails() {
 
     useEffect (()=>{
         dispatch(getEventsById(id));
-    },[dispatch])
-   
+        //eslint-disable-next-line 
+    },[dispatch]) 
+    
+    const handleAddToCart = () =>{
+        const arrayProducts = JSON.parse(localStorage.getItem('CART_V1'))
+        const productos = arrayProducts.concat(detalles)
+        saveProducts(productos)
+    }
 
     return (
         <div>
 
-
-            <div class="contenedor-detalle-evento">
-            <div class="card text-center detalle-ev">
-            <div class="card-header">
-                <ul class="nav nav-tabs card-header-tabs">
+            <div className="contenedor-detalle-evento">
+            <div className="card text-center detalle-ev">
+            <div className="card-header">
+                <ul className="nav nav-tabs card-header-tabs">
                 <h3>{detalles[0].name}</h3>
                 
                 </ul>
             </div>
-            <div class="card-body">
-            <img src={detalles[0].img} class="img-fluid rounded-start img-evento-detail" alt="..."/>
-                <h5 class="card-title">Fecha: {detalles[0].startDay} - {detalles[0].endDay} </h5>
+            <div className="card-body">
+            <img src={detalles[0].img} className="img-fluid rounded-start img-evento-detail" alt="..."/>
+                <h5 className="card-title">Fecha: {detalles[0].startDay} - {detalles[0].endDay} </h5>
                 <div className="detalle-evento-info">
-                <p class="card-text detalle-evento-info">{detalles[0].information} </p>
+                <p className="card-text detalle-evento-info">{detalles[0].information} </p>
                 </div>
                 <Tag color="#87d068" className="precio-evento">${detalles[0].price}</Tag>
                 <hr></hr>
                 <Stars />
                 <CommentForm />
             </div>
+                <Button type="primary" style={{backgroundColor:"rgb(56, 102, 103"}} onClick={handleAddToCart} >Agregar al Carrito</Button>
             </div>
 
-            <div class="row detalle-guia">
-                <div class="col">
-                    <div class="card h-100 fondo-guide">
-                    <img src={detalles[0].guide[0].image} class="card-img-top img-guia-detalle" alt="..."/>
-                    <div class="card-body ">
-                        <h5 class="card-title">{detalles[0].guide[0].name}</h5>
-                        <p class="card-text">Va a ser el Guia a cargo del evento!</p>
+            <div className="row detalle-guia">
+                <div className="col">
+                    <div className="card h-100 fondo-guide">
+                    <img src={detalles[0].guide[0].image} className="card-img-top img-guia-detalle" alt="..."/>
+                    <div className="card-body ">
+                        <h5 className="card-title">{detalles[0].guide[0].name}</h5>
+                        <p className="card-text">Va a ser el Guia a cargo del evento!</p>
                     </div>
                     </div>
                 </div>
             </div>
 
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         {/*     <div className="titulo-img">

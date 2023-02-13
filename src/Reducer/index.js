@@ -130,8 +130,26 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 users: action.payload
             };
+        
+        case 'ADD_TO_CART':
+            const carritoLocalStorage = localStorage.getItem('CART_V1')
+            let carritoCopy = JSON.parse(carritoLocalStorage).concat(action.payload)
+            const stringifyProduct = JSON.stringify(carritoCopy);
+            localStorage.setItem('CART_V1', stringifyProduct)
+            return {
+                ...state,
+                cart: carritoCopy
+            }
+        
+        case 'REMOVE_TO_CART':
+            const posicionCarrito = state.cart.findIndex(pr => pr === action.payload)
+            const productos = [...state.cart]
+            productos.splice(posicionCarrito,1);
 
-
+            return{
+                ...state,
+                cart: productos
+            }
         default: return state;
 
     }

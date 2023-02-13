@@ -83,8 +83,33 @@ export function getEventsById(id) {
     } catch (error) {
         console.log(error)
         }
+    }      
+}
+
+export function addToCart(payload){
+    return function (dispatch) {
+        try{
+            return dispatch({
+                type: 'ADD_TO_CART',
+                payload: payload
+            })
+        }catch(error){
+            console.log(error)
+        }
     }
-       
+}
+
+export function removeToCart(id){
+    return function (dispatch) {
+        try{            
+            return dispatch({
+                type: 'REMOVE_TO_CART',
+                payload: id
+            })
+        }catch(error){
+            console.log(error)
+        }
+    }
 }
 
 
