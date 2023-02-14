@@ -18,7 +18,7 @@ export default function Nav({ saveProducts }) {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-light">  {/*navbar-static fixed-top*/}
+      <nav className="navbar navbar-expand-lg bg-light navbar-static fixed-top">
         <div className="container-fluid">
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
@@ -122,8 +122,8 @@ export default function Nav({ saveProducts }) {
           </div>
            {/*  <a href='/create-activitie'><button type="button" class="btn btn-outline-success btn-secundario">Crear Evento</button></a> */}
             {/* <a href="/login"><button type="button" class="btn btn-outline-success btn-secundario">Iniciar Sesión</button></a> */}
-          {isAuthenticated &&(<a href="/dashboard"><button type="button" class="btn btn-success btn-primario usuario">Perfil</button></a>)
-}
+          {/* {isAuthenticated &&(<a href="/dashboard"><button type="button" class="btn btn-success btn-primario usuario">Perfil</button></a>) */}
+
 
 
               {isAuthenticated && (
