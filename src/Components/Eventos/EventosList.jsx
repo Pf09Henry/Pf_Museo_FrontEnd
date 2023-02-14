@@ -48,7 +48,7 @@ export default function EventoList() {
             <Filtros />
             <SearchBar />
         </div>
-        [dispatch])
+
 
         <div className="list-card-eventos">
             {currentEvents?.length > 0 ? (
