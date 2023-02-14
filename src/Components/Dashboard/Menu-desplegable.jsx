@@ -143,12 +143,6 @@ export default function MenuDesplegable() {
                 <Link to="/dashoboard-categorias-agregar"></Link>
             </Menu.Item>
 
-            <Menu.Item icon={<SlPencil /> }>
-                
-                <span>Modificar</span>
-                <Link to="/dashoboard-categorias-modificar"></Link>
-            </Menu.Item>
-
             <Menu.Item icon={<SlTrash /> }>
             
                 <span>Borrar</span>

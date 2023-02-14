@@ -35,7 +35,7 @@ import AgregarGuia from './Components/Dashboard/Guias/Agregar';
 import ModificarGuia from './Components/Dashboard/Guias/Modificar';
 import Modificar from './Components/Dashboard/Comentarios/Modificar';
 import AgregarCategoria from './Components/Dashboard/Categorias/Agregar';
-import ModificarCategoria from './Components/Dashboard/Categorias/Modificar';
+
 import { LoginForm } from './Components/Login/LoginForm';
 import Dash from './Components/Dashboard/Dashboard/Dashboard-Inicio';
 
@@ -134,7 +134,7 @@ function App() {
         <Route path='/dashoboard-guias-modificar' element={<ModificarGuia />} />
         <Route path='/dashoboard-comentarios-modificar' element={<Modificar />} />
         <Route path='/dashoboard-categorias-agregar' element={<AgregarCategoria />} />
-        <Route path='/dashoboard-categorias-modificar' element={<ModificarCategoria />} />
+    
       </Routes>
       <Footer />
 
