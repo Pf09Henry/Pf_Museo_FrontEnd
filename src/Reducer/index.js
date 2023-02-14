@@ -149,7 +149,7 @@ function rootReducer(state = initialState, action) {
         case 'GET_USERS':
             return {
                 ...state,
-                users: action.payload
+                user: action.payload
             };
 
         case 'ADD_TO_CART':
