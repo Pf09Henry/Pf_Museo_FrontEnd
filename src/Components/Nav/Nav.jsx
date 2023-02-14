@@ -14,9 +14,11 @@ import CartSidebar from "../CartSidebar/CartSidebar";
 export default function Nav({ saveProducts }) {
   const { isAuthenticated } = useAuth0();
 
+  const arrayProducts = JSON.parse(localStorage.getItem('CART_V1')); 
+
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-light navbar-static fixed-top">
+      <nav className="navbar navbar-expand-lg bg-light">  {/*navbar-static fixed-top*/}
         <div className="container-fluid">
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
@@ -111,26 +113,40 @@ export default function Nav({ saveProducts }) {
                     <Singup />
                   </>
                 )}
+                </div>
                 {/*  {isAuthenticated && (
                 <>            
                   <Logout/>
                 </>
-              )} */}
-              </div>
-              {/*  <a href='/create-activitie'><button type="button" class="btn btn-outline-success btn-secundario">Crear Evento</button></a> */}
-              {/* <a href="/login"><button type="button" class="btn btn-outline-success btn-secundario">Iniciar Sesión</button></a> */}
-              {/*  {isAuthenticated &&(<a href="/dashboard"><button type="button" class="btn btn-success btn-primario usuario">Perfil</button></a>) */}
+              )}
+          </div>
+           {/*  <a href='/create-activitie'><button type="button" class="btn btn-outline-success btn-secundario">Crear Evento</button></a> */}
+            {/* <a href="/login"><button type="button" class="btn btn-outline-success btn-secundario">Iniciar Sesión</button></a> */}
+          {isAuthenticated &&(<a href="/dashboard"><button type="button" class="btn btn-success btn-primario usuario">Perfil</button></a>)
+}
 
-              {isAuthenticated && (<button className="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#cart"><MdShoppingCart /></button>
+
+              {isAuthenticated && (
+                <div className="d-grid position-relative">
+                <div className="row">
+                  <button className="btn btn-primary position-relative " data-bs-toggle="offcanvas" data-bs-target="#cart"><MdShoppingCart/></button>
+                  {!arrayProducts ? <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>: 
+                  <span className="position-absolute top-0 start-100 translate-middle translate-middle badge rounded-pill bg-danger">{arrayProducts.length}</span> 
+                  }
+                </div>
+              </div>
               )}
             </ul>
+            
 
 
           </div>
         </div>
 
       </nav>
-      <CartSidebar saveProducts={saveProducts} id='cart' />
+      <div>
+        <CartSidebar saveProducts={saveProducts} id='cart' />
+      </div>
     </div>
   )
 }
