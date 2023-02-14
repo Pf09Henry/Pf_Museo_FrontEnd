@@ -119,6 +119,27 @@ export function getEventsById(id) {
     }      
 }
 
+
+export function putEvent(payload ,id) {
+    return async function (dispatch) {
+    try {
+            var response = await axios.put(`https://pfmuseobackend.up.railway.app/events/put/${id}`, payload);
+            return dispatch ({
+                type: 'PUT_EVENT',
+                response
+            })
+    } catch (error) {
+        console.log(error)
+        }
+    }      
+}
+
+
+
+
+
+
+
 export function addToCart(payload){
     return function (dispatch) {
         try{
