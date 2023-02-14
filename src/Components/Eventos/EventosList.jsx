@@ -9,12 +9,10 @@ import { getEvents } from "../../Actions/AppActions/appActions";
 import { Link } from "react-router-dom";
 import Pagination from "../Paginado/Paginado";
 import { useState } from "react";
-<<<<<<< HEAD
+
 import SearchBar from "../SearchBar/SearchBar";
 
 
-=======
->>>>>>> master
 
 
 const { Meta } = Card;
@@ -37,8 +35,8 @@ export default function EventoList() {
 
     useEffect(() => {
         dispatch(getEvents());
-    }, [dispatch])
 
+    }, [dispatch])
 
 
     return (<div className='evento'>
@@ -48,11 +46,10 @@ export default function EventoList() {
 
         <div>
             <Filtros />
-<<<<<<< HEAD
             <SearchBar />
-=======
->>>>>>> master
         </div>
+        [dispatch])
+
         <div className="list-card-eventos">
             {currentEvents?.length > 0 ? (
                 currentEvents?.map((activity, index) =>
@@ -73,23 +70,17 @@ export default function EventoList() {
                                     <div>
                                         <Tag color="green">{activity.startDay} - {activity.endDay}</Tag>
                                         <br></br>
-<<<<<<< HEAD
-                                        <Tag color="#015129">{activity.category[0].name}</Tag>
-                                        <hr></hr>
-=======
                                         {/* <Tag color="#015129">{activity.category[0].name}</Tag>
-                                        <hr></hr> */}
->>>>>>> master
+                                            <hr></hr> */}
                                         <Tag color="#87d068">${activity.price}</Tag>
                                         <br />
 
-                                    </div>
+                                    </div >
                                 }
                             />
-                        </Card>
-                    </Link>
+                        </Card >
+                    </Link >
                 )) : (
-<<<<<<< HEAD
 
                 <div>
                     <h3 className="actividades-disponibles">No se encontraron eventos</h3>
@@ -100,9 +91,6 @@ export default function EventoList() {
                         }}>Volver</button>
                     </Link>
                 </div>
-=======
-                <h3 className="actividades-disponibles">No se encontraron eventos</h3>
->>>>>>> master
             )}
             <Pagination
                 eventsPerPage={eventsPerPage}
@@ -110,7 +98,7 @@ export default function EventoList() {
                 pagination={pagination}
                 currentPage={currentPage}
             />
-        </div>
-    </div>)
+        </div >
+    </div >)
 }
 
