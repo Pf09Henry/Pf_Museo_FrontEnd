@@ -34,3 +34,45 @@
     color:black !important;
     background-color: rgba(200, 197, 253, 0.893) !important;
 }
+
+.button__login{
+    border-radius: 5px;
+}
+
+.button__logout{
+    border-radius: 5px;
+}
+
+.foto-login{
+    width:35px;
+    height:35px;
+    border-radius: 20px;
+    margin-right: 1rem;
+}
+
+.componente-login{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    width: 90%;
+}
+
+.texto-login{
+    text-align: center;
+    align-items: center;
+}
+
+.usuario{
+    height: 2.5rem;
+    margin-right: 1rem;
+}
+
+.cerrar-sesion{
+   width: 100%;
+  
+}
+
+.foto-login:hover{
+    transform: scale(1.2);
+}

@@ -40,6 +40,7 @@ export default function Filtros() {
         setCurrentPage(1); // cuando hago el ordenamiento lo hago desde la pagina 1, 
         //setOrder(e.target.value) // setOrden es un estado local que en un inicio va a estar vacio, para cuando seteo en la pagina 1, me modifica el estado local y renderiza
     };
+    ////////////////////////////////REVISAR
 
 
 

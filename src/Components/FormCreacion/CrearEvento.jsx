@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import {  InboxOutlined } from '@ant-design/icons';
 import {
   Button,
    Form,
@@ -8,9 +7,10 @@ import {
   Input,
   DatePicker,
   Space,
- 
+  Upload
   
 } from 'antd';
+import { InboxOutlined, UploadOutlined } from '@ant-design/icons';
 import Swal from 'sweetalert2'
 import './../FormCreacion/CrearEvento.css'
 import { useDispatch } from "react-redux";
@@ -33,7 +33,8 @@ function Crear(){
     img:"",
     information:"",
     guide:[{name:""}],
-    category:[{name:""}]
+    category:[{name:""}],
+    availability:0,
   })
   const { TextArea } = Input;
 
@@ -41,15 +42,7 @@ function Crear(){
   
   const { Option } = Select;
   
-  
-  const normFile = (e) => {
-    console.log('Upload event:', e);
-    if (Array.isArray(e)) {
-      return e;
-    }
-    return e?.fileList;
-  };
-  
+
   
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
@@ -58,27 +51,28 @@ function Crear(){
       let diaInicio=diaIn.slice(4,15)
       let diaF=(values.dias[1].$d).toString()
       let diaFin=diaF.slice(4,15)
-    let valores={
-      name:values.username,
-      startDay:diaInicio,
-      endDay:diaFin,
-      price: values.precio,
-      img:values.upload,
-      information:values.description,
-      guide:values.selectGuia,
-      category:values.select
+      let valores = {
+        name: values.username,
+        startDay: diaInicio,
+        endDay: diaFin,
+        price: values.precio,
+        img: inicialValues.img,
+        availability: values.availability,
+        information: values.description,
+        guide: values.selectGuia,
+        category: values.select
       }
-
-    setValues({
-    name:values.username,
-    startDay:diaInicio,
-    endDay:diaFin,
-    price: values.precio,
-    img:values.upload,
-    information:values.description,
-    guide:[{name:values.selectGuia}],
-    category:[{name:values.select}]
-    })
+  
+      setValues({
+        name: values.username,
+        startDay: diaInicio,
+        endDay: diaFin,
+        price: values.precio,
+        availability: values.availability,
+        information: values.description,
+        guide: [{ name: values.selectGuia }],
+        category: [{ name: values.select }]
+      })
     Swal.fire({
       title: 'Éxito',
       text: 'Tu actividad se creó con éxito',
@@ -91,7 +85,7 @@ function Crear(){
 
     if (form) {
       dispatch(postEvent(valores))
-        .then(() => alert("Evento agregado"));
+       
     } else {
       return alert(" A tu actividad le faltan detalles");
     }
@@ -107,7 +101,21 @@ function Crear(){
           confirmButtonText: 'OK'
         })
     };
+
+    const agregarFoto = (e) => {
+      let file = e.target.files[0]
+      const reader = new FileReader();
+      if (file) {
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+          setValues({
+            img: reader.result
+          })
+        };
+      }
+    }
   
+    
 
 return(
   <div className='contenedor-form'>
@@ -142,7 +150,7 @@ return(
         },
       ]}
     >
-      <Input />
+      <Input placeholder='Nombre del evento'/>
     </Form.Item>
 
     <Form.Item
@@ -161,6 +169,7 @@ return(
         <Option value="Social">Social</Option>
         <Option value="Arte">Arte</Option>
         <Option value="Ciencias">Ciencias</Option>
+        <Option value="Ecológico">Ecológico</Option>
       </Select>
     </Form.Item>
 
@@ -254,6 +263,37 @@ return(
       </span>
     </Form.Item>
 
+    <Form.Item
+      name="upload"
+      label="Foto del evento"
+      rules={[
+        {
+          required: true,
+          message: 'Por favor subir la foto de un evento',
+        },
+      ]}
+    >
+       <input type='file' onChange={agregarFoto} />
+       
+   
+    </Form.Item>
+
+
+    <Form.Item label="Cupos"
+    rules={[
+      {
+        required: true,
+        message: 'Por favor indicar un cupo',
+      },
+    ]}
+    >
+      <Form.Item name="availability" noStyle
+      >
+        <InputNumber  min={1} />
+      </Form.Item>
+      
+    </Form.Item>
+
    {/*  <Form.Item
       name="upload"
       label="Foto del evento"
@@ -271,19 +311,7 @@ return(
       </Upload>
     </Form.Item> */}
 
-  <Form.Item
-      label="Foto del evento"
-      name="upload"
-      placeholder="url de la foto"
-      rules={[
-        {
-          required: true,
-          message: 'Por favor escribir una url de la foto',
-        },
-      ]}
-    >
-      <Input />
-    </Form.Item>
+  
     
 
 

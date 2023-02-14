@@ -96,6 +96,39 @@ export function postEvent(payload) {
     }
 }
 
+export function postCategory(payload) {
+    return async function (dispatch) {
+        const response = await axios.post('https://pfmuseobackend.up.railway.app/category/post', payload)
+        console.log(response)
+        return {
+            type: 'POST_CATEGORY',
+            response
+        }
+    }
+}
+
+export function postGuide(payload) {
+    return async function (dispatch) {
+        const response = await axios.post('https://pfmuseobackend.up.railway.app/guide/post', payload)
+        console.log(response)
+        return {
+            type: 'POST_GUIDE',
+            response
+        }
+    }
+}
+
+export function postUser(payload) {
+    return async function (dispatch) {
+        const response = await axios.post('https://pfmuseobackend.up.railway.app/users/post', payload)
+        console.log(response)
+        return {
+            type: 'POST_USER',
+            response
+        }
+    }
+}
+
 export function getEventsById(id) {
     return async function (dispatch) {
         try {
@@ -111,10 +144,50 @@ export function getEventsById(id) {
 
 }
 
+export function addToCart(payload) {
+    return function (dispatch) {
+        try {
+            return dispatch({
+                type: 'ADD_TO_CART',
+                payload: payload
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export function removeToCart(id) {
+    return function (dispatch) {
+        try {
+            return dispatch({
+                type: 'REMOVE_TO_CART',
+                payload: id
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
 
 
+export function getUsers() {
+    return async function (dispatch) {
+        let json = await axios.get("http://localhost:3001/users");
+        dispatch({
+            type: 'GET_USERS',
+            payload: json.data
+        })
+    }
+}
 
-
-
-
-
+//   export function postUser(payload) {
+//     return async function () {
+//         const res = await axios.post('http:localhost:3001/users/post', payload)
+//         console.log(res)
+//         return {
+//             type: 'POST_USER',
+//             payload: res.data
+//         }
+//     }
+// }

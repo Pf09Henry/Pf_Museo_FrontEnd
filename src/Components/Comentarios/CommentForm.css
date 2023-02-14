@@ -1,0 +1,18 @@
+.answerFormContainer {
+    display: auto;
+    flex-direction: column;
+    gap: 20%;
+   
+}
+
+.answerTextarea {
+    border-radius: .5em;
+    height: 10%;
+    width: 50%;
+    display: flex;
+}
+
+.inputLabelField {
+    display: flex;
+    flex-direction: column;
+}
