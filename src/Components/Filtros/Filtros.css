@@ -31,7 +31,8 @@ display: flex;
 }
 
 .menudefiltros{
-  display: flex;
+    display: inline-flex;
 align-items: center;
+
    
 }

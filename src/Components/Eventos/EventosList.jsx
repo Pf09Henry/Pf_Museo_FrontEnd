@@ -9,6 +9,8 @@ import { getEvents } from "../../Actions/AppActions/appActions";
 import { Link } from "react-router-dom";
 import Pagination from "../Paginado/Paginado";
 import { useState } from "react";
+import SearchBar from "../SearchBar/SearchBar";
+
 
 
 
@@ -43,6 +45,7 @@ export default function EventoList() {
 
         <div>
             <Filtros />
+            <SearchBar />
         </div>
         <div className="list-card-eventos">
             {currentEvents?.length > 0 ? (
@@ -75,7 +78,16 @@ export default function EventoList() {
                         </Card>
                     </Link>
                 )) : (
-                <h3 className="actividades-disponibles">No se encontraron eventos</h3>
+
+                <div>
+                    <h3 className="actividades-disponibles">No se encontraron eventos</h3>
+                    <Link to='/eventos'>
+                        <button type="button" class="btn btn-outline-success btn-secundario" onClick={e => {
+                            ;
+                            dispatch(getEvents(''));
+                        }}>Volver</button>
+                    </Link>
+                </div>
             )}
             <Pagination
                 eventsPerPage={eventsPerPage}
