@@ -48,19 +48,19 @@ export default function CartSidebar({saveProducts}) {
                 {arrayProducts && arrayProducts.length >0  ?
                 <div>
                     {arrayProducts.map((product,index) => (                
-                    <div key={index} className="card rounded">
-                        <h3 className='card-title'>{product.name}</h3>
+                    <div key={index} className="card rounded position-relative">
+                        <h3 className='card-title margin-end'>{product.name}</h3>
                         <div className="card-body">
                             <img className='rounded-circle mx-auto img-fluid mb-2' src={product.img} alt="imagenProducto"/>
                             <h4 className='card-text mb-1' >Valor: $ {product.price}</h4>
                         </div>
-                        <button value={product.id} className='btn btn-danger' onClick={handleRemoveCart}>Eliminar</button>
+                        <button value={product.id} className='badge rounded-pill border border-danger bg-danger  top-0 end-0 position-absolute' onClick={handleRemoveCart}>X</button>
                     </div>                
                     ))}
 
-                    <div className='mt-2 card bg-dark text-light' >
+                    <div className='mt-5 mb-5 card bg-secondary text-light' >
                         {arrayProducts.length> 1 ?                 
-                            <h4>Total a pagar: $ {sum}</h4>
+                            <h4 className='card-text'>Total a pagar: $ {sum}</h4>
                         :                       
                         <h3>Total a pagar: $ {arrayProducts[0].price}</h3>
                         }
@@ -72,7 +72,7 @@ export default function CartSidebar({saveProducts}) {
                                 <a href="/checkout" className="btn btn-primary">Continuar</a>
                             </div>
                             <div className='col'>
-                                <button onClick={cleanCart} className='btn btn-danger'>Limpiar Carrito</button>
+                                <button onClick={cleanCart} className='btn btn-danger'>Borrar todo</button>
                             </div>
                         </div>
                     </div>

@@ -21,10 +21,10 @@ export default function Checkout (){
             <div className="container my-3 row" >
                 <h1>Productos Carrito</h1>
                 {localStorageCarrito.map((pr) => (
-                <div key={pr.id} className='card col cardCheckout '>
-                    <div className='card-body'>
-                    <img className="img-fluid rounded img-thumbnail" src={pr.img} alt="ImagenEvento" />
-                        <h2 className='card-title'>{pr.name}</h2>
+                <div key={pr.id} className='card border-success col cardCheckout '>
+                    <div className=''>
+                        <h2 className='card-header text-success'>{pr.name}</h2>
+                        <img className="img-fluid rounded img-thumbnail" src={pr.img} alt="ImagenEvento" />
                         <h3 className='card-text fs-3 '>Fecha del evento:</h3>
                         <h3 className='card-text fs-3 border'>{pr.startDay}</h3>
                     </div>
@@ -48,10 +48,22 @@ export default function Checkout (){
                         </div>
                     </div>                                        
                     :                       
-                    <h3>Total a pagar: $ {localStorageCarrito[0].price}</h3>
+                    <div>
+                        
+                    <div key={localStorageCarrito[0].id} className="card-body bg-dark text-ligth border">
+                        <h6>{localStorageCarrito[0].name}</h6>
+                        <h5>$ {localStorageCarrito[0].price}</h5>
+                    </div>
+                        <div className="card-body bg-dark text-ligth">
+                            <h3 className="card-text fs-3">Total a pagar:</h3>
+                            <h3 className="card-text fs-3">$ {localStorageCarrito[0].price}</h3>
+                        </div>
+                    </div>        
                     }
                 </div>
-                <a href='/checkoutInfo' className='btn btn-success' >Continuar</a>
+                <div>
+                    <a href='/checkoutInfo' className='btn btn-success' >Continuar</a>
+                </div>
             </div>
                 :
                 <div className='card-body' >

@@ -123,11 +123,12 @@ export default function Nav({saveProducts}) {
             {/* <a href="/login"><button type="button" class="btn btn-outline-success btn-secundario">Iniciar Sesión</button></a> */}
            {isAuthenticated &&(<a href="/dashboard"><button type="button" class="btn btn-success btn-primario usuario">Perfil</button></a>)
 }
-          <div className="d-grid">
+          <div className="d-grid position-relative">
             <div className="row">
-              <button className="btn btn-primary position-relative" data-bs-toggle="offcanvas" data-bs-target="#cart"><MdShoppingCart/></button>
-              {!arrayProducts ? <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">0</span>: 
-              <span className="position-absolute  badge rounded-pill bg-secondary">{arrayProducts.length}</span> }
+              <button className="btn btn-primary position-relative " data-bs-toggle="offcanvas" data-bs-target="#cart"><MdShoppingCart/></button>
+              {!arrayProducts ? <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>: 
+              <span className="position-absolute top-0 start-100 translate-middle translate-middle badge rounded-pill bg-danger">{arrayProducts.length}</span> 
+              }
             </div>
           </div>
 
