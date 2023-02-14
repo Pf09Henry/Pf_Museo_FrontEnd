@@ -28,29 +28,69 @@ export default function EventDetails({saveProducts}) {
     }
 
     return (
-        <div>
+        <div className="" >
 
             <div className="contenedor-detalle-evento">
-            <div className="card text-center detalle-ev">
-            <div className="card-header">
-                <ul className="nav nav-tabs card-header-tabs">
-                <h3>{detalles[0].name}</h3>
-                
-                </ul>
-            </div>
-            <div className="card-body">
-            <img src={detalles[0].img} className="img-fluid rounded-start img-evento-detail" alt="..."/>
-                <h5 className="card-title">Fecha: {detalles[0].startDay} - {detalles[0].endDay} </h5>
-                <div className="detalle-evento-info">
-                <p className="card-text detalle-evento-info">{detalles[0].information} </p>
+                <div className="card text-center detalle-ev position-relative">
+                    <div className="card-header">
+                        <ul className="nav nav-tabs card-header-tabs">
+                        <h3>{detalles[0].name}</h3>
+                        
+                        </ul>
+                    </div>
+                    <div className="card-body">
+                        <img src={detalles[0].img} className="img-fluid rounded-start img-evento-detail" alt="..."/>
+                        <h5 className="card-title">Fecha: {detalles[0].startDay} - {detalles[0].endDay} </h5>
+                        <div className="detalle-evento-info">
+                            <p className="card-text detalle-evento-info">{detalles[0].information} </p>
+                        </div>
+                        <Tag color="#87d068" className="precio-evento">${detalles[0].price}</Tag>
+                        <hr></hr>
+                        <Stars />
+                        <CommentForm />
+                    </div>
+                        {/* <Button type="primary" style={{backgroundColor:"rgb(56, 102, 103"}} onClick={handleAddToCart} >Agregar al Carrito</Button> */}
+                    <div className="buttonContainer">
+                        <Button
+                            type="primary"
+                            // shape="circle"
+                            // icon={<PlusOutlined />}
+                            style={{
+                            position: 'absolute',
+                            width: 150,
+                            height: 32,
+                            border: 'none',
+                            backgroundColor: '#52c41a',
+                            }}
+                            onClick={handleAddToCart}
+                            >Agregar al carrito
+                            {/* <span
+                            style={{
+                                position: 'absolute',
+                                top: '50%',
+                                left: '50%',
+                                transform: 'translate(-50%, -50%)',
+                                display: 'block',
+                                width: '60%',
+                                height: 2,
+                                backgroundColor: '#fff',
+                            }}
+                            />
+                            <span
+                            style={{
+                                position: 'absolute',
+                                top: '50%',
+                                left: '50%',
+                                transform: 'translate(-50%, -50%)',
+                                display: 'block',
+                                width: 2,
+                                height: '60%',
+                                backgroundColor: '#fff',
+                            }}
+                        /> */}
+                        </Button>
+                    </div>
                 </div>
-                <Tag color="#87d068" className="precio-evento">${detalles[0].price}</Tag>
-                <hr></hr>
-                <Stars />
-                <CommentForm />
-            </div>
-                <Button type="primary" style={{backgroundColor:"rgb(56, 102, 103"}} onClick={handleAddToCart} >Agregar al Carrito</Button>
-            </div>
 
             <div className="row detalle-guia">
                 <div className="col">
@@ -65,6 +105,8 @@ export default function EventDetails({saveProducts}) {
             </div>
 
             </div>
+
+
 
 
         {/*     <div className="titulo-img">
@@ -105,3 +147,4 @@ export default function EventDetails({saveProducts}) {
         </div >
     )
 }
+
