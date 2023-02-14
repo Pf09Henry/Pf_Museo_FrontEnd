@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Button,
    Form,
@@ -14,18 +14,47 @@ import {
 } from 'antd';
 import Swal from 'sweetalert2'
 import './../FormCreacion/CrearEvento.css'
-import { useDispatch } from "react-redux";
-import { postEvent } from "../../Actions/AppActions/appActions";
+import { useDispatch, useSelector } from "react-redux";
+import { getEventsById, putEvent } from "../../Actions/AppActions/appActions";
 import SmallEvent from '../EventDetails/SmallEvent';
 
 
 
 function Modificar(){ 
-
-  const [nameEvent, setName] = useState("")
-
-
+  
   const dispatch = useDispatch();
+  const [nameEvent, setName] = useState("")
+  const eventos = useSelector((state) => state.alleventos);
+  const [currentPage, setCurrentPage] = useState(0);
+  const filteredC = eventos.slice(currentPage, currentPage + 3);
+  const [eventosArray , setEventosArray] = useState([{
+    name:"No hay evento",
+    startDay:"",
+    endDay:"",
+    price: "No hay evento",
+    img:"No hay evento",
+    information:"No hay evento",
+    availability:0,
+    guide:[{name:"No hay evento"}],
+    category:[{name:"No hay evento"}]
+  }])
+  function buscarNombre(e){
+    console.log(e.target.value)
+    setName(e.target.value)
+  }
+
+  useEffect(() => {
+    setCurrentPage(0);
+  }, [eventos]);
+
+
+ /*  useEffect (()=>{
+    dispatch(getEventsByName(setName));
+  },[dispatch], setName) 
+ */
+
+
+
   
   const [inicialValues, setValues] = useState({
     name:"No hay evento",
@@ -34,6 +63,7 @@ function Modificar(){
     price: "No hay evento",
     img:"No hay evento",
     information:"No hay evento",
+    availability:0,
     guide:[{name:"No hay evento"}],
     category:[{name:"No hay evento"}]
   })
@@ -42,7 +72,7 @@ function Modificar(){
   const { RangePicker } = DatePicker;
   
   const { Option } = Select;
-  
+ 
 
   
   const onFinish = (values) => {
@@ -60,6 +90,7 @@ function Modificar(){
       img:values.upload,
       information:values.description,
       guide:values.selectGuia,
+      availability:values.availability,
       category:values.select
       }
 
@@ -69,13 +100,14 @@ function Modificar(){
     endDay:diaFin,
     price: values.precio,
     img:values.upload,
+    availability:values.availability,
     information:values.description,
     guide:[{name:values.selectGuia}],
     category:[{name:values.select}]
     })
     Swal.fire({
       title: 'Éxito',
-      text: 'Tu actividad se creó con éxito',
+      text: 'Tu evento se modificó con éxito',
       icon: 'success',
       confirmButtonText: 'OK'
     })
@@ -84,8 +116,8 @@ function Modificar(){
     var form = true;
 
     if (form) {
-      dispatch(postEvent(valores))
-        .then(() => alert("Evento agregado"));
+      dispatch(putEvent(valores))
+
     } else {
       return alert(" A tu actividad le faltan detalles");
     }
@@ -117,7 +149,7 @@ return(
       label="Buscar"
       name="username-buscado"
     >
-      <Input />
+      <Input placeholder={nameEvent} onChange={(e)=>buscarNombre(e)}/>
       {/* <div >
       
       <>
@@ -144,9 +176,39 @@ return(
       </>
     </div> */}
     </Form.Item>
-    <hr></hr>
 
-   {/*  <SmallEvent name={nameEvent}/> */}
+
+    <hr></hr>
+    <div className="conteiner-form-elegir">
+     <div className="paises-elegir">
+        {
+        eventosArray.length !== 0 &&
+        filteredC.length < 30
+          ? filteredC.map((c) => (
+              <div>
+                <div className="smallcountry">
+                  <SmallEvent key={c.id} nombre={c.nombre} img={c.img} />
+            {/*       <button
+                  
+                    className="boton-agregar"
+                    onClick={setIdHandler}
+                    value={c.id}
+                    name="countryId"
+                    
+                  >
+                    +
+                  </button> */}
+                </div>
+                
+              </div>
+             
+            ) )
+           
+          : console.log("...")}
+      </div>
+      </div>
+
+
 
     <Checkbox
         checked={componentDisabled}

@@ -12,12 +12,12 @@ export default function Canva3(){
 			  animationEnabled: true,
 			  exportEnabled: true,
 			  title: {
-				text: "Energy usage for Air Conditioning",
+				text: "Tickets vendidos en relación al tiempo",
                 fontWeight:"lighter",
 			    fontFamily: "Baskervville",
 			  },
 			  axisY: {
-				title: "Energy (in terawatt hours)"
+				title: "Cantidad de tickets vendidos"
 			  },
 			  toolTip: {
 				shared: true
@@ -32,64 +32,53 @@ export default function Canva3(){
 			  data: [
 				{
 					type: "stackedArea",
-					name: "US",
+					name: "Ecológico",
 					showInLegend: true,
 					xValueFormatString: "YYYY",
 					dataPoints: [
-						{x: new Date(1990, 0), y: 339},
-						{x: new Date(2000, 0), y: 448},
-						{x: new Date(2010, 0), y: 588},
-						{x: new Date(2016, 0), y: 616}
+						{x: new Date(2022, 10), y: 339},
+						{x: new Date(2022, 11), y: 448},
+						{x: new Date(2022, 12), y: 588},
+						{x: new Date(2023, 1), y: 616}
 					]
 				},
 				{
 					type: "stackedArea",
-					name: "European Union",
+					name: "Social",
 					showInLegend: true,
 					xValueFormatString: "YYYY",
 					dataPoints: [
-						{x: new Date(1990, 0), y: 63},
-						{x: new Date(2000, 0), y: 100},
-						{x: new Date(2010, 0), y: 149},
-						{x: new Date(2016, 0), y: 152}
+						{x: new Date(2022, 10), y: 63},
+						{x: new Date(2022, 11), y: 100},
+						{x: new Date(2022, 12), y: 149},
+						{x: new Date(2023, 1), y: 152}
 					]
 				},
 				{
 					type: "stackedArea",
-					name: "Japan",
+					name: "Ciencias",
 					showInLegend: true,
 					xValueFormatString: "YYYY",
 					dataPoints: [
-						{x: new Date(1990, 0), y: 48},
-						{x: new Date(2000, 0), y: 100},
-						{x: new Date(2010, 0), y: 119},
-						{x: new Date(2016, 0), y: 107},
+						{x: new Date(2022, 10), y: 48},
+						{x: new Date(2022, 11), y: 100},
+						{x: new Date(2022, 12), y: 119},
+						{x: new Date(2023, 1), y: 107},
 				]
 				},
 				{
 					type: "stackedArea",
-					name: "China",
+					name: "Arte",
 					showInLegend: true,
 					xValueFormatString: "YYYY",
 					dataPoints: [
-						{x: new Date(1990, 0), y: 7 },
-						{x: new Date(2000, 0), y: 45},
-						{x: new Date(2010, 0), y: 243},
-						{x: new Date(2016, 0), y: 450},
+						{x:new Date(2022, 10), y: 7 },
+						{x: new Date(2022, 11), y: 45},
+						{x: new Date(2022, 12), y: 243},
+						{x: new Date(2023, 1), y: 450},
 					]
 				},
-				{
-					type: "stackedArea",
-					name: "India",
-					showInLegend: true,
-					xValueFormatString: "YYYY",
-					dataPoints: [
-						{x: new Date(1990, 0), y: 6},
-						{x: new Date(2000, 0), y: 22},
-						{x: new Date(2010, 0), y: 49},
-						{x: new Date(2016, 0), y: 91},
-					]
-				}
+				
 			]
 		}
 		return (
