@@ -9,6 +9,13 @@ import {BiCategory} from "react-icons/bi";
 import SubMenu from 'antd/es/menu/SubMenu';
 import { Content } from 'antd/es/layout/layout';
 import Dashboard from './Dashboard';
+import { FiLogOut} from "react-icons/fi";
+
+import Login from "../Login/Login";
+import Logout from "../Login/Logout";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Profile } from "../Login/Profile";
+import Singup from "../Login/Singup";
 
 
 const { Sider } = Layout;
@@ -18,19 +25,14 @@ const { Sider } = Layout;
 export default function MenuDesplegable() {
 
   const [collapsed, setCollapsed] = useState(false);
-
+  const { isAuthenticated } = useAuth0();
 
   const onCollapse = (collapsed) => setCollapsed(collapsed);
 
 
 
   return (
-    <Layout
-    className='layout-dashboard'
-      style={{
-        minHeight: '250vh',
-      }}
-    >
+
    
     <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
   
@@ -154,17 +156,19 @@ export default function MenuDesplegable() {
             </Menu.Item>
 
         </SubMenu>  
+
+        <Menu.Item icon={  <FiLogOut />}>
+            <span><Logout /></span>
+          
+        </Menu.Item>
+
      
       </Menu>
 
 
-     
     </Sider>
 
 
-    {/*ESTO ES LO ÚNICO QUE CAMBIA, DSP VER COMO HACERLO DINAMICO*/}
-    <Content><Dashboard/></Content>
-    </Layout>
   );
 };
 

@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import './CommentForm.css';
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function CommentForm({ commentInitial, buttonText, buttonSend }) {
+
+    const { isAuthenticated } = useAuth0();
 
     // Estado de la caja de comentarios
     const commentInitialStatus = {
@@ -37,7 +40,7 @@ export default function CommentForm({ commentInitial, buttonText, buttonSend }) 
     }
 
     return (
-        <div>
+        isAuthenticated && (<div>
             <form className='answerFormContainer' onSubmit={e => handleSubmit(e)}>
                 <div className='inputLabelField'>
 
@@ -59,6 +62,6 @@ export default function CommentForm({ commentInitial, buttonText, buttonSend }) 
                     </button>
                 </div>
             </form>
-        </div>
+        </div>)
     );
 }

@@ -25,7 +25,7 @@ export default function Checkout ({saveProducts}){
         <div className='d-grid justify-content-center' >
             
             {localStorageCarrito && localStorageCarrito.length>0 ? 
-            <div className="container my-3 row" >
+            <div className="container my-3 row position-relative z-index-1" >
                 <h1>Productos Carrito</h1>
                 {localStorageCarrito.map((pr) => (
                 <div key={pr.id} className='card border-success col cardCheckout '>
@@ -72,7 +72,7 @@ export default function Checkout ({saveProducts}){
                     }
                 </div>
                 <div>
-                    <a href='/checkoutInfo' className='btn btn-success' >Continuar</a>
+                    <a href='/payment' className='btn btn-success' >Continuar</a>
                 </div>
             </div>
                 :
