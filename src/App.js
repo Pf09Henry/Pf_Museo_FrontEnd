@@ -116,7 +116,7 @@ function App() {
         <Route path='/general' element={<InfoGeneral/>} />
         <Route path='/eventos' element={<EventoList/>} />
 
-        <Route path='/checkout' element={<Checkout/>} />
+        <Route path='/checkout' element={<Checkout saveProducts={saveProducts}/>} />
         <Route path='/checkoutInfo' element={<InformationCheckout/>} />
         <Route path='/payment' element={<Payment/>}/>
 
