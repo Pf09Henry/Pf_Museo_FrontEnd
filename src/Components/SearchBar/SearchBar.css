@@ -1,0 +1,19 @@
+.sbcontainer {
+    display:auto;
+    flex-direction: row;
+    justify-content: flex-end;
+
+}
+.sbbot {
+    color: whitesmoke;
+    cursor: pointer;
+    text-align: center;
+    padding: 8px 24px;
+    border-radius: 8px;
+}
+
+.sbinput{
+    width: 15%;
+    height: 2.3rem;
+
+}

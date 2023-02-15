@@ -69,35 +69,35 @@ function rootReducer(state = initialState, action) {
                 eventos: statusFiltered,
             }
 
-        
-            case 'POST_EVENT':
-                return {
-                    ...state,
-                    eventos: action.payload
-                }
-    
-                case 'POST_CATEGORY':
-                    return {
-                        ...state,
-                        categorias: action.payload
-                    }
-    
-            case 'POST_GUIDE':
-                    return {
-                    ...state,
-                    guias: action.payload
-                }
-                
-                case 'POST_USER':
-                    return {
-                    ...state,
-                    user: action.payload
-                }
+
+        case 'POST_EVENT':
+            return {
+                ...state,
+                eventos: action.payload
+            }
+
+        case 'POST_CATEGORY':
+            return {
+                ...state,
+                categorias: action.payload
+            }
+
+        case 'POST_GUIDE':
+            return {
+                ...state,
+                guias: action.payload
+            }
+
+        case 'POST_USER':
+            return {
+                ...state,
+                user: action.payload
+            }
 
         case 'ORDER_BY_NAME':
 
             const sortedArr = action.payload === 'asc' ?
-                state.eventos.sort(function (a, b) {
+                [...state.eventos].sort((a, b) => {
                     if (a.name > b.name) {
                         return 1;
                     }
@@ -106,7 +106,7 @@ function rootReducer(state = initialState, action) {
                     }
                     return 0;
                 }) :
-                state.eventos.sort(function (a, b) {
+                [...state.eventos].sort((a, b) => {
                     if (a.name > b.name) {
                         return -1;
                     }
@@ -149,7 +149,7 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 users: action.payload
             };
-        
+
         case 'ADD_TO_CART':
             const carritoLocalStorage = localStorage.getItem('CART_V1')
             let carritoCopy = JSON.parse(carritoLocalStorage).concat(action.payload)
@@ -159,13 +159,13 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 cart: carritoCopy
             }
-        
+
         case 'REMOVE_TO_CART':
             const posicionCarrito = state.cart.findIndex(pr => pr === action.payload)
             const productos = [...state.cart]
-            productos.splice(posicionCarrito,1);
+            productos.splice(posicionCarrito, 1);
 
-            return{
+            return {
                 ...state,
                 cart: productos
             }

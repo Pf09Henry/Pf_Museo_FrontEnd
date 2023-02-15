@@ -3,7 +3,7 @@ import axios from "axios"
 
 //ACA SUCEDE LA MAGIA, HACE UN GET AL DEPLOY DEL BACK EN DONDE LE PASO LA RUTA A LA QUE TIENE QUE LLAMAR PARA TRAERME LOS EVENTOS.
 export function getEvents() {
-    return async function(dispatch) {
+    return async function (dispatch) {
         var json = await axios.get('https://pfmuseobackend.up.railway.app/events');
         console.log(json.data)
         return dispatch({
@@ -13,8 +13,24 @@ export function getEvents() {
     }
 }
 
+export function getEventsName(name) {
+    return async function (dispatch) {
+        if (name) {
+            let response = await axios.get('https://pfmuseobackend.up.railway.app/events');
+            console.log(response.data)
+            let events = response.data;
+            let filteredEvents = events.filter(e => e.name.toLowerCase().includes(name.toLowerCase()));
+            return dispatch({
+                type: 'GET_EVENTS',
+                payload: filteredEvents
+            })
+        }
+    }
+}
+
+
 export function getCategories() {
-    return async function(dispatch) {
+    return async function (dispatch) {
         var json = await axios.get('https://pfmuseobackend.up.railway.app/category');
         console.log(json.data)
         return dispatch({
@@ -26,7 +42,7 @@ export function getCategories() {
 
 
 export function getGuides() {
-    return async function(dispatch) {
+    return async function (dispatch) {
         var json = await axios.get('https://pfmuseobackend.up.railway.app/guides');
         console.log(json.data)
         return dispatch({
@@ -109,58 +125,58 @@ export function getEventsById(id) {
     return async function (dispatch) {
         try {
             var json = await axios.get(`https://pfmuseobackend.up.railway.app/event/${id}`);
-            return dispatch ({
+            return dispatch({
                 type: 'GET_EVENT_DETAILS',
                 payload: json.data
             })
-    } catch (error) {
-        console.log(error)
-        }
-    }      
-}
-
-
-export function putEvent(payload ,id) {
-    return async function (dispatch) {
-    try {
-            var response = await axios.put(`https://pfmuseobackend.up.railway.app/events/put/${id}`, payload);
-            return dispatch ({
-                type: 'PUT_EVENT',
-                response
-            })
-    } catch (error) {
-        console.log(error)
-        }
-    }      
-}
-
-
-
-
-
-
-
-export function addToCart(payload){
-    return function (dispatch) {
-        try{
-            return dispatch({
-                type: 'ADD_TO_CART',
-                payload: payload
-            })
-        }catch(error){
+        } catch (error) {
             console.log(error)
         }
     }
 }
 
-export function removeToCart(id){
+
+export function putEvent(payload, id) {
+    return async function (dispatch) {
+        try {
+            var response = await axios.put(`https://pfmuseobackend.up.railway.app/events/put/${id}`, payload);
+            return dispatch({
+                type: 'PUT_EVENT',
+                response
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+
+
+
+
+
+
+export function addToCart(payload) {
     return function (dispatch) {
-        try{            
+        try {
+            return dispatch({
+                type: 'ADD_TO_CART',
+                payload: payload
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export function removeToCart(id) {
+    return function (dispatch) {
+        try {
             return dispatch({
                 type: 'REMOVE_TO_CART',
                 payload: id
             })
-        }catch(error){
+        } catch (error) {
             console.log(error)
         }
     }
@@ -169,13 +185,15 @@ export function removeToCart(id){
 
 export function getUsers() {
     return async function (dispatch) {
+
       let json = await axios.get("https://pfmuseobackend.up.railway.app/users");
       dispatch({
         type: 'GET_USERS',
         payload: json.data
       })
+
     }
-  }
+}
 
 //   export function postUser(payload) {
 //     return async function () {
