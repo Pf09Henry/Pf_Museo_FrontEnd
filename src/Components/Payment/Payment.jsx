@@ -1,6 +1,7 @@
 import React from 'react'
 import { FaCcPaypal } from 'react-icons/fa'
 import { useAuth0 } from "@auth0/auth0-react";
+import PayPal from '../Paypal/PayPal';
 
 export default function Payment() {
 
@@ -50,6 +51,7 @@ export default function Payment() {
                     <h3 className='card-title'>Medio de Pago</h3>
                     <div>
                         <FaCcPaypal className='mt-5' size={100} color='blue' />
+                        <PayPal/>
                     </div>
                 </div>
             </div>            
