@@ -26,8 +26,8 @@ const initialState = {
     alleventos: [],
     categorias: [],
     guias: [],
-    user: [],
-    cart: [],
+    users: [],
+    cart:[],
 }
 
 
@@ -147,7 +147,7 @@ function rootReducer(state = initialState, action) {
         case 'GET_USERS':
             return {
                 ...state,
-                user: action.payload
+                users: action.payload
             };
 
         case 'ADD_TO_CART':

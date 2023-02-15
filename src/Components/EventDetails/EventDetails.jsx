@@ -8,8 +8,10 @@ import './../EventDetails/EventDetail.css'
 import { Tag, Button } from 'antd';
 import Stars from "../Comentarios/Stars";
 import CommentForm from "../Comentarios/CommentForm";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function EventDetails({saveProducts}) {
+    const {isAuthenticated} = useAuth0();
 
     const detalles = useSelector((state) => state.details);
     const dispatch = useDispatch();
@@ -49,7 +51,7 @@ export default function EventDetails({saveProducts}) {
                 <Stars />
                 <CommentForm />
             </div>
-                <Button type="primary" style={{backgroundColor:"rgb(56, 102, 103"}} onClick={handleAddToCart} >Agregar al Carrito</Button>
+                {isAuthenticated&&(<Button type="primary" style={{backgroundColor:"rgb(56, 102, 103"}} onClick={handleAddToCart} >Agregar al Carrito</Button>)}
             </div>
 
             <div className="row detalle-guia">

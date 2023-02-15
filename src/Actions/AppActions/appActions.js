@@ -185,11 +185,13 @@ export function removeToCart(id) {
 
 export function getUsers() {
     return async function (dispatch) {
-        let json = await axios.get("http://localhost:3001/users");
-        dispatch({
-            type: 'GET_USERS',
-            payload: json.data
-        })
+
+      let json = await axios.get("https://pfmuseobackend.up.railway.app/users");
+      dispatch({
+        type: 'GET_USERS',
+        payload: json.data
+      })
+
     }
 }
 
