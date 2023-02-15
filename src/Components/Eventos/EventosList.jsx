@@ -9,6 +9,7 @@ import { getEvents } from "../../Actions/AppActions/appActions";
 import { Link } from "react-router-dom";
 import Pagination from "../Paginado/Paginado";
 import { useState } from "react";
+import SearchBar from "../SearchBar/SearchBar";
 
 
 const { Meta } = Card;
@@ -42,6 +43,7 @@ export default function EventoList() {
 
         <div>
             <Filtros />
+            <SearchBar />
         </div>
         <div className="list-card-eventos">
             {currentEvents?.length > 0 ? (
