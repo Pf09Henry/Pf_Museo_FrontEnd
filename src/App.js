@@ -41,6 +41,7 @@ import Dash from './Components/Dashboard/Dashboard/Dashboard-Inicio';
 import { CartProvider } from './Context';
 import EliminarEvento from './Components/Dashboard/Eventos/Eliminar';
 import EliminarGuia from './Components/Dashboard/Guias/Eliminar';
+import EliminarUsuario from './Components/Dashboard/Usuarios/Eliminar';
 //import { CartContext } from './Context';
 
 function App() {
@@ -96,6 +97,7 @@ function App() {
         <Route path='/dashoboard-categorias-agregar' element={<AgregarCategoria />} />
         <Route path='/dashoboard-eventos-borrar' element={<EliminarEvento />} />
         <Route path='/dashoboard-guias-borrar' element={<EliminarGuia />} />
+        <Route path='/dashoboard-user-borrar' element={<EliminarUsuario />} />
       </Routes>
       <Footer />
       </CartProvider>

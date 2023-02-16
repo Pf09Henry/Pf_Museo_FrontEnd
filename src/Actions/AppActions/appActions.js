@@ -287,6 +287,20 @@ export function deleteGuide(id) {
     }
 }
 
+export function deleteUser(id) {
+    return async function (dispatch) {
+        try {
+            var response = await axios.delete(`https://pfmuseobackend.up.railway.app/users/delete/${id}`);
+            console.log(response)
+            return dispatch({
+                type: 'DELETE_USERS',
+                payload: id
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
 
 
 

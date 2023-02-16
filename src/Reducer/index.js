@@ -98,7 +98,7 @@ function rootReducer(state = initialState, action) {
         case 'POST_USER':
             return {
                 ...state,
-                user: action.payload
+                users: action.payload
             }
 
             
@@ -111,12 +111,22 @@ function rootReducer(state = initialState, action) {
             }
 
             case 'DELETE_GUIDE':
-                const allguidesdelete = state.alleventos;
+                const allguidesdelete = state.guias;
                 const statusFilteredeleteguide = allguidesdelete.filter(el => el.id !== action.payload)
                 return {
                     ...state,
                     guias: statusFilteredeleteguide
                 }
+
+        
+                case 'DELETE_USERS':
+                    const allusersdelete = state.users;
+                    const statusFilteredeleteusers = allusersdelete.filter(el => el.id !== action.payload)
+                    return {
+                        ...state,
+                        users: statusFilteredeleteusers
+                    }
+    
 
 
     
