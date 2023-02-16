@@ -3,10 +3,12 @@ import React from 'react'
 //import { useSelector, /*useDispatch*/ } from 'react-redux'
 import './CartSidebar.css'
 import { useAuth0 } from "@auth0/auth0-react";
+import { CartContext } from '../../Context';
 //import { removeToCart } from '../../Actions/AppActions/appActions'
 
 
-export default function CartSidebar({ saveProducts }) {
+export default function CartSidebar() {
+    const {products, saveProducts} = React.useContext(CartContext)
     const { isAuthenticated } = useAuth0();
 
 
@@ -14,13 +16,10 @@ export default function CartSidebar({ saveProducts }) {
 
     //const carrito = useSelector(state => state.cart)
 
-    const arrayProducts = JSON.parse(localStorage.getItem('CART_V1'));
-
     const handleRemoveCart = (e) => {
-        const posicionCarrito = arrayProducts.findIndex(pr => pr.id === e.target.value)
-        const productos = [...arrayProducts]
+        const posicionCarrito = products.findIndex(pr => pr.id === e.target.value)
+        const productos = [...products]
         productos.splice(posicionCarrito, 1);
-
         saveProducts(productos)
     }
 
@@ -30,8 +29,8 @@ export default function CartSidebar({ saveProducts }) {
     }
 
     let sum = 0;
-    if (arrayProducts && arrayProducts.length > 1) {
-        arrayProducts.forEach((item) => {
+    if (products && products.length > 1) {
+        products.forEach((item) => {
             sum += item.price
         })
     }
@@ -48,9 +47,9 @@ export default function CartSidebar({ saveProducts }) {
 
             <div className="offcanvas-body">
                 
-                {arrayProducts && arrayProducts.length >0  ?
+                {products && products.length >0  ?
                 <div>
-                    {arrayProducts.map((product,index) => (                
+                    {products.map((product,index) => (                
                     <div key={index} className="card rounded position-relative">
                         <h3 className='card-title margin-end'>{product.name}</h3>
                         <div className="card-body">
@@ -62,10 +61,10 @@ export default function CartSidebar({ saveProducts }) {
                     ))}
 
                     <div className='mt-5 mb-5 card bg-secondary text-light' >
-                        {arrayProducts.length> 1 ?                 
+                        {products.length> 1 ?                 
                             <h4 className='card-text'>Total a pagar: $ {sum}</h4>
                         :                       
-                        <h3>Total a pagar: $ {arrayProducts[0].price}</h3>
+                        <h3>Total a pagar: $ {products[0].price}</h3>
                         }
                     </div>
                     
