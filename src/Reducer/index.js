@@ -110,6 +110,14 @@ function rootReducer(state = initialState, action) {
                 eventos: statusFilteredelete
             }
 
+            case 'DELETE_GUIDE':
+                const allguidesdelete = state.alleventos;
+                const statusFilteredeleteguide = allguidesdelete.filter(el => el.id !== action.payload)
+                return {
+                    ...state,
+                    guias: statusFilteredeleteguide
+                }
+
         case 'ORDER_BY_NAME':
 
             const sortedArr = action.payload === 'asc' ?

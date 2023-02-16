@@ -2,24 +2,21 @@ import React, { useEffect, useState } from 'react';
 import {
   Button,
    Form,
-  Select,
   Input,
-  DatePicker
-  
 } from 'antd';
 import Swal from 'sweetalert2'
 import './../FormCreacion/CrearEvento.css'
 import { useDispatch, useSelector } from "react-redux";
-import {deleteEvent , getEventsName ,getEvents , getEventsById} from "../../Actions/AppActions/appActions";
+import {getGuides, getGuidesById, deleteGuide, getGuidesName} from "../../Actions/AppActions/appActions";
 import { Avatar, List, Skeleton } from 'antd';
 
 
 
-function Borrar(){ 
+function BorrarGuia(){ 
   
   const dispatch = useDispatch();
   const [nameEvent, setName] = useState("")
-  const eventos = useSelector((state) => state.eventos);
+  const eventos = useSelector((state) => state.guias);
   const [id, setId] = useState("10350ea1-3161-48fc-a56c-deaf713d3743");
   const [initLoading, setInitLoading] = useState(true);
   const [list, setList] = useState([]);
@@ -35,17 +32,17 @@ function Borrar(){
   }
 
   useEffect (()=>{
-    dispatch(getEventsName(nameEvent));
+    dispatch(getGuidesName(nameEvent));
   },[dispatch, nameEvent]) 
 
   
  useEffect (()=>{
-    dispatch(getEventsById(id))
+    dispatch(getGuidesById(id))
     console.log("este id le estoy pasando", id)
   },[dispatch, id])
 
   useEffect (()=>{
-    dispatch(getEvents());
+    dispatch(getGuides());
   },[dispatch]) 
 
   useEffect(() => {
@@ -61,7 +58,7 @@ function Borrar(){
   console.log(eventoFiltrado[0])
   Swal.fire({
     title: 'Éxito',
-    text: 'Tu evento se elimino con éxito',
+    text: 'Tu guia se elimino con éxito',
     icon: 'success',
     confirmButtonText: 'OK'
   })
@@ -76,7 +73,7 @@ function Borrar(){
  
     Swal.fire({
       title: 'Éxito',
-      text: 'Tu evento se modificó con éxito',
+      text: 'Tu guia se elimino con éxito',
       icon: 'success',
       confirmButtonText: 'OK'
     })
@@ -85,7 +82,7 @@ function Borrar(){
     var form = true;
 
     if (form) {
-      dispatch(deleteEvent(id))
+      dispatch(deleteGuide(id))
 
     } 
 
@@ -95,7 +92,7 @@ function Borrar(){
       console.log('Failed:', errorInfo);
       Swal.fire({
           title: 'Ups!',
-          text: "No se encuentra el evento",
+          text: "No se encuentra el guia",
           icon: 'error',
           confirmButtonText: 'OK'
         })
@@ -124,7 +121,7 @@ return(
     autoComplete="off"
   >
  
-    <h3 className='titulo-form-evento'>Eliminar Evento</h3>
+    <h3 className='titulo-form-evento'>Eliminar Guia</h3>
 
     <hr></hr>
     <div>
@@ -148,7 +145,7 @@ return(
           <Skeleton avatar title={false} loading={item.loading} active>
             <List.Item.Meta
             className='lista-eventos-small'
-              avatar={<Avatar src={item.img} />}
+              avatar={<Avatar src={item.image} />}
               title={item.name}
               
             />
@@ -166,4 +163,4 @@ return(
 )};
 
 
-export default Borrar;
+export default BorrarGuia;
