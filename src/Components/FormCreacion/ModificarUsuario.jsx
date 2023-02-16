@@ -1,92 +1,150 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import {
   Button,
    Form,
   Select,
   Input,
-  DatePicker,
   Row,
   Col,
-  Checkbox
-  
+  Checkbox,
+  List,
+  Avatar,
+  Skeleton,
+
 } from 'antd';
 import Swal from 'sweetalert2'
 import './../FormCreacion/CrearEvento.css'
-import { useDispatch } from "react-redux";
-import { postEvent } from "../../Actions/AppActions/appActions";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserById, getUserName, getUsers, putUser } from "../../Actions/AppActions/appActions";
 
 
 
 function ModificarUsuario(){ 
-
-  
-
-
-  const dispatch = useDispatch();
-  
-  const [inicialValues, setValues] = useState({
-    name:"",
-    startDay:"",
-    endDay:"",
-    price: 0,
-    img:"",
-    information:"",
-    guide:[{name:""}],
-    category:[{name:""}]
-  })
-  const { TextArea } = Input;
-
-  const { RangePicker } = DatePicker;
-  
   const { Option } = Select;
+  const dispatch = useDispatch();
+  const [nameEvent, setName] = useState("")
+  const eventos = useSelector((state) => state.users);
+  const [id, setId] = useState("693ba2e0-cea2-485d-84bd-a695d6eeef27");
+  const [initLoading, setInitLoading] = useState(true);
+  const [data, setData] = useState([]);
+  const [list, setList] = useState([]);
+
+  function role(rolId){
+    switch (rolId) {
+      case "5da99330-f614-4936-aed7-1927ce59eb2a":
+        return "Finanzas";
+      
+      case "0a646fd3-e17b-42ab-84c0-c812fb2aeb5a":
+        return "Super Administrador";
+      
+      case "8d199072-b4e7-4142-8d30-7653987afa7d":
+       return "Administrador";
+      
+      case "745f6f0f-857d-48f7-8d5b-70df556b1a59":
+        return "Creador de contenido";
+      
+      case "0095673c-9bf3-4c10-bd78-9d0194f5e045":
+        return "Suscriptor"
+  
+      default:
+       return "Usuario"
+    }
+  }
+  
+
+
+
+  const [inicialValues, setValues] = useState({
+    name:"No hay usuario",
+    email:"No hay usuario",
+    image:"No hay usuario",
+    password:"No hay usuario",
+    phone:"No hay usuario",
+    roleId: role("aacaef0e-fd5b-4d0f-ac88-bbffa0a1fe87")
+  })
+ 
+  let count = 3
+
+  
+ 
+
+
+  function buscarNombre(e){
+    console.log(e.target.value)
+    setName(e.target.value)
+  }
+
+  useEffect (()=>{
+    dispatch(getUserName(nameEvent));
+  },[dispatch, nameEvent]) 
+
+  
+ useEffect (()=>{
+    dispatch(getUserById(id))
+    console.log("este id le estoy pasando", id)
+  },[dispatch, id])
+
+  useEffect (()=>{
+    dispatch(getUsers());
+  },[dispatch]) 
+
+  useEffect(() => {
+    setInitLoading(false);
+        setData(eventos);
+        setList(eventos);
+  }, [eventos]);
+
+
+  
+ function setDatos(e){
+  setId(e)
+  const eventoFiltrado= eventos.filter(ev => ev.id === e)
+  setValues(eventoFiltrado[0]);
+  console.log(eventoFiltrado[0])
+  console.log(inicialValues)
+ }
+
+ 
   
 
   
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
- 
-      let diaIn=(values.dias[0].$d).toString()
-      let diaInicio=diaIn.slice(4,15)
-      let diaF=(values.dias[1].$d).toString()
-      let diaFin=diaF.slice(4,15)
+
+    
+
     let valores={
       name:values.username,
-      startDay:diaInicio,
-      endDay:diaFin,
-      price: values.precio,
-      img:values.upload,
-      information:values.description,
-      guide:values.selectGuia,
-      category:values.select
+      image:inicialValues.image,
+      email:values.email,
+      password:values.password,
+      phone:values.phone,
+      roleId:values.rol
       }
 
+
     setValues({
-    name:values.username,
-    startDay:diaInicio,
-    endDay:diaFin,
-    price: values.precio,
-    img:values.upload,
-    information:values.description,
-    guide:[{name:values.selectGuia}],
-    category:[{name:values.select}]
+      name:values.username,
+      email:values.email,
+      password:values.password,
+      phone:values.phone,
+      roleId:role(values.rol)
     })
     Swal.fire({
       title: 'Éxito',
-      text: 'Tu usuario se creó con éxito',
+      text: 'Tu usuario se modificó con éxito',
       icon: 'success',
       confirmButtonText: 'OK'
     })
+ 
 
 
     var form = true;
 
     if (form) {
-      dispatch(postEvent(valores))
-       
-    } else {
-      return alert(" A tu usuario le faltan detalles");
+      dispatch(putUser(valores, id))
+
     }
-    console.log(inicialValues)
   };
   
   const onFinishFailed = (errorInfo) => {
@@ -98,49 +156,63 @@ function ModificarUsuario(){
           confirmButtonText: 'OK'
         })
     };
-  
-    const [componentDisabled, setComponentDisabled] = useState(true);
-    const onFormLayoutChange = ({ disabled }) => {
-      setComponentDisabled(disabled);
-    };
+  const [componentDisabled, setComponentDisabled] = useState(true);
+  const onFormLayoutChange = ({ disabled }) => {
+    setComponentDisabled(disabled);
+  };
+
+  const agregarFoto = (e) => {
+    let file = e.target.files[0]
+    const reader = new FileReader();
+    if (file) {
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        setValues({
+          image: reader.result
+        })
+      };
+    }
+  }
+
 
 return(
   <div className='contenedor-form'>
     <h3 className='titulo-form-evento'>Modificar Usuario</h3>
     <hr></hr>
-
+  <div>
     <Form.Item
       label="Buscar"
       name="username-buscado"
     >
-      <Input />
-      {/* <div >
-      
-      <>
-        <Dropdown
-          overlay={(
-            <Menu>
-              <Menu.Item key="0">
-                Menu Item One
-              </Menu.Item>
-              <Menu.Item key="1">
-              Menu Item Two
-              </Menu.Item>
-              <Menu.Item key="1">
-              Menu Item Three
-              </Menu.Item>
-            </Menu>
-          )}
-          trigger={['click']}>
-          <a href=" "className="ant-dropdown-link" 
-             onClick={e => e.preventDefault()}>
-            Open Dropdown
-          </a>
-        </Dropdown>
-      </>
-    </div> */}
+      <Input placeholder={nameEvent} onChange={(e)=>buscarNombre(e)}/>
+     
     </Form.Item>
     <hr></hr>
+
+    <List
+      className="demo-loadmore-list "
+      loading={initLoading}
+     itemLayout="horizontal"
+      /* loadMore={loadMore} */
+      dataSource={list.slice(0,count)}
+      
+      renderItem={(item) => (
+        <List.Item>
+          <Skeleton avatar title={false} loading={item.loading} active>
+            <List.Item.Meta
+            className='lista-eventos-small'
+              avatar={<Avatar src={item.image} />}
+              title={item.name}
+              
+            />
+           
+            <Button onClick={()=>setDatos(item.id)}>Datos</Button>
+           
+          </Skeleton>
+        </List.Item>
+      )}
+    />
+   </div>
 
     <Checkbox
         checked={componentDisabled}
@@ -176,7 +248,7 @@ return(
       name="username"
       
     >
-      <Input  placeholder='Nombre'/>
+      <Input  placeholder={inicialValues.name}/>
     </Form.Item>
 
     <Form.Item
@@ -184,25 +256,17 @@ return(
       name="upload"
      
     >
-      <Input type='file'/>
+     <input type='file' onChange={agregarFoto} />
     </Form.Item>
 
 
 
 
     <Form.Item label="Teléfono"
-       name="teléfono"
+       name="phone"
        >
-    <Input.Group >
-      <Row gutter={8}>
-        <Col span={5}>
-          <Input placeholder="011" />
-        </Col>
-        <Col span={8}>
-          <Input placeholder="26888888" />
-        </Col>
-      </Row>
-    </Input.Group>
+          <Input placeholder={inicialValues.phone} />
+
     </Form.Item>
 
 
@@ -212,14 +276,14 @@ return(
       name="email"
       
     >
-      <Input placeholder='ejemplo@ejemplo.com'/>
+      <Input placeholder={inicialValues.email}/>
     </Form.Item>
 
     
 
     <Form.Item
       label="Contraseña"
-      name="contraseña"
+      name="password"
       
     >
       <Input placeholder='*******'/>
@@ -232,12 +296,14 @@ return(
       hasFeedback
       
     >
-      <Select placeholder="Rol">
+      <Select placeholder={inicialValues.roleId}>
     
-        <Option value="Usuario">Usuario</Option>
-        <Option value="Finanzas">Finanzas</Option>
-        <Option value="Administrador">Administrador</Option>
-        <Option value="Contenido">Contenido</Option>
+        <Option value="aacaef0e-fd5b-4d0f-ac88-bbffa0a1fe87">Usuario</Option>
+        <Option value="5da99330-f614-4936-aed7-1927ce59eb2a">Finanzas</Option>
+        <Option value="0a646fd3-e17b-42ab-84c0-c812fb2aeb5a">Super Administrador</Option>
+        <Option value="8d199072-b4e7-4142-8d30-7653987afa7d">Administrador</Option>
+        <Option value="745f6f0f-857d-48f7-8d5b-70df556b1a59">Creador de contenido</Option>
+        <Option value="0095673c-9bf3-4c10-bd78-9d0194f5e045">Suscriptor</Option>
       </Select>
     </Form.Item>
 
