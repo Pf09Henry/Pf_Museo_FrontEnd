@@ -118,6 +118,8 @@ function rootReducer(state = initialState, action) {
                     guias: statusFilteredeleteguide
                 }
 
+
+    
         case 'ORDER_BY_NAME':
 
             const sortedArr = action.payload === 'asc' ?
