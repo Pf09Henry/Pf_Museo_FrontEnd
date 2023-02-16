@@ -214,6 +214,20 @@ export function deleteEvent(id) {
     }
 }
 
+export function deleteGuide(id) {
+    return async function (dispatch) {
+        try {
+            var response = await axios.delete(`https://pfmuseobackend.up.railway.app/guides/delete/${id}`);
+            console.log(response)
+            return dispatch({
+                type: 'DELETE_GUIDE',
+                payload: id
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
 
 
 

@@ -40,6 +40,7 @@ import { LoginForm } from './Components/Login/LoginForm';
 import Dash from './Components/Dashboard/Dashboard/Dashboard-Inicio';
 import { CartProvider } from './Context';
 import EliminarEvento from './Components/Dashboard/Eventos/Eliminar';
+import EliminarGuia from './Components/Dashboard/Guias/Eliminar';
 //import { CartContext } from './Context';
 
 function App() {
@@ -94,6 +95,7 @@ function App() {
         <Route path='/dashoboard-comentarios-modificar' element={<Modificar />} />
         <Route path='/dashoboard-categorias-agregar' element={<AgregarCategoria />} />
         <Route path='/dashoboard-eventos-borrar' element={<EliminarEvento />} />
+        <Route path='/dashoboard-guias-borrar' element={<EliminarGuia />} />
       </Routes>
       <Footer />
       </CartProvider>
