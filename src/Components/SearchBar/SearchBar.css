@@ -1,7 +1,9 @@
 .sbcontainer {
-    display:auto;
+    display:flex;
     flex-direction: row;
-    justify-content: flex-end;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
 
 }
 .sbbot {
@@ -17,3 +19,23 @@
     height: 2.3rem;
 
 }
+
+.buscar-serchbar{
+    padding-top: 1.5%;
+    margin-right: 0.5rem;
+    display:flex;
+    text-align: center;
+    align-items: center;
+}
+
+.ant-input:enabled{
+    border-color: rgb(29, 76, 0)
+}
+
+@media (max-width: 1000px) {
+    .sbinput{
+        width: 100%;
+        height: 2.3rem;
+    
+    }
+   }
