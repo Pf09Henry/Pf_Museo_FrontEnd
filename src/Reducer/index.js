@@ -94,6 +94,15 @@ function rootReducer(state = initialState, action) {
                 user: action.payload
             }
 
+            
+        case 'DELETE_EVENT':
+            const alleventosdelete = state.alleventos;
+            const statusFilteredelete = alleventosdelete.filter(el => el.id !== action.payload)
+            return {
+                ...state,
+                eventos: statusFilteredelete
+            }
+
         case 'ORDER_BY_NAME':
 
             const sortedArr = action.payload === 'asc' ?

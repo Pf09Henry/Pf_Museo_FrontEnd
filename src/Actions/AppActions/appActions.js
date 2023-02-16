@@ -140,6 +140,7 @@ export function putEvent(payload, id) {
     return async function (dispatch) {
         try {
             var response = await axios.put(`https://pfmuseobackend.up.railway.app/events/put/${id}`, payload);
+            console.log(response)
             return dispatch({
                 type: 'PUT_EVENT',
                 response
@@ -150,6 +151,21 @@ export function putEvent(payload, id) {
     }
 }
 
+
+export function deleteEvent(id) {
+    return async function (dispatch) {
+        try {
+            var response = await axios.delete(`https://pfmuseobackend.up.railway.app/events/delete/${id}`);
+            console.log(response)
+            return dispatch({
+                type: 'DELETE_EVENT',
+                payload: id
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
 
 
 
