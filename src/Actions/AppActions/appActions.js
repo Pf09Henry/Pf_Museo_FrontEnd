@@ -28,6 +28,35 @@ export function getEventsName(name) {
     }
 }
 
+export function getGuidesName(name) {
+    return async function (dispatch) {
+        if (name) {
+            let response = await axios.get('https://pfmuseobackend.up.railway.app/guides');
+            console.log(response.data)
+            let events = response.data;
+            let filteredEvents = events.filter(e => e.name.toLowerCase().includes(name.toLowerCase()));
+            return dispatch({
+                type: 'GET_GUIDES',
+                payload: filteredEvents
+            })
+        }
+    }
+}
+
+export function getEventsById(id) {
+    return async function (dispatch) {
+        try {
+            var json = await axios.get(`https://pfmuseobackend.up.railway.app/event/${id}`);
+            return dispatch({
+                type: 'GET_EVENT_DETAILS',
+                payload: json.data
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
 
 export function getCategories() {
     return async function (dispatch) {
@@ -51,6 +80,21 @@ export function getGuides() {
         })
     }
 }
+
+export function getGuidesById(id) {
+    return async function (dispatch) {
+        try {
+            var json = await axios.get(`https://pfmuseobackend.up.railway.app/guide/${id}`);
+            return dispatch({
+                type: 'GET_GUIDES_DETAILS',
+                payload: json.data
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
 
 
 
@@ -121,19 +165,7 @@ export function postUser(payload) {
     }
 }
 
-export function getEventsById(id) {
-    return async function (dispatch) {
-        try {
-            var json = await axios.get(`https://pfmuseobackend.up.railway.app/event/${id}`);
-            return dispatch({
-                type: 'GET_EVENT_DETAILS',
-                payload: json.data
-            })
-        } catch (error) {
-            console.log(error)
-        }
-    }
-}
+
 
 
 export function putEvent(payload, id) {
@@ -143,6 +175,21 @@ export function putEvent(payload, id) {
             console.log(response)
             return dispatch({
                 type: 'PUT_EVENT',
+                response
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export function putGuide(payload, id) {
+    return async function (dispatch) {
+        try {
+            var response = await axios.put(`https://pfmuseobackend.up.railway.app/guides/put/${id}`, payload);
+            console.log(response)
+            return dispatch({
+                type: 'PUT_GUIDE',
                 response
             })
         } catch (error) {

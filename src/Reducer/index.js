@@ -28,6 +28,7 @@ const initialState = {
     guias: [],
     users: [],
     cart:[],
+    guidesDetail:[]
 }
 
 
@@ -53,6 +54,12 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 details: action.payload
             }
+
+            case 'GET_GUIDES_DETAILS':
+                return {
+                    ...state,
+                    guidesDetail: action.payload
+                }
 
         case 'GET_GUIDES':
             return {

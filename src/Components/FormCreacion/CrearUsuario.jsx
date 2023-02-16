@@ -31,11 +31,7 @@ function CrearUsuario(){
     password:"",
     phone:"",
   })
-  const { TextArea } = Input;
 
-  const { RangePicker } = DatePicker;
-  
-  const { Option } = Select;
   
 
   
