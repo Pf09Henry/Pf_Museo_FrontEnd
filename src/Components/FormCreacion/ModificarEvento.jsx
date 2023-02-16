@@ -8,15 +8,14 @@ import {
   DatePicker,
   Space,
   Checkbox,
-  Dropdown,
-  Menu
+
   
 } from 'antd';
 import Swal from 'sweetalert2'
 import './../FormCreacion/CrearEvento.css'
 import { useDispatch, useSelector } from "react-redux";
-import { getEventsById, putEvent } from "../../Actions/AppActions/appActions";
-import SmallEvent from '../EventDetails/SmallEvent';
+import {putEvent , getEventsName ,getEvents , getEventsById} from "../../Actions/AppActions/appActions";
+import { Avatar, List, Skeleton } from 'antd';
 
 
 
@@ -24,43 +23,18 @@ function Modificar(){
   
   const dispatch = useDispatch();
   const [nameEvent, setName] = useState("")
-  const eventos = useSelector((state) => state.alleventos);
+  const eventos = useSelector((state) => state.eventos);
   const [currentPage, setCurrentPage] = useState(0);
-  const filteredC = eventos.slice(currentPage, currentPage + 3);
-  const [eventosArray , setEventosArray] = useState([{
-    name:"No hay evento",
-    startDay:"",
-    endDay:"",
-    price: "No hay evento",
-    img:"No hay evento",
-    information:"No hay evento",
-    availability:0,
-    guide:[{name:"No hay evento"}],
-    category:[{name:"No hay evento"}]
-  }])
-  function buscarNombre(e){
-    console.log(e.target.value)
-    setName(e.target.value)
-  }
-
-  useEffect(() => {
-    setCurrentPage(0);
-  }, [eventos]);
-
-
- /*  useEffect (()=>{
-    dispatch(getEventsByName(setName));
-  },[dispatch], setName) 
- */
-
-
-
-  
+  const [id, setId] = useState("10350ea1-3161-48fc-a56c-deaf713d3743");
+  const [initLoading, setInitLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState([]);
+  const [list, setList] = useState([]);
   const [inicialValues, setValues] = useState({
     name:"No hay evento",
     startDay:"",
     endDay:"",
-    price: "No hay evento",
+    price: 0,
     img:"No hay evento",
     information:"No hay evento",
     availability:0,
@@ -72,8 +46,97 @@ function Modificar(){
   const { RangePicker } = DatePicker;
   
   const { Option } = Select;
+  let count = 3
+
+  
  
 
+
+  function buscarNombre(e){
+    console.log(e.target.value)
+    setName(e.target.value)
+  }
+
+  useEffect (()=>{
+    dispatch(getEventsName(nameEvent));
+  },[dispatch, nameEvent]) 
+
+  
+ useEffect (()=>{
+    dispatch(getEventsById(id))
+    console.log("este id le estoy pasando", id)
+  },[dispatch, id])
+
+  useEffect (()=>{
+    dispatch(getEvents());
+  },[dispatch]) 
+
+  useEffect(() => {
+    setInitLoading(false);
+        setData(eventos);
+        setList(eventos);
+  }, [eventos]);
+
+
+  const onLoadMore = () => {
+    setLoading(true);
+
+    if(list.length > count){
+      count = count + 3 
+    }
+   
+    console.log(count)
+  };
+
+
+
+  const loadMore =
+    (list.length > count  ? (
+      <div
+        style={{
+          textAlign: 'center',
+          marginTop: 12,
+          height: 32,
+          lineHeight: '32px',
+        }}
+      >
+        <Button onClick={onLoadMore} >Cargar mas</Button>
+      </div>
+   
+    ) : null)
+
+ function setDatos(e){
+  setId(e)
+  const eventoFiltrado= eventos.filter(ev => ev.id === e)
+  setValues(eventoFiltrado[0]);
+  console.log(eventoFiltrado[0])
+  console.log(inicialValues)
+ }
+
+
+/*   function buscarNombre(e){
+    console.log(e.target.value)
+    setName(e.target.value)
+  } */
+
+  useEffect(() => {
+    setCurrentPage(0);
+  }, [eventos]);
+
+
+/*    useEffect (()=>{
+    dispatch(getEventsName(nameEvent));
+  },[dispatch, nameEvent]) 
+
+  useEffect (()=>{
+    dispatch(getEvents());
+  },[dispatch]) 
+ 
+ */
+
+
+  
+ 
   
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
@@ -82,6 +145,7 @@ function Modificar(){
       let diaInicio=diaIn.slice(4,15)
       let diaF=(values.dias[1].$d).toString()
       let diaFin=diaF.slice(4,15)
+
     let valores={
       name:values.username,
       startDay:diaInicio,
@@ -116,12 +180,12 @@ function Modificar(){
     var form = true;
 
     if (form) {
-      dispatch(putEvent(valores))
+      dispatch(putEvent(valores, id))
 
     } else {
       return alert(" A tu actividad le faltan detalles");
     }
-    console.log(inicialValues)
+
   };
   
   const onFinishFailed = (errorInfo) => {
@@ -139,12 +203,49 @@ function Modificar(){
   };
   
 
+
 return(
   <div className='contenedor-form'>
  
     <h3 className='titulo-form-evento'>Modificar Evento</h3>
     <hr></hr>
 
+    {/* <Form.Item
+      label="Buscar"
+      name="username-buscado"
+    >
+      <Input placeholder={nameEvent} onChange={(e)=>buscarNombre(e)}/>
+      {/* <div >
+      
+      <>
+        <Dropdown
+          overlay={(
+            <Menu>
+              <Menu.Item key="0">
+                Menu Item One
+              </Menu.Item>
+              <Menu.Item key="1">
+              Menu Item Two
+              </Menu.Item>
+              <Menu.Item key="1">
+              Menu Item Three
+              </Menu.Item>
+            </Menu>
+          )}
+          trigger={['click']}>
+          <a href=" "className="ant-dropdown-link" 
+             onClick={e => e.preventDefault()}>
+            Open Dropdown
+          </a>
+        </Dropdown>
+      </>
+    </div> 
+    </Form.Item>*/}
+
+
+    <hr></hr>
+    <div>
+      
     <Form.Item
       label="Buscar"
       name="username-buscado"
@@ -177,38 +278,30 @@ return(
     </div> */}
     </Form.Item>
 
-
-    <hr></hr>
-    <div className="conteiner-form-elegir">
-     <div className="paises-elegir">
-        {
-        eventosArray.length !== 0 &&
-        filteredC.length < 30
-          ? filteredC.map((c) => (
-              <div>
-                <div className="smallcountry">
-                  <SmallEvent key={c.id} nombre={c.nombre} img={c.img} />
-            {/*       <button
-                  
-                    className="boton-agregar"
-                    onClick={setIdHandler}
-                    value={c.id}
-                    name="countryId"
-                    
-                  >
-                    +
-                  </button> */}
-                </div>
-                
-              </div>
-             
-            ) )
+    <List
+      className="demo-loadmore-list "
+      loading={initLoading}
+     itemLayout="horizontal"
+      /* loadMore={loadMore} */
+      dataSource={list.slice(0,count)}
+      
+      renderItem={(item) => (
+        <List.Item>
+          <Skeleton avatar title={false} loading={item.loading} active>
+            <List.Item.Meta
+            className='lista-eventos-small'
+              avatar={<Avatar src={item.img} />}
+              title={item.name}
+              
+            />
            
-          : console.log("...")}
-      </div>
-      </div>
-
-
+            <Button onClick={()=>setDatos(item.id)}>Datos</Button>
+           
+          </Skeleton>
+        </List.Item>
+      )}
+    />
+    </div>
 
     <Checkbox
         checked={componentDisabled}
@@ -242,16 +335,17 @@ return(
     <Form.Item
       label="Nombre"
       name="username"
+      
     >
       <Input placeholder={inicialValues.name}/>
     </Form.Item>
 
-    <Form.Item
+     <Form.Item
       name="select"
       label="Categoria"
       hasFeedback
     >
-      <Select placeholder={inicialValues.category[0].name}>
+      <Select placeholder={inicialValues.category[0].name}/*  defaultValue={inicialValues.category[0].name} */>
     
         <Option value="Social">Social</Option>
         <Option value="Arte">Arte</Option>
@@ -289,20 +383,20 @@ return(
       name="selectGuia"
       label="Guia"
     >
-      <Select placeholder={inicialValues.guide[0].name}>
+      <Select placeholder={inicialValues.guide[0].name} /* defaultValue={inicialValues.guide[0].name} */>
     
     <Option value="Claudio">Claudio</Option>
     <Option value="Karen">Karen</Option>
     <Option value="Soledad">Soledad</Option>
     <Option value="Martin">Martin</Option>
   </Select>
-    </Form.Item>
+    </Form.Item> 
 
 
     <Form.Item label="Precio">
       <Form.Item name="precio" noStyle
      >
-        <InputNumber  min={1} placeholder={inicialValues.price}/>
+        <InputNumber  min={1} placeholder={inicialValues.price} /* defaultValue={inicialValues.price} *//>
       </Form.Item>
       <span
         className="ant-form-text"
@@ -320,14 +414,14 @@ return(
       name="upload"
      
     >
-      <Input type='file'/>
+      <Input type='file' />
     </Form.Item>
 
 
     <Form.Item label="Cupos">
       <Form.Item name="availability" noStyle
      >
-        <InputNumber  min={1}/>
+        <InputNumber  min={1} placeholder={inicialValues.availability}/>
       </Form.Item>
       
     </Form.Item>
@@ -343,8 +437,9 @@ return(
           height: 120,
           marginBottom: 24,
         }}
-       
+        value={inicialValues.information}
         placeholder={inicialValues.information}
+       /*  defaultValue={inicialValues.information} */
       />
     </Form.Item>
 

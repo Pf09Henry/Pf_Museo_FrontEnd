@@ -28,9 +28,6 @@
     align-items: center;
 }
 
-.ant-input:enabled{
-    border-color: rgb(29, 76, 0)
-}
 
 @media (max-width: 1000px) {
     .sbinput{
