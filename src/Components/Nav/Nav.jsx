@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from '../../Imagenes/logo.png'
 import './Nav.css'
 import Login from "../Login/Login";
@@ -9,15 +9,33 @@ import Singup from "../Login/Singup";
 import { MdShoppingCart } from 'react-icons/md'
 import CartSidebar from "../CartSidebar/CartSidebar";
 import { CartContext } from "../../Context";
-
+import { useDispatch, useSelector } from "react-redux";
+import { getUsers } from '../../Actions/AppActions/appActions';
 
 
 export default function Nav() {
   const {products} = React.useContext(CartContext)
   //const arrayProducts = JSON.parse(localStorage.getItem('CART_V1')); 
+  const usuario = useSelector((state) => state.users);
+  const dispatch = useDispatch()
 
-  const { isAuthenticated } = useAuth0();
+  useEffect(()=>{
+    dispatch(getUsers())
+  },[])
 
+  console.log(usuario)
+
+
+  const { isAuthenticated, user } = useAuth0();
+  let existeMailDb = false;
+  if(isAuthenticated){
+    for(let i = 0; i<usuario.length; i++){
+      if(usuario[i].email === user.email){
+          existeMailDb = true
+          console.log("asdasd")
+      }
+    }
+  }
 
   return (
     <div>
@@ -101,9 +119,11 @@ export default function Nav() {
 
                 </ul>
               </li> */}
-              <Profile />
-
-
+              {isAuthenticated && existeMailDb &&(
+                  <>
+                      <Profile />
+                  </>
+                )}
 
               {/* <a href='/create-activitie'><button type="button" className="btn btn-outline-success btn-secundario">Crear Evento</button></a> */}
               {/* <a href="/login"><button type="button" className="btn btn-outline-success btn-secundario">Iniciar Sesión</button></a> */}
@@ -126,10 +146,8 @@ export default function Nav() {
            {/*  <a href='/create-activitie'><button type="button" class="btn btn-outline-success btn-secundario">Crear Evento</button></a> */}
             {/* <a href="/login"><button type="button" class="btn btn-outline-success btn-secundario">Iniciar Sesión</button></a> */}
           {/* {isAuthenticated &&(<a href="/dashboard"><button type="button" class="btn btn-success btn-primario usuario">Perfil</button></a>) */}
-
-
-
-              {isAuthenticated && (
+          
+              {isAuthenticated && existeMailDb &&(
                 <div className="d-grid position-relative">
                 <div className="row">
                   <button className="btn btn-primary position-relative " data-bs-toggle="offcanvas" data-bs-target="#cart"><MdShoppingCart size={20}/></button>
