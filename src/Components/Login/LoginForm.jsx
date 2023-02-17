@@ -1,87 +1,53 @@
-import React, { useState } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
-import axios from 'axios';
+// import React, { useEffect, useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import { useAuth0 } from "@auth0/auth0-react";
+// import axios from "axios";
+// import { useSelector } from "react-redux";
+// import { useDispatch } from "react-redux";
+// import { getUsers } from "../../Actions/AppActions/appActions";
 
+export default function LoginForm() { 
 
+  // const usuario = useSelector((state) => state.users)
 
-export function LoginForm() {
+  // const { isLoading, isAuthenticated, user } = useAuth0();
  
+  // const navigate = useNavigate();
+  // const dispatch = useDispatch();
 
-  const { user, isAuthenticated } = useAuth0();
-  const { name, email, picture } = user;
-  const [data, setData] = useState({
-    name: name || '',
-    email: email || '',
-    image: picture || '',
-    phone: '',
-    password: '',
-  });
+  //  useEffect(()=>{
+  //     dispatch(getUsers())
+  //   })
 
+  // useEffect(() => {
+  //   const getUserInfo = async () => {
+  //     if (isAuthenticated) {
+  //       const response = await axios.get("https://pfmuseobackend.up.railway.app/users", {
+  //         params: {
+  //           email: user.email,
+  //         }
+  //       })
+  //       if (response.data) {
+  //         setDbUser(response.data);
+  //       }
+  //     }
+  //   };
+  //   getUserInfo(usuario);
+  // }, [isAuthenticated, user]);
 
+  // useEffect(()=>{   
+  //       const userEmail = usuario.find(e => e.email === user.email);
+  //       console.log(userEmail)       
+  //       if(userEmail){
+  //         navigate('/')
+  //       }else{
+  //         navigate('/register')
+  //       }
+  //   },[usuario, user.email])
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Enviar los datos del formulario al backend aquí
-    axios.post('http://localhost:3001/users/post', data)
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });    
-  };
   return (
-   isAuthenticated && (<div>
-      <form onSubmit={handleSubmit}>             
-            
-              <label>Nombre Completo:</label>
-              <input
-                type="text"
-                name="name"
-                value={data.name}
-                onChange={handleChange}                
-              />
-              <br />
-              <div>
-                <img src={data.image} alt="img" />
-              </div>
-              <br />
-              <label>Email:</label>
-              <input
-                type="email"
-                name="email"
-                value={data.email}
-                onChange={handleChange}              
-              />         
-              <br />  
-              <label>Numero Telefonico:</label>
-              <input
-                type="number"
-                name="phone"
-                value={data.phone}
-                onChange={handleChange}        
-              />
-              <br />
-              <label>Password:</label>
-              <input
-                type="password"
-                name="password"
-                value={data.password}
-                onChange={handleChange}        
-              />
-              <br />
-              
-              <button type="submit">Send</button>
-             
-            </form>
-    </div>)
+    <div>
+     ...{}
+    </div>
   )
 }

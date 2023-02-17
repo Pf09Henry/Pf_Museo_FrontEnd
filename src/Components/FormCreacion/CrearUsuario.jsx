@@ -2,18 +2,14 @@ import React, { useState } from 'react';
 import {
   Button,
    Form,
-  InputNumber,
   Select,
   Input,
-  DatePicker,
-  Row,
-  Col
-  
+  DatePicker,  
 } from 'antd';
 import Swal from 'sweetalert2'
 import './../FormCreacion/CrearEvento.css'
 import { useDispatch } from "react-redux";
-import { postEvent, postUser } from "../../Actions/AppActions/appActions";
+import {  postUser } from "../../Actions/AppActions/appActions";
 
 
 
@@ -31,13 +27,6 @@ function CrearUsuario(){
     password:"",
     phone:"",
   })
-  const { TextArea } = Input;
-
-  const { RangePicker } = DatePicker;
-  
-  const { Option } = Select;
-  
-
   
   const onFinish = (values) => {
     console.log('Received values of form: ', values);

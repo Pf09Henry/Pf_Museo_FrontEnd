@@ -1,52 +1,19 @@
 import React from 'react';
 import {
-    AutoComplete,
     Button,
-    Cascader,
     Checkbox,
-    Col,
     Form,
     Input,
-    InputNumber,
-    Row,
     Select,
   } from 'antd';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
+import { postUser, getUsers } from '../../Actions/AppActions/appActions';
+
   const { Option } = Select;
-  const residences = [
-    {
-      value: 'zhejiang',
-      label: 'Zhejiang',
-      children: [
-        {
-          value: 'hangzhou',
-          label: 'Hangzhou',
-          children: [
-            {
-              value: 'xihu',
-              label: 'West Lake',
-            },
-          ],
-        },
-      ],
-    },
-    {
-      value: 'jiangsu',
-      label: 'Jiangsu',
-      children: [
-        {
-          value: 'nanjing',
-          label: 'Nanjing',
-          children: [
-            {
-              value: 'zhonghuamen',
-              label: 'Zhong Hua Men',
-            },
-          ],
-        },
-      ],
-    },
-  ];
+  
   const formItemLayout = {
     labelCol: {
       xs: {
@@ -82,67 +49,66 @@ import { useState } from 'react';
 
 export default function Register () {
 
-
+  const usuario = useSelector((state) => state.users);  
+  const navigate = useNavigate()
+  const dispatch = useDispatch();
     const [form] = Form.useForm();
 
-    const onFinish = (values) => {
-      console.log('Received values of form: ', values);
+    const { user, isAuthenticated } = useAuth0();
+    const { name, email, picture } = user;
+    const [data, setData] = useState({
+      name: name || '',
+      email: email || '',
+      image: picture || '',
+      phone: '',
+    });
+
+    let dataUser={
+      name:data.name,
+      email: data.email,
+      image:data.image,
+      phone:data.phone,
+     }
+
+    const handleChange = (event) => {
+      const { name, value } = event.target;
+      setData((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
     };
 
-
-    const prefixSelector = (
-      <Form.Item name="prefix" noStyle>
-        <Select
-          style={{
-            width: 70,
-          }}
-        >
-          <Option value="86">+86</Option>
-          <Option value="87">+87</Option>
-        </Select>
-      </Form.Item>
-    );
-    const suffixSelector = (
-      <Form.Item name="suffix" noStyle>
-        <Select
-          style={{
-            width: 70,
-          }}
-        >
-          <Option value="USD">$</Option>
-          <Option value="CNY">¥</Option>
-        </Select>
-      </Form.Item>
-    );
-
-
-    const [autoCompleteResult, setAutoCompleteResult] = useState([]);
-    const onWebsiteChange = (value) => {
-      if (!value) {
-        setAutoCompleteResult([]);
-      } else {
-        setAutoCompleteResult(['.com', '.org', '.net'].map((domain) => `${value}${domain}`));
-      }
+    const handleSubmit = () => {
+      dispatch(postUser(dataUser));
+      navigate('/');
     };
 
+    // useEffect(()=>{
+    //   dispatch(getUsers())
+    // })
 
-    const websiteOptions = autoCompleteResult.map((website) => ({
-      label: website,
-      value: website,
-    }));
-
-
-
-
+    // useEffect(()=>{
+    //   if(usuario){
+    //     const userEmail = usuario.map(e => e.email);
+    //     console.log(userEmail)
+       
+    //     if(userEmail === user.email){
+    //       navigate('/')
+    //     }
+    //   }
+    // },[dispatch, ])
+    
+  
     return (
-      <Form
+      isAuthenticated&&(<Form
         {...formItemLayout}
         form={form}
         name="register"
-        onFinish={onFinish}
+        
+        onFinish={handleSubmit}
         initialValues={{
-          residence: ['zhejiang', 'hangzhou', 'xihu'],
-          prefix: '86',
+          email: data.email,
+          name: data.name
         }}
         style={{
           maxWidth: 600,
@@ -162,49 +128,16 @@ export default function Register () {
               message: 'Please input your E-mail!',
             },
           ]}
+        
         >
-          <Input />
+         <Input
+                value={data.email}
+                onChange={handleChange}
+              />
         </Form.Item>
   
         <Form.Item
-          name="password"
-          label="Password"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your password!',
-            },
-          ]}
-          hasFeedback
-        >
-          <Input.Password />
-        </Form.Item>
-  
-        <Form.Item
-          name="confirm"
-          label="Confirm Password"
-          dependencies={['password']}
-          hasFeedback
-          rules={[
-            {
-              required: true,
-              message: 'Please confirm your password!',
-            },
-            ({ getFieldValue }) => ({
-              validator(_, value) {
-                if (!value || getFieldValue('password') === value) {
-                  return Promise.resolve();
-                }
-                return Promise.reject(new Error('The two passwords that you entered do not match!'));
-              },
-            }),
-          ]}
-        >
-          <Input.Password />
-        </Form.Item>
-  
-        <Form.Item
-          name="nickname"
+          name="name"
           label="Nickname"
           tooltip="What do you want others to call you?"
           rules={[
@@ -215,22 +148,22 @@ export default function Register () {
             },
           ]}
         >
-          <Input />
+          <Input
+          type='text'
+          name='name'
+            value={data.name}
+            onChange={handleChange} 
+          />
         </Form.Item>
-  
+
         <Form.Item
-          name="residence"
-          label="Habitual Residence"
-          rules={[
-            {
-              type: 'array',
-              required: true,
-              message: 'Please select your habitual residence!',
-            },
-          ]}
-        >
-          <Cascader options={residences} />
-        </Form.Item>
+      name="image"
+      label="Imagen de Perfil"
+      > 
+    <img src={data.image} alt="" />
+
+
+    </Form.Item>
   
         <Form.Item
           name="phone"
@@ -242,98 +175,8 @@ export default function Register () {
             },
           ]}
         >
-          <Input
-            addonBefore={prefixSelector}
-            style={{
-              width: '100%',
-            }}
-          />
-        </Form.Item>
-  
-        <Form.Item
-          name="donation"
-          label="Donation"
-          rules={[
-            {
-              required: true,
-              message: 'Please input donation amount!',
-            },
-          ]}
-        >
-          <InputNumber
-            addonAfter={suffixSelector}
-            style={{
-              width: '100%',
-            }}
-          />
-        </Form.Item>
-  
-        <Form.Item
-          name="website"
-          label="Website"
-          rules={[
-            {
-              required: true,
-              message: 'Please input website!',
-            },
-          ]}
-        >
-          <AutoComplete options={websiteOptions} onChange={onWebsiteChange} placeholder="website">
-            <Input />
-          </AutoComplete>
-        </Form.Item>
-  
-        <Form.Item
-          name="intro"
-          label="Intro"
-          rules={[
-            {
-              required: true,
-              message: 'Please input Intro',
-            },
-          ]}
-        >
-          <Input.TextArea showCount maxLength={100} />
-        </Form.Item>
-  
-        <Form.Item
-          name="gender"
-          label="Gender"
-          rules={[
-            {
-              required: true,
-              message: 'Please select gender!',
-            },
-          ]}
-        >
-          <Select placeholder="select your gender">
-            <Option value="male">Male</Option>
-            <Option value="female">Female</Option>
-            <Option value="other">Other</Option>
-          </Select>
-        </Form.Item>
-  
-        <Form.Item label="Captcha" extra="We must make sure that your are a human.">
-          <Row gutter={8}>
-            <Col span={12}>
-              <Form.Item
-                name="captcha"
-                noStyle
-                rules={[
-                  {
-                    required: true,
-                    message: 'Please input the captcha you got!',
-                  },
-                ]}
-              >
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col span={12}>
-              <Button>Get captcha</Button>
-            </Col>
-          </Row>
-        </Form.Item>
+          <Input/>
+        </Form.Item> 
   
         <Form.Item
           name="agreement"
@@ -355,7 +198,7 @@ export default function Register () {
             Register
           </Button>
         </Form.Item>
-      </Form>
+      </Form>)
     );
   };
  

@@ -114,10 +114,10 @@ export function postUser(payload) {
     return async function (dispatch) {
         const response = await axios.post('https://pfmuseobackend.up.railway.app/users/post', payload)
         console.log(response)
-        return {
+        return dispatch({
             type: 'POST_USER',
-            response
-        }
+            payload: response
+        })
     }
 }
 
