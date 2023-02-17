@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from 'antd';
+import { Button, Card } from 'antd';
 import './../Eventos/EventoList.css'
 import { Tag } from 'antd';
 import Filtros from "../Filtros/Filtros";
@@ -10,18 +10,18 @@ import { Link } from "react-router-dom";
 import Pagination from "../Paginado/Paginado";
 import { useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
-
-
+import { MdShoppingCart } from 'react-icons/md'
+import { CartContext } from "../../Context";
 const { Meta } = Card;
 
 
 export default function EventoList() {
     const Eventos = useSelector((state) => state.eventos);
     const dispatch = useDispatch();
-
+    const detalles = useSelector((state) => state.details);
     const [currentPage, setCurrent] = useState(1);
     const eventsPerPage = 4;
-
+    const {products, saveProducts} = React.useContext(CartContext)
     const indexOfLastEvet = currentPage * eventsPerPage;
     const indexOfFirstEvet = indexOfLastEvet - eventsPerPage;
     const currentEvents = Eventos.slice(indexOfFirstEvet, indexOfLastEvet);
@@ -34,6 +34,11 @@ export default function EventoList() {
         dispatch(getEvents());
     }, [dispatch])
 
+
+    const handleAddToCart = () =>{
+        const productos = products.concat(detalles)
+        saveProducts(productos)
+    }
 
 
     return (<div className='evento'>
@@ -66,8 +71,8 @@ export default function EventoList() {
                                         <Tag color="green">{activity.startDay} - {activity.endDay}</Tag>
                                         <br></br>
                                          <Tag color="#015129">{activity.category[0].name}</Tag>
-                                        <hr></hr> 
-                                        <Tag color="#87d068">${activity.price}</Tag>
+                                        <hr></hr>  
+                                        <Tag color="#87d068">${activity.price}</Tag><Button className="boton-agregar-carrito"  onClick={handleAddToCart}><MdShoppingCart /></Button>
                                         <br />
 
                                     </div>

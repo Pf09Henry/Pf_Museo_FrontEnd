@@ -208,6 +208,16 @@ export function postUser(payload) {
     }
 }
 
+export function postReview(payload) {
+    return async function (dispatch) {
+        const response = await axios.post('https://pfmuseobackend.up.railway.app/review/post', payload)
+        console.log(response)
+        return dispatch({
+            type: 'POST_REVIEW',
+            payload: response
+        })
+    }
+}
 
 
 

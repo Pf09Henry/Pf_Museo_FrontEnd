@@ -20,7 +20,7 @@ export default function CommentForm({ commentInitial, buttonText, buttonSend }) 
     //No enviar form vacio
     function validateComment() {
         if (!commentItem.comment || commentItem.comment.length === 0) {
-            setErrorComment('No Puédes enviar un comentario vacio');
+            setErrorComment('No Puedes enviar un comentario vacio');
             return true;
         } else {
             setErrorComment('');

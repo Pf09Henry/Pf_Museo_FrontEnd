@@ -58,6 +58,12 @@
     background-color:rgba(243, 243, 243, 0.822);
 }
 
+.boton-agregar-carrito:hover{
+    background-color: rgb(92, 152, 89) !important;
+    color:white !important;
+    border-color: white !important;
+}
+
 
 @media (max-width: 1000px) {
    .contenedor-detalle-evento{
@@ -78,3 +84,4 @@
 }
  
  }
+

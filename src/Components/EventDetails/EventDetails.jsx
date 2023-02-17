@@ -6,16 +6,19 @@ import {  useParams } from "react-router-dom";
 import { getEventsById, /*addToCart*/ } from "../../Actions/AppActions/appActions";
 import './../EventDetails/EventDetail.css'
 import { Tag, Button } from 'antd';
-import Stars from "../Comentarios/Stars";
-import CommentForm from "../Comentarios/CommentForm";
+/* import Stars from "../Comentarios/Stars";
+import CommentForm from "../Comentarios/CommentForm"; */
 import { useAuth0 } from "@auth0/auth0-react";
 import { CartContext } from "../../Context";
+import FormReview from "../Comentarios/FormReview";
+import FormReviewInvitado from "../Comentarios/FormReviewInvitado";
 
 export default function EventDetails() {
     const {products, saveProducts} = React.useContext(CartContext)
-    const {isAuthenticated} = useAuth0();
+    const {isAuthenticated, user} = useAuth0();
 
     const detalles = useSelector((state) => state.details);
+    const review = useSelector((state) => state.review);
     const dispatch = useDispatch();
     let { id } = useParams();
 
@@ -47,12 +50,17 @@ export default function EventDetails() {
                 <div className="detalle-evento-info">
                 <p className="card-text detalle-evento-info">{detalles[0].information} </p>
                 </div>
-                <Tag color="#87d068" className="precio-evento">${detalles[0].price}</Tag>
+                <Tag color="#87d068" className="precio-evento">${detalles[0].price}</Tag> {isAuthenticated&&(<Button type="primary" className="boton-agregar-carrito" style={{backgroundColor:"rgb(56, 102, 103"}} onClick={handleAddToCart} >Agregar al Carrito</Button>)}
                 <hr></hr>
-                <Stars />
-                <CommentForm />
+                <div className="review">
+                {isAuthenticated && <FormReview user={user} />}
+                {!isAuthenticated && <FormReviewInvitado/>}
+                </div>
+            {/*     <Stars />
+                <br></br>
+                <CommentForm /> */}
             </div>
-                {isAuthenticated&&(<Button type="primary" style={{backgroundColor:"rgb(56, 102, 103"}} onClick={handleAddToCart} >Agregar al Carrito</Button>)}
+               
             </div>
 
             <div className="row detalle-guia">
