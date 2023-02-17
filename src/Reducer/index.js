@@ -28,6 +28,7 @@ const initialState = {
     guias: [],
     users: [],
     cart:[],
+    guidesDetail:[]
 }
 
 
@@ -53,6 +54,12 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 details: action.payload
             }
+
+            case 'GET_GUIDES_DETAILS':
+                return {
+                    ...state,
+                    guidesDetail: action.payload
+                }
 
         case 'GET_GUIDES':
             return {
@@ -91,9 +98,38 @@ function rootReducer(state = initialState, action) {
         case 'POST_USER':
             return {
                 ...state,
-                user: action.payload
+                users: action.payload
             }
 
+            
+        case 'DELETE_EVENT':
+            const alleventosdelete = state.alleventos;
+            const statusFilteredelete = alleventosdelete.filter(el => el.id !== action.payload)
+            return {
+                ...state,
+                eventos: statusFilteredelete
+            }
+
+            case 'DELETE_GUIDE':
+                const allguidesdelete = state.guias;
+                const statusFilteredeleteguide = allguidesdelete.filter(el => el.id !== action.payload)
+                return {
+                    ...state,
+                    guias: statusFilteredeleteguide
+                }
+
+        
+                case 'DELETE_USERS':
+                    const allusersdelete = state.users;
+                    const statusFilteredeleteusers = allusersdelete.filter(el => el.id !== action.payload)
+                    return {
+                        ...state,
+                        users: statusFilteredeleteusers
+                    }
+    
+
+
+    
         case 'ORDER_BY_NAME':
 
             const sortedArr = action.payload === 'asc' ?

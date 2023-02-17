@@ -9,8 +9,10 @@ import { Tag, Button } from 'antd';
 import Stars from "../Comentarios/Stars";
 import CommentForm from "../Comentarios/CommentForm";
 import { useAuth0 } from "@auth0/auth0-react";
+import { CartContext } from "../../Context";
 
-export default function EventDetails({saveProducts}) {
+export default function EventDetails() {
+    const {products, saveProducts} = React.useContext(CartContext)
     const {isAuthenticated} = useAuth0();
 
     const detalles = useSelector((state) => state.details);
@@ -24,8 +26,7 @@ export default function EventDetails({saveProducts}) {
     },[dispatch]) 
     
     const handleAddToCart = () =>{
-        const arrayProducts = JSON.parse(localStorage.getItem('CART_V1'))
-        const productos = arrayProducts.concat(detalles)
+        const productos = products.concat(detalles)
         saveProducts(productos)
     }
 

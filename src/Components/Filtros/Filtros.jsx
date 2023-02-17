@@ -6,11 +6,18 @@ import './../Filtros/Filtros.css'
 
 
 
+
 export default function Filtros() {
     const dispatch = useDispatch();
     const [setCurrentPage] = useState(1);
     const [continent, setContinent] = useState('All');
     const [order, setOrder] = useState('');
+    const [disabled, setDisabled] = useState(false);
+    const onChange = (checked) => {
+      setDisabled(checked);
+    };
+
+    
 
     useEffect(() => {
         dispatch(getCategories());
@@ -54,8 +61,16 @@ export default function Filtros() {
 
 
 
+
+
+ 
+ 
+
+
+
     return (
         <div className="menudefiltros">
+      
 
             {/* <div className='col-md-8 filtrado'> */}
             {/* <div className="categoria"> */}
@@ -79,6 +94,8 @@ export default function Filtros() {
             <div className="menu-input-filtro"><input type='radio' value='ascprec' checked={order === 'ascprec' ? true : false} onClick={e => onClickRadioOrder(e)} onChange={e => handleSortPop(e)} /><p >Mayor precio</p></div>
             <div className="menu-input-filtro"><input type='radio' value='descprec' checked={order === 'descprec' ? true : false} onClick={e => onClickRadioOrder(e)} onChange={e => handleSortPop(e)} /><p >Menor precio</p></div>
             {/* </div> */}
+
+  
 
         </div>
 

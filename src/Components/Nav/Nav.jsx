@@ -8,13 +8,16 @@ import { Profile } from "../Login/Profile";
 import Singup from "../Login/Singup";
 import { MdShoppingCart } from 'react-icons/md'
 import CartSidebar from "../CartSidebar/CartSidebar";
+import { CartContext } from "../../Context";
 
 
 
-export default function Nav({ saveProducts }) {
+export default function Nav() {
+  const {products} = React.useContext(CartContext)
+  //const arrayProducts = JSON.parse(localStorage.getItem('CART_V1')); 
+
   const { isAuthenticated } = useAuth0();
 
-  const arrayProducts = JSON.parse(localStorage.getItem('CART_V1')); 
 
   return (
     <div>
@@ -129,9 +132,9 @@ export default function Nav({ saveProducts }) {
               {isAuthenticated && (
                 <div className="d-grid position-relative">
                 <div className="row">
-                  <button className="btn btn-primary position-relative " data-bs-toggle="offcanvas" data-bs-target="#cart"><MdShoppingCart/></button>
-                  {!arrayProducts ? <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>: 
-                  <span className="position-absolute top-0 start-100 translate-middle translate-middle badge rounded-pill bg-danger">{arrayProducts.length}</span> 
+                  <button className="btn btn-primary position-relative " data-bs-toggle="offcanvas" data-bs-target="#cart"><MdShoppingCart size={20}/></button>
+                  { !products ? <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>: 
+                  <h5><span className="position-absolute top-0 start-100 translate-middle translate-middle badge rounded-pill bg-danger">{products.length}</span></h5>
                   }
                 </div>
               </div>
@@ -145,7 +148,7 @@ export default function Nav({ saveProducts }) {
 
       </nav>
       <div>
-        <CartSidebar saveProducts={saveProducts} id='cart' />
+        <CartSidebar id='cart' />
       </div>
     </div>
   )

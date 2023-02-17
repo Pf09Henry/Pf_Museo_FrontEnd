@@ -1,14 +1,14 @@
 import React from 'react';
-import { Layout} from 'antd';
+import { Layout } from 'antd';
 import './../Dashboard.css'
 import { Content } from 'antd/es/layout/layout';
-import Modificar from '../../FormCreacion/ModificarCategoria';
+import Eliminar from '../../FormCreacion/EliminarGuia';
 import MenuDesplegable from '../Menu-desplegable';
 
 
 
 
-export default function ModificarCategoria() {
+export default function EliminarGuia() {
 
 
   return (
@@ -19,7 +19,7 @@ export default function ModificarCategoria() {
       }}
     >
     <MenuDesplegable />
-    <Content><Modificar/></Content>
+    <Content><Eliminar/></Content>
     </Layout>
   );
 };

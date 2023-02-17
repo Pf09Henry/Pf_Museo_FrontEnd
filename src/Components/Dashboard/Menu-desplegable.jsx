@@ -143,11 +143,6 @@ export default function MenuDesplegable() {
                 <Link to="/dashoboard-categorias-agregar"></Link>
             </Menu.Item>
 
-            <Menu.Item icon={<SlTrash /> }>
-            
-                <span>Borrar</span>
-                <Link to="/dashoboard-categorias-borrar"></Link>
-            </Menu.Item>
 
         </SubMenu>  
 

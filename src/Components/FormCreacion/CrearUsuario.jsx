@@ -27,6 +27,7 @@ function CrearUsuario(){
     password:"",
     phone:"",
   })
+
   
   const onFinish = (values) => {
     console.log('Received values of form: ', values);

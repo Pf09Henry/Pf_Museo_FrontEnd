@@ -6,3 +6,14 @@
 .ant-form-item{
     text-align: start !important;
 }
+/* 
+.conteiner-form-elegir{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin:1rem
+} */
+
+.lista-eventos-small{
+    width:20rem
+}

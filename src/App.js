@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Home from './Components/Home/Home';
@@ -39,54 +39,16 @@ import Register from './Components/Register/Register'
 
 import LoginForm  from './Components/Login/LoginForm';
 import Dash from './Components/Dashboard/Dashboard/Dashboard-Inicio';
-
-
-// function useLocalStorage(itemName, initialValue){
-//   const localStorageItem = localStorage.getItem(itemName);
-//   let parsedItem;
-
-//   if(!localStorageItem){
-//     localStorage.setItem(itemName, JSON.stringify(initialValue));
-//     parsedItem = initialValue;      
-//   }else{
-//     parsedItem = JSON.parse(localStorageItem);
-//   }
-  
-//   const [item, setItem] = React.useState(parsedItem)
-
-//   const saveItem = (newItem) => {
-//     const stringifyItem = JSON.stringify(newItem);
-//     localStorage.setItem(itemName, stringifyItem);
-//     setItem(newItem)
-//   }
-//   return [
-//     item,
-//     saveItem
-//   ] 
-// }
+import { CartProvider } from './Context';
+import EliminarEvento from './Components/Dashboard/Eventos/Eliminar';
+import EliminarGuia from './Components/Dashboard/Guias/Eliminar';
+import EliminarUsuario from './Components/Dashboard/Usuarios/Eliminar';
+//import { CartContext } from './Context';
 
 function App() {
+  //const {products, saveProducts} = React.useContext(CartContext)
   const { isLoading } = useAuth0();
 
-  const localStorageItem = localStorage.getItem('CART_V1');
-  let parsedItem;
-
-  if(!localStorageItem ){
-    localStorage.setItem('CART_V1', JSON.stringify([]));
-    parsedItem = [];      
-  }else{
-    parsedItem = JSON.parse(localStorageItem);
-  }
-
-  const [products, setProducts] = useState(parsedItem); //'CART_V1', []
-
-
-  const saveProducts = (newProducts) =>  {
-    const stringifyProducts = JSON.stringify(newProducts);
-    localStorage.setItem('CART_V1', stringifyProducts );
-    setProducts(newProducts);
-  }
-  
   if (isLoading) {
     return (
       <div className="page-layout">
@@ -97,7 +59,8 @@ function App() {
 
   return (
     <div className="App">
-    <Nav saveProducts={saveProducts} />
+    <CartProvider>
+    <Nav />
       <Routes>         
         <Route path='/' element={<Home />} />
         {/* <Route path='/login' element={<Login />} /> */}
@@ -118,13 +81,11 @@ function App() {
         <Route path='/general' element={<InfoGeneral/>} />
         <Route path='/eventos' element={<EventoList/>} />
 
-        <Route path='/checkout' element={<Checkout saveProducts={saveProducts}/>} />
+        <Route path='/checkout' element={<Checkout />} />
         <Route path='/checkoutInfo' element={<InformationCheckout/>} />
         <Route path='/payment' element={<Payment/>}/>
 
-        <Route path='/event/:id' element={<EventDetails
-                                  products={products}
-                                  saveProducts={saveProducts}/>} />
+        <Route path='/event/:id' element={<EventDetails/>} />
         <Route path='*' element={<Error404/>} />
   
         <Route path='/dashboard' element={<Dash/>} />
@@ -136,10 +97,12 @@ function App() {
         <Route path='/dashoboard-guias-modificar' element={<ModificarGuia />} />
         <Route path='/dashoboard-comentarios-modificar' element={<Modificar />} />
         <Route path='/dashoboard-categorias-agregar' element={<AgregarCategoria />} />
-    
+        <Route path='/dashoboard-eventos-borrar' element={<EliminarEvento />} />
+        <Route path='/dashoboard-guias-borrar' element={<EliminarGuia />} />
+        <Route path='/dashoboard-user-borrar' element={<EliminarUsuario />} />
       </Routes>
       <Footer />
-
+      </CartProvider>
     </div>
   );
 }
