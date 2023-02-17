@@ -11,6 +11,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { postUser, getUsers } from '../../Actions/AppActions/appActions';
+import Swal from 'sweetalert2'
 
   const { Option } = Select;
   
@@ -83,6 +84,22 @@ export default function Register () {
       navigate('/');
     };
 
+    useEffect(()=>{
+      dispatch(getUsers())
+    },[])
+
+    for(let i =0; i < usuario.length; i++){
+      if(usuario[i].email === data.email){
+        navigate("/")
+        return Swal.fire({
+          title: 'Upss!',
+          text: 'Tu cuenta ya se encuentra registrada',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        })
+      }
+    }
+
     // useEffect(()=>{
     //   dispatch(getUsers())
     // })
@@ -97,6 +114,8 @@ export default function Register () {
     //     }
     //   }
     // },[dispatch, ])
+
+
     
   
     return (

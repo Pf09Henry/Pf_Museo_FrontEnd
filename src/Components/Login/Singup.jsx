@@ -8,13 +8,15 @@ export default function Singup(){
     const handleSingup = async () => {
       await loginWithRedirect({
         appState: {
-          returnTo: "/loginform",
+          returnTo: "/register",
         },
         authorizationParams: {
           screen_hint: "signup",
         },
       });
     };
+
+    console.log(loginWithRedirect)
   
     return (
       <button className="button__login btn btn-success btn-secundario" onClick={handleSingup}>
