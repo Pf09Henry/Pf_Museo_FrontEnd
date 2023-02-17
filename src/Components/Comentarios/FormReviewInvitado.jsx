@@ -43,7 +43,7 @@ export default function FormReviewInvitado(){
 
 
             <Form.Item
-           
+            
             name="score"
             >
             <Rate disabled={componentDisabled} defaultValue="3" />
@@ -58,6 +58,7 @@ export default function FormReviewInvitado(){
                 height: 120,
                 marginBottom: 24,
                 }}
+            
                 placeholder="Dejanos tu comenatrio"
             />
             </Form.Item>
