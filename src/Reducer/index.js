@@ -28,7 +28,8 @@ const initialState = {
     guias: [],
     users: [],
     cart:[],
-    guidesDetail:[]
+    guidesDetail:[],
+    review:[]
 }
 
 
@@ -81,6 +82,12 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 eventos: action.payload
+            }
+
+            case 'POST_REVIEW':
+            return {
+                ...state,
+                review: action.payload
             }
 
         case 'POST_CATEGORY':
