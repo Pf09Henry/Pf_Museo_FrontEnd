@@ -35,8 +35,9 @@ import AgregarGuia from './Components/Dashboard/Guias/Agregar';
 import ModificarGuia from './Components/Dashboard/Guias/Modificar';
 import Modificar from './Components/Dashboard/Comentarios/Modificar';
 import AgregarCategoria from './Components/Dashboard/Categorias/Agregar';
+import Register from './Components/Register/Register'
 
-import { LoginForm } from './Components/Login/LoginForm';
+import LoginForm  from './Components/Login/LoginForm';
 import Dash from './Components/Dashboard/Dashboard/Dashboard-Inicio';
 import { CartProvider } from './Context';
 import EliminarEvento from './Components/Dashboard/Eventos/Eliminar';
@@ -73,6 +74,7 @@ function App() {
         <Route path='/culture' element={<Culture />} />
         <Route path='/holidays' element={<Holidays />} />
         <Route path='/night' element={<Night />} />
+        <Route path='/register' element={<Register/>} />
 
         <Route path='/history' element={<Historia/>} />
         <Route path='/create-activitie' element={<Crear/>} />

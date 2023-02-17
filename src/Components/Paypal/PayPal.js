@@ -1,13 +1,13 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect } from 'react'
 
 
 export default function Paypal() {
     
     const paypal = useRef();
-    const [info, setInfo] = useState({
-        description: '',
-        amount: 0,
-    })
+    // const [info, setInfo] = useState({
+    //     description: '',
+    //     amount: 0,
+    // })
     
     useEffect(() => {
         window.paypal.Buttons({
