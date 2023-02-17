@@ -64,6 +64,16 @@
     border-color: white !important;
 }
 
+.comentarios-opiniones{
+    display: flex;
+   
+}
+
+.comentarios-todos{
+    border: 1px solid rgba(196, 196, 196, 0.482);
+    border-radius: 10px;
+}
+
 
 @media (max-width: 1000px) {
    .contenedor-detalle-evento{

@@ -126,12 +126,23 @@ export default function FormReview({user}){
         
             }}
             name="score"
+            rules={[
+                {
+                  required: true,
+                  message: 'Por favor dejá un puntaje',
+                },
+              ]}
             >
-            <Rate allowHalf defaultValue={form.score} onChange={(value)=>inputStar(value)}/>
+            <Rate  defaultValue={form.score} onChange={(value)=>inputStar(value)}/>
             
             </Form.Item>
 
-            <Form.Item name="comentario">
+            <Form.Item name="comentario"     rules={[
+                    {
+                      required: true,
+                      message: 'Por favor dejá un comentario',
+                    },
+                  ]}>
             <TextArea
                 showCount
                 maxLength={600}
@@ -140,6 +151,7 @@ export default function FormReview({user}){
                 height: 120,
                 marginBottom: 24,
                 }}
+            
                 placeholder="Dejanos tu comenatrio"
             />
             </Form.Item>

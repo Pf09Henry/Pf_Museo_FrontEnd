@@ -1,17 +1,18 @@
 import React from "react";
 import {  useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import { useDispatch} from "react-redux";
 import {  useParams } from "react-router-dom";
-import { getEventsById, /*addToCart*/ } from "../../Actions/AppActions/appActions";
+import { getEventsById,  /*addToCart*/ } from "../../Actions/AppActions/appActions";
 import './../EventDetails/EventDetail.css'
-import { Tag, Button } from 'antd';
+import { Tag, Button, Rate } from 'antd';
 /* import Stars from "../Comentarios/Stars";
 import CommentForm from "../Comentarios/CommentForm"; */
 import { useAuth0 } from "@auth0/auth0-react";
 import { CartContext } from "../../Context";
 import FormReview from "../Comentarios/FormReview";
 import FormReviewInvitado from "../Comentarios/FormReviewInvitado";
+import Opiniones from "../Comentarios/ComentariosyOpiniones";
 
 export default function EventDetails() {
     const {products, saveProducts} = React.useContext(CartContext)
@@ -22,11 +23,24 @@ export default function EventDetails() {
     const dispatch = useDispatch();
     let { id } = useParams();
 
+    function raiting(){
+        let ratings = []
+        const mapRaitings = review.map((num) => {
+            if(num.eventId === id){
+                ratings.push(num.score)
+            }
+           return ratings.length
+        });
+        const average = Math.round(ratings.reduce((sum, rating) => sum + rating, 0) / ratings.length);
+        return average
+    }
 
     useEffect (()=>{
         dispatch(getEventsById(id));
         //eslint-disable-next-line 
     },[dispatch]) 
+
+    const [componentDisabled, setComponentDisabled] = useState(true);
     
     const handleAddToCart = () =>{
         const productos = products.concat(detalles)
@@ -56,6 +70,14 @@ export default function EventDetails() {
                 {isAuthenticated && <FormReview user={user} />}
                 {!isAuthenticated && <FormReviewInvitado/>}
                 </div>
+
+
+                <div >
+                <h5 className="comentarios-opiniones">Comentarios y opiniones</h5>
+                <Rate defaultValue={raiting()} disabled={componentDisabled}/>
+                <Opiniones />
+                </div>
+                
             {/*     <Stars />
                 <br></br>
                 <CommentForm /> */}
@@ -76,42 +98,7 @@ export default function EventDetails() {
             </div>
 
             </div>
-
-
-        {/*     <div className="titulo-img">
-                <h1 class="card-title">{detalles[0].name}</h1>
-                <img className="img-detalle-evento" src={detalles[0].img} alt="banner_paleo" />
-
-            </div>
-            <br />
-
-
-            <div class="card-body-eventodetail">
-
-                <div>
-                <h3 class="card-text">Categoria: {detalles[0].category[0].name} </h3>
-                </div>
-                <div>
-                <p class="card-text">Información: {detalles[0].information} </p>
-                </div>
-                <div>
-                <p class="card-text">Precio: $ {detalles[0].price} </p>
-                </div>
-                <div>
-                <p class="card-text">Fecha: {detalles[0].startDay} - {detalles[0].endDay} </p>
-                </div>
-                <div>
-
-
-
-                <div>
-                <h3 class="card-text">Guia a cargo : {detalles[0].guide[0].name}</h3>
-                </div>
-                <div>
-                <img className="img-guide" src={detalles[0].guide[0].image} alt="banner_paleo" />
-                </div>
-                </div>
-            </div> */}
+            
 
         </div >
     )

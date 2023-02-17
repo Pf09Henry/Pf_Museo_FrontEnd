@@ -109,6 +109,18 @@ export function getUsers() {
     }
 }
 
+export function getReview() {
+    return async function (dispatch) {
+
+      let json = await axios.get("https://pfmuseobackend.up.railway.app/reviews");
+      dispatch({
+        type: 'GET_REVIEWS',
+        payload: json.data
+      })
+
+    }
+}
+
 export function getUserName(name) {
     return async function (dispatch) {
         if (name) {

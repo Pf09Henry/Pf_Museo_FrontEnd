@@ -29,7 +29,24 @@ const initialState = {
     users: [],
     cart:[],
     guidesDetail:[],
-    review:[]
+    review:[{
+        "id": "952b105a-cdd0-482b-a152-7ce3aff0f8b5",
+        "commentary": "Muy buen evento!",
+        "score": 5,
+        "status": true,
+        "createdAt": "2023-02-17T16:52:14.103Z",
+        "updatedAt": "2023-02-17T16:52:14.103Z",
+        "userId": "bbfecf2d-cc47-476e-a010-ea056e65ecec",
+        "eventId": "10350ea1-3161-48fc-a56c-deaf713d3743",
+        "user": {
+          "name": "Erika Ladner",
+          "image": "https://res.cloudinary.com/dug6prcyv/image/upload/v1676640676/User/sh2soljj9tmajudsilg0.jpg"
+        },
+        "event": {
+          "name": "Plantemos árboles entre todos",
+          "img": "https://res.cloudinary.com/dug6prcyv/image/upload/v1676411215/User/aq3wyulsmoximnuobgkj.jpg"
+        }
+}]
 }
 
 
@@ -68,6 +85,14 @@ function rootReducer(state = initialState, action) {
                 guias: action.payload
 
             }
+
+            case 'GET_REVIEWS':
+                return {
+                    ...state,
+                    review: action.payload
+    
+                }
+    
 
         case 'FILTER_EVENT_BY_CATEGORY':
             const alleventos = state.alleventos;
