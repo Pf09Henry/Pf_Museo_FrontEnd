@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import logo from '../../Imagenes/logo.png'
 import './Nav.css'
 import Login from "../Login/Login";
@@ -11,6 +11,8 @@ import CartSidebar from "../CartSidebar/CartSidebar";
 import { CartContext } from "../../Context";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from '../../Actions/AppActions/appActions';
+import { useNavigate } from "react-router";
+
 
 
 export default function Nav() {
@@ -18,24 +20,38 @@ export default function Nav() {
   //const arrayProducts = JSON.parse(localStorage.getItem('CART_V1')); 
   const usuario = useSelector((state) => state.users);
   const dispatch = useDispatch()
+  const { isAuthenticated, user } = useAuth0();
+  const navigate = useNavigate()
+  //const[existeMailDb, setExisteMailDb]= useState(false) !!!!!Probar luego con un estado local¡¡¡¡¡¡.
 
+ 
+  
   useEffect(()=>{
     dispatch(getUsers())
-  },[])
+  },[dispatch,usuario])
 
-  console.log(usuario)
-
-
-  const { isAuthenticated, user } = useAuth0();
-  let existeMailDb = false;
-  if(isAuthenticated){
+if(isAuthenticated){
+  var existeMailDb = false
+  if(existeMailDb === false){
     for(let i = 0; i<usuario.length; i++){
       if(usuario[i].email === user.email){
-          existeMailDb = true
-          console.log("asdasd")
+        existeMailDb= true;     
       }
     }
   }
+}
+ 
+  // useEffect(()=>{
+  //   if(isAuthenticated){
+  //     for(let i = 0; i<usuario.length; i++){
+  //       if(usuario[i].email === user.email){
+  //         console.log("Ahora es", existeMailDb)
+  //            setExisteMailDb(true);
+  //       }
+  //     }
+  //     console.log(usuario.length)
+  //   }
+  // },[existeMailDb])
 
   return (
     <div>
@@ -119,11 +135,11 @@ export default function Nav() {
 
                 </ul>
               </li> */}
-              {isAuthenticated && existeMailDb &&(
+            {existeMailDb === false ?(
                   <>
-                      <Profile />
+                  
                   </>
-                )}
+                ): (<><Profile /></>)}
 
               {/* <a href='/create-activitie'><button type="button" className="btn btn-outline-success btn-secundario">Crear Evento</button></a> */}
               {/* <a href="/login"><button type="button" className="btn btn-outline-success btn-secundario">Iniciar Sesión</button></a> */}

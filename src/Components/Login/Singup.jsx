@@ -16,7 +16,7 @@ export default function Singup(){
       });
     };
 
-    console.log(loginWithRedirect)
+    // console.log(loginWithRedirect)
   
     return (
       <button className="button__login btn btn-success btn-secundario" onClick={handleSingup}>
