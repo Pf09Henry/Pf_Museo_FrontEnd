@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Home from './Components/Home/Home';
@@ -25,8 +25,8 @@ import EventDetails from './Components/EventDetails/EventDetails';
 import Error404 from './Components/Error404/Error404';
 import { useAuth0 } from "@auth0/auth0-react";
 //import { PageLoader } from "./components/page-loader";
-import  {AuthenticationGuard}  from "./Auth0/authentication";
-import {Profile} from './Components/Login/Profile';
+import { AuthenticationGuard } from "./Auth0/authentication";
+import { Profile } from './Components/Login/Profile';
 import AgregarEvento from './Components/Dashboard/Eventos/Agregar';
 import ModificarEvento from './Components/Dashboard/Eventos/Modificar'
 import AgregarUsuario from './Components/Dashboard/Usuarios/Agregar';
@@ -37,71 +37,97 @@ import Modificar from './Components/Dashboard/Comentarios/Modificar';
 import AgregarCategoria from './Components/Dashboard/Categorias/Agregar';
 import Register from './Components/Register/Register'
 
-import LoginForm  from './Components/Login/LoginForm';
+
 import Dash from './Components/Dashboard/Dashboard/Dashboard-Inicio';
 import { CartProvider } from './Context';
 import EliminarEvento from './Components/Dashboard/Eventos/Eliminar';
 import EliminarGuia from './Components/Dashboard/Guias/Eliminar';
 import EliminarUsuario from './Components/Dashboard/Usuarios/Eliminar';
 //import { CartContext } from './Context';
+// import { useDispatch, useSelector } from "react-redux";
+// import { getUsers } from '../src/Actions/AppActions/appActions';
+// import { useNavigate } from "react-router";
 
 function App() {
   //const {products, saveProducts} = React.useContext(CartContext)
-  const { isLoading } = useAuth0();
+  const { isLoading, isAuthenticated, user } = useAuth0();
+  // const dispatch = useDispatch();
+  // const navigate = useNavigate();
+  // const usuario = useSelector((state) => state.users)
+
+  // useEffect(() => {
+  //   dispatch(getUsers())
+  // }, [dispatch, usuario])
 
   if (isLoading) {
     return (
       <div className="page-layout">
-        ...{ isLoading}
+        ...{isLoading}
       </div>
     );
   }
 
+  // if (isAuthenticated) {
+  //   var existeMailDb = false
+  //   if (existeMailDb === false) {
+  //     for (let i = 0; i < usuario.length; i++) {
+  //       if (usuario[i].email === user.email) {
+  //         existeMailDb = true;
+  //       }
+  //     }
+  //     if(existeMailDb === false){
+  //       navigate('/register')
+  //     }else{
+  //       navigate('/')
+  //     }
+  //   }
+  // }
+
   return (
     <div className="App">
-    <CartProvider>
-    <Nav />
-      <Routes>         
-        <Route path='/' element={<Home />} />
-        {/* <Route path='/login' element={<Login />} /> */}
-        <Route path='/profile' element={<AuthenticationGuard component= {Profile} />} />
-        <Route path='/loginform' element=  {<LoginForm/>} />
-        <Route path='/exhibits' element={<Exhibits />} />
-        <Route path='/details' element={<Details />} />
-        <Route path='/areaPaleo' element={<AreaPaleo />} />
-        <Route path='/areaBio' element={<AreaBio />} />
-        <Route path='/areaEducation' element={<AreaEducation />} />
-        <Route path='/culture' element={<Culture />} />
-        <Route path='/holidays' element={<Holidays />} />
-        <Route path='/night' element={<Night />} />
-        <Route path='/register' element={<Register/>} />
+      <CartProvider>
+        <Nav />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/register' element={<Register />} />        
+          {/* <Route path='/login' element={<Login />} /> */}
+          <Route path='/profile' element={<AuthenticationGuard component={Profile} />} />
+          <Route path='/exhibits' element={<Exhibits />} />
+          <Route path='/details' element={<Details />} />
+          <Route path='/areaPaleo' element={<AreaPaleo />} />
+          <Route path='/areaBio' element={<AreaBio />} />
+          <Route path='/areaEducation' element={<AreaEducation />} />
+          <Route path='/culture' element={<Culture />} />
+          <Route path='/holidays' element={<Holidays />} />
+          <Route path='/night' element={<Night />} />
+          {/* <Route path='/register' element={<Register />} /> */}
 
-        <Route path='/history' element={<Historia/>} />
-        <Route path='/create-activitie' element={<Crear/>} />
-        <Route path='/general' element={<InfoGeneral/>} />
-        <Route path='/eventos' element={<EventoList/>} />
+          <Route path='/history' element={<Historia />} />
+          <Route path='/create-activitie' element={<Crear />} />
+          <Route path='/general' element={<InfoGeneral />} />
+          <Route path='/eventos' element={<EventoList />} />
 
-        <Route path='/checkout' element={<Checkout />} />
-        <Route path='/checkoutInfo' element={<InformationCheckout/>} />
-        <Route path='/payment' element={<Payment/>}/>
+          <Route path='/checkout' element={<Checkout />} />
+          <Route path='/checkoutInfo' element={<InformationCheckout />} />
+          <Route path='/payment' element={<Payment />} />
 
-        <Route path='/event/:id' element={<EventDetails/>} />
-        <Route path='*' element={<Error404/>} />
-  
-        <Route path='/dashboard' element={<Dash/>} />
-        <Route path='/dashoboard-eventos-agregar' element={<AgregarEvento/>} />
-        <Route path='/dashoboard-eventos-modificar' element={<ModificarEvento/>} />
-        <Route path='/dashoboard-user-agregar' element={<AgregarUsuario/>} />
-        <Route path='/dashoboard-user-modificar' element={<ModificarUsuario/>} />
-        <Route path='/dashoboard-guias-agregar' element={<AgregarGuia />} />
-        <Route path='/dashoboard-guias-modificar' element={<ModificarGuia />} />
-        <Route path='/dashoboard-comentarios-modificar' element={<Modificar />} />
-        <Route path='/dashoboard-categorias-agregar' element={<AgregarCategoria />} />
-        <Route path='/dashoboard-eventos-borrar' element={<EliminarEvento />} />
-        <Route path='/dashoboard-guias-borrar' element={<EliminarGuia />} />
-        <Route path='/dashoboard-user-borrar' element={<EliminarUsuario />} />
-      </Routes>
-      <Footer />
+          <Route path='/event/:id' element={<EventDetails />} />
+          <Route path='*' element={<Error404 />} />
+
+          <Route path='/dashboard' element={<Dash />} />
+          <Route path='/dashoboard-eventos-agregar' element={<AgregarEvento />} />
+          <Route path='/dashoboard-eventos-modificar' element={<ModificarEvento />} />
+          <Route path='/dashoboard-user-agregar' element={<AgregarUsuario />} />
+          <Route path='/dashoboard-user-modificar' element={<ModificarUsuario />} />
+          <Route path='/dashoboard-guias-agregar' element={<AgregarGuia />} />
+          <Route path='/dashoboard-guias-modificar' element={<ModificarGuia />} />
+          <Route path='/dashoboard-comentarios-modificar' element={<Modificar />} />
+          <Route path='/dashoboard-categorias-agregar' element={<AgregarCategoria />} />
+          <Route path='/dashoboard-eventos-borrar' element={<EliminarEvento />} />
+          <Route path='/dashoboard-guias-borrar' element={<EliminarGuia />} />
+          <Route path='/dashoboard-user-borrar' element={<EliminarUsuario />} />
+        </Routes>
+        <Footer />
       </CartProvider>
     </div>
   );
