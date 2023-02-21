@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, {  useEffect } from "react";
 import logo from '../../Imagenes/logo.png'
 import './Nav.css'
 import Login from "../Login/Login";
@@ -11,7 +11,7 @@ import CartSidebar from "../CartSidebar/CartSidebar";
 import { CartContext } from "../../Context";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from '../../Actions/AppActions/appActions';
-import { useNavigate } from "react-router";
+// import { useNavigate } from "react-router";
 
 
 
@@ -21,7 +21,7 @@ export default function Nav() {
   const usuario = useSelector((state) => state.users);
   const dispatch = useDispatch()
   const { isAuthenticated, user } = useAuth0();
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   //const[existeMailDb, setExisteMailDb]= useState(false) !!!!!Probar luego con un estado local¡¡¡¡¡¡.
 
  

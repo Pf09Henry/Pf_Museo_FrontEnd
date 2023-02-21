@@ -4,7 +4,6 @@ import {
     Checkbox,
     Form,
     Input,
-    Select,
   } from 'antd';
 import { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -13,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { postUser, getUsers } from '../../Actions/AppActions/appActions';
 import Swal from 'sweetalert2'
 
-  const { Option } = Select;
+  // const { Option } = Select;
   
   const formItemLayout = {
     labelCol: {
@@ -86,6 +85,7 @@ export default function Register () {
 
     useEffect(()=>{
       dispatch(getUsers())
+      // eslint-disable-next-line 
     },[])
 
     for(let i =0; i < usuario.length; i++){

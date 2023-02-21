@@ -46,20 +46,20 @@ import EliminarUsuario from './Components/Dashboard/Usuarios/Eliminar';
 
 
 //import { CartContext } from './Context';
-// import { useDispatch, useSelector } from "react-redux";
-// import { getUsers } from '../src/Actions/AppActions/appActions';
+import { useDispatch, useSelector } from "react-redux";
+import { getUsers } from '../src/Actions/AppActions/appActions';
 // import { useNavigate } from "react-router";
 
 function App() {
   //const {products, saveProducts} = React.useContext(CartContext)
   const { isLoading, isAuthenticated, user } = useAuth0();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const navigate = useNavigate();
-  // const usuario = useSelector((state) => state.users)
+  const usuario = useSelector((state) => state.users)
 
-  // useEffect(() => {
-  //   dispatch(getUsers())
-  // }, [dispatch, usuario])
+  useEffect(() => {
+    dispatch(getUsers())
+  }, [dispatch, usuario])
 
   if (isLoading) {
     return (
@@ -69,70 +69,79 @@ function App() {
     );
   }
 
-  // if (isAuthenticated) {
-  //   var existeMailDb = false
-  //   if (existeMailDb === false) {
-  //     for (let i = 0; i < usuario.length; i++) {
-  //       if (usuario[i].email === user.email) {
-  //         existeMailDb = true;
-  //       }
-  //     }
-  //     if(existeMailDb === false){
-  //       navigate('/register')
-  //     }else{
-  //       navigate('/')
-  //     }
-  //   }
+  if (isAuthenticated) {
+    var existeMailDb = false
+    if (existeMailDb === false) {
+      for (let i = 0; i < usuario.length; i++) {
+        if (usuario[i].email === user.email) {
+          existeMailDb = true;
+        }
+      }     
+  }
+}
   // }
 
   return (
     <div className="App">
-      <CartProvider>
-        <Nav />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/register' element={<Register />} />
-          {/* <Route path='/login' element={<Login />} /> */}
-          <Route path='/profile' element={<AuthenticationGuard component={Profile} />} />
-          <Route path='/exhibits' element={<Exhibits />} />
-          <Route path='/details' element={<Details />} />
-          <Route path='/areaPaleo' element={<AreaPaleo />} />
-          <Route path='/areaBio' element={<AreaBio />} />
-          <Route path='/areaEducation' element={<AreaEducation />} />
-          <Route path='/culture' element={<Culture />} />
-          <Route path='/holidays' element={<Holidays />} />
-          <Route path='/night' element={<Night />} />
-          {/* <Route path='/register' element={<Register />} /> */}
-
-          <Route path='/history' element={<Historia />} />
-          <Route path='/create-activitie' element={<Crear />} />
-          <Route path='/general' element={<InfoGeneral />} />
-          <Route path='/eventos' element={<EventoList />} />
-
-          <Route path='/checkout' element={<Checkout />} />
-          <Route path='/checkoutInfo' element={<InformationCheckout />} />
-          <Route path='/payment' element={<Payment />} />
-
-          <Route path='/event/:id' element={<EventDetails />} />
-          <Route path='*' element={<Error404 />} />
-
-          <Route path='/dashboard' element={<Dash />} />
-          <Route path='/dashoboard-eventos-agregar' element={<AgregarEvento />} />
-          <Route path='/dashoboard-eventos-modificar' element={<ModificarEvento />} />
-          <Route path='/dashoboard-user-agregar' element={<AgregarUsuario />} />
-          <Route path='/dashoboard-user-modificar' element={<ModificarUsuario />} />
-          <Route path='/dashoboard-guias-agregar' element={<AgregarGuia />} />
-          <Route path='/dashoboard-guias-modificar' element={<ModificarGuia />} />
-          <Route path='/dashoboard-comentarios-modificar' element={<Modificar />} />
-          <Route path='/dashoboard-categorias-agregar' element={<AgregarCategoria />} />
-          <Route path='/dashoboard-eventos-borrar' element={<EliminarEvento />} />
-          <Route path='/dashoboard-guias-borrar' element={<EliminarGuia />} />
-          <Route path='/dashoboard-user-borrar' element={<EliminarUsuario />} />
+      {(isAuthenticated && existeMailDb) || (!isAuthenticated && !existeMailDb) ? (
+        <CartProvider>
+          <Nav />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/register' element={<Register />} />
+            {/* <Route path='/login' element={<Login />} /> */}
+            <Route path='/profile' element={<AuthenticationGuard component={Profile} />} />
+            <Route path='/exhibits' element={<Exhibits />} />
+            <Route path='/details' element={<Details />} />
+            <Route path='/areaPaleo' element={<AreaPaleo />} />
+            <Route path='/areaBio' element={<AreaBio />} />
+            <Route path='/areaEducation' element={<AreaEducation />} />
+            <Route path='/culture' element={<Culture />} />
+            <Route path='/holidays' element={<Holidays />} />
+            <Route path='/night' element={<Night />} />
+            {/* <Route path='/register' element={<Register />} /> */}
 
 
-        </Routes>
-        <Footer />
-      </CartProvider>
+            <Route path='/history' element={<Historia />} />
+            <Route path='/create-activitie' element={<Crear />} />
+            <Route path='/general' element={<InfoGeneral />} />
+            <Route path='/eventos' element={<EventoList />} />
+
+            <Route path='/checkout' element={<Checkout />} />
+            <Route path='/checkoutInfo' element={<InformationCheckout />} />
+            <Route path='/payment' element={<Payment />} />
+
+            <Route path='/event/:id' element={<EventDetails />} />
+            <Route path='*' element={<Error404 />} />
+
+
+            <Route path='/dashboard' element={<Dash />} />
+            <Route path='/dashoboard-eventos-agregar' element={<AgregarEvento />} />
+            <Route path='/dashoboard-eventos-modificar' element={<ModificarEvento />} />
+            <Route path='/dashoboard-user-agregar' element={<AgregarUsuario />} />
+            <Route path='/dashoboard-user-modificar' element={<ModificarUsuario />} />
+            <Route path='/dashoboard-guias-agregar' element={<AgregarGuia />} />
+            <Route path='/dashoboard-guias-modificar' element={<ModificarGuia />} />
+            <Route path='/dashoboard-comentarios-modificar' element={<Modificar />} />
+            <Route path='/dashoboard-categorias-agregar' element={<AgregarCategoria />} />
+            <Route path='/dashoboard-eventos-borrar' element={<EliminarEvento />} />
+            <Route path='/dashoboard-guias-borrar' element={<EliminarGuia />} />
+            <Route path='/dashoboard-user-borrar' element={<EliminarUsuario />} />
+          </Routes>
+          <Footer />
+        </CartProvider>
+      ) : (
+        isAuthenticated && !existeMailDb && (
+          <CartProvider>
+            <Nav />
+            <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/register' element={<Register />} />
+            </Routes>
+            <Footer />
+          </CartProvider>
+        )
+      )}
     </div>
   );
 }
