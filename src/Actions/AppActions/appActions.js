@@ -352,6 +352,19 @@ export function removeToCart(id) {
     }
 }
 
+//Envio de Mails
+
+export function postMail(payload) {
+    return async function (dispatch) {
+        const json = await axios.post('https://pfmuseobackend.up.railway.app/send_email', payload)
+        console.log(json)
+        return dispatch({
+            type: 'POST_EMAIL',
+            payload: json
+        })
+    }
+}
+
 
 
 

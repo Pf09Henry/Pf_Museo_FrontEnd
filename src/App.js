@@ -65,7 +65,7 @@ function App() {
      (async () => {
     await dispatch(getUsers());
   })();
-  }, [dispatch])
+  }, [])
 
   if (isLoading) {
     return (
@@ -85,7 +85,7 @@ function App() {
       }
     }
   }
-  // }
+
 
   return (
     <div className="App">
