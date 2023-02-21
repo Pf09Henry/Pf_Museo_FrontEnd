@@ -1,0 +1,14 @@
+.list-tickets{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+ 
+}
+
+.ticket{
+    margin:1rem
+}
+
+.estado-ticket{
+    margin:1rem
+}

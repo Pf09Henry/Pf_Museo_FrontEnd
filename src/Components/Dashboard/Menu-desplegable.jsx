@@ -10,7 +10,7 @@ import SubMenu from 'antd/es/menu/SubMenu';
 import { Content } from 'antd/es/layout/layout';
 import Dashboard from './Dashboard';
 import { FiLogOut} from "react-icons/fi";
-
+import {FaTicketAlt} from 'react-icons/fa'
 import Login from "../Login/Login";
 import Logout from "../Login/Logout";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -145,6 +145,17 @@ export default function MenuDesplegable() {
 
 
         </SubMenu>  
+
+        <SubMenu icon={< FaTicketAlt />} title="Tickets" >
+
+            <Menu.Item icon={<SlPencil /> }>
+
+                <span>Modificar</span>
+                <Link to="/dashoboard-ticket-modificar"></Link>
+            </Menu.Item>
+
+
+            </SubMenu>  
 
         <Menu.Item icon={  <FiLogOut />}>
             <span><Logout /></span>

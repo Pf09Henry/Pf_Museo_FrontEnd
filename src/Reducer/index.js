@@ -30,24 +30,9 @@ const initialState = {
     cart:[],
     mail:[],
     guidesDetail:[],
-    review:[{
-        "id": "952b105a-cdd0-482b-a152-7ce3aff0f8b5",
-        "commentary": "Muy buen evento!",
-        "score": 5,
-        "status": true,
-        "createdAt": "2023-02-17T16:52:14.103Z",
-        "updatedAt": "2023-02-17T16:52:14.103Z",
-        "userId": "bbfecf2d-cc47-476e-a010-ea056e65ecec",
-        "eventId": "10350ea1-3161-48fc-a56c-deaf713d3743",
-        "user": {
-          "name": "Erika Ladner",
-          "image": "https://res.cloudinary.com/dug6prcyv/image/upload/v1676640676/User/sh2soljj9tmajudsilg0.jpg"
-        },
-        "event": {
-          "name": "Plantemos árboles entre todos",
-          "img": "https://res.cloudinary.com/dug6prcyv/image/upload/v1676411215/User/aq3wyulsmoximnuobgkj.jpg"
-        }
-}]
+    review:[],
+    tickets:[],
+    ticketsDetail:[]
 }
 
 
@@ -66,6 +51,13 @@ function rootReducer(state = initialState, action) {
                 categorias: action.payload
 
             }
+        
+            case 'GET_TICKETS':
+                return {
+                    ...state,
+                    tickets: action.payload
+    
+                }
 
 
         case 'GET_EVENT_DETAILS':
@@ -73,6 +65,12 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 details: action.payload
             }
+
+            case 'GET_TICKET_DETAILS':
+                return {
+                    ...state,
+                    ticketsDetail: action.payload
+                }
 
             case 'GET_GUIDES_DETAILS':
                 return {
