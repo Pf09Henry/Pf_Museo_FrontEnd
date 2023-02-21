@@ -50,7 +50,9 @@ function ModificarGuia(){
   },[dispatch, id])
 
   useEffect (()=>{
-    dispatch(getGuides());
+   (async () => {
+      await dispatch(getGuides());
+    })();
   },[dispatch]) 
 
   useEffect(() => {

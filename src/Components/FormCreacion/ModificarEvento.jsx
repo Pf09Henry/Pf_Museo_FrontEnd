@@ -68,7 +68,9 @@ function Modificar(){
   },[dispatch, id])
 
   useEffect (()=>{
-    dispatch(getEvents());
+    (async () => {
+      await dispatch(getEvents());
+    })();
   },[dispatch]) 
 
   useEffect(() => {

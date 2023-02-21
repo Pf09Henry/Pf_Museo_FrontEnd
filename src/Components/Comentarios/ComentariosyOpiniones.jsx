@@ -21,29 +21,25 @@ export default function Opiniones(){
     const [list, setList] = useState([]);
     const [componentDisabled, setComponentDisabled] = useState(true);
 
-
-    useEffect (()=>{
-        dispatch(getReview());
-        setInitLoading(false);
-        setData(review);
-        setListId(review);
-        
-          //eslint-disable-next-line 
-    },[dispatch,id,review]) 
-
-
+  
     function listbyid(id){
-        const listEvento = listId.filter(e=> e.eventId === id)
-       
-        setList(listEvento)
-    }
+      const listEvento = listId.filter(e=> e.eventId === id)
+     
+      setList(listEvento)
+  }
+  useEffect(()=>{
+    (async () => {
+      await dispatch(getReview());
+    })();
+  },[dispatch])
 
-
-    useEffect (()=>{
-        dispatch(getReview());
-        listbyid(id)
-        //eslint-disable-next-line 
-    },[id,dispatch,review]) 
+    useEffect(() => {
+      setInitLoading(false);
+      setData(review);
+      setListId(review);
+      listbyid(id)
+      
+    }, [review,id]);
 
 
     const onLoadMore = () => {
