@@ -1,0 +1,74 @@
+.col-md-8{
+    background-color: rgb(243, 243, 243);
+    display: inline-block;
+ }
+
+ .col-md-4{
+   background-color: rgb(243, 243, 243);
+}
+
+.mb-3{
+   width: 90%;
+   height: 90%;
+margin: auto;   }
+
+
+.image-wrapper {
+   position: relative;
+ }
+ 
+ .image-wrapper img {
+   float: left;
+   margin-right: 20px;
+ }
+ 
+ .class-name {
+   position: absolute;
+   top: 0;
+   left: 0;
+ }
+
+ .tarjeta{
+    height: 50%;
+    width: 50%;
+    border-radius: 3%;
+ }
+
+ .membership {
+   position:absolute;
+   top: 1.8em;
+   left: 3.2%;
+   margin-top: 5%;
+   margin: 0;
+   padding: 1%;
+   background-color: none;
+   font-weight: bold;
+   font-size: 100%;
+   z-index: 1;
+  color:white;
+ }
+ 
+ .tarjet-txt{
+align-items: flex-end;
+ }
+ 
+ 
+
+ 
+/* .card-paleo {
+    width: 100% !important;
+    border-radius: 1%;
+ }
+
+ .mb-3{
+    width: 90%;
+    height: 90%;
+ margin: auto;   }
+
+
+
+ .membership{
+   position: absolute;
+   top: 10px;
+   left: 10px;
+} */

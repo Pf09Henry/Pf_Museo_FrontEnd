@@ -43,6 +43,8 @@ import { CartProvider } from './Context';
 import EliminarEvento from './Components/Dashboard/Eventos/Eliminar';
 import EliminarGuia from './Components/Dashboard/Guias/Eliminar';
 import EliminarUsuario from './Components/Dashboard/Usuarios/Eliminar';
+
+
 //import { CartContext } from './Context';
 // import { useDispatch, useSelector } from "react-redux";
 // import { getUsers } from '../src/Actions/AppActions/appActions';
@@ -89,7 +91,7 @@ function App() {
         <Nav />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/register' element={<Register />} />        
+          <Route path='/register' element={<Register />} />
           {/* <Route path='/login' element={<Login />} /> */}
           <Route path='/profile' element={<AuthenticationGuard component={Profile} />} />
           <Route path='/exhibits' element={<Exhibits />} />
@@ -126,6 +128,8 @@ function App() {
           <Route path='/dashoboard-eventos-borrar' element={<EliminarEvento />} />
           <Route path='/dashoboard-guias-borrar' element={<EliminarGuia />} />
           <Route path='/dashoboard-user-borrar' element={<EliminarUsuario />} />
+
+
         </Routes>
         <Footer />
       </CartProvider>
