@@ -9,8 +9,9 @@ import { useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-import { postUser } from '../../Actions/AppActions/appActions';
-import Swal from 'sweetalert2'
+import { getUsers, postUser } from '../../Actions/AppActions/appActions';
+import Swal from 'sweetalert2';
+import axios from 'axios';
 
   // const { Option } = Select;
   
@@ -81,9 +82,15 @@ export default function Register () {
     const handleSubmit = () => {
       dispatch(postUser(dataUser));
       navigate('/');
+      axios.post("http://localhost:3001/send_email",{
+        mail: user.email,
+        subject: "Su registro fue realizado con Exito!",
+        message: "Su registro fue concretado de manera exitosa! "
+    });
     };
 
     useEffect(()=>{
+      dispatch(getUsers());
     async function existEmail()
     {for(let i =0; i < usuario.length; i++){
         if(usuario[i].email === data.email){
@@ -97,13 +104,7 @@ export default function Register () {
         }
       }}
       existEmail();      
-    },[])
-    
-
-   
-
-
-    
+    },[usuario])    
   
     return (
       isAuthenticated&&(<Form
