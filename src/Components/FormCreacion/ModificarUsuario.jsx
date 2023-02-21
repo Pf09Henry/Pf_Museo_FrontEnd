@@ -85,7 +85,9 @@ function ModificarUsuario(){
   },[dispatch, id])
 
   useEffect (()=>{
-    dispatch(getUsers());
+    (async () => {
+      await dispatch(getUsers());
+    })();
   },[dispatch]) 
 
   useEffect(() => {

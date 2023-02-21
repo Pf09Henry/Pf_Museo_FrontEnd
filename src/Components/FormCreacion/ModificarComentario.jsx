@@ -83,9 +83,9 @@ function ModificarComentario(){
 
     if (form) {
       dispatch(postEvent(valores))
-        .then(() => alert("Evento agregado"));
+
     } else {
-      return alert(" A tu actividad le faltan detalles");
+      
     }
     console.log(inicialValues)
   };
