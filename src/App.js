@@ -37,6 +37,10 @@ import Modificar from './Components/Dashboard/Comentarios/Modificar';
 import AgregarCategoria from './Components/Dashboard/Categorias/Agregar';
 import Register from './Components/Register/Register'
 
+import MembershipBasic from './Components/Membership/MembershipBasic'
+import MembershipEco from './Components/Membership/MembershipEco'
+import MembershipPaleo from './Components/Membership/MembershipPaleo'
+import PricingTable from './Components/PricingTable/PricingTable';
 
 import Dash from './Components/Dashboard/Dashboard/Dashboard-Inicio';
 import { CartProvider } from './Context';
@@ -76,9 +80,9 @@ function App() {
         if (usuario[i].email === user.email) {
           existeMailDb = true;
         }
-      }     
+      }
+    }
   }
-}
   // }
 
   return (
@@ -127,6 +131,10 @@ function App() {
             <Route path='/dashoboard-eventos-borrar' element={<EliminarEvento />} />
             <Route path='/dashoboard-guias-borrar' element={<EliminarGuia />} />
             <Route path='/dashoboard-user-borrar' element={<EliminarUsuario />} />
+            <Route path='/socios' element={<PricingTable />} />
+            <Route path='/membership-basico' element={<MembershipBasic />} />
+            <Route path='/membership-eco' element={<MembershipEco />} />
+            <Route path='/membership-paleo' element={<MembershipPaleo />} />
           </Routes>
           <Footer />
         </CartProvider>
@@ -135,8 +143,8 @@ function App() {
           <CartProvider>
             <Nav />
             <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/register' element={<Register />} />
+              <Route path='/' element={<Home />} />
+              <Route path='/register' element={<Register />} />
             </Routes>
             <Footer />
           </CartProvider>
