@@ -61,9 +61,11 @@ function App() {
   // const navigate = useNavigate();
   const usuario = useSelector((state) => state.users)
 
-  useEffect(() => {
-    dispatch(getUsers())
-  }, [dispatch, usuario])
+  useEffect(() => { 
+     (async () => {
+    await dispatch(getUsers());
+  })();
+  }, [dispatch])
 
   if (isLoading) {
     return (
