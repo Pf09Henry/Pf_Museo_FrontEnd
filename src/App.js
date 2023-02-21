@@ -43,6 +43,8 @@ import { CartProvider } from './Context';
 import EliminarEvento from './Components/Dashboard/Eventos/Eliminar';
 import EliminarGuia from './Components/Dashboard/Guias/Eliminar';
 import EliminarUsuario from './Components/Dashboard/Usuarios/Eliminar';
+
+
 //import { CartContext } from './Context';
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from '../src/Actions/AppActions/appActions';
@@ -99,6 +101,7 @@ function App() {
             <Route path='/night' element={<Night />} />
             {/* <Route path='/register' element={<Register />} /> */}
 
+
             <Route path='/history' element={<Historia />} />
             <Route path='/create-activitie' element={<Crear />} />
             <Route path='/general' element={<InfoGeneral />} />
@@ -110,6 +113,7 @@ function App() {
 
             <Route path='/event/:id' element={<EventDetails />} />
             <Route path='*' element={<Error404 />} />
+
 
             <Route path='/dashboard' element={<Dash />} />
             <Route path='/dashoboard-eventos-agregar' element={<AgregarEvento />} />
