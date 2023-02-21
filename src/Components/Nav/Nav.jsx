@@ -1,4 +1,4 @@
-import React, {  useEffect } from "react";
+import React from "react";
 import logo from '../../Imagenes/logo.png'
 import './Nav.css'
 import Login from "../Login/Login";
@@ -9,8 +9,8 @@ import Singup from "../Login/Singup";
 import { MdShoppingCart } from 'react-icons/md'
 import CartSidebar from "../CartSidebar/CartSidebar";
 import { CartContext } from "../../Context";
-import { useDispatch, useSelector } from "react-redux";
-import { getUsers } from '../../Actions/AppActions/appActions';
+import { useSelector } from "react-redux";
+
 // import { useNavigate } from "react-router";
 
 
@@ -19,16 +19,8 @@ export default function Nav() {
   const {products} = React.useContext(CartContext)
   //const arrayProducts = JSON.parse(localStorage.getItem('CART_V1')); 
   const usuario = useSelector((state) => state.users);
-  const dispatch = useDispatch()
   const { isAuthenticated, user } = useAuth0();
-  // const navigate = useNavigate()
   //const[existeMailDb, setExisteMailDb]= useState(false) !!!!!Probar luego con un estado local¡¡¡¡¡¡.
-
- 
-  
-  useEffect(()=>{
-    dispatch(getUsers())
-  },[dispatch,usuario])
 
 if(isAuthenticated){
   var existeMailDb = false
@@ -41,18 +33,6 @@ if(isAuthenticated){
   }
 }
  
-  // useEffect(()=>{
-  //   if(isAuthenticated){
-  //     for(let i = 0; i<usuario.length; i++){
-  //       if(usuario[i].email === user.email){
-  //         console.log("Ahora es", existeMailDb)
-  //            setExisteMailDb(true);
-  //       }
-  //     }
-  //     console.log(usuario.length)
-  //   }
-  // },[existeMailDb])
-
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-light navbar-static fixed-top">

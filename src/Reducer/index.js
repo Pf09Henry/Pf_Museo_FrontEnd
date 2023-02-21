@@ -28,6 +28,7 @@ const initialState = {
     guias: [],
     users: [],
     cart:[],
+    mail:[],
     guidesDetail:[],
     review:[{
         "id": "952b105a-cdd0-482b-a152-7ce3aff0f8b5",
@@ -132,6 +133,12 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 users: action.payload
             }
+        
+        case 'POST_EMAIL':
+                return {
+                    ...state,
+                    mail: action.payload
+                }
 
             
         case 'DELETE_EVENT':

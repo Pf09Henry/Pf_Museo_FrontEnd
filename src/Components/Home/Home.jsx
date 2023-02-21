@@ -10,13 +10,11 @@ import { useAuth0 } from "@auth0/auth0-react";
 export default function Home() {
 
   const { isAuthenticated, user } = useAuth0();
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const usuario = useSelector((state) => state.users)
 
-  useEffect(() => {
-    dispatch(getUsers())
-    if (isAuthenticated) {
+  useEffect(()  => {
+     if (isAuthenticated) {
       var existeMailDb = false
       if (existeMailDb === false) {
         for (let i = 0; i < usuario.length; i++) {
@@ -27,8 +25,7 @@ export default function Home() {
         if(!existeMailDb) return navigate('/register')
       }
     }
-    // eslint-disable-next-line 
-  }, [dispatch, usuario])
+  }, [])
 
 
   return (

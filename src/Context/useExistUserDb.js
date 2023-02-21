@@ -1,22 +1,15 @@
-import { useDispatch, useSelector } from "react-redux";
-import { getUsers } from '../Actions/AppActions/appActions';
+import React from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { useAuth0 } from "@auth0/auth0-react";
-import React, {useState, useEffect} from "react";
 
 
 export default function useExistUserDb() {
     const { isAuthenticated, user } = useAuth0();
-    const dispatch = useDispatch();
     const navigate = useNavigate();
     const usuario = useSelector((state) => state.users)
-    const [existMail, setExistMail] = useState(false)
+    const [existMail, setExistMail] = React.useState(false)
 
-    useEffect(() => {
-        dispatch(getUsers())
-        // eslint-disable-next-line 
-    }, [dispatch, usuario])
-    
    function userExist() {
     if (isAuthenticated) {
       if (existMail === false) {
@@ -29,5 +22,7 @@ export default function useExistUserDb() {
       }
     }}
 
-  return [userExist]
+  return {
+    userExist
+  }
 }
