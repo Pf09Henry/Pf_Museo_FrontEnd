@@ -13,6 +13,18 @@ export function getEvents() {
     }
 }
 
+export function getTickets() {
+    return async function (dispatch) {
+        var json = await axios.get('https://pfmuseobackend.up.railway.app/ticket');
+        console.log(json.data)
+        return dispatch({
+            type: 'GET_TICKETS',
+            payload: json.data
+        })
+    }
+}
+
+
 export function getEventsName(name) {
     return async function (dispatch) {
         if (name) {
@@ -43,6 +55,8 @@ export function getGuidesName(name) {
     }
 }
 
+
+
 export function getEventsById(id) {
     return async function (dispatch) {
         try {
@@ -56,6 +70,23 @@ export function getEventsById(id) {
         }
     }
 }
+
+export function getTicketId(id) {
+    return async function (dispatch) {
+        if (id) {
+            let response = await axios.get('https://pfmuseobackend.up.railway.app/ticket');
+            console.log(response.data)
+            let tickets = response.data;
+            let filteredTickets = tickets.filter(e => e.id.includes(id));
+            return dispatch({
+                type: 'GET_TICKETS',
+                payload: filteredTickets
+            })
+        }
+    }
+}
+
+
 
 
 export function getCategories() {

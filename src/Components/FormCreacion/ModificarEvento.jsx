@@ -253,31 +253,7 @@ return(
       name="username-buscado"
     >
       <Input placeholder={nameEvent} onChange={(e)=>buscarNombre(e)}/>
-      {/* <div >
-      
-      <>
-        <Dropdown
-          overlay={(
-            <Menu>
-              <Menu.Item key="0">
-                Menu Item One
-              </Menu.Item>
-              <Menu.Item key="1">
-              Menu Item Two
-              </Menu.Item>
-              <Menu.Item key="1">
-              Menu Item Three
-              </Menu.Item>
-            </Menu>
-          )}
-          trigger={['click']}>
-          <a href=" "className="ant-dropdown-link" 
-             onClick={e => e.preventDefault()}>
-            Open Dropdown
-          </a>
-        </Dropdown>
-      </>
-    </div> */}
+     
     </Form.Item>
 
     <List
