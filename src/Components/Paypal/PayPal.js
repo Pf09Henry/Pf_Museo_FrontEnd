@@ -14,10 +14,13 @@ export default function Paypal() {
 
     let info = [];
     let acount = [];
+    let amount = [];
+    
 
     for (let i = 0; i < products.length; i++) {
         info.push(products[i].name)
         acount.push(products[i].price)
+        amount.push(products[i].cantidad)
     }
     console.log(products)
     console.log(info)
@@ -28,7 +31,7 @@ export default function Paypal() {
     //     description: '',
     //     amount: 0,
     // })
-
+    let total = acount*amount
     useEffect(() => {
         window.paypal.Buttons({
             createOrder: (data, actions, err) => {
@@ -41,7 +44,7 @@ export default function Paypal() {
                             description: info.join(" - "),
                             amount: {
                                 currency_code: "USD",
-                                value: acount.reduce((a, b) => { return a + b }),
+                                value: total,
                             }
                         },
                     ]
