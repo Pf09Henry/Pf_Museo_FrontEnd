@@ -5,22 +5,29 @@ import './CartSidebar.css'
 import { useAuth0 } from "@auth0/auth0-react";
 import { CartContext } from '../../Context';
 //import { removeToCart } from '../../Actions/AppActions/appActions'
-
+import {GiAmmoniteFossil} from 'react-icons/gi'
 
 export default function CartSidebar() {
     const {products, saveProducts} = React.useContext(CartContext)
     const { isAuthenticated } = useAuth0();
-
-
-    //const dispatch = useDispatch()
-
-    //const carrito = useSelector(state => state.cart)
-
-    const handleRemoveCart = (e) => {
+    
+    const handleAddTickets = (e)=> {
         const posicionCarrito = products.findIndex(pr => pr.id === e.target.value)
         const productos = [...products]
-        productos.splice(posicionCarrito, 1);
+        productos[posicionCarrito].cantidad ++
         saveProducts(productos)
+    }
+    
+    const handleRemoveTickets = (e)=> {
+        const posicionCarrito = products.findIndex(pr => pr.id === e.target.value)
+        const productos = [...products]
+        if(productos[posicionCarrito].cantidad <= 1){
+            productos.splice(posicionCarrito, 1);
+            saveProducts(productos)
+        }else{
+            productos[posicionCarrito].cantidad --
+            saveProducts(productos)
+        }        
     }
 
     const cleanCart = () => {
@@ -31,59 +38,88 @@ export default function CartSidebar() {
     let sum = 0;
     if (products && products.length > 1) {
         products.forEach((item) => {
-            sum += item.price
+            sum += item.price * item.cantidad
         })
     }
 
 
     return (
         isAuthenticated && (<div className="offcanvas offcanvas-end" id="cart">
-            <div className="offcanvas-header">
-                <div className="offcanvas-title container-fluid">
-                    <h2 className='text-wrap fw-bold '>Detalle Carrito</h2>
+            <div className="offcanvas-header d-grid">
+                <div className='row'>
+                <div className="offcanvas-title container-fluid col-11 ">
+                    <h2 className='text-wrap fw-bold '><GiAmmoniteFossil/> Detalle Carrito</h2>
                 </div>
-                <button className="btn btn-danger" data-bs-dismiss="offcanvas">Cerrar</button>
+                <div className='col-1'>
+                    <button className="btn btn-danger" data-bs-dismiss="offcanvas">X</button>
+                </div>
+                </div>
             </div>
 
-            <div className="offcanvas-body">
+            <div className="products">
                 
                 {products && products.length >0  ?
-                <div>
-                    {products.map((product,index) => (                
-                    <div key={index} className="card rounded position-relative">
-                        <h3 className='card-title margin-end'>{product.name}</h3>
-                        <div className="card-body">
-                            <img className='rounded-circle mx-auto img-fluid mb-2' src={product.img} alt="imagenProducto"/>
-                            <h4 className='card-text mb-1' >Valor: $ {product.price}</h4>
+                <div className=''>
+                    <div className='card mt-4'>
+                        {products.map((product,index) => (
+                            <div className='card cardCart' key={product.id}>
+                                <img src={product.img} alt= {`picFrom${product.name}`}/>
+                            <div>
+                                <h5><strong>{product.name}</strong></h5>
+                            </div>
+                            {/* <div>
+                                <h5><strong>Cantidad de tickets: {product.cantidad}</strong></h5>
+                            </div> */}
+                            <div className='d-grid card bg-success text-dark aling-items-center resumen' >
+                                <div className='row'>
+                                    <div className='col-7' >
+                                        <h3><strong> Valor ${(product.price*product.cantidad).toLocaleString('en-US') } </strong></h3>
+                                    </div>
+                                    <div className='col-5 d-flex gap-1'>
+                                        <button value={product.id} 
+                                        className='btn bg-light btnRm ' /*badge rounded-pill border border-danger bg-danger  top-0 end-0 position-absolute*/ 
+                                        onClick={handleRemoveTickets}>-</button>
+                                        <span className='cantidad fs-4'>{product.cantidad}</span>
+                                        <button value={product.id} 
+                                        className='btn bg-light btnAdd ' /*badge rounded-pill border border-danger bg-danger  top-0 end-0 position-absolute*/ 
+                                        onClick={handleAddTickets}>+</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <button value={product.id} className='badge rounded-pill border border-danger bg-danger  top-0 end-0 position-absolute' onClick={handleRemoveCart}>X</button>
-                    </div>                
-                    ))}
-
-                    <div className='mt-5 mb-5 card bg-secondary text-light' >
-                        {products.length> 1 ?                 
-                            <h4 className='card-text'>Total a pagar: $ {sum}</h4>
-                        :                       
-                        <h3>Total a pagar: $ {products[0].price}</h3>
-                        }
+                        // <div key={index} className="card cardCart">
+                        //     <h3 className=''>{product.name}</h3>
+                        //     <div className="card-body subCard ">                            
+                        //             <img className='rounded mx-auto img-fluid mb-2' src={product.img} alt="imagenProducto"/>
+                        //             <h4 className=' mb-1' >Valor <sub>$</sub>{product.price}</h4>
+                        //             <h4>Cantidad</h4>                            
+                        //     </div>
+                        //     <button value={product.id} className='badge rounded-pill border border-danger bg-danger  top-0 end-0 position-absolute' onClick={handleRemoveCart}>X</button>
+                        // </div>                
+                        ))}
                     </div>
                     
-                    <div className='d-grid'>
-                        <div className='row'>
-                            <div className='col' >
-                                <a href="/checkout" className="btn btn-primary">Continuar</a>
+                    <div className='d-grid mt-2'>
+                        <div className=''>
+                            <div className='' >
+                                {products.length> 1 ?                 
+                                <a href="/checkout"><h1 className='btn btn-primary col fs-4 btnTotal '>Total: <sub>$</sub> {sum.toLocaleString('en-US')}</h1></a>
+                                :                       
+                                <a href="/checkout"><h1 className='btn btn-primary col fs-4 btnTotal'>Total: <sub>$</sub>{(products[0].price*products[0].cantidad).toLocaleString('en-US')}</h1></a>
+                                }
                             </div>
-                            <div className='col'>
-                                <button onClick={cleanCart} className='btn btn-danger'>Borrar todo</button>
+                            <div className=''>
+                                <button onClick={cleanCart} className='btn btn-danger btnCleanCart'>Limpiar Carrito</button>
                             </div>
                         </div>
-                    </div>
+                    </div>                                        
                 </div>                 
                 :
-                <div className='card-body' >
-                    <img className='img-fluid rounded-circle mx-auto' src="https://img.freepik.com/premium-vector/cute-baby-triceratops-cartoon-character-animal-dino-isolated_138676-3160.jpg" alt="sad" />
-                    <h3 className='badge bg-dark text-wrap fw-bold fs-4 mt-4' >No hay productos agregados al carrito de compras</h3>
-                </div>
+                
+                    <div className='card-body' >
+                        <img className='img-fluid mx-auto' src="https://img.freepik.com/premium-vector/cute-baby-triceratops-cartoon-character-animal-dino-isolated_138676-3160.jpg" alt="sad" />
+                        <h3 className='badge bg-dark text-wrap fw-bold fs-4 mt-4' >No hay productos agregados al carrito de compras</h3>
+                    </div>                
                 }
 
             </div>

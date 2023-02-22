@@ -1,3 +1,116 @@
-.card{
+.products li {
+    background: #111;
+    color: #fff;
+    padding: 1rem;
+}
+
+.products h3 {
+    margin: 0;
+}
+
+.products span {
+    font-size: 1rem;
+    opacity: .9;
+}
+
+.products img {
+    border-radius: 4px;
+    width: 100%;
+    aspect-ratio: 16/9;
+    /* display: block; */
+    object-fit: cover;
+    background: #fff;
+    height: 80px;
+}
+.cardCart{
+    margin-bottom: 20px !important;
+}
+
+.cardCart:hover{
+    color: orange;
+}
+
+/* .cardCart{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: #d8f3dc;
+} */
+
+.subCard{
+    height: 100px;
+    overflow: hidden;
+    object-fit: cover;
+    background-color:black;
+}
+
+.detailsCart{
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.cantidad{
+    width: 30px;
+    height: 100%;
+    border: solid 1px;
+    background-color: #fff;
+    color: #111;
+    border:solid 1px #9c92a3;
+    border-radius: 10px;
+}
+
+.resumen{
+    background-color: #d8f3dc !important ;
+    border: none !important;
     border-radius: 10px !important;
+}
+
+.btnAdd{
+    background-color: #f8f9fa !important ;
+    color: green;
+
+}
+.btnAdd:hover{
+    background-color: green !important;
+    color: white !important;
+    font-size:large !important;
+}
+
+.btnRm{
+    background-color: #f8f9fa !important ;
+    color: #590d22;
+
+}
+.btnRm:hover{
+    background-color: #ce4257 !important;
+    color: white !important;
+    font-size:large !important;
+}
+
+
+.btnTotal{
+    width: 100% !important;
+    background-color: #fff !important;
+    color: #111;
+}
+
+.btnCleanCart{
+    width: 100% !important;
+    background-color: #fff !important;
+    color: #720026;
+
+}
+
+.btnCleanCart:hover{
+    background-color: #720026 !important;
+    color: #fff;
 }

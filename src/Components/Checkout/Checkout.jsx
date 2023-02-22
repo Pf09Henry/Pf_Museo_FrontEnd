@@ -1,21 +1,26 @@
-//import React, { useState } from 'react'
+import React from 'react'
 //import { useSelector } from 'react-redux'
 //import InformationCheckout from '../informationCheckout/InformationCheckout'
+import { CartContext } from '../../Context';
 import './Checkout.css'
 
-export default function Checkout ({saveProducts}){
+export default function Checkout (){
 
-    const localStorageCarrito = JSON.parse(localStorage.getItem('CART_V1'))
+    const {products, saveProducts} = React.useContext(CartContext)
+    
     let sum = 0;
-    if(localStorageCarrito && localStorageCarrito.length > 1){
-        localStorageCarrito.forEach((item)=>{
-            sum += item.price
+    if (products && products.length > 1) {
+        products.forEach((item) => {
+            sum += item.price * item.cantidad
         })
+    }
+    else if(products && products.length === 1){
+        sum= products[0].totalPrice
     }
 
     const handleRemoveCart = (e) => {
-        const posicionCarrito = localStorageCarrito.findIndex(pr => pr.id === e.target.value)
-        const productos = [...localStorageCarrito]
+        const posicionCarrito = products.findIndex(pr => pr.id === e.target.value)
+        const productos = [...products]
         productos.splice(posicionCarrito,1);
         
         saveProducts(productos)
@@ -24,16 +29,15 @@ export default function Checkout ({saveProducts}){
     return(
         <div className='d-grid justify-content-center' >
             
-            {localStorageCarrito && localStorageCarrito.length>0 ? 
+            {products && products.length>0 ? 
             <div className="container my-3 row position-relative z-index-1" >
                 <h1>Productos Carrito</h1>
-                {localStorageCarrito.map((pr) => (
+                {products.map((pr) => (
                 <div key={pr.id} className='card border-success col cardCheckout '>
                     <div className='position-relative'>
                         <h2 className='card-header text-success'>{pr.name}</h2>
                         <img className="img-fluid rounded img-thumbnail p-2" src={pr.img} alt="ImagenEvento" />
-                        <h3 className='card-text fs-3 '>Fecha del evento:</h3>
-                        <h3 className='card-text fs-3 border'>{pr.startDay}</h3>
+
                         <button value={pr.id} 
                                 className='badge rounded-pill border border-danger bg-danger top-0 end-0 position-absolute' 
                                 onClick={handleRemoveCart}>X</button>
@@ -43,30 +47,31 @@ export default function Checkout ({saveProducts}){
 
                 <div className="container-fluid card bg-dark text-light col-3 gap-3 ">
                     <h1 className='fs-1' >Resumen</h1>
-                    {localStorageCarrito.length> 1 ?
+                    {products.length> 1 ?
                     <div className='container-fluid'>
-                        {localStorageCarrito.map((p,i)=>(
+                        {products.map((p,i)=>(
                             <div key={i} className="card-body bg-dark text-ligth border">
                                 <h6>{p.name}</h6>
-                                <h5>$ {p.price}</h5>
+                                <h5>Tickets: {p.cantidad.toLocaleString('en-US')}</h5>
+                                <h5>$ {(p.price * p.cantidad).toLocaleString('en-US')}</h5>
                             </div>
                         ))}
 
                         <div className="card-body bg-dark text-ligth mx-auto">
                             <h3 className="card-text fs-3">Total a pagar:</h3>
-                            <h3 className="card-text fs-3">$ {sum}</h3>
+                            <h3 className="card-text fs-3">$ {sum.toLocaleString('en-US')}</h3>
                         </div>
                     </div>                                        
                     :                       
                     <div>
                         
-                    <div key={localStorageCarrito[0].id} className="card-body bg-dark text-ligth border">
-                        <h6>{localStorageCarrito[0].name}</h6>
-                        <h5>$ {localStorageCarrito[0].price}</h5>
+                    <div key={products[0].id} className="card-body bg-dark text-ligth border">
+                        <h6>{products[0].name}</h6>
+                        <h5>$ {(products[0].price * products[0].cantidad).toLocaleString('en-US') }</h5>
                     </div>
                         <div className="card-body bg-dark text-ligth">
                             <h3 className="card-text fs-3">Total a pagar:</h3>
-                            <h3 className="card-text fs-3">$ {localStorageCarrito[0].price}</h3>
+                            <h3 className="card-text fs-3">$ {sum.toLocaleString('en-US')}</h3>
                         </div>
                     </div>        
                     }
@@ -82,10 +87,6 @@ export default function Checkout ({saveProducts}){
                     <a href='/eventos' className='btn btn-primary bg-succes'>Ver Eventos</a>
                 </div>                
             }
-            
-            {/* <div>
-                <InformationCheckout/>
-            </div> */}
         </div>
     )
 }
