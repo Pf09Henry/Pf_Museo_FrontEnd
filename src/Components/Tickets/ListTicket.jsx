@@ -174,7 +174,7 @@ export default function ListTicket(){
                         hasFeedback
                         
                       >
-                    <Select placeholder={t.statusOfPurchase}>
+                    <Select defaultValue={t.statusOfPurchase}>
                   
                     <Option value="aprobado" >Aprobado</Option>
                       <Option value="pendiente" >Pendiente</Option>

@@ -53,6 +53,8 @@ import ModificarTicket from './Components/Dashboard/Tickets/Modificar'
 //import { CartContext } from './Context';
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from '../src/Actions/AppActions/appActions';
+import Perfil from './Components/Dashboard/Perfil/Perfil';
+import DashUser from './Components/Dashboard/DashUser/DashboardUser';
 // import { useNavigate } from "react-router";
 
 function App() {
@@ -121,7 +123,12 @@ function App() {
             <Route path='/event/:id' element={<EventDetails />} />
             <Route path='*' element={<Error404 />} />
 
+            <Route path='/socios' element={<PricingTable />} />
+            <Route path='/membership-basico' element={<MembershipBasic />} />
+            <Route path='/membership-eco' element={<MembershipEco />} />
+            <Route path='/membership-paleo' element={<MembershipPaleo />} />
 
+            {/*SI EL ROL ES ADMIN */}
             <Route path='/dashboard' element={<Dash />} />
             <Route path='/dashoboard-eventos-agregar' element={<AgregarEvento />} />
             <Route path='/dashoboard-eventos-modificar' element={<ModificarEvento />} />
@@ -134,11 +141,12 @@ function App() {
             <Route path='/dashoboard-eventos-borrar' element={<EliminarEvento />} />
             <Route path='/dashoboard-guias-borrar' element={<EliminarGuia />} />
             <Route path='/dashoboard-user-borrar' element={<EliminarUsuario />} />
-            <Route path='/socios' element={<PricingTable />} />
-            <Route path='/membership-basico' element={<MembershipBasic />} />
-            <Route path='/membership-eco' element={<MembershipEco />} />
-            <Route path='/membership-paleo' element={<MembershipPaleo />} />
             <Route path='/dashoboard-ticket-modificar' element={<ModificarTicket />} />
+            <Route path='/perfil' element={<Perfil />} />
+
+
+            {/*SI EL ROL ES USER */}
+            <Route path='/perfilUser' element={<DashUser />} />
           </Routes>
           <Footer />
         </CartProvider>
