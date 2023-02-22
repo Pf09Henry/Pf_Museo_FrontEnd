@@ -1,18 +1,23 @@
 import axios from 'axios';
-import React, { useRef, useEffect } from 'react'
-import { useLocalStorage } from '../../Context/useLocalStorage';
+import React, { useRef, useEffect, useContext } from 'react'
+import { CartContext } from '../../Context/index';
+import { useAuth0 } from '@auth0/auth0-react';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Paypal() {
 
-    const [products, saveProducts] = useLocalStorage('CART_V1', []);
-    
+    const { user } = useAuth0;
+    const navigate = useNavigate()
+
+    const { products, saveProducts } = useContext(CartContext);
+
     let info = [];
     let acount = [];
 
-    for(let i = 0; i<products.length; i++){
+    for (let i = 0; i < products.length; i++) {
         info.push(products[i].name)
-        acount.push(products[i].price) 
+        acount.push(products[i].price)
     }
     console.log(products)
     console.log(info)
@@ -23,20 +28,20 @@ export default function Paypal() {
     //     description: '',
     //     amount: 0,
     // })
-    
+
     useEffect(() => {
         window.paypal.Buttons({
             createOrder: (data, actions, err) => {
-                console.log("1: ",data)
+                console.log("1: ", data)
                 console.log("2: ", actions)
                 const order = actions.order.create({
                     intent: "CAPTURE",
                     purchase_units: [
                         {
-                            description: info.join( " - " ),
+                            description: info.join(" - "),
                             amount: {
                                 currency_code: "USD",
-                                value: acount.reduce((a,b)=>{return a + b}),
+                                value: acount.reduce((a, b) => { return a + b }),
                             }
                         },
                     ]
@@ -49,17 +54,19 @@ export default function Paypal() {
                 console.log(data)
             },
             onApprove: async (data, actions) => {
-                console.log("actions: ",actions)
+                console.log("actions: ", actions)
                 const order = await actions.order.capture();
                 console.log("esto es order: ", order)
-                if(order){
+                if (order) {
                     alert('Pago Realizado con Exito')
-                    axios.post("http://localhost:3001/send_email",{
-                        mail: "balmaceda.d265@gmail.com",
-                        subject: "Pago realizado con Exito!",
-                        message: "Su pago fue concretado de manera exitosa! "
-                    })
+                    // axios.post("http://localhost:3001/send_email", {
+                    //     mail: user.email,
+                    //     subject: "Pago realizado con Exito!",
+                    //     message: "Su pago fue concretado de manera exitosa! "
+                    // })
+                    saveProducts([])
                 }
+                navigate('/eventos')
                 console.log(data)
                 //>>aca podemos accionar cualquier lógica necesaria que le indique al user que todo funcionó<<
             },
