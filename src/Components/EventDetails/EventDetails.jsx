@@ -5,7 +5,7 @@ import { useDispatch} from "react-redux";
 import {  useParams } from "react-router-dom";
 import { getEventsById,  /*addToCart*/ } from "../../Actions/AppActions/appActions";
 import './../EventDetails/EventDetail.css'
-import { Tag, Button, Rate } from 'antd';
+import { Tag,Rate } from 'antd';
 /* import Stars from "../Comentarios/Stars";
 import CommentForm from "../Comentarios/CommentForm"; */
 import { useAuth0 } from "@auth0/auth0-react";
@@ -18,6 +18,12 @@ export default function EventDetails() {
     const {products, saveProducts} = React.useContext(CartContext)
     const {isAuthenticated, user} = useAuth0();
 
+    const [cantidad, setCantidad] = useState(0)
+
+    const handleCantidad = (e)=> {
+        setCantidad(e.target.value)
+    }
+
     const detalles = useSelector((state) => state.details);
     const review = useSelector((state) => state.review);
     const dispatch = useDispatch();
@@ -29,7 +35,7 @@ export default function EventDetails() {
             if(num.eventId === id){
                 ratings.push(num.score)
             }
-           return ratings.length
+            return ratings.length
         });
         const average = Math.round(ratings.reduce((sum, rating) => sum + rating, 0) / ratings.length);
         return average
@@ -42,9 +48,21 @@ export default function EventDetails() {
 
     const [componentDisabled, setComponentDisabled] = useState(true);
     
-    const handleAddToCart = () =>{
-        const productos = products.concat(detalles)
-        saveProducts(productos)
+    const handleAddToCart = (e) =>{       
+        const producto = {
+            id:detalles[0].id,
+            name:detalles[0].name,
+            cantidad:e.target.value,
+            price:detalles[0].price,
+            img:detalles[0].img,
+            totalPrice:detalles[0].price * cantidad,
+        }
+        const productInCart = products.filter(pr => pr.id === producto.id)
+        if(productInCart.length){
+            alert('Producto ya se encuentra en el carrito puedes modificarlo desde allí')
+        }else { 
+            saveProducts([...products,producto])        
+        }
     }
 
     return (
@@ -64,13 +82,36 @@ export default function EventDetails() {
                 <div className="detalle-evento-info">
                 <p className="card-text detalle-evento-info">{detalles[0].information} </p>
                 </div>
-                <Tag color="#87d068" className="precio-evento">${detalles[0].price}</Tag> {isAuthenticated&&(<Button type="primary" className="boton-agregar-carrito" style={{backgroundColor:"rgb(56, 102, 103"}} onClick={handleAddToCart} >Agregar al Carrito</Button>)}
-                <hr></hr>
-                <div className="review">
-                {isAuthenticated && <FormReview user={user} />}
-                {!isAuthenticated && <FormReviewInvitado/>}
-                </div>
 
+                <div>
+                    <label htmlFor="">Precio Unitario</label> 
+                    <Tag color="#87d068" className="precio-evento">$ {detalles[0].price.toLocaleString('en-US')}</Tag>
+                </div>
+                <br/>
+                
+
+                {/* {isAuthenticated&&(<Button type="primary" className="boton-agregar-carrito" style={{backgroundColor:"rgb(56, 102, 103"}} onClick={handleAddToCart} >Agregar al Carrito</Button>)} */}
+
+                {isAuthenticated&&
+                <div>
+                    <div className="">
+                        <label htmlFor="Quanty">Cantidad</label>
+                        <input id="Quanty" type="range" min={1} max={5} defaultValue={1} onChange={handleCantidad} />
+                        <span>{cantidad}</span>
+                    </div>
+                    <div className="card-body d-flex">
+                        <label htmlFor="">Precio total</label> 
+                        <Tag color="#2f3e46" className="precio-evento">$ {(detalles[0].price*cantidad).toLocaleString('en-US')}</Tag> 
+                    </div>
+                    <br/>
+                    <div>
+                        <button type="primary" className="boton-agregar-carrito" 
+                                value= {cantidad}
+                                onClick={handleAddToCart}>Add to Cart +
+                        </button>
+                    </div>
+                </div>
+                }
 
                 <div >
                 <h5 className="comentarios-opiniones">Comentarios y opiniones</h5>
@@ -82,7 +123,7 @@ export default function EventDetails() {
                 <br></br>
                 <CommentForm /> */}
             </div>
-               
+            
             </div>
 
             <div className="row detalle-guia">
