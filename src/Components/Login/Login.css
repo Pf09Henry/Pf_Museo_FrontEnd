@@ -76,3 +76,8 @@
 .foto-login:hover{
     transform: scale(1.2);
 }
+
+.foto-admin{
+    display: flex;
+    flex-direction: column;
+}

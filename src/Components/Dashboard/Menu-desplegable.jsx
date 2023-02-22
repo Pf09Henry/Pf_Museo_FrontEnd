@@ -10,7 +10,7 @@ import SubMenu from 'antd/es/menu/SubMenu';
 import { Content } from 'antd/es/layout/layout';
 import Dashboard from './Dashboard';
 import { FiLogOut} from "react-icons/fi";
-import {FaTicketAlt} from 'react-icons/fa'
+import {FaTicketAlt,FaUserCircle} from 'react-icons/fa'
 import Login from "../Login/Login";
 import Logout from "../Login/Logout";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -45,6 +45,12 @@ export default function MenuDesplegable() {
           <span> Dashboard</span>
           <Link to="/dashboard"></Link>
         </Menu.Item>
+
+        <Menu.Item key="/perfil" icon={  <FaUserCircle />}>
+           
+           <span>Perfil</span>
+           <Link to="/perfil"></Link>
+         </Menu.Item>
 
         
         <SubMenu icon={ <SlPeople />} title="Usuarios" >
@@ -92,7 +98,7 @@ export default function MenuDesplegable() {
 
         </SubMenu>
 
-
+{/* 
         <SubMenu icon={< TfiComment />} title="Comentarios" >
 
           
@@ -109,7 +115,7 @@ export default function MenuDesplegable() {
                 <Link to="/dashoboard-comentarios-borrar"></Link>
             </Menu.Item>
 
-        </SubMenu>
+        </SubMenu> */}
 
 
         <SubMenu icon={< BsPersonBadge />} title="Guias" >
