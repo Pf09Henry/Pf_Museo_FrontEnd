@@ -309,6 +309,21 @@ export function putUser(payload, id) {
     }
 }
 
+export function putTicket(payload, id) {
+    return async function (dispatch) {
+        try {
+            var response = await axios.put(`https://pfmuseobackend.up.railway.app/tickets/put/${id}`, payload);
+            console.log(response)
+            return dispatch({
+                type: 'PUT_TICKET',
+                response
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
 
 export function deleteEvent(id) {
     return async function (dispatch) {
