@@ -11,27 +11,28 @@
 }
 
 .card-paleo {
-    width: 100% !important;
+    width: 25% !important;
     border-radius: 1%;
  }
 
  .card-bio {
-    width: 100% !important;
+    width: 30% !important;
     border-radius: 1%;
  }
 
  .card-mineral {
-    width: 100% !important;
+    width: 30% !important;
     border-radius: 1%;
  }
 
  .card-fundador {
-    width: 70% !important;
+    width: 30% !important;
     border-radius: 1%;
  }
 
  .col-md-8{
     background-color: rgb(243, 243, 243);
+   
  }
 
  .col-md-4{
@@ -43,7 +44,7 @@
    height: 90%;
 margin: auto;   }
 
-   
-
-
+#paleo {
+   padding-top: 0%;
+ }
   

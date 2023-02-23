@@ -18,25 +18,22 @@ import { Button } from "antd";
 
 
 export default function Nav() {
-  const {products} = React.useContext(CartContext)
+  const { products } = React.useContext(CartContext)
   //const arrayProducts = JSON.parse(localStorage.getItem('CART_V1')); 
   const usuario = useSelector((state) => state.users);
   const { isAuthenticated, user } = useAuth0();
   //const[existeMailDb, setExisteMailDb]= useState(false) !!!!!Probar luego con un estado local¡¡¡¡¡¡.
 
-if(isAuthenticated){
-  var existeMailDb = false
-  if(existeMailDb === false){
-    for(let i = 0; i<usuario.length; i++){
-      if(usuario[i].email === user.email){
-        existeMailDb= true;     
+  if (isAuthenticated) {
+    var existeMailDb = false
+    if (existeMailDb === false) {
+      for (let i = 0; i < usuario.length; i++) {
+        if (usuario[i].email === user.email) {
+          existeMailDb = true;
+        }
       }
     }
   }
-}
-
-
- 
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-light navbar-static fixed-top">
@@ -120,11 +117,11 @@ if(isAuthenticated){
 
                 </ul>
               </li> */}
-            {existeMailDb === false ?(
-                  <>
-                  
-                  </>
-                ): (<><Profile /></>)}
+              {existeMailDb === false ? (
+                <>
+
+                </>
+              ) : (<><Profile /></>)}
 
               {/* <a href='/create-activitie'><button type="button" className="btn btn-outline-success btn-secundario">Crear Evento</button></a> */}
               {/* <a href="/login"><button type="button" className="btn btn-outline-success btn-secundario">Iniciar Sesión</button></a> */}
@@ -137,29 +134,29 @@ if(isAuthenticated){
                     <Singup />
                   </>
                 )}
-                </div>
-                {/*  {isAuthenticated && (
+              </div>
+              {/*  {isAuthenticated && (
                 <>            
                   <Logout/>
                 </>
               )}
           </div>
            {/*  <a href='/create-activitie'><button type="button" class="btn btn-outline-success btn-secundario">Crear Evento</button></a> */}
-            {/* <a href="/login"><button type="button" class="btn btn-outline-success btn-secundario">Iniciar Sesión</button></a> */}
-          {/* {isAuthenticated &&(<a href="/dashboard"><button type="button" class="btn btn-success btn-primario usuario">Perfil</button></a>) */}
-          
-              {isAuthenticated && existeMailDb &&(
+              {/* <a href="/login"><button type="button" class="btn btn-outline-success btn-secundario">Iniciar Sesión</button></a> */}
+              {/* {isAuthenticated &&(<a href="/dashboard"><button type="button" class="btn btn-success btn-primario usuario">Perfil</button></a>) */}
+
+              {isAuthenticated && existeMailDb && (
                 <div className="d-grid position-relative">
-                <div className="row">
-                  <button className="btn btn-primary position-relative " data-bs-toggle="offcanvas" data-bs-target="#cart"><MdShoppingCart size={20}/></button>
-                  { !products ? <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>: 
-                  <h5><span className="position-absolute top-0 start-100 translate-middle translate-middle badge rounded-pill bg-danger">{products.length}</span></h5>
-                  }
+                  <div className="row">
+                    <button className="btn btn-primary position-relative " data-bs-toggle="offcanvas" data-bs-target="#cart"><MdShoppingCart size={20} /></button>
+                    {!products ? <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span> :
+                      <h5><span className="position-absolute top-0 start-100 translate-middle translate-middle badge rounded-pill bg-danger">{products.length}</span></h5>
+                    }
+                  </div>
                 </div>
-              </div>
               )}
             </ul>
-            
+
 
 
           </div>
