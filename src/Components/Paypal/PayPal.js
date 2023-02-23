@@ -4,7 +4,7 @@ import { CartContext } from '../../Context/index';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getEvents, postTicket,putEvent } from '../../Actions/AppActions/appActions';
+import { getEvents, postTicket,putEvent, postMail } from '../../Actions/AppActions/appActions';
 import Swal from 'sweetalert2';
 
 
@@ -121,7 +121,14 @@ export default function Paypal() {
                     // })
                     // dispatch(postTicket(valuesId))
                     // console.log('Aqui post', postTicket)
+                    let datosEmail = {
+                        mail: user.email,
+                        subject: "Pago Paypal",
+                        message: "Su compra fue concretada de manera exitosa!",
+                        ticket: ticket
+                    }
                     dispatch(postTicket(ticket))
+                    dispatch(postMail(datosEmail))
                     dispatch(putEvent(putEvento, idEvent[0]))
                   /*   console.log('Aqui post', postTicket) */
                       
