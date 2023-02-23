@@ -28,11 +28,7 @@ export default function Paypal() {
     let amount = [];
     let idEvent = [];
     
-    const valuesId = {
-        eventId : idEvent,
-        userId : findUserID(user.name)
-    }
-    console.log('Aqui los id:',valuesId)
+    
     
     for (let i = 0; i < products.length; i++) {
         info.push(products[i].name)
@@ -40,18 +36,24 @@ export default function Paypal() {
         amount.push(products[i].cantidad)
         idEvent.push(products[i].id)        
     }
+    let total = acount*amount
     console.log(products)
     console.log(info)
     console.log(acount)
     console.log(idEvent)
-
+    console.log(total)
+    
     const paypal = useRef();
-    // const [info, setInfo] = useState({
-    //     description: '',
-    //     amount: 0,
-    // })
-    let total = acount*amount
-    useEffect(() => {
+        const ticket = {
+            methodOfPurchase: 'PayPal' || '',
+            amount: acount || '',
+            totalOfPurchase: total,
+            eventId: idEvent || '',
+            userId: findUserID(user.name) || '',
+        }
+        console.log('Aqui los :', ticket)
+        
+        useEffect(() => {
         window.paypal.Buttons({
             createOrder: (data, actions, err) => {
                 console.log("1: ", data)
@@ -91,8 +93,8 @@ export default function Paypal() {
                     //     subject: "Pago realizado con Exito!",
                     //     message: "Su pago fue concretado de manera exitosa! "
                     // })
-                    // dispatch(postTicket(valuesId))
-                    // console.log('Aqui post', postTicket)
+                    dispatch(postTicket(ticket))
+                    console.log('Aqui post', postTicket)
                     saveProducts([])
                 }
                 navigate('/eventos')
