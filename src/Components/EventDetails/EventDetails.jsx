@@ -114,7 +114,9 @@ export default function EventDetails() {
                 }
 
                 <div >
-                {isAuthenticated ? <FormReview user={user}/> : <FormReviewInvitado/>}
+
+                {isAuthenticated && <FormReview user={user} />}
+                {!isAuthenticated && <FormReviewInvitado/>}
                 
                 <h5 className="comentarios-opiniones">Comentarios y opiniones</h5>
                 <Rate defaultValue={raiting()} disabled={componentDisabled}/>
