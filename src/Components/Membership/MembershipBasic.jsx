@@ -55,7 +55,7 @@ export default function Membership() {
                     <br />
                     <br />
                     <div>
-                        <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ img: tarjeta, id: "socio-basico", name: "BASICO", price: 500 })} >Agregar al Carrito</Button>
+                        <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ img: tarjeta, id: "socio-basico", name: "BASICO", price:500 , cantidad:1})} >Agregar al Carrito</Button>
                         <br />
                         <br />
                         <Link to='/socios'>

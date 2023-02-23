@@ -5,7 +5,7 @@ import { useDispatch} from "react-redux";
 import {  useParams } from "react-router-dom";
 import { getEventsById,  /*addToCart*/ } from "../../Actions/AppActions/appActions";
 import './../EventDetails/EventDetail.css'
-import { Tag,Rate } from 'antd';
+import { Tag,Rate, Button } from 'antd';
 /* import Stars from "../Comentarios/Stars";
 import CommentForm from "../Comentarios/CommentForm"; */
 import { useAuth0 } from "@auth0/auth0-react";
@@ -83,9 +83,11 @@ export default function EventDetails() {
                 <p className="card-text detalle-evento-info">{detalles[0].information} </p>
                 </div>
 
-                <div>
-                    <label htmlFor="">Precio Unitario</label> 
+                <div className="div-precio-boton">
+                    <div><label htmlFor="">Precio</label> 
                     <Tag color="#87d068" className="precio-evento">$ {detalles[0].price.toLocaleString('en-US')}</Tag>
+                    </div>
+                   {/*  <Button value= {cantidad} onClick={()=>handleAddToCart()} className="boton-agregar-carrito ">Agregar al carrito</Button> */}
                 </div>
                 <br/>
                 
@@ -96,22 +98,23 @@ export default function EventDetails() {
                 <div>
                     <div className="">
                         <label htmlFor="Quanty">Cantidad</label>
-                        <input id="Quanty" type="range" min={1} max={5} defaultValue={1} onChange={handleCantidad} />
+                        <input id="Quanty" type="range" min={0} max={5} defaultValue={1} onChange={handleCantidad} />
                         <span>{cantidad}</span>
                     </div>
-                    <div className="card-body d-flex">
+                 <div className="card-body d-flex">
                         <label htmlFor="">Precio total</label> 
                         <Tag color="#2f3e46" className="precio-evento">$ {(detalles[0].price*cantidad).toLocaleString('en-US')}</Tag> 
-                    </div>
+                    </div> 
                     <br/>
                     <div>
                         <button type="primary" className="boton-agregar-carrito" 
                                 value= {cantidad}
-                                onClick={handleAddToCart}>Add to Cart +
+                                onClick={handleAddToCart}>Agregar al carrito
                         </button>
                     </div>
                 </div>
-                }
+                } 
+               
 
                 <div >
 

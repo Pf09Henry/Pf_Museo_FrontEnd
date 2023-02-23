@@ -57,7 +57,7 @@ export default function PricingTable(prop) {
                         <div class="buy-button-box">
                             <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103)" }}>
                                 <Link to={{ pathname: `/membership-basico` }}>
-                                    Comprar
+                                    Ver mas
                                 </Link>
                             </Button>
                             {/* <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ id: "socio-basico", name: "BASICO", price: 500 })} >Agregar al Carrito</Button> */}
@@ -99,7 +99,7 @@ export default function PricingTable(prop) {
                         <div class="buy-button-box">
                             <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103)" }}>
                                 <Link to={{ pathname: `/membership-eco` }}>
-                                    Comprar
+                                Ver mas
                                 </Link>
                             </Button>
                             {/* <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ id: "socio-eco", name: "ECO", price: 1000 })} >Agregar al Carrito</Button> */}
@@ -141,7 +141,7 @@ export default function PricingTable(prop) {
                         <div class="buy-button-box">
                             <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103)" }}>
                                 <Link to={{ pathname: `/membership-paleo` }}>
-                                    Comprar
+                                Ver mas
                                 </Link>
                             </Button>
                             {/* <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ id: "socio-paleo", name: "PALEO", price: 2000 })} >Agregar al Carrito</Button> */}
