@@ -31,7 +31,7 @@ export default function Opiniones(){
     (async () => {
       await dispatch(getReview());
     })();
-  },[dispatch])
+  },[dispatch]) 
 
     useEffect(() => {
       setInitLoading(false);
