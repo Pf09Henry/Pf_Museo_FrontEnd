@@ -6,10 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { postTicket } from '../../Actions/AppActions/appActions';
 import Swal from 'sweetalert2';
-
-
 export default function Paypal() {
-
     const { user } = useAuth0();
     const usuario = useSelector((state)=> state.users)
     const navigate = useNavigate();
@@ -20,16 +17,16 @@ export default function Paypal() {
         console.log(findUser[0].id)
         return findUser[0].id
     }
-
     const { products, saveProducts } = useContext(CartContext);
     
     let info = [];
     let acount = [];
     let amount = [];
     let idEvent = [];
-    
-    
-    
+
+   
+
+
     for (let i = 0; i < products.length; i++) {
         info.push(products[i].name)
         acount.push(products[i].price)
@@ -41,18 +38,20 @@ export default function Paypal() {
     console.log(info)
     console.log(acount)
     console.log(idEvent)
+
     console.log(total)
-    
+
     const paypal = useRef();
+   
         const ticket = {
             methodOfPurchase: 'PayPal' || '',
-            amount: acount || '',
+            amount: acount[0]|| '',
             totalOfPurchase: total,
-            eventId: idEvent || '',
+            eventId: idEvent[0] || '',
             userId: findUserID(user.name) || '',
         }
         console.log('Aqui los :', ticket)
-        
+
         useEffect(() => {
         window.paypal.Buttons({
             createOrder: (data, actions, err) => {
@@ -83,7 +82,7 @@ export default function Paypal() {
                 console.log("esto es order: ", order)
                 if (order) {
                     Swal.fire({
-                        title: 'Upss!',
+                        title: 'Ok',
                         text: 'Tu Pago fue efectuado con Exito',
                         icon: 'success',
                         confirmButtonText: 'OK'
@@ -93,6 +92,8 @@ export default function Paypal() {
                     //     subject: "Pago realizado con Exito!",
                     //     message: "Su pago fue concretado de manera exitosa! "
                     // })
+                    // dispatch(postTicket(valuesId))
+                    // console.log('Aqui post', postTicket)
                     dispatch(postTicket(ticket))
                     console.log('Aqui post', postTicket)
                     saveProducts([])
@@ -107,11 +108,9 @@ export default function Paypal() {
         })
             .render(paypal.current)
     }, [])
-
     return (
         <div>
             <div ref={paypal}></div>
         </div>
     )
 }
-
