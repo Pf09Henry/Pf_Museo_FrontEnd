@@ -251,6 +251,17 @@ export function postUser(payload) {
     }
 }
 
+export function postTicket(payload) {
+    return async function (dispatch) {
+        const json = await axios.post('https://pfmuseobackend.up.railway.app/ticket/post', payload)
+        console.log(json)
+        return dispatch({
+            type: 'POST_TICKETS',
+            payload: json
+        })
+    }
+}
+
 export function postReview(payload) {
     return async function (dispatch) {
         const response = await axios.post('https://pfmuseobackend.up.railway.app/review/post', payload)
@@ -410,6 +421,7 @@ export function postMail(payload) {
         })
     }
 }
+
 
 
 
