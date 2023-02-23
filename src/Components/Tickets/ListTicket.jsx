@@ -9,7 +9,7 @@ import { Avatar, Card ,Form , Select, Input, Button} from 'antd';
 import './ListTicket.css'
 import {IoIosCheckmarkCircleOutline} from 'react-icons/io'
 import Swal from 'sweetalert2'
-
+import { Pagination } from 'antd';
 
 const { Meta } = Card;
 const { Option } = Select;
@@ -19,6 +19,7 @@ export default function ListTicket(){
     const tickets = useSelector((state) => state.tickets);
     const dispatch = useDispatch();
     const [ticket,setTicket] = useState([])
+    const [page,setPage] = useState(1)
     const [idTicket, setIdTicket] = useState('')
     const [id, setId] = useState("");
     const [form, setForm ] = useState({
@@ -50,6 +51,7 @@ export default function ListTicket(){
     
       useEffect (()=>{
         dispatch(getTicketId(idTicket));
+console.log(tickets.length/5)
       },[dispatch, idTicket]) 
 
 
@@ -111,6 +113,13 @@ export default function ListTicket(){
         <div className='contenedor-form'>
             <h3>Tickets</h3>
 
+            <Form.Item
+      label="Buscar"
+    >
+      <Input placeholder={idTicket} onChange={(e)=>buscarIdTicket(e)}/>
+
+      </Form.Item>
+
             <Form
      className="form-review"
      name="basic"
@@ -121,7 +130,7 @@ export default function ListTicket(){
      span: 16,
      }}
      style={{
-     maxWidth: 600,
+     maxWidth:600  ,
      }}
      initialValues={{
      remember: true,
@@ -131,16 +140,11 @@ export default function ListTicket(){
      autoComplete="off"
  >
 
-            <Form.Item
-      label="Buscar"
-    >
-      <Input placeholder={idTicket} onChange={(e)=>buscarIdTicket(e)}/>
-
-      </Form.Item>
+           
 
             <div className="list-tickets">
              {ticket?.length > 0 ? (
-                ticket?.map((t) =>
+                ticket.slice(page,page+5).map((t) =>
  
     
            <Card
@@ -195,6 +199,9 @@ export default function ListTicket(){
             <h3 className="actividades-disponibles">No se encontraron tickets</h3>
         )}
         </div>
+        
+        <Pagination defaultPageSize={5} total={tickets.length+30} current={page} onChange={(e)=>setPage(e)}/>
+
         </Form>
         </div>
     )

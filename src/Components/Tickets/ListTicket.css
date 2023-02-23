@@ -16,3 +16,7 @@
 .icono-react{
 font-size: 16px
 }
+
+.ant-pagination-options{
+    display: none !important;
+}
