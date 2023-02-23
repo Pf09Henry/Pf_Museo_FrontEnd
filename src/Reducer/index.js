@@ -27,12 +27,12 @@ const initialState = {
     categorias: [],
     guias: [],
     users: [],
-    cart:[],
-    mail:[],
-    guidesDetail:[],
-    review:[],
-    tickets:[],
-    ticketsDetail:[]
+    cart: [],
+    mail: [],
+    guidesDetail: [],
+    review: [],
+    tickets: [],
+    ticketsDetail: []
 }
 
 
@@ -51,13 +51,13 @@ function rootReducer(state = initialState, action) {
                 categorias: action.payload
 
             }
-        
-            case 'GET_TICKETS':
-                return {
-                    ...state,
-                    tickets: action.payload
-    
-                }
+
+        case 'GET_TICKETS':
+            return {
+                ...state,
+                tickets: action.payload
+
+            }
 
 
         case 'GET_EVENT_DETAILS':
@@ -66,17 +66,17 @@ function rootReducer(state = initialState, action) {
                 details: action.payload
             }
 
-            case 'GET_TICKET_DETAILS':
-                return {
-                    ...state,
-                    ticketsDetail: action.payload
-                }
+        case 'GET_TICKET_DETAILS':
+            return {
+                ...state,
+                ticketsDetail: action.payload
+            }
 
-            case 'GET_GUIDES_DETAILS':
-                return {
-                    ...state,
-                    guidesDetail: action.payload
-                }
+        case 'GET_GUIDES_DETAILS':
+            return {
+                ...state,
+                guidesDetail: action.payload
+            }
 
         case 'GET_GUIDES':
             return {
@@ -85,13 +85,13 @@ function rootReducer(state = initialState, action) {
 
             }
 
-            case 'GET_REVIEWS':
-                return {
-                    ...state,
-                    review: action.payload
-    
-                }
-    
+        case 'GET_REVIEWS':
+            return {
+                ...state,
+                review: action.payload
+
+            }
+
 
         case 'FILTER_EVENT_BY_CATEGORY':
             const alleventos = state.alleventos;
@@ -108,7 +108,7 @@ function rootReducer(state = initialState, action) {
                 eventos: action.payload
             }
 
-            case 'POST_REVIEW':
+        case 'POST_REVIEW':
             return {
                 ...state,
                 review: action.payload
@@ -131,14 +131,20 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 users: action.payload
             }
-        
-        case 'POST_EMAIL':
-                return {
-                    ...state,
-                    mail: action.payload
-                }
 
-            
+        case 'POST_EMAIL':
+            return {
+                ...state,
+                mail: action.payload
+            }
+
+        case 'POST_TICKETS':
+            return {
+                ...state,
+                tickets: action.payload
+            }
+
+
         case 'DELETE_EVENT':
             const alleventosdelete = state.alleventos;
             const statusFilteredelete = alleventosdelete.filter(el => el.id !== action.payload)
@@ -147,26 +153,26 @@ function rootReducer(state = initialState, action) {
                 eventos: statusFilteredelete
             }
 
-            case 'DELETE_GUIDE':
-                const allguidesdelete = state.guias;
-                const statusFilteredeleteguide = allguidesdelete.filter(el => el.id !== action.payload)
-                return {
-                    ...state,
-                    guias: statusFilteredeleteguide
-                }
-
-        
-                case 'DELETE_USERS':
-                    const allusersdelete = state.users;
-                    const statusFilteredeleteusers = allusersdelete.filter(el => el.id !== action.payload)
-                    return {
-                        ...state,
-                        users: statusFilteredeleteusers
-                    }
-    
+        case 'DELETE_GUIDE':
+            const allguidesdelete = state.guias;
+            const statusFilteredeleteguide = allguidesdelete.filter(el => el.id !== action.payload)
+            return {
+                ...state,
+                guias: statusFilteredeleteguide
+            }
 
 
-    
+        case 'DELETE_USERS':
+            const allusersdelete = state.users;
+            const statusFilteredeleteusers = allusersdelete.filter(el => el.id !== action.payload)
+            return {
+                ...state,
+                users: statusFilteredeleteusers
+            }
+
+
+
+
         case 'ORDER_BY_NAME':
 
             const sortedArr = action.payload === 'asc' ?
