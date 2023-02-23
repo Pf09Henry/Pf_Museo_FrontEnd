@@ -21,8 +21,11 @@ export default function DashUser() {
 
 
   return (
-
-   <Layout>
+  <Layout
+   className='layout-dashboard'
+     style={{
+       minHeight: '250vh',
+     }}>
     <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
   
       
