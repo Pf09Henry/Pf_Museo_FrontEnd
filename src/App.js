@@ -48,6 +48,7 @@ import EliminarEvento from './Components/Dashboard/Eventos/Eliminar';
 import EliminarGuia from './Components/Dashboard/Guias/Eliminar';
 import EliminarUsuario from './Components/Dashboard/Usuarios/Eliminar';
 import ModificarTicket from './Components/Dashboard/Tickets/Modificar'
+import AreaGeo from './Components/areaGeo/areaGeo';
 
 
 //import { CartContext } from './Context';
@@ -55,6 +56,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getEvents, getReview, getTicketId, getTickets, getUsers } from '../src/Actions/AppActions/appActions';
 import Perfil from './Components/Dashboard/Perfil/Perfil';
 import DashUser from './Components/Dashboard/DashUser/DashboardUser';
+import areaGeo from './Components/areaGeo/areaGeo';
 // import { useNavigate } from "react-router";
 
 function App() {
@@ -66,15 +68,15 @@ function App() {
   const eventos = useSelector((state) => state.eventos)
   const tickets = useSelector((state) => state.tickets)
   const review = useSelector((state) => state.review)
-  useEffect(() => { 
-     (async () => {
-    await dispatch(getUsers());
-    await dispatch(getReview());
-    await dispatch(getTickets());
-    await dispatch(getEvents());
-   
-    
-  })();
+  useEffect(() => {
+    (async () => {
+      await dispatch(getUsers());
+      await dispatch(getReview());
+      await dispatch(getTickets());
+      await dispatch(getEvents());
+
+
+    })();
   }, [])
 
   if (isLoading) {
@@ -111,6 +113,8 @@ function App() {
             <Route path='/details' element={<Details />} />
             <Route path='/areaPaleo' element={<AreaPaleo />} />
             <Route path='/areaBio' element={<AreaBio />} />
+            <Route path='/areaBio' element={<AreaBio />} />
+            <Route path='/areaGeo' element={<AreaGeo />} />
             <Route path='/areaEducation' element={<AreaEducation />} />
             <Route path='/culture' element={<Culture />} />
             <Route path='/holidays' element={<Holidays />} />

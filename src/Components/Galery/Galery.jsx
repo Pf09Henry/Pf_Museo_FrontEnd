@@ -47,7 +47,7 @@ export default function Galery() {
       </section>
       {/* Area Geologia */}
       <section className='container-fluid align-items-center justify-content-center titleSection '>
-        <Link to="/exhibits#geologia" className='text-dark text-decoration-none font-weight-bold '> <h2 className='text-center' >Sala de Geología</h2><i></i></Link>
+        <a href="/areaGeo" className='text-dark text-decoration-none font-weight-bold '> <h2 className='text-center' >Sala de Geología</h2><i></i></a>
       </section>
       <section>
         <img src={geo1} alt="logo" />
