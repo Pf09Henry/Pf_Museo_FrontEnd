@@ -14,45 +14,48 @@ import geo2 from '../../Imagenes/Pictures_Geologica/GeologicaTres.jpg'
 import geo3 from '../../Imagenes/Pictures_Geologica/GeologicaCuatro.jpg'
 import geo4 from '../../Imagenes/Pictures_Geologica/GeologicaUno.jpg'
 import geo5 from '../../Imagenes/Pictures_Geologica/GeologicaDos.jpg'
-
 import './Styles/Galery.css'
+import { Link } from 'react-router-dom'
 
 export default function Galery() {
+
+
+
   return (
     <div>
       {/* Area Palenteologia */}
       <section className='container-fluid align-items-center justify-content-center titleSection '>
-        <a href='/areaPaleo' className='text-dark text-decoration-none' ><h2 className='text-center' >Exhibición Palentologia</h2><i></i></a>
+        <a href="/areaPaleo" className='text-dark text-decoration-none' ><h2 className='text-center' >Sala de Paleontología</h2><i></i></a>
       </section>
-    <section>
-        <img src= {firstFosil} alt="logo" />
+      <section>
+        <img src={firstFosil} alt="logo" />
         <img src={secondFossil} alt="Trex" />
         <img src={thirdFossil} alt="Trex" />
         <img src={quarterFossil} alt="Trex" />
         <img src={fifthFossil} alt="Trex" />
-    </section>
-    {/* Area Biologica */}
-    <section className='container-fluid align-items-center justify-content-center titleSection '>
-        <a href="/areaBio" className='text-dark text-decoration-none font-weight-bold '> <h2 className='text-center' >Exhibición Biologica</h2><i></i></a>
       </section>
-    <section>
-        <img src= {bio1} alt="logo" />
+      {/* Area Biologica */}
+      <section className='container-fluid align-items-center justify-content-center titleSection '>
+        <a href="/areaBio" className='text-dark text-decoration-none font-weight-bold '> <h2 className='text-center' >Sala de Biodiversidad</h2><i></i></a>
+      </section>
+      <section>
+        <img src={bio1} alt="logo" />
         <img src={bio2} alt="Trex" />
         <img src={bio3} alt="Trex" />
         <img src={bio4} alt="Trex" />
         <img src={bio5} alt="Trex" />
-    </section>
-    {/* Area Geologia */}
-    <section className='container-fluid align-items-center justify-content-center titleSection '>
-        <a href="/areaBio" className='text-dark text-decoration-none font-weight-bold '> <h2 className='text-center' >Exhibición Geologica</h2><i></i></a>
       </section>
-    <section>
-        <img src= {geo1} alt="logo" />
+      {/* Area Geologia */}
+      <section className='container-fluid align-items-center justify-content-center titleSection '>
+        <Link to="/exhibits#geologia" className='text-dark text-decoration-none font-weight-bold '> <h2 className='text-center' >Sala de Geología</h2><i></i></Link>
+      </section>
+      <section>
+        <img src={geo1} alt="logo" />
         <img src={geo2} alt="Trex" />
         <img src={geo3} alt="Trex" />
         <img src={geo4} alt="Trex" />
         <img src={geo5} alt="Trex" />
-    </section>
+      </section>
     </div>
   )
 }
