@@ -1,8 +1,8 @@
-import { Avatar, Button, Card, Col, Divider, Drawer, List, Row } from 'antd';
+import { Avatar, Button, Card, Col, Divider, Drawer, List, Row, Spin } from 'antd';
 import './PerfilAnt.css'
 import React, {useEffect, useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getUsers , getTickets} from './../../../Actions/AppActions/appActions';
+import { getUsers , getTickets, getReview} from './../../../Actions/AppActions/appActions';
 import { useAuth0 } from "@auth0/auth0-react";
 import Meta from 'antd/es/card/Meta';
 
@@ -23,26 +23,35 @@ const PerfilAnt = () => {
   const { user} = useAuth0();
   const dispatch = useDispatch();
   const usuarios = useSelector((state) => state.users);
-  const tickets = useSelector((state) => state.tickets);
+  const ticketsBase = useSelector((state) => state.tickets);
+  const review = useSelector((state) => state.review);
   const [ticket,setTicket] = useState([])
+  const [reviewCom,setReview] = useState([])
+  const [loading, setLoading] = useState(true);
 
 
   function searchIdTicket(){
     let usuarioEncontrado = usuarios.filter(el => el.name === user.name)
-    let ticketEncontrado = tickets.filter(t => t.user.name === usuarioEncontrado[0].name)
-   /* console.log('USERNAME',usuarioEncontrado[0].name)*/
-    console.log('USERTIKER',ticket)
-  /* console.log('TICKET',ticketEncontrado[0])  */
-    setTicket(ticketEncontrado[0])
-    return ticketEncontrado[0]
+    let reviewEncontrado = review.filter(re => re.user.name === usuarioEncontrado[0].name)
+    let ticketEncontrado = ticketsBase.filter(t => t.user.name === usuarioEncontrado[0].name)
+    setTicket(ticketEncontrado)
+    setReview(reviewEncontrado)
+    return ticketEncontrado
   }
 
 
+
+  useEffect(()=>{
+   dispatch(getTickets())
+   dispatch(getReview())
+  },[dispatch])
+
 useEffect(()=>{
     searchIdTicket()
-    console.log(ticket)
-    
-},[tickets,ticket])
+    setTimeout(() => {setLoading(false);
+    }, 1000);
+
+},[])
 
 
 
@@ -99,9 +108,11 @@ useEffect(()=>{
         <p className="site-description-item-profile-p">Comentarios</p>
         <Row>
         <div className="list-tickets">
-             {ticket?.length > 0 ? (
-                ticket?.map((t) =>
- 
+        {loading ? (
+        <div><Spin/></div>
+      ) : (
+        reviewCom?.map((c) =>
+        
         <Card
                 className="ticket"
                 key={searchIdUser(user.name)}
@@ -113,22 +124,19 @@ useEffect(()=>{
             >
              
                 <Meta
-             avatar={<Avatar src={t.user.image} alt={t.user.name} />}
-                title={t.id}
+                avatar={<Avatar src={c.user.image} alt={c.user.name} />}
+                title={c.event.name}
                 description={
                     <div>
-                    
-                    <p>Cantidad tickets:{t.amount}</p>
-                    <p>Total de la compra:{t.totalOfPurchase}</p>
-                    <p>Metodo de pago:{t.methodOfPurchase}</p>
+                  
+                    <p>Puntaje: {c.score}</p>
+                    <p>Comentario: {c.commentary}</p>
                     </div>
                 } 
              
                 />
         </Card>
-        )) : (
-           <p>No se encontraron Comentarios</p>
-            )}
+        ) )}
         </div>
           
         </Row>
@@ -137,7 +145,9 @@ useEffect(()=>{
         <p className="site-description-item-profile-p">Tickets</p>
         <Row>
         <div className="list-tickets">
-             {ticket?.length > 0 ? (
+             {loading ? (
+     <div><Spin/></div>
+      ) :  (
                 ticket?.map((t) =>
  
         <Card
@@ -156,17 +166,15 @@ useEffect(()=>{
                 description={
                     <div>
                     
-                    <p>Cantidad tickets:{t.amount}</p>
-                    <p>Total de la compra:{t.totalOfPurchase}</p>
-                    <p>Metodo de pago:{t.methodOfPurchase}</p>
+                    <p>Cantidad tickets: {t.amount}</p>
+                    <p>Total de la compra: {t.totalOfPurchase}</p>
+                    <p>Metodo de pago: {t.methodOfPurchase}</p>
                     </div>
                 } 
              
                 />
         </Card>
-        )) : (
-            <p>No se encontraron Tickets</p>
-            )}
+        )) }
         </div>
         </Row>
         

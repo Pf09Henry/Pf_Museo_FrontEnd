@@ -12,7 +12,9 @@
     font-size: 16px;
     line-height: 1.5715;
   }
-  
+  .ant-row {
+    justify-content: center !important;
+  }
   .site-description-item-profile-p-label {
     display: inline-block;
     margin-right: 8px;
@@ -30,4 +32,10 @@
     margin-top: 5%;
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .list-tickets{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
   }

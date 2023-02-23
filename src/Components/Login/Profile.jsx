@@ -17,9 +17,9 @@ export function Profile() {
   let rolUser = 'aacaef0e-fd5b-4d0f-ac88-bbffa0a1fe87'
   function searchRol(){
     let userEncontrado = usuario.filter(e=> e.email === user.email)
-    console.log(userEncontrado[0].roleId.split())
+   /*  console.log(userEncontrado[0].roleId.split()) */
     let rol = userEncontrado[0].roleId.split()
-    console.log(rolUser === rol[0])
+/*     console.log(rolUser === rol[0]) */
     return rol[0]
   }
 

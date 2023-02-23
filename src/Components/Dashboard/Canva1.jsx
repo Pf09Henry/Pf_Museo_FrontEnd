@@ -57,7 +57,7 @@ export default function Canva1(){
 		
 		};
 		setEvRanking(scoreCounts);
-		console.log("ticket por categoria",evRanking)
+	/* 	console.log("ticket por categoria",evRanking) */
 		
 	  }, [list]);
 
@@ -68,7 +68,7 @@ export default function Canva1(){
 			count++;
 		  }
 		}
-		console.log("lista tickets",list)
+	/* 	console.log("lista tickets",list) */
 		return count;
 		
 	  }
@@ -89,7 +89,7 @@ export default function Canva1(){
 	  const eventName = "Evento 2";
 	const eventCategory = getCategoryFromEventName(eventName, event);
 
-	console.log(`La categoría del evento ${eventName} es: ${eventCategory}`);
+	/* console.log(`La categoría del evento ${eventName} es: ${eventCategory}`); */
 
 
 
