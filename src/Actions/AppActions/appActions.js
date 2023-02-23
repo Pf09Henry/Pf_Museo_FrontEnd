@@ -413,7 +413,7 @@ export function removeToCart(id) {
 
 export function postMail(payload) {
     return async function (dispatch) {
-        const json = await axios.post('http://localhost:3001/send_email', payload)
+        const json = await axios.post('https://pfmuseobackend.up.railway.app/send_email', payload)
         console.log(json)
         return dispatch({
             type: 'POST_EMAIL',
