@@ -4,27 +4,32 @@ import { CartContext } from '../../Context/index';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { postTicket } from '../../Actions/AppActions/appActions';
+import { getEvents, postTicket,putEvent } from '../../Actions/AppActions/appActions';
 import Swal from 'sweetalert2';
+
+
+
 export default function Paypal() {
     const { user } = useAuth0();
     const usuario = useSelector((state)=> state.users)
+    const eventos = useSelector((state)=> state.eventos)
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    
+    const { products, saveProducts } = useContext(CartContext);
+
+
     function findUserID (name){
         let findUser = usuario.filter((e)=> e.name === user.name)
-        console.log(findUser[0].id)
+         console.log("USUARIO",findUser[0].id) 
         return findUser[0].id
     }
-    const { products, saveProducts } = useContext(CartContext);
-    
+
+  
     let info = [];
     let acount = [];
     let amount = [];
     let idEvent = [];
 
-   
 
 
     for (let i = 0; i < products.length; i++) {
@@ -34,29 +39,45 @@ export default function Paypal() {
         idEvent.push(products[i].id)        
     }
     let total = acount*amount
-    console.log(products)
-    console.log(info)
-    console.log(acount)
+/*     console.log("PRODUCTOS",products)
+    console.log("INFO",info)
+    console.log("ACOUNT",acount)
+    console.log("AMOUNT",amount)
     console.log(idEvent)
 
-    console.log(total)
+    console.log("TOTAL",total) */
 
     const paypal = useRef();
    
         const ticket = {
             methodOfPurchase: 'PayPal' || '',
-            amount: acount[0]|| '',
+            amount: parseInt(amount[0]) || '',
             totalOfPurchase: total,
             eventId: idEvent[0] || '',
             userId: findUserID(user.name) || '',
         }
-        console.log('Aqui los :', ticket)
+
+
+
+        function findEventCupos (id){
+            let findEvent = eventos.filter((e)=> e.id === id)
+          
+           return findEvent[0].availability
+           
+        }
+
+        const putEvento = {
+            availability: findEventCupos(idEvent[0]) - parseInt(amount[0]),
+        }
+       /*  console.log('Aqui los :', ticket) */
+      
+
 
         useEffect(() => {
         window.paypal.Buttons({
             createOrder: (data, actions, err) => {
-                console.log("1: ", data)
-                console.log("2: ", actions)
+                /* console.log("1: ", data)
+                console.log("2: ", actions) */
                 const order = actions.order.create({
                     intent: "CAPTURE",
                     purchase_units: [
@@ -69,17 +90,23 @@ export default function Paypal() {
                         },
                     ]
                 })
-                console.log("esto es order: ", order)
+               /*  console.log("esto es order: ", order) */
                 return order
             },
             onCancel: (data) => {
-                alert("pago cancelado!")
+                Swal.fire({
+                    title: 'Upss!',
+                    text: 'Pago cancelado',
+                    icon: 'warning',
+                    confirmButtonText: 'Ok'
+                  })
+             
                 console.log(data)
             },
             onApprove: async (data, actions) => {
-                console.log("actions: ", actions)
+                /* console.log("actions: ", actions) */
                 const order = await actions.order.capture();
-                console.log("esto es order: ", order)
+               /*  console.log("esto es order: ", order) */
                 if (order) {
                     Swal.fire({
                         title: 'Ok',
@@ -95,15 +122,17 @@ export default function Paypal() {
                     // dispatch(postTicket(valuesId))
                     // console.log('Aqui post', postTicket)
                     dispatch(postTicket(ticket))
-                    console.log('Aqui post', postTicket)
+                    dispatch(putEvent(putEvento, idEvent[0]))
+                  /*   console.log('Aqui post', postTicket) */
+                      
                     saveProducts([])
                 }
                 navigate('/eventos')
-                console.log(data)
+           /*      console.log(data) */
                 //>>aca podemos accionar cualquier lógica necesaria que le indique al user que todo funcionó<<
             },
             onError: (err) => {
-                console.log(err)
+                /* console.log(err) */
             }
         })
             .render(paypal.current)

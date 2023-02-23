@@ -52,7 +52,7 @@ import ModificarTicket from './Components/Dashboard/Tickets/Modificar'
 
 //import { CartContext } from './Context';
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers } from '../src/Actions/AppActions/appActions';
+import { getEvents, getReview, getTicketId, getTickets, getUsers } from '../src/Actions/AppActions/appActions';
 import Perfil from './Components/Dashboard/Perfil/Perfil';
 import DashUser from './Components/Dashboard/DashUser/DashboardUser';
 // import { useNavigate } from "react-router";
@@ -63,10 +63,17 @@ function App() {
   const dispatch = useDispatch();
   // const navigate = useNavigate();
   const usuario = useSelector((state) => state.users)
-
+  const eventos = useSelector((state) => state.eventos)
+  const tickets = useSelector((state) => state.tickets)
+  const review = useSelector((state) => state.review)
   useEffect(() => { 
      (async () => {
     await dispatch(getUsers());
+    await dispatch(getReview());
+    await dispatch(getTickets());
+    await dispatch(getEvents());
+   
+    
   })();
   }, [])
 

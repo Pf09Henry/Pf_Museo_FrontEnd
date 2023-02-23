@@ -26,10 +26,6 @@ const PerfilAnt = () => {
   const tickets = useSelector((state) => state.tickets);
   const [ticket,setTicket] = useState([])
 
-  useEffect(()=>{
-
-    dispatch(getTickets());
-  },[dispatch])
 
   function searchIdTicket(){
     let usuarioEncontrado = usuarios.filter(el => el.name === user.name)
@@ -49,10 +45,6 @@ useEffect(()=>{
 },[tickets,ticket])
 
 
-
-    useEffect (()=>{
-      dispatch(getUsers());
-  },[dispatch]) 
 
   function searchIdUser(name){
     let usuarioEncontrado = usuarios.filter(el => el.name === name)
