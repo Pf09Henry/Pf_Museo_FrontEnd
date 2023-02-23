@@ -59,10 +59,24 @@
 }
 
 .boton-agregar-carrito:hover{
-    background-color: rgb(92, 152, 89) !important;
+
+    background-color:rgb(158, 213, 155) !important;
     color:white !important;
     border-color: white !important;
+    border-radius: 10px;
+    height: 2.5rem;
+    width: 10rem;
 }
+
+.boton-agregar-carrito{
+    background-color:  rgb(92, 152, 89) !important ;
+    color:white !important;
+    border-color: white !important;
+    height: 2.5rem;
+    width: 10rem;
+    border-radius:10px;
+}
+
 
 .comentarios-opiniones{
     display: flex;
@@ -72,6 +86,15 @@
 .comentarios-todos{
     border: 1px solid rgba(196, 196, 196, 0.482);
     border-radius: 10px;
+}
+.div-precio-boton{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+a{
+    text-decoration: none;
 }
 
 

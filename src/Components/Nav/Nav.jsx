@@ -10,6 +10,8 @@ import { MdShoppingCart } from 'react-icons/md'
 import CartSidebar from "../CartSidebar/CartSidebar";
 import { CartContext } from "../../Context";
 import { useSelector } from "react-redux";
+import { Button } from "antd";
+
 
 // import { useNavigate } from "react-router";
 
@@ -76,6 +78,7 @@ if(isAuthenticated){
                   <li><a className="dropdown-item" href="/history">Nuestra Historia</a></li>
                   <li><a className="dropdown-item" href="/history">Misión y Objetivos</a></li>
                   <li><a className="dropdown-item" href="/history">Instalaciones</a></li>
+                  {isAuthenticated ? <li><a className="dropdown-item" href="/socios"><Button className="button__login btn btn-success btn-secundario">Asociate</Button></a></li> : null}
                 </ul>
               </li>
 
