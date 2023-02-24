@@ -2,8 +2,13 @@ import React from "react";
 import "./areaBio.css"
 import yarara from "../../Imagenes/Pictures_areas/yarara.jpg";
 import investigation from "../../Imagenes/Pictures_areas/investigation.jpg";
+import { Link } from 'react-router-dom'
+
 
 export default function areaBio() {
+
+
+
     return (
         <div>
 
@@ -42,8 +47,9 @@ export default function areaBio() {
                     <br />
 
                 </div>
-                <button type="button" className="btn btn-outline-success btn-secundario">Compra tu Entrada</button>
-
+                <Link to='/entradas'>
+                    <button type="button" className="btn btn-outline-success btn-secundario">Compra tu Entrada</button>
+                </Link>
             </div>
             <br />
 

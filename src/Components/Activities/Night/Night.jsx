@@ -1,6 +1,7 @@
 import React from "react";
 import "./Night.css"
 import night from "../../../Imagenes/Pictures_activities/night.png"
+import { Link } from 'react-router-dom'
 
 
 export default function Night() {
@@ -22,7 +23,9 @@ export default function Night() {
 
                 <br />
 
-                <button type="button" className="btn btn-outline-success btn-secundario">Compra tu Entrada</button>
+                <Link to='/eventos'>
+                    <button type="button" className="btn btn-outline-success btn-secundario">Compra tu Entrada</button>
+                </Link>
             </div>
             <br />
 

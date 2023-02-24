@@ -3,6 +3,7 @@ import "./areaPaleo.css"
 import fossil1 from "../../Imagenes/Pictures_areas/fossil1.jpg";
 import fossil2 from "../../Imagenes/Pictures_areas/fossil2.jpg";
 import dino_sketch from "../../Imagenes/Pictures_areas/dino_sketch.jpg";
+import { Link } from 'react-router-dom'
 
 
 
@@ -41,7 +42,9 @@ export default function areaPaleo() {
                     <br />
                 </div>
                 <br />
-                <button type="button" className="btn btn-outline-success btn-secundario">Compra tu Entrada</button>
+                <Link to='/entradas'>
+                    <button type="button" className="btn btn-outline-success btn-secundario">Compra tu Entrada</button>
+                </Link>
                 <br />
                 <br />
             </div>

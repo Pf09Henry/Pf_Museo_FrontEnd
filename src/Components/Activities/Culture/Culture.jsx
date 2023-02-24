@@ -2,6 +2,7 @@
 import React from "react";
 import "./Culture.css"
 import culture from "../../../Imagenes/Pictures_activities/culture.png";
+import { Link } from 'react-router-dom';
 
 export default function Culture() {
     return (
@@ -20,7 +21,9 @@ export default function Culture() {
 
                 <br />
 
-                <button type="button" className="btn btn-outline-success btn-secundario">Compra tu Entrada</button>
+                <Link to='/eventos'>
+                    <button type="button" className="btn btn-outline-success btn-secundario">Compra tu Entrada</button>
+                </Link>
             </div>
             <br />
 
