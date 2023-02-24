@@ -28,8 +28,8 @@ export default function Opiniones(){
       setList(listEvento)
   }
   useEffect(()=>{
-    (async () => {
-      await dispatch(getReview());
+    (() => {
+      dispatch(getReview());
     })();
   },[dispatch]) 
 

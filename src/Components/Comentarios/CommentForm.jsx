@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import './CommentForm.css';
 import { useAuth0 } from "@auth0/auth0-react";
 
+
 export default function CommentForm({ commentInitial, buttonText, buttonSend }) {
+
+    
 
     const { isAuthenticated } = useAuth0();
 
@@ -30,7 +33,7 @@ export default function CommentForm({ commentInitial, buttonText, buttonSend }) 
 
     //si hay comentario se envia, sino error
     function handleSubmit(event) {
-        event.preventDefault();
+        //event.preventDefault();
         const error = validateComment();
         if (error) {
             return;
