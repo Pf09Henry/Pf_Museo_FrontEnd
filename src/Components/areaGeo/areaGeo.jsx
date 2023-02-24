@@ -3,6 +3,7 @@ import "./areaGeo.css"
 import GeologicaUno from "../../Imagenes/Pictures_Geologica/GeologicaUno.jpg";
 import GeologicaDos from "../../Imagenes/Pictures_Geologica/GeologicaDos.jpg";
 //import dino_sketch from "../../Imagenes/Pictures_areas/dino_sketch.jpg";
+import { Link } from 'react-router-dom'
 
 
 
@@ -33,7 +34,9 @@ export default function areaGeo() {
                     <br />
                 </div>
                 <br />
-                <button type="button" className="btn btn-outline-success btn-secundario">Compra tu Entrada</button>
+                <Link to='/entradas'>
+                    <button type="button" className="btn btn-outline-success btn-secundario">Compra tu Entrada</button>
+                </Link>
                 <br />
                 <br />
             </div>

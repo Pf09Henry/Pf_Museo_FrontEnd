@@ -1,6 +1,7 @@
 import React from "react";
 import "./Holidays.css"
 import holidays from "../../../Imagenes/Pictures_activities/holidays.png";
+import { Link } from 'react-router-dom'
 
 export default function Holidays() {
     return (
@@ -21,7 +22,9 @@ export default function Holidays() {
 
                 <br />
 
-                <button type="button" className="btn btn-outline-success btn-secundario">Compra tu Entrada</button>
+                <Link to='/entradas'>
+                    <button type="button" className="btn btn-outline-success btn-secundario">Compra tu Entrada</button>
+                </Link>
             </div>
             <br />
 

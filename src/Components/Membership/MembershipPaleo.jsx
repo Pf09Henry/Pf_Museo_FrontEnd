@@ -14,7 +14,11 @@ export default function Membership() {
 
     const handleAddToCart = (product) => {
         const newProducts = [...products, product];
-        saveProducts(newProducts);
+        if (newProducts.length) {
+            alert('Producto ya se encuentra en el carrito puedes modificarlo desde allí')
+        } else {
+            saveProducts(newProducts);
+        }
     };
 
 
@@ -54,7 +58,7 @@ export default function Membership() {
                     <br />
                     <br />
                     <div>
-                        <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ img: tarjeta, id: "socio-paleo", name: "PALEO", price: 2000, cantidad:1 })} >Agregar al Carrito</Button>
+                        <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ img: tarjeta, id: "socio-paleo", name: "PALEO", price: 2000, cantidad: 1 })} >Agregar al Carrito</Button>
                         <br />
                         <br />
                         <Link to='/socios'>

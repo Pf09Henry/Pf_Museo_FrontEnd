@@ -2,6 +2,8 @@ import React from "react";
 import "./areaEducation.css"
 import course1 from "../../Imagenes/Pictures_areas/course1.jpg";
 import school_visits from "../../Imagenes/Pictures_areas/school_visits.jpg";
+import { Link } from 'react-router-dom';
+
 
 
 export default function areaEducation() {
@@ -44,7 +46,9 @@ export default function areaEducation() {
 
                     <br />
                 </div>
-                <button type="button" className="btn btn-outline-success btn-secundario">Compra tu Entrada</button>
+                <Link to='/eventos'>
+                    <button type="button" className="btn btn-outline-success btn-secundario">Compra tu Entrada</button>
+                </Link>
                 <br />
             </div>
             <br />
