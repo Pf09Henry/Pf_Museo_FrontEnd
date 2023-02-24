@@ -187,7 +187,7 @@ export default function Register () {
           <Input/>
         </Form.Item> 
   
-        <Form.Item
+        {/* <Form.Item
           name="agreement"
           valuePropName="checked"
           rules={[
@@ -198,10 +198,10 @@ export default function Register () {
           ]}
           {...tailFormItemLayout}
         >
-    {/*       <Checkbox>
+         <Checkbox>
             I have read the <a href=" ">agreement</a>
-          </Checkbox> */}
-        </Form.Item>
+          </Checkbox> 
+        </Form.Item> */}
         <Form.Item {...tailFormItemLayout}>
           <Button type="primary" className='btn-primary' htmlType="submit">
             Registrarse
