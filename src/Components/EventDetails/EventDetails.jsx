@@ -83,6 +83,12 @@ export default function EventDetails() {
                 <p className="card-text detalle-evento-info">{detalles[0].information} </p>
                 </div>
 
+                <div>
+                    {detalles[0].availability < 10 ? <p>Quedan pocas entradas! No te quedes afuera!</p> : null}
+                    <h5>Cupos disponibles: <Tag color="#2d8c04" className="precio-evento">{detalles[0].availability} </Tag></h5>
+                   
+                </div>
+
                 <div className="div-precio-boton">
                     <div><label htmlFor="">Precio</label> 
                     <Tag color="#87d068" className="precio-evento">$ {detalles[0].price.toLocaleString('en-US')}</Tag>

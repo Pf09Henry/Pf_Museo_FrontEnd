@@ -25,3 +25,8 @@ a{
     text-decoration: none;
     cursor: pointer;
 }
+
+.btn-carrito:hover{
+    border-color: rgb(1, 165, 1) !important;
+    color: rgb(0, 178, 0) !important;
+}

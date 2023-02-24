@@ -7,11 +7,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react';
 import { getEvents } from "../../Actions/AppActions/appActions";
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 import Pagination from "../Paginado/Paginado";
 import { useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import { MdShoppingCart } from 'react-icons/md'
 import { CartContext } from "../../Context";
+import Swal from 'sweetalert2';
 const { Meta } = Card;
 
 
@@ -25,7 +27,7 @@ export default function EventoList() {
     const indexOfLastEvet = currentPage * eventsPerPage;
     const indexOfFirstEvet = indexOfLastEvet - eventsPerPage;
     const currentEvents = Eventos.slice(indexOfFirstEvet, indexOfLastEvet);
-
+    const {isAuthenticated, user} = useAuth0();
     const pagination = currentPage => {
         setCurrent(currentPage)
     };
@@ -38,6 +40,16 @@ export default function EventoList() {
     const handleAddToCart = () =>{
         const productos = products.concat(detalles)
         saveProducts(productos)
+    }
+
+    function clickAuth(){
+        Swal.fire({
+            title: 'Upss',
+            text: 'Inicia sesión para ver tu carrito!',
+            icon: 'info',
+            confirmButtonText: 'OK'
+        })
+
     }
 
 
@@ -71,8 +83,10 @@ export default function EventoList() {
                                         <Tag color="green">{activity.startDay} - {activity.endDay}</Tag>
                                         <br></br>
                                          <Tag color="#015129">{activity.category[0].name}</Tag>
-                                        <hr></hr>  
-                                        <Tag color="#87d068">${activity.price}</Tag><Button className="boton-agregar-carrito"  onClick={handleAddToCart}><MdShoppingCart /></Button>
+                                        <hr></hr> 
+                                        <Tag color="#87d068">${activity.price}</Tag> 
+                                        {isAuthenticated ? <Button  className="btn-carrito"  onClick={handleAddToCart}><MdShoppingCart /></Button> : <Button  className="btn-carrito"  onClick={clickAuth}><MdShoppingCart /></Button>}
+                                        
                                         <br />
 
                                     </div>

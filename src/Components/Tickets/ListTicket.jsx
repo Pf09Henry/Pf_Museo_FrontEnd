@@ -143,8 +143,9 @@ console.log(tickets.length/5)
            
 
             <div className="list-tickets">
-             {ticket?.length > 0 ? (
-                ticket.slice(page,page+5).map((t) =>
+             {tickets?.length > 0 ? (
+
+                tickets.slice(page+5,page+10).map((t) =>
  
     
            <Card
@@ -199,8 +200,8 @@ console.log(tickets.length/5)
             <h3 className="actividades-disponibles">No se encontraron tickets</h3>
         )}
         </div>
-        
-        <Pagination defaultPageSize={5} total={tickets.length+30} current={page} onChange={(e)=>setPage(e)}/>
+       
+        <Pagination defaultPageSize={5} total={tickets.length} current={page} onChange={(e)=>setPage(e)}/>
 
         </Form>
         </div>
