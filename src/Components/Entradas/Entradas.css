@@ -1,0 +1,15 @@
+.firstCardEntrys{
+    background-image: url('/src/Imagenes/Pictures_Biologia/BiologicaPataLargarto.jpg') !important;
+    background-size: cover;
+}
+
+.secondCardEntrys{
+    background-image: url('/src/Imagenes/Pictures_Biologia/LagartoUno.jpg') !important;
+    background-size: cover;
+}
+
+.thirdCardEntrys{
+    background-image: url('/src/Imagenes/Pictures_Biologia/Buho.jpg') !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

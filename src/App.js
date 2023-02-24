@@ -49,6 +49,7 @@ import EliminarGuia from './Components/Dashboard/Guias/Eliminar';
 import EliminarUsuario from './Components/Dashboard/Usuarios/Eliminar';
 import ModificarTicket from './Components/Dashboard/Tickets/Modificar'
 import AreaGeo from './Components/areaGeo/areaGeo';
+import Entradas from './Components/Entradas/Entradas';
 
 
 //import { CartContext } from './Context';
@@ -138,6 +139,7 @@ function App() {
             <Route path='/membership-basico' element={<MembershipBasic />} />
             <Route path='/membership-eco' element={<MembershipEco />} />
             <Route path='/membership-paleo' element={<MembershipPaleo />} />
+            <Route path='/entradas' element={<Entradas/>} />
 
             {/*SI EL ROL ES ADMIN */}
             <Route path='/dashboard' element={<Dash />} />

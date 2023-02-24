@@ -15,7 +15,7 @@ export default function Checkout (){
         })
     }
     else if(products && products.length === 1){
-        sum= products[0].totalPrice
+        sum= products[0].price * products[0].cantidad
     }
 
     const handleRemoveCart = (e) => {
@@ -31,7 +31,7 @@ export default function Checkout (){
             
             {products && products.length>0 ? 
             <div className="container my-3 row position-relative z-index-1" >
-                <h1>Productos Carrito</h1>
+                <h1 className="display-4 fw-bold lh-1 mb-4">Productos en el Carrito</h1>
                 {products.map((pr) => (
                 <div key={pr.id} className='card border-success col cardCheckout '>
                     <div className='position-relative'>
@@ -52,7 +52,7 @@ export default function Checkout (){
                         {products.map((p,i)=>(
                             <div key={i} className="card-body bg-dark text-ligth border">
                                 <h6>{p.name}</h6>
-                                <h5>Tickets: {p.cantidad.toLocaleString('en-US')}</h5>
+                                <h5>Tickets: {p.cantidad}</h5>
                                 <h5>$ {(p.price * p.cantidad).toLocaleString('en-US')}</h5>
                             </div>
                         ))}
@@ -82,9 +82,25 @@ export default function Checkout (){
             </div>
                 :
                 <div className='card-body d-flex-column gap-3' >
-                    <h3 className='badge bg-dark text-wrap fw-bold fs-4 mt-4' >No hay productos agregados al carrito de compras</h3>
                     <img className='img-fluid rounded-circle mx-auto' src="https://img.freepik.com/premium-vector/cute-baby-triceratops-cartoon-character-animal-dino-isolated_138676-3160.jpg" alt="sad" />
-                    <a href='/eventos' className='btn btn-primary bg-succes'>Ver Eventos</a>
+                    <h3 className='badge bg-dark text-wrap fw-bold fs-4 mt-4' >No hay productos agregados al carrito de compras</h3>
+                    <div className="dropdown-menu dropdown-menu-dark d-block position-static border-0 pt-0 mx-0 rounded-3 shadow overflow-hidden">
+                        <ul className="list-unstyled mb-0">
+                        <li><a className="dropdown-item d-flex align-items-center gap-2 py-2" href="/eventos">
+                            <span className="d-inline-block bg-success rounded-circle p-1"></span>
+                            Eventos
+                        </a></li>
+                        <li><a className="dropdown-item d-flex align-items-center gap-2 py-2" href="/entradas">
+                            <span className="d-inline-block bg-primary rounded-circle p-1"></span>
+                            Entradas
+                        </a></li>
+                        <li><a className="dropdown-item d-flex align-items-center gap-2 py-2" href="/socios">
+                            <span className="d-inline-block bg-danger rounded-circle p-1"></span>
+                            Membresias
+                        </a></li>
+                        </ul>
+                    </div>
+
                 </div>                
             }
         </div>

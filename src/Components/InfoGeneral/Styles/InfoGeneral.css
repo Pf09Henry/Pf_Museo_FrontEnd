@@ -21,7 +21,7 @@
     object-fit: cover;
   }
 
-  .carousel-item{
+  .carouselItem{
     height: 500px !important;
-    object-fit:scale-down  !important;
+    object-fit:cover  !important;
   }

@@ -18,7 +18,7 @@ export default function EventDetails() {
     const {products, saveProducts} = React.useContext(CartContext)
     const {isAuthenticated, user} = useAuth0();
 
-    const [cantidad, setCantidad] = useState(0)
+    const [cantidad, setCantidad] = useState(1)
 
     const handleCantidad = (e)=> {
         setCantidad(e.target.value)
