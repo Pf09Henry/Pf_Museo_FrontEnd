@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {  useParams } from "react-router-dom";
-import { getUsers, postReview } from "../../Actions/AppActions/appActions";
+import { getReview, getUsers, postReview } from "../../Actions/AppActions/appActions";
 import Swal from 'sweetalert2'
 import {
     Button,
@@ -14,7 +14,7 @@ import './FormReview.css'
 import { right } from "@popperjs/core";
 
 
-export default function FormReview({user}){
+export default function FormReview({user, idEvent}){
 
     const usuarios = useSelector((state) => state.users);
     const dispatch = useDispatch();
@@ -31,7 +31,7 @@ export default function FormReview({user}){
 
 
     let { id } = useParams();
-
+    console.log(id)
     useEffect (()=>{
         dispatch(getUsers());
     },[dispatch]) 
@@ -71,7 +71,9 @@ export default function FormReview({user}){
           title: 'Éxito',
           text: 'Tu puntaje y comentario se enviaron con éxito!',
           icon: 'success',
-          confirmButtonText: 'OK'
+          confirmButtonText: 'OK',
+        }).then(function(){
+            window.location.href = `/event/${idEvent}`
         })
      
     
@@ -79,8 +81,7 @@ export default function FormReview({user}){
         var form = true;
     
         if (form) {
-         dispatch(postReview(valores))
-    
+        dispatch(postReview(valores))
         }
       };
       

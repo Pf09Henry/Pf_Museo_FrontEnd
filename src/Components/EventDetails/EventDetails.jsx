@@ -3,7 +3,7 @@ import {  useSelector } from "react-redux";
 import { useEffect,useState } from "react";
 import { useDispatch} from "react-redux";
 import {  useParams } from "react-router-dom";
-import { getEventsById,  /*addToCart*/ } from "../../Actions/AppActions/appActions";
+import { getEventsById, getReview,  /*addToCart*/ } from "../../Actions/AppActions/appActions";
 import './../EventDetails/EventDetail.css'
 import { Tag,Rate, Button } from 'antd';
 /* import Stars from "../Comentarios/Stars";
@@ -29,14 +29,15 @@ export default function EventDetails() {
     const dispatch = useDispatch();
     let { id } = useParams();
 
-    function raiting(){
+    function raiting(id){
         let ratings = []
-        const mapRaitings = review.map((num) => {
-            if(num.eventId === id){
-                ratings.push(num.score)
-            }
-            return ratings.length
-        });
+        for(let i = 0; i<review.length; i++){
+            console.log(review[i].eventId)
+            if(review[i].eventId === id){
+                ratings.push(review[i].score)
+            } 
+        }
+        console.log(ratings)
         const average = Math.round(ratings.reduce((sum, rating) => sum + rating, 0) / ratings.length);
         return average
     }
@@ -44,7 +45,7 @@ export default function EventDetails() {
     useEffect (()=>{
         dispatch(getEventsById(id));
         //eslint-disable-next-line 
-    },[dispatch]) 
+    },[]) 
 
     const [componentDisabled, setComponentDisabled] = useState(true);
     
@@ -124,12 +125,12 @@ export default function EventDetails() {
 
                 <div >
 
-                {isAuthenticated && <FormReview user={user} />}
+                {isAuthenticated && <FormReview user={user} idEvent={id}/>}
                 {!isAuthenticated && <FormReviewInvitado/>}
                 
                 <h5 className="comentarios-opiniones">Comentarios y opiniones</h5>
-                <Rate defaultValue={raiting()} disabled={componentDisabled}/>
-                <Opiniones />
+                <Rate defaultValue={raiting(id)} disabled={componentDisabled}/>
+                <Opiniones/>
                 </div>
                 
             {/*     <Stars />
