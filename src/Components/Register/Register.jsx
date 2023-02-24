@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { getUsers, postUser } from '../../Actions/AppActions/appActions';
 import Swal from 'sweetalert2';
 import axios from 'axios';
-
+import './../Login/Login.css'
   // const { Option } = Select;
   
   const formItemLayout = {
@@ -107,11 +107,13 @@ export default function Register () {
     },[usuario])    
   
     return (
-      isAuthenticated&&(<Form
+      isAuthenticated&&(
+        <div className="contenedor-form">
+      <Form
         {...formItemLayout}
         form={form}
         name="register"
-        
+        className="login-form"
         onFinish={handleSubmit}
         initialValues={{
           email: data.email,
@@ -128,11 +130,11 @@ export default function Register () {
           rules={[
             {
               type: 'email',
-              message: 'The input is not valid E-mail!',
+              message: 'El email no es válido',
             },
             {
               required: true,
-              message: 'Please input your E-mail!',
+              message: 'Por favor escribi tu email',
             },
           ]}
         
@@ -145,12 +147,12 @@ export default function Register () {
   
         <Form.Item
           name="name"
-          label="Nickname"
-          tooltip="What do you want others to call you?"
+          label="Nombre"
+          tooltip="Cual es tu nombre?"
           rules={[
             {
               required: true,
-              message: 'Please input your nickname!',
+              message: 'Por favor indicá un nombre!',
               whitespace: true,
             },
           ]}
@@ -174,11 +176,11 @@ export default function Register () {
   
         <Form.Item
           name="phone"
-          label="Phone Number"
+          label='Teléfono'
           rules={[
             {
               required: true,
-              message: 'Please input your phone number!',
+              message: 'Por favor indicá un número de 10 digitos!',
             },
           ]}
         >
@@ -196,16 +198,17 @@ export default function Register () {
           ]}
           {...tailFormItemLayout}
         >
-          <Checkbox>
+    {/*       <Checkbox>
             I have read the <a href=" ">agreement</a>
-          </Checkbox>
+          </Checkbox> */}
         </Form.Item>
         <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">
-            Register
+          <Button type="primary" className='btn-primary' htmlType="submit">
+            Registrarse
           </Button>
         </Form.Item>
-      </Form>)
+      </Form>
+      </div>)
     );
   };
  
