@@ -85,7 +85,7 @@ export default function EventoList() {
                                          <Tag color="#015129">{activity.category[0].name}</Tag>
                                         <hr></hr> 
                                         <Tag color="#87d068">${activity.price}</Tag> 
-                                        {isAuthenticated ? <Button  className="btn-carrito"  onClick={handleAddToCart}><MdShoppingCart /></Button> : <Button  className="btn-carrito"  onClick={clickAuth}><MdShoppingCart /></Button>}
+                                        {isAuthenticated ? <Button  className="btn-carrito" ><MdShoppingCart /></Button> : <Button  className="btn-carrito"  onClick={clickAuth}><MdShoppingCart /></Button>}
                                         
                                         <br />
 
