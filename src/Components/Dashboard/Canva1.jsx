@@ -33,6 +33,7 @@ export default function Canva1(){
 	useEffect(()=>{
 		(async () => {
 		  await dispatch(getTickets());
+		  
 		})();
 	  },[dispatch])
 
@@ -44,6 +45,8 @@ export default function Canva1(){
 
 
 	  useEffect(() => {
+		eventoAvail()
+		ticketAvail()
 		setList(tickets);
 		setEvent(eventos)
 	  }, [tickets,eventos]);
@@ -72,6 +75,52 @@ export default function Canva1(){
 		return count;
 		
 	  }
+
+
+
+	  const cuposPorCategoria = {};
+	  const ticketsVendidosPorCategoria = {};
+	  // Iteramos por cada objeto en el array y acumulamos los valores de availability
+	  function eventoAvail(){
+		eventos.reduce((acumulador, evento) => {
+		const { category, availability } = evento;
+		if (!acumulador[category[0].name]) {
+		  acumulador[category[0].name] = availability;
+		} else {
+		  acumulador[category[0].name] += availability;
+		}
+		return acumulador;
+	  }, cuposPorCategoria);
+	  
+	  console.log(cuposPorCategoria);
+	  console.log(tickets)
+	}
+
+	
+
+		// Iteramos por cada objeto en el arreglo de tickets
+		function ticketAvail(){
+		tickets.forEach(ticket => {
+		const evento = event.find(evento => evento.id === ticket.event.id); // Buscamos el evento correspondiente al ticket
+		if (evento) { // Si se encuentra el evento, acumulamos los valores de tickets vendidos por categoría
+			const { category } = evento;
+			if (!ticketsVendidosPorCategoria[category[0].name]) {
+			ticketsVendidosPorCategoria[category[0].name]= ticket.amount;
+			
+			} else {
+			ticketsVendidosPorCategoria[category[0].name]+= ticket.amount;
+			}
+			
+		}
+		});
+		
+		
+		setCantEv(ticketsVendidosPorCategoria)
+		console.log("CANTIDAD",cantEv)
+		}
+
+
+
 
 	  function getCategoryFromEventName(eventName, eventsArray) {
 		// Buscar el evento en el array
@@ -113,10 +162,10 @@ export default function Canva1(){
 			// Change type to "doughnut", "line", "splineArea", etc.
 			type: "column",
 			dataPoints: [
-				{ label: "Social",  y: 30 , color: "#fbe4be"  },
-				{ label: "Arte", y: 25 , color: "#fbe4be" },
-				{ label: "Ciencia", y: 26, color: "#fbe4be"  },
-				{ label: "Ecológico",  y: 30 , color: "#fbe4be" },
+				{ label: "Social",  y: cantEv.Social , color: "#fbe4be"  },
+				{ label: "Arte", y: cantEv.Arte , color: "#fbe4be" },
+				{ label: "Ciencia", y: cantEv.Ciencias, color: "#fbe4be"  },
+				{ label: "Ecológico",  y: cantEv.Ecológico , color: "#fbe4be" },
 			
 			]
 		}
