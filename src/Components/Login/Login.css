@@ -43,13 +43,6 @@
     border-radius: 5px;
 }
 
-.foto-login{
-    width:35px;
-    height:35px;
-    border-radius: 20px;
-    margin-right: 1rem;
-}
-
 .componente-login{
     display: flex;
     justify-content: space-between;
@@ -73,9 +66,7 @@
   
 }
 
-.foto-login:hover{
-    transform: scale(1.2);
-}
+
 
 .foto-admin{
     display: flex;

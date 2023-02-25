@@ -11,6 +11,7 @@ import CartSidebar from "../CartSidebar/CartSidebar";
 import { CartContext } from "../../Context";
 import { useSelector } from "react-redux";
 import { Button } from "antd";
+import { Link } from "react-router-dom";
 
 
 // import { useNavigate } from "react-router";
@@ -19,7 +20,6 @@ import { Button } from "antd";
 
 export default function Nav() {
   const { products } = React.useContext(CartContext)
-  //const arrayProducts = JSON.parse(localStorage.getItem('CART_V1')); 
   const usuario = useSelector((state) => state.users);
   const { isAuthenticated, user } = useAuth0();
   //const[existeMailDb, setExisteMailDb]= useState(false) !!!!!Probar luego con un estado local¡¡¡¡¡¡.
@@ -117,11 +117,12 @@ export default function Nav() {
 
                 </ul>
               </li> */}
-              {existeMailDb === false ? (
+              {existeMailDb === true ?(<a href='/profile'><img  className="foto-login" src={user.picture} alt={user.name}/></a>         
+              ) : (
                 <>
 
                 </>
-              ) : (<><Profile /></>)}
+            )}
 
               {/* <a href='/create-activitie'><button type="button" className="btn btn-outline-success btn-secundario">Crear Evento</button></a> */}
               {/* <a href="/login"><button type="button" className="btn btn-outline-success btn-secundario">Iniciar Sesión</button></a> */}

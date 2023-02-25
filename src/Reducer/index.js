@@ -32,7 +32,8 @@ const initialState = {
     guidesDetail: [],
     review: [],
     tickets: [],
-    ticketsDetail: []
+    ticketsDetail: [],
+    role: [],
 }
 
 
@@ -49,6 +50,13 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 categorias: action.payload
+
+            }
+
+        case 'GET_ROLE':
+            return {
+                ...state,
+                role: action.payload
 
             }
 
