@@ -58,3 +58,12 @@
     height: 100%
 }
 
+.foto-login{
+    width:45px;
+    height: 45px;
+    border-radius: 20px;
+    margin-right: 1rem;
+}
+.foto-login:hover{
+    transform: scale(1.2);
+}

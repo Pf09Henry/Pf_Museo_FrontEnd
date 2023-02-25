@@ -54,10 +54,11 @@ import Entradas from './Components/Entradas/Entradas';
 
 //import { CartContext } from './Context';
 import { useDispatch, useSelector } from "react-redux";
-import { getEvents, getReview, getTicketId, getTickets, getUsers } from '../src/Actions/AppActions/appActions';
+import { getEvents, getReview, getRoles, getTicketId, getTickets, getUsers } from '../src/Actions/AppActions/appActions';
 import Perfil from './Components/Dashboard/Perfil/Perfil';
 import DashUser from './Components/Dashboard/DashUser/DashboardUser';
 import areaGeo from './Components/areaGeo/areaGeo';
+import { Spin } from 'antd';
 // import { useNavigate } from "react-router";
 
 function App() {
@@ -69,22 +70,20 @@ function App() {
   const eventos = useSelector((state) => state.eventos)
   const tickets = useSelector((state) => state.tickets)
   const review = useSelector((state) => state.review)
+  const role = useSelector((state) => state.role);
   useEffect(() => {
     (async () => {
       await dispatch(getUsers());
       await dispatch(getReview());
       await dispatch(getTickets());
       await dispatch(getEvents());
-
-
+      await dispatch(getRoles());
     })();
   }, [])
 
   if (isLoading) {
     return (
-      <div className="page-layout">
-        ...{isLoading}
-      </div>
+      <Spin />
     );
   }
 
@@ -94,6 +93,14 @@ function App() {
       for (let i = 0; i < usuario.length; i++) {
         if (usuario[i].email === user.email) {
           existeMailDb = true;
+          let userRole = usuario[i].roleId;
+          console.log('aqui el roleId:', userRole)
+          for (let i = 0; i < role.length; i++) {
+            if (role[i].id === userRole) {
+              var roleName = role[i].name;
+              console.log('Aqui el nombre del role:', roleName)
+            }
+          }
         }
       }
     }
@@ -139,9 +146,10 @@ function App() {
             <Route path='/membership-basico' element={<MembershipBasic />} />
             <Route path='/membership-eco' element={<MembershipEco />} />
             <Route path='/membership-paleo' element={<MembershipPaleo />} />
-            <Route path='/entradas' element={<Entradas/>} />
+            <Route path='/entradas' element={<Entradas />} />
 
             {/*SI EL ROL ES ADMIN */}
+            {roleName === 'admin' && (<>
             <Route path='/dashboard' element={<Dash />} />
             <Route path='/dashoboard-eventos-agregar' element={<AgregarEvento />} />
             <Route path='/dashoboard-eventos-modificar' element={<ModificarEvento />} />
@@ -156,6 +164,7 @@ function App() {
             <Route path='/dashoboard-user-borrar' element={<EliminarUsuario />} />
             <Route path='/dashoboard-ticket-modificar' element={<ModificarTicket />} />
             <Route path='/perfil' element={<Perfil />} />
+           </> )}
 
 
             {/*SI EL ROL ES USER */}

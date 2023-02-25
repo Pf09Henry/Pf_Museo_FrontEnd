@@ -24,6 +24,17 @@ export function getTickets() {
     }
 }
 
+export function getRoles() {
+    return async function (dispatch) {
+        var json = await axios.get('https://pfmuseobackend.up.railway.app/role');
+       /*  console.log(json.data) */
+        return dispatch({
+            type: 'GET_ROLE',
+            payload: json.data
+        })
+    }
+}
+
 
 export function getEventsName(name) {
     return async function (dispatch) {
