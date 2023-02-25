@@ -5,17 +5,35 @@ import { Button } from 'antd';
 import { CartContext } from '../../Context';
 import { Link } from "react-router-dom";
 import { useEffect } from 'react';
+import Swal from 'sweetalert2';
+
 
 
 export default function Membership() {
 
     const { products, saveProducts } = React.useContext(CartContext)
 
-    const handleAddToCart = (product) => {
-        const newProducts = [...products, product];
-        if (newProducts.length) {
+    // const handleAddToCart = (product) => {
+    //     const newProducts = [...products, product];
+    //     if (newProducts.length) {
+    //         alert('Producto ya se encuentra en el carrito puedes modificarlo desde allí')
+    //     } else {
+    //         saveProducts(newProducts);
+    //     }
+    // };
+
+    const handleAddToCart = (producto) => {
+        const productInCart = products.filter(pr => pr.id === producto.id)
+        if (productInCart.length) {
             alert('Producto ya se encuentra en el carrito puedes modificarlo desde allí')
         } else {
+            Swal.fire({
+                icon: 'success',
+                title: 'Producto agregado al carrito',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            const newProducts = [...products, producto];
             saveProducts(newProducts);
         }
     };
@@ -24,7 +42,7 @@ export default function Membership() {
 
 
     useEffect(() => {
-        window.scrollTo(0, 0);
+        window.scrollTo(0, 20);
     }, []);
 
 
