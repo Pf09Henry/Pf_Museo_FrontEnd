@@ -24,6 +24,8 @@ export default function Culture() {
                 <Link to='/eventos'>
                     <button type="button" className="btn btn-outline-success btn-secundario">Compra tu Entrada</button>
                 </Link>
+                <br />
+                <br />
             </div>
             <br />
 

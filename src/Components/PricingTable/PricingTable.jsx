@@ -99,7 +99,7 @@ export default function PricingTable(prop) {
                         <div class="buy-button-box">
                             <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103)" }}>
                                 <Link to={{ pathname: `/membership-eco` }}>
-                                Ver mas
+                                    Ver mas
                                 </Link>
                             </Button>
                             {/* <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ id: "socio-eco", name: "ECO", price: 1000 })} >Agregar al Carrito</Button> */}
@@ -141,7 +141,7 @@ export default function PricingTable(prop) {
                         <div class="buy-button-box">
                             <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103)" }}>
                                 <Link to={{ pathname: `/membership-paleo` }}>
-                                Ver mas
+                                    Ver mas
                                 </Link>
                             </Button>
                             {/* <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ id: "socio-paleo", name: "PALEO", price: 2000 })} >Agregar al Carrito</Button> */}
@@ -149,9 +149,9 @@ export default function PricingTable(prop) {
                     </div>
                 </div>
             </div>
-            <Link to='/'>
-                <button type="button" className="btn btn-outline-success btn-secundario">Volver</button>
-            </Link>
+            <Button type="button" className="btn btn-outline-success btn-secundario" onClick={() => window.history.back()}>
+                <span>Volver Atrás</span>
+            </Button>
             <br />
             <br />
         </body >

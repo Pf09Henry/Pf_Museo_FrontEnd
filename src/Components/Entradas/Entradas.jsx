@@ -8,6 +8,8 @@ import lagarto from '../../Imagenes/Pictures_Biologia/LagartoUno.jpg'
 import buho from '../../Imagenes/Pictures_Biologia/Buho.jpg'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+
 
 
 export default function Entradas() {
@@ -19,12 +21,18 @@ export default function Entradas() {
         if (productInCart.length) {
             alert('Producto ya se encuentra en el carrito puedes modificarlo desde allí')
         } else {
+            Swal.fire({
+                icon: 'success',
+                title: 'Producto agregado al carrito',
+                showConfirmButton: false,
+                timer: 1500
+            })
             saveProducts([...products, producto])
         }
     };
 
     useEffect(() => {
-        window.scrollTo(0, 40);
+        window.scrollTo(0, 130);
     }, []);
 
 
@@ -63,17 +71,23 @@ export default function Entradas() {
                         </div>
                     </div>
                 </div>
-                <Link to='/eventos'>
-                    <button type="button" className="btn btn-outline-success btn-secundario">Eventos</button>
-                </Link>
+                <div className='btn-ext'>
+                    <div className='btn-events'>
+                        <Link to='/eventos'>
+                            <button type="button" className="btn btn-outline-success btn-secundario">Eventos</button>
+                        </Link>
 
-                <button type="button" className="btn btn-outline-success btn-secundario" onClick={() => window.history.back()}>
-                    <span>Volver Atrás</span>
-                </button>
-
-                <Link to='/exhibits'>
-                    <button type="button" className="btn btn-outline-success btn-secundario">Exhibiciones</button>
-                </Link>
+                        <Link to='/exhibits'>
+                            <button type="button" className="btn btn-outline-success btn-secundario">Exhibiciones</button>
+                        </Link>
+                    </div>
+                    <br />
+                    <div className='back'>
+                        <Button type="button" className="btn btn-outline-success btn-secundario" onClick={() => window.history.back()}>
+                            <span>Volver Atrás</span>
+                        </Button>
+                    </div>
+                </div>
             </div>
         </main>
     )
