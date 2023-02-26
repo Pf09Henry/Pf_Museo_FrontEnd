@@ -133,7 +133,7 @@ export default function Paypal() {
                         }
                         dispatch(postTicket(ticket[i]))
                         dispatch(putEvent(putEvento, idEvent[i]))
-                        dispatch(postMail(datosEmail))
+                        // dispatch(postMail(datosEmail))
                         // console.log("Esto es ticket:" , ticket[i]);
                         // console.log("Esto es datosEmail:" , datosEmail);
                         // console.log("Esto es putEvento:" , putEvento);
