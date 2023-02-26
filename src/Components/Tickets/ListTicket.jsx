@@ -185,7 +185,7 @@ export default function ListTicket(){
             <div className="list-tickets">
              {ticket?.length > 0 ? (
 
-ticket.slice(page-1,page+4).map((t) =>
+ticket.slice(page-1,page+3).map((t) =>
  
     
            <Card
