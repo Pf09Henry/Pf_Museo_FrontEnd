@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import {  useSelector } from "react-redux";
 import { useDispatch} from "react-redux";
-import { getTicketId, getTickets, putTicket,getTicketEmail} from "../../Actions/AppActions/appActions";
+import { getTickets, putTicket,getTicketEmail} from "../../Actions/AppActions/appActions";
 import { useEffect } from 'react';
-import { Link } from "react-router-dom";
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import { Avatar, Card ,Form , Select, Input, Button} from 'antd';
 import './ListTicket.css'
 import {IoIosCheckmarkCircleOutline} from 'react-icons/io'
@@ -15,7 +13,6 @@ const { Meta } = Card;
 const { Option } = Select;
 
 export default function ListTicket(){
-
     const tickets = useSelector((state) => state.tickets);
     const dispatch = useDispatch();
     const [ticket,setTicket] = useState([])
@@ -26,6 +23,37 @@ export default function ListTicket(){
      estado:"",
      id:""
   })
+  let ticketsFiltrados = tickets
+
+
+  function TicketList(estado) {
+    console.log("tickets",ticketsFiltrados)
+  
+    // Creamos los filtros para cada estado
+    const aprobados = tickets.filter(ticket => ticket.statusOfPurchase === 'aprobado');
+    const pendientes = tickets.filter(ticket => ticket.statusOfPurchase === 'pendiente');
+    const rechazados = tickets.filter(ticket => ticket.statusOfPurchase === 'rechazado');
+    const cancelados = tickets.filter(ticket => ticket.statusOfPurchase === 'cancelado');
+    console.log("APROBADOS",aprobados)
+    console.log("PENDIENTES",pendientes)
+    // Seleccionamos el filtro correspondiente
+   
+
+    if (estado === 'aprobados') {
+      setTicket(aprobados);
+    } else if (estado === 'pendientes') {
+      setTicket(pendientes);
+    } else if (estado === 'rechazados') {
+      setTicket(rechazados);
+    } else if (estado === 'cancelados') {
+      setTicket(cancelados);
+    } else {
+      // Si el filtro es 'todos' o cualquier otro valor,
+      // mostramos la lista completa de tickets
+      setTicket(tickets);
+    }
+  }
+  
 
   const [inicialState, setState ] = useState({
     estado:"",
@@ -40,8 +68,8 @@ export default function ListTicket(){
 
     useEffect(()=>{
         setTicket(tickets)
-        
-    },[tickets])
+        TicketList()
+    },[tickets,ticketsFiltrados])
 
 
     function buscaremailTicket(e){
@@ -114,6 +142,17 @@ export default function ListTicket(){
         <div className='contenedor-form'>
             <h3>Tickets</h3>
 
+      <Form.Item placeholder="Filtros"   className="select-ant">
+        <Select className="select-ant" placeholder="Filtros" >
+          <Select.Option value="todos" > <Button onClick={() => TicketList('todos')}>Todos</Button></Select.Option>
+          <Select.Option value="aprobados" > <Button onClick={() => TicketList('aprobados')}>Aprobados</Button></Select.Option>
+          <Select.Option value="pendientes" > <Button onClick={() => TicketList('pendientes')}>Pendientes</Button></Select.Option>
+          <Select.Option value="rechazados" > <Button onClick={() => TicketList('rechazados')}>Rechazados</Button></Select.Option>
+          <Select.Option value="cancelados" > <Button onClick={() => TicketList('cancelados')}>Cancelados</Button></Select.Option>
+        </Select>
+      </Form.Item>
+
+
             <Form.Item
       label="Buscar"
     >
@@ -138,15 +177,15 @@ export default function ListTicket(){
      }}
      onFinish={onFinish}
      onFinishFailed={onFinishFailed}
-     autoComplete="off"
+    /*  autoComplete="off" */
  >
 
            
 
             <div className="list-tickets">
-             {tickets?.length > 0 ? (
+             {ticket?.length > 0 ? (
 
-                tickets.slice(page-1,page+5).map((t) =>
+ticket.slice(page-1,page+4).map((t) =>
  
     
            <Card
