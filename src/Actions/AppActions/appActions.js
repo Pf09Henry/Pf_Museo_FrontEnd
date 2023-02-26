@@ -306,7 +306,6 @@ export function putEvent(payload, id) {
     return async function (dispatch) {
         try {
             var response = await axios.put(`https://pfmuseobackend.up.railway.app/events/put/${id}`, payload);
-          /*   console.log(response) */
             return dispatch({
                 type: 'PUT_EVENT',
                 response
@@ -458,7 +457,7 @@ export function removeToCart(id) {
 export function postMail(payload) {
     return async function (dispatch) {
         const json = await axios.post('https://pfmuseobackend.up.railway.app/send_email', payload)
-      /*   console.log(json) */
+        console.log(json)
         return dispatch({
             type: 'POST_EMAIL',
             payload: json

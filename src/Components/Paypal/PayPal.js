@@ -105,9 +105,9 @@ export default function Paypal() {
                 console.log(data)
             },
             onApprove: async (data, actions) => {
-                /* console.log("actions: ", actions) */
+                
                 const order = await actions.order.capture();
-                /*  console.log("esto es order: ", order) */
+                
                 if (order) {
                     Swal.fire({
                         title: 'Ok',
@@ -115,13 +115,7 @@ export default function Paypal() {
                         icon: 'success',
                         confirmButtonText: 'OK'
                     })
-                    // axios.post("http://localhost:3001/send_email", {
-                    //     mail: user.email,
-                    //     subject: "Pago realizado con Exito!",
-                    //     message: "Su pago fue concretado de manera exitosa! "
-                    // })
-                    // dispatch(postTicket(valuesId))
-                    // console.log('Aqui post', postTicket)
+                    
 
                     for (let i = 0; i < ticket.length; i++) {
                         let cupos = findEventCupos(idEvent[i]) - parseInt(amount[i])
@@ -138,11 +132,13 @@ export default function Paypal() {
                             ticket: ticket[i]
                         }
                         dispatch(postTicket(ticket[i]))
-                        dispatch(postMail(datosEmail))
                         dispatch(putEvent(putEvento, idEvent[i]))
+                        // dispatch(postMail(datosEmail))
+                        // console.log("Esto es ticket:" , ticket[i]);
+                        // console.log("Esto es datosEmail:" , datosEmail);
+                        // console.log("Esto es putEvento:" , putEvento);
                     }
 
-                    /*   console.log('Aqui post', postTicket) */
 
                     saveProducts([])
                 }
