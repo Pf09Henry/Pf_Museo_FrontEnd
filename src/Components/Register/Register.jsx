@@ -100,7 +100,7 @@ export default function Register () {
     };
     
     useEffect(()=>{
-      dispatch(getUsers())
+     (async ()=>{await dispatch(getUsers())})();
       // setLoading(false)
     },[usuario])  
     
@@ -108,7 +108,7 @@ export default function Register () {
         if(usuario[i].email === data.email){
           navigate("/")
           Swal.fire({
-            title: 'Upss!',
+            title: '',
             text: 'Tu cuenta ya se encuentra registrada',
             icon: 'success',
             confirmButtonText: 'OK'
