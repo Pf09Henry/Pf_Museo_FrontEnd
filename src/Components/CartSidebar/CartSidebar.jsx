@@ -63,10 +63,10 @@ export default function CartSidebar() {
                         <div className='card mt-4'>
                             {products.map((product, index) => (
                                 <div className='card cardCart' key={product.id}>
-                                    <img src={product.img} alt={`picFrom${product.name}`} />
                                     <div>
                                         <h5><strong>{product.name}</strong></h5>
                                     </div>
+                                    <img src={product.img} alt={`picFrom${product.name}`} />
                                     {/* <div>
                                 <h5><strong>Cantidad de tickets: {product.cantidad}</strong></h5>
                             </div> */}
