@@ -101,7 +101,8 @@ export default function Canva1(){
 		// Iteramos por cada objeto en el arreglo de tickets
 		function ticketAvail(){
 		tickets.forEach(ticket => {
-		const evento = event.find(evento => evento.id === ticket.event.id); // Buscamos el evento correspondiente al ticket
+		const evento = event.find(evento => evento.id === ticket.event.id);
+		console.log(tickets) // Buscamos el evento correspondiente al ticket
 		if (evento) { // Si se encuentra el evento, acumulamos los valores de tickets vendidos por categoría
 			const { category } = evento;
 			if (!ticketsVendidosPorCategoria[category[0].name]) {

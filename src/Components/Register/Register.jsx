@@ -96,7 +96,7 @@ export default function Register () {
         if(usuario[i].email === data.email){
           navigate("/")
           return Swal.fire({
-            title: 'Upss!',
+            title: 'Ok',
             text: 'Tu cuenta ya se encuentra registrada',
             icon: 'success',
             confirmButtonText: 'OK'

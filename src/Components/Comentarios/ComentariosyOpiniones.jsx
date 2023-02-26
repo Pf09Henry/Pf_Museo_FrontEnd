@@ -1,10 +1,17 @@
 import React from "react";
 import {  useSelector } from "react-redux";
 import { useDispatch} from "react-redux";
-import { getReview} from "../../Actions/AppActions/appActions";
-import { Avatar, List, Rate, Skeleton } from 'antd';
+import { getReview , deleteReview} from "../../Actions/AppActions/appActions";
+import { Avatar, Button, List, Rate, Skeleton } from 'antd';
 import { useEffect, useState } from 'react';
 import {  useParams } from "react-router-dom";
+import img from './../../Imagenes/usersinimg.jpg'
+import { RiDeleteBin6Line } from 'react-icons/ri';
+import './CommentForm.css'
+import Swal from 'sweetalert2'
+
+
+
 
 export default function Opiniones(){
     const review = useSelector((state) => state.review);
@@ -33,6 +40,8 @@ export default function Opiniones(){
     })();
   },[dispatch]) 
 
+
+
     useEffect(() => {
       setInitLoading(false);
       setData(review);
@@ -41,6 +50,17 @@ export default function Opiniones(){
       
     }, [review,id]);
 
+    function deleteComment(e){
+   
+      console.log(e)
+      Swal.fire({
+        title: 'Éxito',
+        text: 'El comentario se elimino con éxito',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      })
+      dispatch(deleteReview(e));
+     }
 
     const onLoadMore = () => {
       setLoading(true);
@@ -85,17 +105,21 @@ export default function Opiniones(){
         loadMore={loadMore}
         dataSource={list}
         renderItem={(item) => (
+       
           <List.Item
-          actions={[<Rate defaultValue={item.score} disabled={componentDisabled}/>]}>
-            <Skeleton avatar title={false} loading={item.loading} active>
+          actions={[<Rate defaultValue={item.score || 3} disabled={componentDisabled}/> , <Button className="boton-borrar-comentario"  onClick={()=>deleteComment(item.id)}><RiDeleteBin6Line/></Button>]}>
+            <Skeleton avatar title={false} loading={item.loading} active>  
               <List.Item.Meta
-                avatar={<Avatar src={item.user.image} />}
-                title={item.user.name}
-                description={item.commentary}
+                avatar={<Avatar src={item.user.image || img} />}
+                title={item.user.name || "Usuario"}
+                description={item.commentary || ""}
               />
-           
+            
             </Skeleton>
+           
           </List.Item>
+         
+        
         )}
       />
       </div>
