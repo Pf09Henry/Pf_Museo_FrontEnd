@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {  useSelector } from "react-redux";
 import { useDispatch} from "react-redux";
-import { getTicketId, getTickets, putTicket} from "../../Actions/AppActions/appActions";
+import { getTicketId, getTickets, putTicket,getTicketEmail} from "../../Actions/AppActions/appActions";
 import { useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
@@ -19,9 +19,9 @@ export default function ListTicket(){
     const tickets = useSelector((state) => state.tickets);
     const dispatch = useDispatch();
     const [ticket,setTicket] = useState([])
-    const [page,setPage] = useState(1)
-    const [idTicket, setIdTicket] = useState('')
+    const [page,setPage] = useState(1);
     const [id, setId] = useState("");
+    const [email,setEmail] = useState("")
     const [form, setForm ] = useState({
      estado:"",
      id:""
@@ -44,15 +44,16 @@ export default function ListTicket(){
     },[tickets])
 
 
-    function buscarIdTicket(e){
+    function buscaremailTicket(e){
         console.log(e.target.value)
-        setIdTicket(e.target.value)
+
+        setEmail(e.target.value)
       }
     
       useEffect (()=>{
-        dispatch(getTicketId(idTicket));
-console.log(tickets.length/5)
-      },[dispatch, idTicket]) 
+        dispatch(getTicketEmail(email));
+
+      },[dispatch, email]) 
 
 
       const onFinish = (values) => {
@@ -101,7 +102,7 @@ console.log(tickets.length/5)
           const ticketFiltrado= ticket.filter(tk => tk.id === e)
           setState({
             id:ticketFiltrado[0].id});
-          console.log("EL ID QUE SE LE MANDA",ticketFiltrado[0].id)
+         /*  console.log("EL ID QUE SE LE MANDA",ticketFiltrado[0].id) */
        
          }
 
@@ -116,7 +117,7 @@ console.log(tickets.length/5)
             <Form.Item
       label="Buscar"
     >
-      <Input placeholder={idTicket} onChange={(e)=>buscarIdTicket(e)}/>
+      <Input placeholder={email} onChange={(e)=>buscaremailTicket(e)}/>
 
       </Form.Item>
 
@@ -145,7 +146,7 @@ console.log(tickets.length/5)
             <div className="list-tickets">
              {tickets?.length > 0 ? (
 
-                tickets.slice(page+5,page+10).map((t) =>
+                tickets.slice(page-1,page+5).map((t) =>
  
     
            <Card
@@ -160,10 +161,10 @@ console.log(tickets.length/5)
              
                 <Meta
                 avatar={<Avatar src={t.user.image} alt={t.user.name} />}
-                title={t.id}
+                title={t.user.name}
                 description={
                     <div>
-                    
+                    <p>Id:{t.id}</p>
                     <p>Cantidad tickets:{t.amount}</p>
                     <p>Total de la compra:{t.totalOfPurchase}</p>
                     <p>Metodo de pago:{t.methodOfPurchase}</p>

@@ -9,12 +9,24 @@ import buho from '../../Imagenes/Pictures_Biologia/Buho.jpg'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
-
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 export default function Entradas() {
 
     const { products, saveProducts } = React.useContext(CartContext)
+    const {isAuthenticated, user} = useAuth0();
+
+
+    function clickAuth(){
+        Swal.fire({
+            title: 'Upss',
+            text: 'Inicia sesión para ver tu carrito!',
+            icon: 'info',
+            confirmButtonText: 'OK'
+        })
+
+    }
 
     const handleAddToCart = (producto) => {
         const productInCart = products.filter(pr => pr.id === producto.id)
@@ -48,7 +60,8 @@ export default function Entradas() {
                                 <img src={logo} alt="Logo" width="32" height="32" className="rounded-circle border border-white" />
                                 <h3 className="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Martes a Viernes</h3>
                             </div>
-                            <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ img: pata, id: "entry-week", name: "Entrada Semana", price: 500, cantidad: 1 })} >Agregar al Carrito</Button>
+                            {isAuthenticated ? <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ img: pata, id: "entry-week", name: "Entrada Semana", price: 500, cantidad: 1 })} >Agregar al Carrito</Button> : <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }}  onClick={clickAuth} >Agregar al Carrito</Button>}
+                            
                         </div>
                     </div>
 
@@ -58,7 +71,7 @@ export default function Entradas() {
                                 <img src={logo} alt="Logo" width="32" height="32" className="rounded-circle border border-white" />
                                 <h3 className="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-dark">Fin de Semana</h3>
                             </div>
-                            <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ img: lagarto, id: "entry-weekend", name: "Entrada Fin de Semana", price: 1000, cantidad: 1 })} >Agregar al Carrito</Button>
+                            {isAuthenticated ? <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ img: pata, id: "entry-week", name: "Entrada Semana", price: 500, cantidad: 1 })} >Agregar al Carrito</Button> : <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }}  onClick={clickAuth} >Agregar al Carrito</Button>}
                         </div>
                     </div>
                     <div className="col">
@@ -67,7 +80,7 @@ export default function Entradas() {
                                 <img src={logo} alt="Logo" width="32" height="32" className="rounded-circle border border-white" />
                                 <h3 className="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Vacaciones de Verano</h3>
                             </div>
-                            <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ img: buho, id: "entry-vacations", name: "Entrada Vacaciones", price: 800, cantidad: 1 })} >Agregar al Carrito</Button>
+                            {isAuthenticated ? <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ img: pata, id: "entry-week", name: "Entrada Semana", price: 500, cantidad: 1 })} >Agregar al Carrito</Button> : <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }}  onClick={clickAuth} >Agregar al Carrito</Button>}
                         </div>
                     </div>
                 </div>

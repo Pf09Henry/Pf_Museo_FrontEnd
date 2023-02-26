@@ -7,7 +7,7 @@ import {
 import Swal from 'sweetalert2'
 import './../FormCreacion/CrearEvento.css'
 import { useDispatch, useSelector } from "react-redux";
-import {getGuides, getGuidesById, deleteGuide, getGuidesName, getUserName, getUserById, getUsers, deleteUser} from "../../Actions/AppActions/appActions";
+import {getUserName, getUserById, getUsers, deleteUser} from "../../Actions/AppActions/appActions";
 import { Avatar, List, Skeleton } from 'antd';
 
 

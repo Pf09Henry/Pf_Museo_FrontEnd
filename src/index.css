@@ -14,4 +14,22 @@ code {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+
+}
+
+p{
+  color:rgba(11, 11, 11, 0.833)
+}
+
+h2{
+  color:rgba(11, 11, 11, 0.833)
+}
+h1{
+  color:rgba(11, 11, 11, 0.833)
+}
+h3{
+  color:rgba(11, 11, 11, 0.833)
+}
+h4{
+  color:rgba(11, 11, 11, 0.833)
 }

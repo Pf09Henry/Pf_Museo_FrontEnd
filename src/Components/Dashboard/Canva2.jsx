@@ -73,11 +73,11 @@ export default function Canva2(){
 			fontFamily: "Baskervville",
 			type: "pie",
 			startAngle: 75,
-			toolTipContent: "<b>{label}</b>: {y}%",
+			toolTipContent: "<b>{label}</b>: {y}",
 			showInLegend: "true",
 			legendText: "{label}",
 			indexLabelFontSize: 16,
-			indexLabel: "{label} - {y}%",
+			indexLabel: "{label} - {y}",
 			dataPoints: [
 				{ y: evRanking[1], label: "1 estrella" , color: "#FAD7A0"},
 				{ y: evRanking[2], label: "2 estrellas", color: "#ABEBC6" },
