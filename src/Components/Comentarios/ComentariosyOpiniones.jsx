@@ -13,7 +13,7 @@ import Swal from 'sweetalert2'
 
 
 
-export default function Opiniones(){
+export default function Opiniones({roleUser}){
     const review = useSelector((state) => state.review);
     const dispatch = useDispatch();
     let { id } = useParams();
@@ -109,7 +109,7 @@ export default function Opiniones(){
         renderItem={(item) => (
        
           <List.Item
-          actions={[<Rate defaultValue={item.score || 3} disabled={componentDisabled}/> , <Button className="boton-borrar-comentario"  onClick={()=>deleteComment(item.id)}><RiDeleteBin6Line/></Button>]}>
+          actions={[<Rate defaultValue={item.score || 3} disabled={componentDisabled}/> , roleUser === "admin" ? <Button className="boton-borrar-comentario"  onClick={()=>deleteComment(item.id)}><RiDeleteBin6Line/></Button> : null ]} >
             <Skeleton avatar title={false} loading={item.loading} active>  
               <List.Item.Meta
                 avatar={<Avatar src={item.user.image || img} />}
