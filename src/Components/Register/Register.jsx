@@ -104,6 +104,7 @@ export default function Register () {
       // setLoading(false)
     },[usuario])  
     
+    
       for(let i =0; i < usuario.length; i++){
         if(usuario[i].email === data.email){
           navigate("/")
