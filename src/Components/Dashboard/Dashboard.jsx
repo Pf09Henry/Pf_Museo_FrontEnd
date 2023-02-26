@@ -10,6 +10,7 @@ import { getEvents, getReview , getTickets} from "../../Actions/AppActions/appAc
 
 
 
+
 export default function Dashboard(){
 
   
@@ -113,6 +114,7 @@ export default function Dashboard(){
      <div className="contenedor-dashboard-canvas">
          <div className="card card-dashboard canva"><Canva1 /></div>
          <div className="card card-dashboard canva"><Canva2 /></div>
+        
          {/* <div className="card card-dashboard canva"><Canva3 /></div> */}
      </div>
      </div>

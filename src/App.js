@@ -59,6 +59,8 @@ import Perfil from './Components/Dashboard/Perfil/Perfil';
 import DashUser from './Components/Dashboard/DashUser/DashboardUser';
 import areaGeo from './Components/areaGeo/areaGeo';
 import { Spin } from 'antd';
+import SpinPage from './Components/Spin/Spin';
+
 // import { useNavigate } from "react-router";
 
 function App() {
@@ -84,7 +86,7 @@ function App() {
 
   if (isLoading) {
     return (
-      <Spin />
+      <SpinPage />
     );
   }
 

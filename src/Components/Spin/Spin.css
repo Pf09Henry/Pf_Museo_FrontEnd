@@ -1,0 +1,25 @@
+.spingPage{
+    margin-left: 2rem;
+    margin-top: 10rem;
+    margin-bottom: 200px; 
+    text-align: center;
+    
+}
+
+/* .example {
+    margin: 20px 0;
+    margin-bottom: 0px;
+    padding: 30px 50px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+  } */
+
+.spin-large{
+    font-size: 200px;
+
+}
+
+.ant-spin-dot-item{
+    background-color:rgb(0, 90, 0) !important
+}

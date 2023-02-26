@@ -115,6 +115,12 @@ a{
 .col{
     padding: 0px !important;
 }
+
+.detalle-evento-info{
+    padding-left: 0rem !important;
+    padding-right: 0rem !important;
+    margin-bottom: 0rem !important;
+}
  
  }
 
