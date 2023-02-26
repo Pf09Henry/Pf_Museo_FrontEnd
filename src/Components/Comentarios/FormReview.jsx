@@ -36,7 +36,7 @@ export default function FormReview({user, idEvent}){
 
     useEffect (()=>{
         dispatch(getUsers());
-        searchIdUser(user)
+        searchIdUser(user.name)
     },[dispatch]) 
 
     function searchIdUser(name){
@@ -99,19 +99,19 @@ export default function FormReview({user, idEvent}){
         };
 
 
-        function searchIdUser(user){
+      /*    function searchIdUser(user){
             
             let usuarioEncontrado = usuarios.filter(el => el.email === user.email)
-            console.log('ESTAS BANEADO?',usuarioEncontrado[0])
-            return usuarioEncontrado[0].isBanned
     
-        }
-
+            return usuarioEncontrado[0].id
+    
+        } */
+ 
 
 
     return(
         <div>
-        {!searchIdUser(user) ? 
+    
             <Form
                 className="form-review"
                 name="basic"
@@ -179,7 +179,7 @@ export default function FormReview({user, idEvent}){
                 </Button>
                 </Form.Item>
 
-            </Form>: <p>Por motivos de seguridad se bloqueó la opción de que puedas comentar.</p>}
+            </Form>
         </div>
     )
 }
