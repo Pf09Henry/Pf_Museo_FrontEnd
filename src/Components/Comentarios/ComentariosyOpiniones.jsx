@@ -58,7 +58,9 @@ export default function Opiniones(){
         text: 'El comentario se elimino con éxito',
         icon: 'success',
         confirmButtonText: 'OK'
-      })
+      }).then(function(){
+        window.location.href = `/event/${id}`
+    })
       dispatch(deleteReview(e));
      }
 
