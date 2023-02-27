@@ -170,6 +170,14 @@ export default function EventDetails({roleUser}) {
                 <CommentForm /> */}
                     </div>
 
+
+                {isAuthenticated && <FormReview user={user} idEvent={id} />}
+                {!isAuthenticated && <FormReviewInvitado/>}
+                
+                <h5 className="comentarios-opiniones">Comentarios y opiniones</h5>
+                <Rate defaultValue={raiting(id)} disabled={componentDisabled}/>
+                <Opiniones roleUser={roleUser}/>
+
                 </div>
 
                 <div className="row detalle-guia">
