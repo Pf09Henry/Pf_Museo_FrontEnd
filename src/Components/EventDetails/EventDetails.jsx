@@ -99,14 +99,16 @@ export default function EventDetails({ roleUser }) {
         leyenda = 'Aun no finaliza el evento, '
     }
 
-
-    const userBanned = usuario.filter((e) => e.email === user.email)
-    if (userBanned) {
-        if (userBanned[0].isBanned) {
-            baneado = true
-            leyenda = 'Estas baneado'
+    if (isAuthenticated) {
+        const userBanned = usuario.filter((e) => e.email === user.email)
+        if (userBanned) {
+            if (userBanned[0].isBanned) {
+                baneado = true
+                leyenda = 'Estas baneado'
+            }
         }
     }
+
 
     return (
         <div>
