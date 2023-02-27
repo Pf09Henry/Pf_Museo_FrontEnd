@@ -63,7 +63,8 @@ function Borrar(){
     title: 'Éxito',
     text: 'Tu evento se elimino con éxito',
     icon: 'success',
-    confirmButtonText: 'OK'
+    confirmButtonText: 'OK',
+    confirmButtonColor: "#035d03"
   })
  }
 
@@ -97,7 +98,8 @@ function Borrar(){
           title: 'Ups!',
           text: "No se encuentra el evento",
           icon: 'error',
-          confirmButtonText: 'OK'
+          confirmButtonText: 'OK',
+          confirmButtonColor: "#035d03"
         })
     };
 

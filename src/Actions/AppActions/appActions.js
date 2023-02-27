@@ -188,17 +188,24 @@ export function getReview() {
 
 export function getUserName(name) {
     return async function (dispatch) {
-        if (name) {
-            let response = await axios.get('https://pfmuseobackend.up.railway.app/users');
-          console.log(response.data)
-            let events = response.data;
-            let filteredEvents = events.filter(e => e.name.toLowerCase().includes(name.toLowerCase()));
-            console.log(filteredEvents)
-            return dispatch({
-                type: 'GET_USERS',
-                payload: filteredEvents
-            })
+        try {
+            if (name) {
+                let response = await axios.get('https://pfmuseobackend.up.railway.app/users');
+              console.log(response.data)
+                let events = response.data;
+                let filteredEvents = events.filter(e => e.name.toLowerCase().includes(name.toLowerCase()));
+                console.log(filteredEvents)
+                return dispatch({
+                    type: 'GET_USERS',
+                    payload: filteredEvents
+                })
+            }
+            else return "No hay usuarios con ese nombre"
+            
+        } catch (error) {
+            console.log(error)
         }
+        
     }
 }
 
