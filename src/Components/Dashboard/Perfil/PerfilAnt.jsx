@@ -170,6 +170,7 @@ useEffect(()=>{
                     <p>Cantidad tickets: {t.amount}</p>
                     <p>Total de la compra: {t.totalOfPurchase}</p>
                     <p>Metodo de pago: {t.methodOfPurchase}</p>
+                    <p>Fecha: {t.createdAt.slice(0,10)}</p>
                     </div>
                 } 
              
