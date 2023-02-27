@@ -13,9 +13,8 @@ import { Avatar, List, Skeleton } from 'antd';
 
 
 function BorrarUsuario(){ 
-  
-  const dispatch = useDispatch();
-  const [nameEvent, setName] = useState("")
+  const dispatch = useDispatch()
+  const [searchValue, setSearchValue] = useState('')
   const eventos = useSelector((state) => state.users);
   const [id, setId] = useState("");
   const [initLoading, setInitLoading] = useState(true);
@@ -26,12 +25,13 @@ function BorrarUsuario(){
  
 
 
-  function buscarNombre(e){
-    console.log(e.target.value)
-    setName(e.target.value)
+  const handleSearch = (event) => {
+    setSearchValue(event.target.value.toLowerCase());
   }
 
-  useEffect (()=>{
+
+  const filteredUsers = eventos.filter(user => user.name.toLowerCase().includes(searchValue));
+/*   useEffect (()=>{
     dispatch(getUserName(nameEvent));
   },[dispatch, nameEvent]) 
 
@@ -39,7 +39,7 @@ function BorrarUsuario(){
  useEffect (()=>{
     dispatch(getUserById(id))
     console.log("este id le estoy pasando", id)
-  },[dispatch, id])
+  },[dispatch, id]) */
 
   useEffect (()=>{
     dispatch(getUsers());
@@ -133,7 +133,7 @@ return(
       label="Buscar"
       name="username-buscado"
     >
-      <Input placeholder={nameEvent} onChange={(e)=>buscarNombre(e)}/>
+      <Input value={searchValue} onChange={handleSearch}/>
      
     </Form.Item>
 
@@ -141,7 +141,7 @@ return(
       className="demo-loadmore-list "
       loading={initLoading}
      itemLayout="horizontal"
-      dataSource={list}
+      dataSource={filteredUsers}
       
       renderItem={(item) => (
         <List.Item>
