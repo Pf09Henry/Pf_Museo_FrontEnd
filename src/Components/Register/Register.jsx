@@ -108,7 +108,6 @@ export default function Register() {
         if (isAuthenticated) {
           console.log(usersAll)
           console.log(user.email)
-          // let userEncontrado = usersAll.filter(e => e.email === user.email)
           var userEncontrado;
           for(let i = 0; i < usersAll.length; i++){
             if(usersAll[i].email === user.email){
@@ -129,9 +128,8 @@ export default function Register() {
           mail: user.email,
           subject: "Su registro fue realizado con Exito!",
           message: "Su registro fue concretado de manera exitosa! "
-        };
-        dispatch(postMail(mailer))
-        Swal.fire({
+        };        
+        return Swal.fire({
           title: 'Ok!',
           text: 'Tu cuenta ya se ha registrado con Exito!',
           icon: 'success',
@@ -139,15 +137,12 @@ export default function Register() {
           confirmButtonColor: "#035d03"
         }).then(function(){
           window.location.href = `/`
-      })
-        // dispatch(getUsersAll())
-        // navigate('/')
-      //  await dispatch(getUsersAll()).then(() => { navigate('/'); })
+      }).then(dispatch(postMail(mailer)))
       };
     }
   }
 
-  // let findUser = usersAll.filter(e => e.email === user.email)
+  
 
 
 
