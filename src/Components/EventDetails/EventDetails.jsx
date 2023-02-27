@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getEventsById, getReview,  /*addToCart*/ } from "../../Actions/AppActions/appActions";
 import './../EventDetails/EventDetail.css'
-import { Tag, Rate, Button ,InputNumber} from 'antd';
+import { Tag, Rate, Button, InputNumber } from 'antd';
 /* import Stars from "../Comentarios/Stars";
 import CommentForm from "../Comentarios/CommentForm"; */
 import { useAuth0 } from "@auth0/auth0-react";
@@ -15,10 +15,10 @@ import FormReviewInvitado from "../Comentarios/FormReviewInvitado";
 import Opiniones from "../Comentarios/ComentariosyOpiniones";
 import Swal from 'sweetalert2';
 
-export default function EventDetails({roleUser}) {
+export default function EventDetails({ roleUser }) {
     const usuario = useSelector((state) => state.users);
-    const {products, saveProducts} = React.useContext(CartContext)
-    const {isAuthenticated, user} = useAuth0();
+    const { products, saveProducts } = React.useContext(CartContext)
+    const { isAuthenticated, user } = useAuth0();
 
 
     const [cantidad, setCantidad] = useState(1)
@@ -90,24 +90,25 @@ export default function EventDetails({roleUser}) {
     let mesDetalle = dateDetalle[1]
     let añoDetalle = dateDetalle[2]
     let fechaEvento = new Date(añoDetalle, mesDetalle - 1, diaDetalle)
-    
+
     var fechaValida = false;
-    var leyenda ;
-    if(actual.getTime() > fechaEvento.getTime()){
-        fechaValida= true
-    }else{
+    var leyenda;
+    var baneado = false
+    if (actual.getTime() > fechaEvento.getTime()) {
+        fechaValida = true
+    } else {
         console.log(fechaValida)
         leyenda = 'Aun no finaliza el evento, '
     }
-    
-    
- /*    const userBanned = usuario.filter((e) => e.email === user.email)
+
+
+    const userBanned = usuario.filter((e) => e.email === user.email)
     if (userBanned) {
         if (userBanned[0].isBanned) {
-            var baneado = true
+            baneado = true
             leyenda = 'Estas baneado'
         }
-    } */
+    }
 
     return (
         <div>
@@ -129,51 +130,56 @@ export default function EventDetails({roleUser}) {
 
 
 
+                        {fechaValida ? (
+                            <h5> El evento ha finalizado!</h5>
+                        ) : (
+                            <div className="contenedor-info-evento-tickets">
+                                <div>
+                                    {detalles[0].availability < 10 ? <p>Quedan pocas entradas! No te quedes afuera!</p> : null}
+                                    <h5>Cupos disponibles: <Tag color="#2d8c04" className="precio-evento">{detalles[0].availability} </Tag></h5>
 
-                    <div className="contenedor-info-evento-tickets">
-                        <div>
-                            {detalles[0].availability < 10 ? <p>Quedan pocas entradas! No te quedes afuera!</p> : null}
-                            <h5>Cupos disponibles: <Tag color="#2d8c04" className="precio-evento">{detalles[0].availability} </Tag></h5>
-
-                        </div>
-
-                        <div className="div-precio-boton">
-                            <div><label htmlFor="">Precio</label>
-                                <Tag color="#87d068" className="precio-evento">$ {detalles[0].price.toLocaleString('en-US')}</Tag>
-                            </div>
-                            {/*  <Button value= {cantidad} onClick={()=>handleAddToCart()} className="boton-agregar-carrito ">Agregar al carrito</Button> */}
-                        </div>
-                        <br />
-
-
-                        {/* {isAuthenticated&&(<Button type="primary" className="boton-agregar-carrito" style={{backgroundColor:"rgb(56, 102, 103"}} onClick={handleAddToCart} >Agregar al Carrito</Button>)} */}
-
-                        {isAuthenticated &&
-                            <div>
-                                <div className="">
-                                    <label clasName="cantidad-entradas" htmlFor="Quanty">Cantidad</label>
-                                    <InputNumber min={1} max={10} onChange={handleCantidad} defaultValue={1} />
-                      {/* <input id="Quanty" type="range" min={0} max={5} defaultValue={1} onChange={handleCantidad} /> */}
-                                  {/*   <span>{cantidad}</span> */}
                                 </div>
-                                <div className="card-body d-flex">
-                                    <label htmlFor="">Precio total</label>
-                                    <Tag color="#2f3e46" className="precio-evento">$ {(detalles[0].price * cantidad).toLocaleString('en-US')}</Tag>
+
+                                <div className="div-precio-boton">
+                                    <div><label htmlFor="">Precio</label>
+                                        <Tag color="#87d068" className="precio-evento">$ {detalles[0].price.toLocaleString('en-US')}</Tag>
+                                    </div>
+                                    {/*  <Button value= {cantidad} onClick={()=>handleAddToCart()} className="boton-agregar-carrito ">Agregar al carrito</Button> */}
                                 </div>
                                 <br />
-                                <div>
-                                    <button type="primary" className="boton-agregar-carrito"
-                                        value={cantidad}
-                                        onClick={handleAddToCart}>Agregar al carrito
-                                    </button>
-                                </div>
+
+
+                                {/* {isAuthenticated&&(<Button type="primary" className="boton-agregar-carrito" style={{backgroundColor:"rgb(56, 102, 103"}} onClick={handleAddToCart} >Agregar al Carrito</Button>)} */}
+
+                                {isAuthenticated &&
+                                    <div>
+                                        <div className="">
+                                            <label clasName="cantidad-entradas" htmlFor="Quanty">Cantidad</label>
+                                            <InputNumber min={1} max={10} onChange={handleCantidad} defaultValue={1} />
+                                            {/* <input id="Quanty" type="range" min={0} max={5} defaultValue={1} onChange={handleCantidad} /> */}
+                                            {/*   <span>{cantidad}</span> */}
+                                        </div>
+                                        <div className="card-body d-flex">
+                                            <label htmlFor="">Precio total</label>
+                                            <Tag color="#2f3e46" className="precio-evento">$ {(detalles[0].price * cantidad).toLocaleString('en-US')}</Tag>
+                                        </div>
+                                        <br />
+                                        <div>
+                                            <button type="primary" className="boton-agregar-carrito"
+                                                value={cantidad}
+                                                onClick={handleAddToCart}>Agregar al carrito
+                                            </button>
+                                        </div>
+                                    </div>
+                                }
                             </div>
+                        )
                         }
-                        </div>
 
 
-                        {!fechaValida /* || baneado */ ? (
-                        <h5> {leyenda} no puedes hacer comentarios.</h5>
+
+                        {!fechaValida || baneado ? (
+                            <h5> {leyenda} no puedes hacer comentarios.</h5>
                         ) : (
 
 
@@ -193,14 +199,18 @@ export default function EventDetails({roleUser}) {
                 <CommentForm /> */}
                     </div>
 
+
 {/* 
                 {isAuthenticated && <FormReview user={user} idEvent={id} />}
+
                 {!isAuthenticated && <FormReviewInvitado/>}
                 
                 <h5 className="comentarios-opiniones">Comentarios y opiniones</h5>
                 <Rate defaultValue={raiting(id)} disabled={componentDisabled}/>
+
                 <Opiniones roleUser={roleUser}/>
  */}
+
                 </div>
 
                 <div className="row detalle-guia">
