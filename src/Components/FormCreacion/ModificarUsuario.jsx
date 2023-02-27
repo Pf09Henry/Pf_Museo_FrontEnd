@@ -22,7 +22,7 @@ import { getUserById, getUserName, getUsers, putUser } from "../../Actions/AppAc
 function ModificarUsuario(){ 
   const { Option } = Select;
   const dispatch = useDispatch();
-  const [nameEvent, setName] = useState("")
+  const [searchValue, setSearchValue] = useState('')
   const eventos = useSelector((state) => state.users);
   const [id, setId] = useState("");
   const [initLoading, setInitLoading] = useState(true);
@@ -60,7 +60,7 @@ function ModificarUsuario(){
     image:"No hay usuario",
     password:"No hay usuario",
     phone:"No hay usuario",
-    roleId: role("aacaef0e-fd5b-4d0f-ac88-bbffa0a1fe87")
+    roleId: role("")
   })
  
   let count = 3
@@ -68,11 +68,18 @@ function ModificarUsuario(){
   
  
 
-
+/* 
   function buscarNombre(e){
-   /*  console.log(e.target.value) */
+   
     dispatch(getUserName(e.target.value));
+  } */
+
+  const handleSearch = (event) => {
+    setSearchValue(event.target.value.toLowerCase());
   }
+
+
+  const filteredUsers = eventos.filter(user => user.name.toLowerCase().includes(searchValue));
 
 
 
@@ -183,7 +190,7 @@ return(
       label="Buscar"
       name="username-buscado"
     >
-      <Input placeholder={nameEvent} onChange={(e)=>buscarNombre(e)}/>
+      <Input onChange={handleSearch} value={searchValue} />
      
     </Form.Item>
     <hr></hr>
@@ -193,7 +200,7 @@ return(
       loading={initLoading}
      itemLayout="horizontal"
       /* loadMore={loadMore} */
-      dataSource={list.slice(0,count)}
+      dataSource={filteredUsers.slice(0,count)}
       
       renderItem={(item) => (
         <List.Item>
