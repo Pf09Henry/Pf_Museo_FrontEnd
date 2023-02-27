@@ -17,7 +17,7 @@ function BorrarUsuario(){
   const dispatch = useDispatch();
   const [nameEvent, setName] = useState("")
   const eventos = useSelector((state) => state.users);
-  const [id, setId] = useState("693ba2e0-cea2-485d-84bd-a695d6eeef27");
+  const [id, setId] = useState("");
   const [initLoading, setInitLoading] = useState(true);
   const [list, setList] = useState([]);
 
