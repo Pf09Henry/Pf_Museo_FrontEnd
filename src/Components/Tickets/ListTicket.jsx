@@ -209,6 +209,7 @@ ticket.slice(page-1,page+3).map((t) =>
                     <p>Cantidad tickets:{t.amount}</p>
                     <p>Total de la compra:{t.totalOfPurchase}</p>
                     <p>Metodo de pago:{t.methodOfPurchase}</p>
+                   
                     </div>
                 }
              
