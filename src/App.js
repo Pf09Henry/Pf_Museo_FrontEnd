@@ -54,7 +54,7 @@ import Entradas from './Components/Entradas/Entradas';
 
 //import { CartContext } from './Context';
 import { useDispatch, useSelector } from "react-redux";
-import { getEvents, getReview, getRoles, getTicketId, getTickets, getUsers } from '../src/Actions/AppActions/appActions';
+import { getEvents, getReview, getRoles, getTicketId, getTickets, getUsers, getUsersAll } from '../src/Actions/AppActions/appActions';
 import Perfil from './Components/Dashboard/Perfil/Perfil';
 import DashUser from './Components/Dashboard/DashUser/DashboardUser';
 import areaGeo from './Components/areaGeo/areaGeo';
@@ -81,6 +81,7 @@ function App() {
       await dispatch(getTickets());
       await dispatch(getEvents());
       await dispatch(getRoles());
+      await dispatch(getUsersAll());
     })();
   }, [])
 
@@ -182,6 +183,7 @@ function App() {
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/register' element={<Register />} />
+              <Route path='*' element={<Error404 />} />
             </Routes>
             <Footer />
           </CartProvider>
