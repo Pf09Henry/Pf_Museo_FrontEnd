@@ -50,7 +50,8 @@ function CrearGuia(){
       title: 'Éxito',
       text: 'Tu guia se creó con éxito',
       icon: 'success',
-      confirmButtonText: 'OK'
+      confirmButtonText: 'OK',
+      confirmButtonColor: "#035d03"
     })
 
 
@@ -60,7 +61,13 @@ function CrearGuia(){
       dispatch(postGuide(valores))
        
     } else {
-      return alert(" A tu guia le faltan detalles");
+      return Swal.fire({
+        title: 'Ups!',
+        text: "A tu guia le faltan detalles",
+        icon: 'error',
+        confirmButtonText: 'OK',
+        confirmButtonColor: "#035d03"
+      })
     }
     console.log(inicialValues)
   };
@@ -71,7 +78,8 @@ function CrearGuia(){
           title: 'Ups!',
           text: "Uno o mas datos no fueron cargados",
           icon: 'error',
-          confirmButtonText: 'OK'
+          confirmButtonText: 'OK',
+          confirmButtonColor: "#035d03"
         })
     };
 

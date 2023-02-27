@@ -25,7 +25,7 @@ function Modificar(){
   const [nameEvent, setName] = useState("")
   const eventos = useSelector((state) => state.eventos);
   const [currentPage, setCurrentPage] = useState(0);
-  const [id, setId] = useState("10350ea1-3161-48fc-a56c-deaf713d3743");
+  const [id, setId] = useState("");
   const [initLoading, setInitLoading] = useState(true);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
@@ -175,7 +175,8 @@ function Modificar(){
       title: 'Éxito',
       text: 'Tu evento se modificó con éxito',
       icon: 'success',
-      confirmButtonText: 'OK'
+      confirmButtonText: 'OK',
+      confirmButtonColor: "#035d03"
     })
 
 
@@ -196,7 +197,8 @@ function Modificar(){
           title: 'Ups!',
           text: "Uno o mas datos no fueron cargados",
           icon: 'error',
-          confirmButtonText: 'OK'
+          confirmButtonText: 'OK',
+          confirmButtonColor: "#035d03"
         })
     };
   const [componentDisabled, setComponentDisabled] = useState(true);

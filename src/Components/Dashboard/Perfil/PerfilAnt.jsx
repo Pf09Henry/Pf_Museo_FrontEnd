@@ -31,9 +31,9 @@ const PerfilAnt = () => {
 
 
   function searchIdTicket(){
-    let usuarioEncontrado = usuarios.filter(el => el.name === user.name)
-    let reviewEncontrado = review.filter(re => re.user.name === usuarioEncontrado[0].name)
-    let ticketEncontrado = ticketsBase.filter(t => t.user.name === usuarioEncontrado[0].name)
+    let usuarioEncontrado = usuarios.filter(el => el.email === user.email)
+    let reviewEncontrado = review.filter(re => re.user.email === usuarioEncontrado[0].email)
+    let ticketEncontrado = ticketsBase.filter(t => t.user.email === usuarioEncontrado[0].email)
     setTicket(ticketEncontrado)
     setReview(reviewEncontrado)
     return ticketEncontrado
@@ -56,9 +56,10 @@ useEffect(()=>{
 
 
   function searchIdUser(name){
-    let usuarioEncontrado = usuarios.filter(el => el.name === name)
+    let usuarioEmail =usuarios.filter(el => el.email === user.email)
+  /*   let usuarioEncontrado = usuarioEmail.filter(el => el.name === name) */
     /* console.log(usuarioEncontrado[0]) */
-    return usuarioEncontrado[0]
+    return usuarioEmail[0]
   }
 
  /*  const [open, setOpen] = useState(false);
@@ -162,13 +163,14 @@ useEffect(()=>{
              
                 <Meta
              avatar={<Avatar src={t.user.image} alt={t.user.name} />}
-                title={t.id}
+                title={t.event.name}
                 description={
                     <div>
                     
                     <p>Cantidad tickets: {t.amount}</p>
                     <p>Total de la compra: {t.totalOfPurchase}</p>
                     <p>Metodo de pago: {t.methodOfPurchase}</p>
+                    <p>Fecha: {t.createdAt.slice(0,10)}</p>
                     </div>
                 } 
              

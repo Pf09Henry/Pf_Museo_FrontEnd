@@ -25,13 +25,21 @@ export default function Membership() {
     const handleAddToCart = (producto) => {
         const productInCart = products.filter(pr => pr.id === producto.id)
         if (productInCart.length) {
-            alert('Producto ya se encuentra en el carrito puedes modificarlo desde allí')
+            Swal.fire({
+                icon: 'warning',
+                title: 'Producto ya se encuentra en el carrito puedes modificarlo desde allí',
+                showConfirmButton: false,
+                timer: 1500,
+                confirmButtonColor: "#035d03"
+            })
+           
         } else {
             Swal.fire({
                 icon: 'success',
                 title: 'Producto agregado al carrito',
                 showConfirmButton: false,
-                timer: 1500
+                timer: 1500,
+                confirmButtonColor: "#035d03"
             })
             const newProducts = [...products, producto];
             saveProducts(newProducts);

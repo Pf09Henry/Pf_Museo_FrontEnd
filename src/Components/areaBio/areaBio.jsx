@@ -22,6 +22,7 @@ export default function areaBio() {
                         Asesoramos a organismos públicos y privados sobre temas de conservación, realizamos determinaciones taxonómicas, monitoreos de biodiversidad, presencia y ausencia de especies de interés sanitario, dictamos capacitaciones sobre fauna e interpretación de la naturaleza, entre otros temas.
                         En el laboratorio se trabaja en estudios sobre; morfología, sistemática, taxonomía, genética, anatomía comparada, educación, estudios ecológicos, estudios sobre cambio climático, filogeografía, taxonomía, biogeografía y evolución. Además de muestreo, etiquetado, acondicionamiento de ejemplares y el preparado de materiales para la colección y las exhibiciones del Museo.
                     </p>
+                    <br />
                     <img className="investigation-img" src={investigation} alt="investigation" />
                 </div>
 
@@ -30,12 +31,17 @@ export default function areaBio() {
 
                 <div>
                     <h3>Lineas de Trabajo</h3>
-                    <li>	Herpetología: respecto de los reptiles y anfibios del territorio rionegrino, se realizan trabajos de determinación y descripción de especies, análisis de relaciones filogenéticas y resguardo genético. Complementariamente se diseña y distribuye material de difusión y se brinda asesoramiento gratuito a clínicas y hospitales para la determinación de ejemplares de interés sanitario.</li>
-                    <li>	Mastozoología: se realizan trabajos de determinación y descripción de especies, análisis de relaciones filogenéticas y resguardo genético, se preparan colecciones de pieles y esqueletos. se desarrollan estudios para comprender la biología y ecología de micromamíferos y carnívoros de la región, complementadas con campañas de concientización en escuelas y medios de comunicación sobre el rol ecológico de las especies consideradas plagas para la ganadería (puma, zorro gris y colorado).</li>
-                    <li>	Ornitología: se trabaja en censos y relevamientos de aves en diversos ambientes del centro y norte de la provincia de Río Negro. Se está creando la colección oológica, osteológica y de pieles, sobre todo con ejemplares hallados muertos en las rutas. </li>
-                    <li>	Entomología: se trabaja en taxonomía y sistemática de insectos de Patagonia, en especial en determinar la presencia o ausencia de aquellos de interés agrícola, en el incremento de las colecciones, así como en la revisión, curación y puesta en valor de la colección entomológica del MPCN. Se prestan servicios a otras instituciones, preparando ejemplares y determinando especímenes.</li>
-                    <li>	Botánica: se continuó con el registro fotográfico de flora silvestre rionegrina, material disponible para futuros estudios de distribución y programas educativos, se trabaja en la confección de una guía de campo y se prevé comenzar el herbario en 2021.</li>
-                    <li>Banco de imágenes: se amplió el archivo digital, superando las 150.700 imágenes de vida silvestre y ambientes patagónicos.</li>
+                    <li>	<b>Herpetología:</b> Respecto de los reptiles y anfibios del territorio rionegrino, se realizan trabajos de determinación y descripción de especies, análisis de relaciones filogenéticas y resguardo genético. Complementariamente se diseña y distribuye material de difusión y se brinda asesoramiento gratuito a clínicas y hospitales para la determinación de ejemplares de interés sanitario.</li>
+                    <br />
+                    <li>	<b>Mastozoología:</b> Se realizan trabajos de determinación y descripción de especies, análisis de relaciones filogenéticas y resguardo genético, se preparan colecciones de pieles y esqueletos. se desarrollan estudios para comprender la biología y ecología de micromamíferos y carnívoros de la región, complementadas con campañas de concientización en escuelas y medios de comunicación sobre el rol ecológico de las especies consideradas plagas para la ganadería (puma, zorro gris y colorado).</li>
+                    <br />
+                    <li>	<b>Ornitología: </b> Se trabaja en censos y relevamientos de aves en diversos ambientes del centro y norte de la provincia de Río Negro. Se está creando la colección oológica, osteológica y de pieles, sobre todo con ejemplares hallados muertos en las rutas. </li>
+                    <br />
+                    <li>	<b>Entomología: </b> Se trabaja en taxonomía y sistemática de insectos de Patagonia, en especial en determinar la presencia o ausencia de aquellos de interés agrícola, en el incremento de las colecciones, así como en la revisión, curación y puesta en valor de la colección entomológica del MPCN. Se prestan servicios a otras instituciones, preparando ejemplares y determinando especímenes.</li>
+                    <br />
+                    <li>	<b>Botánica: </b> Se continuó con el registro fotográfico de flora silvestre rionegrina, material disponible para futuros estudios de distribución y programas educativos, se trabaja en la confección de una guía de campo y se prevé comenzar el herbario en 2021.</li>
+                    <br />
+                    <li> <b>Banco de imágenes: </b>Se amplió el archivo digital, superando las 150.700 imágenes de vida silvestre y ambientes patagónicos.</li>
 
                     <br />
 

@@ -6,19 +6,20 @@ export default function EntryPrice() {
     return (
         <main>
             <div className="container my-5">
-                <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-                    <div className="col-lg-7 p-3 p-lg-5 pt-lg-3">
-                        <h1 className="display-4 fw-bold lh-1 mb-4">¡Una experiencia unica!</h1>
-                        <p className="lead">El Museo fue concebido como un espacio educativo, científico, cultural y turístico para toda la comunidad.</p>
-                        <p className="lead">Podras acceder a todas nuestras exhibiciones permanentes pagando una unica entrada</p>
-                        <div className="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-                            <a href="/entradas"><button type="button" className="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Compra tu entrada</button></a>
-                            <a href="/exhibits"><button type="button" className="btn btn-outline-secondary btn-lg px-4">Exhibiciones</button></a>
-                        </div>
+                <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg  text-center">
+                    {/* <div className="col-lg-7 p-3 p-lg-5 pt-lg-3"> */}
+                    <h1 className="display-4 fw-bold lh-1 mb-4">¡Una experiencia unica!</h1>
+                    <p className="lead">El Museo fue concebido como un espacio educativo, científico, cultural y turístico para toda la comunidad.</p>
+                    <p className="lead">Podras acceder a todas nuestras exhibiciones permanentes pagando una unica entrada</p>
+                    <div className="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+                        <a href="/entradas"><button type="button" className="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Compra tu entrada</button></a>
+                        <a href="/exhibits"><button type="button" className="btn btn-outline-secondary btn-lg px-4">Exhibiciones</button></a>
                     </div>
-                    <div className="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
-                        <img className="rounded-lg-1  imagenPrice " src={lagarto} alt="" width="720"/>
+                    <div className="d-grid place-items-center">
+                        <img className="rounded-lg-1  imagenPrice " src={lagarto} alt="" width="720" />
                     </div>
+
+                    {/* </div> */}
                 </div>
             </div>
 
