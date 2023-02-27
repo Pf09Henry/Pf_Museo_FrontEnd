@@ -67,9 +67,7 @@ export default function CartSidebar() {
                                         <h5><strong>{product.name}</strong></h5>
                                     </div>
                                     <img src={product.img} alt={`picFrom${product.name}`} />
-                                    {/* <div>
-                                <h5><strong>Cantidad de tickets: {product.cantidad}</strong></h5>
-                            </div> */}
+
                                     <div className='d-grid card bg-success text-dark aling-items-center resumen' >
                                         <div className='row'>
                                             <div className='col-7' >
@@ -87,15 +85,7 @@ export default function CartSidebar() {
                                         </div>
                                     </div>
                                 </div>
-                                // <div key={index} className="card cardCart">
-                                //     <h3 className=''>{product.name}</h3>
-                                //     <div className="card-body subCard ">                            
-                                //             <img className='rounded mx-auto img-fluid mb-2' src={product.img} alt="imagenProducto"/>
-                                //             <h4 className=' mb-1' >Valor <sub>$</sub>{product.price}</h4>
-                                //             <h4>Cantidad</h4>                            
-                                //     </div>
-                                //     <button value={product.id} className='badge rounded-pill border border-danger bg-danger  top-0 end-0 position-absolute' onClick={handleRemoveCart}>X</button>
-                                // </div>                
+
                             ))}
                         </div>
 

@@ -59,6 +59,7 @@ export default function EventDetails({roleUser}) {
             price: detalles[0].price,
             img: detalles[0].img,
             totalPrice: detalles[0].price * cantidad,
+            fecha: detalles[0].startDay
         }
         const productInCart = products.filter(pr => pr.id === producto.id)
         if (productInCart.length) {

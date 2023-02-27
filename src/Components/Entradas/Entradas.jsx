@@ -43,6 +43,8 @@ export default function Entradas() {
         }
     };
 
+    let date = new Date().toJSON().slice(0,10)
+
     useEffect(() => {
         window.scrollTo(0, 130);
     }, []);
@@ -60,7 +62,7 @@ export default function Entradas() {
                                 <img src={logo} alt="Logo" width="32" height="32" className="rounded-circle border border-white" />
                                 <h3 className="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Martes a Viernes</h3>
                             </div>
-                            {isAuthenticated ? <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ img: pata, id: "entry-week", name: "Entrada Semana", price: 500, cantidad: 1 })} >Agregar al Carrito</Button> : <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }}  onClick={clickAuth} >Agregar al Carrito</Button>}
+                            {isAuthenticated ? <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ img: pata, id: "entry-week", name: "Entrada Semana", price: 500, cantidad: 1, fecha:date })} >Agregar al Carrito</Button> : <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }}  onClick={clickAuth} >Agregar al Carrito</Button>}
                             
                         </div>
                     </div>
@@ -71,7 +73,7 @@ export default function Entradas() {
                                 <img src={logo} alt="Logo" width="32" height="32" className="rounded-circle border border-white" />
                                 <h3 className="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-dark">Fin de Semana</h3>
                             </div>
-                            {isAuthenticated ? <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ img: pata, id: "entry-week", name: "Entrada Semana", price: 500, cantidad: 1 })} >Agregar al Carrito</Button> : <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }}  onClick={clickAuth} >Agregar al Carrito</Button>}
+                            {isAuthenticated ? <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ img: lagarto, id: "entry-weekend", name: "Entrada Fin de Semana", price: 900, cantidad: 1, fecha:date })} >Agregar al Carrito</Button> : <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }}  onClick={clickAuth} >Agregar al Carrito</Button>}
                         </div>
                     </div>
                     <div className="col">
@@ -80,7 +82,7 @@ export default function Entradas() {
                                 <img src={logo} alt="Logo" width="32" height="32" className="rounded-circle border border-white" />
                                 <h3 className="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Vacaciones de Verano</h3>
                             </div>
-                            {isAuthenticated ? <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ img: pata, id: "entry-week", name: "Entrada Semana", price: 500, cantidad: 1 })} >Agregar al Carrito</Button> : <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }}  onClick={clickAuth} >Agregar al Carrito</Button>}
+                            {isAuthenticated ? <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ img: buho, id: "entry-vacation", name: "Entrada Vacaciones", price: 800, cantidad: 1, fecha:date })} >Agregar al Carrito</Button> : <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }}  onClick={clickAuth} >Agregar al Carrito</Button>}
                         </div>
                     </div>
                 </div>
