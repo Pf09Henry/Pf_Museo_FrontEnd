@@ -14,14 +14,14 @@ export default function InfoGeneral() {
         <div className='container-fluid d-flex-wrap' >
             <div className="position-relative overflow-hidden p-3 p-lg-5 m-md-3 text-center bg-light">
                 {/* <div classNameName="col-md-5 p-lg-5 mx-auto my-5"> */}
-                    <h1 className="display-4 fw-normal">Direccion</h1>
-                    <p className="lead fw-normal">Av. Gral. Julio Argentino Roca 1250</p>
-                    <br />
-                    <div id="map-container-google-1" className="z-depth-1-half map-container border shadow-lg">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3099.2898048951615!2d-67.57906568362394!3d-39.03151131246983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x960a1ceb55f228c9%3A0x843c188f09e8e9b6!2sMuseo%20Patag%C3%B3nico%20de%20Ciencias%20Naturales%20Juan%20Carlos%20Salgado!5e0!3m2!1ses-419!2sco!4v1675526663069!5m2!1ses-419!2sco" 
-                                allowFullScreen="" loading="lazy" 
-                                title='MPCN_Location' referrerPolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
+                <h1 className="display-4 fw-normal">Direccion</h1>
+                <p className="lead fw-normal">Av. Gral. Julio Argentino Roca 1250</p>
+                <br />
+                <div id="map-container-google-1" className="z-depth-1-half map-container border shadow-lg">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3099.2898048951615!2d-67.57906568362394!3d-39.03151131246983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x960a1ceb55f228c9%3A0x843c188f09e8e9b6!2sMuseo%20Patag%C3%B3nico%20de%20Ciencias%20Naturales%20Juan%20Carlos%20Salgado!5e0!3m2!1ses-419!2sco!4v1675526663069!5m2!1ses-419!2sco"
+                        allowFullScreen="" loading="lazy"
+                        title='MPCN_Location' referrerPolicy="no-referrer-when-downgrade"></iframe>
+                </div>
             </div>
             {/* Tarjetas de Horarios */}
 
@@ -29,6 +29,7 @@ export default function InfoGeneral() {
                 <h1 className="display-4 fw-normal">Horarios</h1>
                 <div className="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3 justify-content-center   ">
                     <div className="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden rounded border shadow-lg">
+
                         <div className="my-3 py-3">
                             <h2 className="display-5" style={{color:"white"}}>Martes a Viernes:</h2>
                             <p className="lead" style={{color:"white"}}> 10:00 a.m - 5:00 p.m</p>
@@ -45,16 +46,16 @@ export default function InfoGeneral() {
                         <div className="bg-dark shadow-sm mx-auto cardsInformacion">
                             <img src={dinosaurs} alt="dinosaurios" className='img-fluid imagenContenedor' />
                         </div>
-                    </div>                
+                    </div>
                 </div>
 
-                <PrecioEntrda/>
+                <PrecioEntrda />
 
-                 {/* Tarjetas de Servicios en un componente independiente */}
+                {/* Tarjetas de Servicios en un componente independiente */}
 
-                <Servicies/>           
+                <Servicies />
 
-                  {/* Carrusel con imagenes de la fachada del museo */}
+                {/* Carrusel con imagenes de la fachada del museo */}
                 <div className="bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden rounded">
                     <h1 className='display-5 fw-normal text-light' > ¡ Te esperamos ! </h1>
                     <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="true">
@@ -66,10 +67,10 @@ export default function InfoGeneral() {
                         </div>
                         <div className="carousel-inner">
                             <div className="carousel-item active">
-                                <img src={fachada2} className="carouselItem" alt="fachada"/>
+                                <img src={fachada2} className="carouselItem" alt="fachada" />
                             </div>
                             <div className="carousel-item">
-                                <img src={fachada3} className="carouselItem" alt="fachada"/>
+                                <img src={fachada3} className="carouselItem" alt="fachada" />
                             </div>
                         </div>
                         <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -81,10 +82,10 @@ export default function InfoGeneral() {
                             <span className="visually-hidden">Next</span>
                         </button>
                     </div>
-                            
+
 
                 </div>
             </div>
         </div>
-)
+    )
 }

@@ -116,11 +116,11 @@ export default function Historia() {
                     clásica de la ciudad y el Alto Valle del río Negro.
                 </Col>
             </Row>
-
+            <br />
             <Row className='row5'>
                 <Col className="texto-historia" span={24}>
                     <div className='lista-historia'>
-                        <h6>Primer piso:</h6>
+                        <h6><b>Primer piso:</b></h6>
                         <ul>
                             <li>Hall de Ingreso y Recepción. Con informes turísticos, ascensor y escaleras</li>
                             <li>Exhibición Permanente. Salas de Paleontología, Dinosaurios de Río Negro, Geología, Biodiversidad de la Patagonia Norte, Historia Geológica de la Patagonia Norte.</li>
@@ -128,7 +128,7 @@ export default function Historia() {
                         </ul>
 
 
-                        <h6>Segundo piso:</h6>
+                        <h6><b>Segundo piso:</b></h6>
                         <ul>
                             <li>Auditorio: un amplio auditorio para 60 personas, donde se realizan actos, eventos culturales, ciclos de charlas, conferencias, congresos, proyecciones de videos documentales entre otras actividades.</li>
                             <li>Aulas y espacios de usos comunes: Actualmente el IUPA utiliza en el marco de convenios las aulas para los dictados de materias.</li>
@@ -136,7 +136,7 @@ export default function Historia() {
                             <li>Baños para personal.</li>
                         </ul>
 
-                        <h6>Subsuelo </h6>
+                        <h6><b>Subsuelo </b></h6>
                         <ul>
                             <li>Ala de colecciones: las bóvedas del ex-Banco fueron destinadas y acondicionadas para albergar las colecciones del MPCN.</li>
                             <li>Oficinas: Dirección, Administración, Sala de Reuniones, Área Educativa, Centro de Producción, etc.</li>

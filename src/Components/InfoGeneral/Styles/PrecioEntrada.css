@@ -1,4 +1,19 @@
-.imagenPrice{
-    border-radius: 10px !important;
+
+.imagenPrice {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5% !important;
+    width: 60%;
+  }
+  
+  .d-grid.place-items-center {
+    display: grid !important;
+    place-items: center;
+    height: 100%;
     
-}
+  }
+
+  .d-grid.gap-2.d-md-flex.justify-content-md-start.mb-4.mb-lg-3{
+justify-content: center !important;
+  }
