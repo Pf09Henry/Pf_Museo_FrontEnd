@@ -20,7 +20,7 @@ export default function areaEducation() {
                     <br />
                     <img className="course1-img" src={course1} alt="course1" />
                 </p>
-
+                <br />
                 <div>
                     <h3>Servicios</h3>
                     <li>	Producción de materiales educativos pre y post visita para docentes y alumnos.</li>
@@ -49,6 +49,7 @@ export default function areaEducation() {
                 <Link to='/eventos'>
                     <button type="button" className="btn btn-outline-success btn-secundario">Compra tu Entrada</button>
                 </Link>
+                <br />
                 <br />
             </div>
             <br />
