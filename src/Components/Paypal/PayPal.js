@@ -99,7 +99,8 @@ export default function Paypal() {
                     title: 'Upss!',
                     text: 'Pago cancelado',
                     icon: 'warning',
-                    confirmButtonText: 'Ok'
+                    confirmButtonText: 'Ok',
+                    confirmButtonColor: "#035d03"
                 })
 
                 console.log(data)
@@ -113,7 +114,8 @@ export default function Paypal() {
                         title: 'Ok',
                         text: 'Tu Pago fue efectuado con Exito',
                         icon: 'success',
-                        confirmButtonText: 'OK'
+                        confirmButtonText: 'OK',
+                        confirmButtonColor: "#035d03"
                     })
                     
 

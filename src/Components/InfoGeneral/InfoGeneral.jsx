@@ -29,9 +29,10 @@ export default function InfoGeneral() {
                 <h1 className="display-4 fw-normal">Horarios</h1>
                 <div className="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3 justify-content-center   ">
                     <div className="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden rounded border shadow-lg">
-                        <div className="my-3 py-3 " >
-                            <h2 className="display-5 text-light" >Martes a Viernes:</h2>
-                            <p className="lead text-light">10:00 a.m - 5:00 p.m</p>
+
+                        <div className="my-3 py-3">
+                            <h2 className="display-5" style={{color:"white"}}>Martes a Viernes:</h2>
+                            <p className="lead" style={{color:"white"}}> 10:00 a.m - 5:00 p.m</p>
                         </div>
                         <div className="bg-light shadow-sm mx-auto cardsInformacion">
                             <img src={lagartija} alt="dinosaurios" className='imagenContenedor' />

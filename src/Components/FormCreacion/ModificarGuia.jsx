@@ -19,7 +19,7 @@ function ModificarGuia(){
   const dispatch = useDispatch();
   const [nameEvent, setName] = useState("")
   const eventos = useSelector((state) => state.guias);
-  const [id, setId] = useState("10350ea1-3161-48fc-a56c-deaf713d3743");
+  const [id, setId] = useState("");
   const [initLoading, setInitLoading] = useState(true);
   const [data, setData] = useState([]);
   const [list, setList] = useState([]);
@@ -37,17 +37,10 @@ function ModificarGuia(){
   function buscarNombre(e){
     console.log(e.target.value)
     setName(e.target.value)
+    dispatch(getGuidesName(e.target.value));
   }
 
-  useEffect (()=>{
-    dispatch(getGuidesName(nameEvent));
-  },[dispatch, nameEvent]) 
-
   
- useEffect (()=>{
-    dispatch(getGuidesById(id))
-    console.log("este id le estoy pasando", id)
-  },[dispatch, id])
 
   useEffect (()=>{
    (async () => {
@@ -67,6 +60,7 @@ function ModificarGuia(){
   setId(e)
   const eventoFiltrado= eventos.filter(ev => ev.id === e)
   setValues(eventoFiltrado[0]);
+  dispatch(getGuidesById(e))
   console.log(eventoFiltrado[0])
   console.log(inicialValues)
  }
@@ -89,7 +83,8 @@ function ModificarGuia(){
       title: 'Éxito',
       text: 'Tu guia se modificó con éxito',
       icon: 'success',
-      confirmButtonText: 'OK'
+      confirmButtonText: 'OK',
+      confirmButtonColor: "#035d03"
     })
  
 
@@ -108,7 +103,8 @@ function ModificarGuia(){
           title: 'Ups!',
           text: "Uno o mas datos no fueron cargados",
           icon: 'error',
-          confirmButtonText: 'OK'
+          confirmButtonText: 'OK',
+          confirmButtonColor: "#035d03"
         })
     };
   const [componentDisabled, setComponentDisabled] = useState(true);

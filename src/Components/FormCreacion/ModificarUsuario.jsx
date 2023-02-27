@@ -22,7 +22,7 @@ import { getUserById, getUserName, getUsers, putUser } from "../../Actions/AppAc
 function ModificarUsuario(){ 
   const { Option } = Select;
   const dispatch = useDispatch();
-  const [nameEvent, setName] = useState("")
+  const [searchValue, setSearchValue] = useState('')
   const eventos = useSelector((state) => state.users);
   const [id, setId] = useState("");
   const [initLoading, setInitLoading] = useState(true);
@@ -60,7 +60,7 @@ function ModificarUsuario(){
     image:"No hay usuario",
     password:"No hay usuario",
     phone:"No hay usuario",
-    roleId: role("aacaef0e-fd5b-4d0f-ac88-bbffa0a1fe87")
+    roleId: role("")
   })
  
   let count = 3
@@ -68,21 +68,20 @@ function ModificarUsuario(){
   
  
 
-
+/* 
   function buscarNombre(e){
-    console.log(e.target.value)
-    setName(e.target.value)
+   
+    dispatch(getUserName(e.target.value));
+  } */
+
+  const handleSearch = (event) => {
+    setSearchValue(event.target.value.toLowerCase());
   }
 
-  useEffect (()=>{
-    dispatch(getUserName(nameEvent));
-  },[dispatch, nameEvent]) 
 
-  
- useEffect (()=>{
-    dispatch(getUserById(id))
-    console.log("este id le estoy pasando", id)
-  },[dispatch, id])
+  const filteredUsers = eventos.filter(user => user.name.toLowerCase().includes(searchValue));
+
+
 
   useEffect (()=>{
     (async () => {
@@ -102,6 +101,8 @@ function ModificarUsuario(){
   setId(e)
   const eventoFiltrado= eventos.filter(ev => ev.id === e)
   setValues(eventoFiltrado[0]);
+  dispatch(getUserById(e))
+ /*  console.log("este id le estoy pasando", id) */
 /*   console.log(eventoFiltrado[0])
   console.log(inicialValues) */
  }
@@ -136,7 +137,8 @@ function ModificarUsuario(){
       title: 'Éxito',
       text: 'Tu usuario se modificó con éxito',
       icon: 'success',
-      confirmButtonText: 'OK'
+      confirmButtonText: 'OK',
+      confirmButtonColor: "#035d03"
     })
  
 
@@ -155,7 +157,8 @@ function ModificarUsuario(){
           title: 'Ups!',
           text: "Uno o mas datos no fueron cargados",
           icon: 'error',
-          confirmButtonText: 'OK'
+          confirmButtonText: 'OK',
+          confirmButtonColor: "#035d03"
         })
     };
   const [componentDisabled, setComponentDisabled] = useState(true);
@@ -187,7 +190,7 @@ return(
       label="Buscar"
       name="username-buscado"
     >
-      <Input placeholder={nameEvent} onChange={(e)=>buscarNombre(e)}/>
+      <Input onChange={handleSearch} value={searchValue} />
      
     </Form.Item>
     <hr></hr>
@@ -197,7 +200,7 @@ return(
       loading={initLoading}
      itemLayout="horizontal"
       /* loadMore={loadMore} */
-      dataSource={list.slice(0,count)}
+      dataSource={filteredUsers.slice(0,count)}
       
       renderItem={(item) => (
         <List.Item>

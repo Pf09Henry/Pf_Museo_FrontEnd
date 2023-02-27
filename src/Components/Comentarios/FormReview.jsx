@@ -36,12 +36,12 @@ export default function FormReview({user, idEvent}){
 
     useEffect (()=>{
         dispatch(getUsers());
-        searchIdUser(user.name)
+        searchIdUser()
     },[dispatch]) 
 
-    function searchIdUser(name){
+    function searchIdUser(){
         console.log(usuarios)
-        let usuarioEncontrado = usuarios.filter(el => el.name === name)
+        let usuarioEncontrado = usuarios.filter(el => el.email === user.email)
         console.log(usuarioEncontrado[0].id)
         return usuarioEncontrado[0].id
     }
@@ -59,7 +59,7 @@ export default function FormReview({user, idEvent}){
         let valores={
             commentary:values.comentario,
             score:values.score,
-            userId:searchIdUser(user.name),
+            userId:searchIdUser(),
             eventId:id
           }
           console.log(valores)
@@ -67,7 +67,7 @@ export default function FormReview({user, idEvent}){
         setForm({
             commentary:values.comentario,
             score:values.score,
-            userId:searchIdUser(user.name),
+            userId:searchIdUser(),
             eventId:id
         })
         Swal.fire({
@@ -75,6 +75,7 @@ export default function FormReview({user, idEvent}){
           text: 'Tu puntaje y comentario se enviaron con éxito!',
           icon: 'success',
           confirmButtonText: 'OK',
+          confirmButtonColor: "#035d03"
         }).then(function(){
             window.location.href = `/event/${idEvent}`
         })
@@ -94,7 +95,8 @@ export default function FormReview({user, idEvent}){
               title: 'Ups!',
               text: "Uno o mas datos no fueron cargados",
               icon: 'error',
-              confirmButtonText: 'OK'
+              confirmButtonText: 'OK',
+              confirmButtonColor: "#035d03"
             })
         };
 

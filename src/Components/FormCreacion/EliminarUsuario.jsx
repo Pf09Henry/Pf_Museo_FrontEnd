@@ -13,11 +13,10 @@ import { Avatar, List, Skeleton } from 'antd';
 
 
 function BorrarUsuario(){ 
-  
-  const dispatch = useDispatch();
-  const [nameEvent, setName] = useState("")
+  const dispatch = useDispatch()
+  const [searchValue, setSearchValue] = useState('')
   const eventos = useSelector((state) => state.users);
-  const [id, setId] = useState("693ba2e0-cea2-485d-84bd-a695d6eeef27");
+  const [id, setId] = useState("");
   const [initLoading, setInitLoading] = useState(true);
   const [list, setList] = useState([]);
 
@@ -26,12 +25,13 @@ function BorrarUsuario(){
  
 
 
-  function buscarNombre(e){
-    console.log(e.target.value)
-    setName(e.target.value)
+  const handleSearch = (event) => {
+    setSearchValue(event.target.value.toLowerCase());
   }
 
-  useEffect (()=>{
+
+  const filteredUsers = eventos.filter(user => user.name.toLowerCase().includes(searchValue));
+/*   useEffect (()=>{
     dispatch(getUserName(nameEvent));
   },[dispatch, nameEvent]) 
 
@@ -39,7 +39,7 @@ function BorrarUsuario(){
  useEffect (()=>{
     dispatch(getUserById(id))
     console.log("este id le estoy pasando", id)
-  },[dispatch, id])
+  },[dispatch, id]) */
 
   useEffect (()=>{
     dispatch(getUsers());
@@ -60,7 +60,8 @@ function BorrarUsuario(){
     title: 'Éxito',
     text: 'El usuario se elimino con éxito',
     icon: 'success',
-    confirmButtonText: 'OK'
+    confirmButtonText: 'OK',
+    confirmButtonColor: "#035d03"
   })
  }
 
@@ -75,7 +76,8 @@ function BorrarUsuario(){
       title: 'Éxito',
       text: 'El usuario se elimino con éxito',
       icon: 'success',
-      confirmButtonText: 'OK'
+      confirmButtonText: 'OK',
+      confirmButtonColor: "#035d03"
     })
 
 
@@ -94,7 +96,8 @@ function BorrarUsuario(){
           title: 'Ups!',
           text: "No se encuentra el usuario",
           icon: 'error',
-          confirmButtonText: 'OK'
+          confirmButtonText: 'OK',
+          confirmButtonColor: "#035d03"
         })
     };
 
@@ -130,7 +133,7 @@ return(
       label="Buscar"
       name="username-buscado"
     >
-      <Input placeholder={nameEvent} onChange={(e)=>buscarNombre(e)}/>
+      <Input value={searchValue} onChange={handleSearch}/>
      
     </Form.Item>
 
@@ -138,7 +141,7 @@ return(
       className="demo-loadmore-list "
       loading={initLoading}
      itemLayout="horizontal"
-      dataSource={list}
+      dataSource={filteredUsers}
       
       renderItem={(item) => (
         <List.Item>

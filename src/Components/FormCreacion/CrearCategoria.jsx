@@ -33,7 +33,7 @@ function CrearCategoria(){
 
   
   const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+    /* console.log('Received values of form: ', values); */
  
     let valores={
       name:values.username,
@@ -46,7 +46,8 @@ function CrearCategoria(){
       title: 'Éxito',
       text: 'Tu usuario se creó con éxito',
       icon: 'success',
-      confirmButtonText: 'OK'
+      confirmButtonText: 'OK',
+      confirmButtonColor: "#035d03"
     })
 
 
@@ -56,7 +57,13 @@ function CrearCategoria(){
       dispatch(postCategory(valores))
        
     } else {
-      return alert(" A tu usuario le faltan detalles");
+      return Swal.fire({
+        title: 'Ups!',
+        text: "A tu usuario le faltan detalles",
+        icon: 'error',
+        confirmButtonText: 'OK',
+        confirmButtonColor: "#035d03"
+      })
     }
     console.log(inicialValues)
   };
@@ -67,7 +74,8 @@ function CrearCategoria(){
           title: 'Ups!',
           text: "Uno o mas datos no fueron cargados",
           icon: 'error',
-          confirmButtonText: 'OK'
+          confirmButtonText: 'OK',
+          confirmButtonColor: "#035d03"
         })
     };
 

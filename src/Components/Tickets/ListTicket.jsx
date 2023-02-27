@@ -101,7 +101,8 @@ export default function ListTicket(){
           title: 'Éxito',
           text: 'El estado del ticket fue cambiado',
           icon: 'success',
-          confirmButtonText: 'OK'
+          confirmButtonText: 'OK',
+          confirmButtonColor: "#035d03"
         })
      
     
@@ -120,7 +121,8 @@ export default function ListTicket(){
               title: 'Ups!',
               text: "Uno o mas datos no fueron cargados",
               icon: 'error',
-              confirmButtonText: 'OK'
+              confirmButtonText: 'OK',
+              confirmButtonColor: "#035d03"
             })
         };
 
@@ -207,6 +209,7 @@ ticket.slice(page-1,page+3).map((t) =>
                     <p>Cantidad tickets:{t.amount}</p>
                     <p>Total de la compra:{t.totalOfPurchase}</p>
                     <p>Metodo de pago:{t.methodOfPurchase}</p>
+                   
                     </div>
                 }
              

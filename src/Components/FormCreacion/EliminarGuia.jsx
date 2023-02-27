@@ -17,7 +17,7 @@ function BorrarGuia(){
   const dispatch = useDispatch();
   const [nameEvent, setName] = useState("")
   const eventos = useSelector((state) => state.guias);
-  const [id, setId] = useState("10350ea1-3161-48fc-a56c-deaf713d3743");
+  const [id, setId] = useState("");
   const [initLoading, setInitLoading] = useState(true);
   const [list, setList] = useState([]);
 
@@ -60,7 +60,8 @@ function BorrarGuia(){
     title: 'Éxito',
     text: 'Tu guia se elimino con éxito',
     icon: 'success',
-    confirmButtonText: 'OK'
+    confirmButtonText: 'OK',
+    confirmButtonColor: "#035d03"
   })
  }
 
@@ -75,7 +76,8 @@ function BorrarGuia(){
       title: 'Éxito',
       text: 'Tu guia se elimino con éxito',
       icon: 'success',
-      confirmButtonText: 'OK'
+      confirmButtonText: 'OK',
+      confirmButtonColor: "#035d03"
     })
 
 
@@ -94,7 +96,8 @@ function BorrarGuia(){
           title: 'Ups!',
           text: "No se encuentra el guia",
           icon: 'error',
-          confirmButtonText: 'OK'
+          confirmButtonText: 'OK',
+          confirmButtonColor: "#035d03"
         })
     };
 
