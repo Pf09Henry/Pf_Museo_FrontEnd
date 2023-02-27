@@ -14,10 +14,11 @@ import FormReview from "../Comentarios/FormReview";
 import FormReviewInvitado from "../Comentarios/FormReviewInvitado";
 import Opiniones from "../Comentarios/ComentariosyOpiniones";
 
-export default function EventDetails() {
+export default function EventDetails({roleUser}) {
     const usuario = useSelector((state) => state.users);
-    const { products, saveProducts } = React.useContext(CartContext)
-    const { isAuthenticated, user } = useAuth0();
+    const {products, saveProducts} = React.useContext(CartContext)
+    const {isAuthenticated, user} = useAuth0();
+
 
     const [cantidad, setCantidad] = useState(1)
 
@@ -169,6 +170,14 @@ export default function EventDetails() {
                 <br></br>
                 <CommentForm /> */}
                     </div>
+
+
+                {isAuthenticated && <FormReview user={user} idEvent={id} />}
+                {!isAuthenticated && <FormReviewInvitado/>}
+                
+                <h5 className="comentarios-opiniones">Comentarios y opiniones</h5>
+                <Rate defaultValue={raiting(id)} disabled={componentDisabled}/>
+                <Opiniones roleUser={roleUser}/>
 
                 </div>
 

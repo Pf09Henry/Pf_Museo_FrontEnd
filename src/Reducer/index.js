@@ -162,6 +162,14 @@ function rootReducer(state = initialState, action) {
                 eventos: statusFilteredelete
             }
 
+            case 'DELETE_REVIEW':
+                const allReviewdelete = state.review;
+                const statusFilterdelete = allReviewdelete.filter(el => el.id !== action.payload)
+                return {
+                    ...state,
+                    review: statusFilterdelete
+                }
+
         case 'DELETE_GUIDE':
             const allguidesdelete = state.guias;
             const statusFilteredeleteguide = allguidesdelete.filter(el => el.id !== action.payload)

@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
+import { useSelector, useDispatch } from "react-redux";
 import './CommentForm.css';
 import { useAuth0 } from "@auth0/auth0-react";
-
+import {  getUsers} from "../../Actions/AppActions/appActions";
 
 export default function CommentForm({ commentInitial, buttonText, buttonSend }) {
 
     
 
-    const { isAuthenticated } = useAuth0();
-
+    const { isAuthenticated ,user } = useAuth0();
+    const usuarios = useSelector((state) => state.users);
+    const dispatch = useDispatch();
     // Estado de la caja de comentarios
     const commentInitialStatus = {
         comment: '',
@@ -31,6 +33,11 @@ export default function CommentForm({ commentInitial, buttonText, buttonSend }) 
         }
     }
 
+    useEffect (()=>{
+        dispatch(getUsers());
+        searchIdUser(user)
+    },[dispatch]) 
+
     //si hay comentario se envia, sino error
     function handleSubmit(event) {
         //event.preventDefault();
@@ -42,7 +49,17 @@ export default function CommentForm({ commentInitial, buttonText, buttonSend }) 
         setCommentItem(commentInitialStatus);
     }
 
+
+    function searchIdUser(user){
+        console.log(user)
+        let usuarioEncontrado = usuarios.filter(el => el.email === user.email)
+        console.log('ESTAS BANEADO?',usuarioEncontrado[0].isBanned)
+        return usuarioEncontrado[0].isBanned
+
+    }
+
     return (
+        !searchIdUser(user) ? 
         isAuthenticated && (<div>
             <form className='answerFormContainer' onSubmit={e => handleSubmit(e)}>
                 <div className='inputLabelField'>
@@ -65,6 +82,6 @@ export default function CommentForm({ commentInitial, buttonText, buttonSend }) 
                     </button>
                 </div>
             </form>
-        </div>)
+        </div>) : <p>Por motivos de seguridad se bloqueó la opción de que puedas comentar.</p>
     );
 }

@@ -11,21 +11,21 @@ export default function Footer() {
 
 
                     <nav className='col-md-3 d-grid gap-2'>
-                        <h2 className=''>Ubicacion</h2>
+                        <h2 className='' style={{color:"white"}}>Ubicacion</h2>
                         <p className='text-light' >Av. Gral. Julio Argentino Roca 1250</p>
                         <p className='text-light' >General Roca - Rio Negro</p>
 
                     </nav>
 
                     <nav className='col-md-3 d-grid gap-2'>
-                        <h2 className=''>Horario</h2>
+                        <h2 className='' style={{color:"white"}}>Horario</h2>
                         <p className='text-light' >Martes a viernes: 10:00 a.m - 5:00 p.m</p>
                         <p className='text-light' >Sábado y domingo: 11:00 a.m - 6:00 p.m</p>
                     </nav>
 
 
                     <nav className='col-md-2 d-grid gap-2'>
-                        <h2 className='text-light font-weight-bold ' >Museo</h2>
+                        <h2 className='text-light font-weight-bold 'style={{color:"white"}} >Museo</h2>
                         <a href='/general' className='text-light text-decoration-none'>Planea tu visita</a>
                         <a href='/history' className='text-light text-decoration-none'>Acerca</a>
                         <a href='/history' className='text-light text-decoration-none'>Historia</a>

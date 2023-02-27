@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Home from './Components/Home/Home';
@@ -59,6 +59,8 @@ import Perfil from './Components/Dashboard/Perfil/Perfil';
 import DashUser from './Components/Dashboard/DashUser/DashboardUser';
 import areaGeo from './Components/areaGeo/areaGeo';
 import { Spin } from 'antd';
+import SpinPage from './Components/Spin/Spin';
+
 // import { useNavigate } from "react-router";
 
 function App() {
@@ -71,6 +73,7 @@ function App() {
   const tickets = useSelector((state) => state.tickets)
   const review = useSelector((state) => state.review)
   const role = useSelector((state) => state.role);
+  const [roleUser, setRolUser] = useState('')
   useEffect(() => {
     (async () => {
       await dispatch(getUsers());
@@ -84,7 +87,7 @@ function App() {
 
   if (isLoading) {
     return (
-      <Spin />
+      <SpinPage />
     );
   }
 
@@ -140,7 +143,7 @@ function App() {
             <Route path='/checkoutInfo' element={<InformationCheckout />} />
             <Route path='/payment' element={<Payment />} />
 
-            <Route path='/event/:id' element={<EventDetails />} />
+            <Route path='/event/:id' element={<EventDetails roleUser={roleName} />} />
             <Route path='*' element={<Error404 />} />
 
             <Route path='/socios' element={<PricingTable />} />

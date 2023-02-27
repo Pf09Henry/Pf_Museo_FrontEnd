@@ -3,6 +3,7 @@ import React from 'react'
 //import InformationCheckout from '../informationCheckout/InformationCheckout'
 import { CartContext } from '../../Context';
 import './Checkout.css'
+import {TiShoppingCart} from 'react-icons/ti'
 
 export default function Checkout (){
 
@@ -27,57 +28,90 @@ export default function Checkout (){
     }
 
     return(
-        <div className='d-grid justify-content-center' >
+        <div className='d-grid' >
             
             {products && products.length>0 ? 
-            <div className="container my-3 row position-relative z-index-1" >
-                <h1 className="display-4 fw-bold lh-1 mb-4">Productos en el Carrito</h1>
-                {products.map((pr) => (
-                <div key={pr.id} className='card border-success col cardCheckout '>
-                    <div className='position-relative'>
-                        <h2 className='card-header text-success'>{pr.name}</h2>
-                        <img className="img-fluid rounded img-thumbnail p-2" src={pr.img} alt="ImagenEvento" />
 
-                        <button value={pr.id} 
-                                className='badge rounded-pill border border-danger bg-danger top-0 end-0 position-absolute' 
-                                onClick={handleRemoveCart}>X</button>
-                    </div>
+            <div className="container my-4" >
+                <div className='row w-100' >
+                    <h1 className="display-3 fw-bold lh-1 mb-4">Carrito <TiShoppingCart/></h1>
                 </div>
-                ))}                                                                        
+                <div className='row justify-content-center '>
+                    {products.map((pr) => (                    
+                        <div key={pr.id} className='cardCheckout position-relative shadow'>                            
+                                <h3 className='card-header text-success rounded-5'>{pr.name}</h3>
+                                <img className="" src={pr.img} alt="Imagenproducto" />
+                                <h4>Tickets: {pr.cantidad}</h4>
+                                <button value={pr.id} 
+                                        className='badge rounded-pill border border-danger bg-danger top-0 end-0 position-absolute' 
+                                        onClick={handleRemoveCart}>X</button>                            
+                        </div>
+                    ))}
+                </div>                                                                        
 
-                <div className="container-fluid card bg-dark text-light col-3 gap-3 ">
+                <div className="container-fluid text-dark gap-3 ">
                     <h1 className='fs-1' >Resumen</h1>
                     {products.length> 1 ?
-                    <div className='container-fluid'>
+                    <div className='container-fluid d-grid'>
                         {products.map((p,i)=>(
-                            <div key={i} className="card-body bg-dark text-ligth border">
-                                <h6>{p.name}</h6>
-                                <h5>Tickets: {p.cantidad}</h5>
-                                <h5>$ {(p.price * p.cantidad).toLocaleString('en-US')}</h5>
+                            <div key={i} className="card-body text-dark border row w-100 shadow ">
+                                <div className='col'>
+                                    <h5>{p.name}</h5>
+                                    <h5>Tickets: {p.cantidad}</h5>
+                                </div>
+                                <div className='col'>
+                                    <h5>Valor Unitario</h5>
+                                    <h5>$ {(p.price).toLocaleString('en-US')}</h5>
+                                </div>
+                                <div className='col'>
+                                    <h5>Valor</h5>
+                                    <h5>$ {(p.price * p.cantidad).toLocaleString('en-US')}</h5>
+                                </div>
                             </div>
                         ))}
 
-                        <div className="card-body bg-dark text-ligth mx-auto">
-                            <h3 className="card-text fs-3">Total a pagar:</h3>
-                            <h3 className="card-text fs-3">$ {sum.toLocaleString('en-US')}</h3>
+                        <div className="container-fluid bg-dark text-light d-grid mt-4 totalP ">
+                            <div className='row'>
+                                <div className='col-6'>
+                                    <h3 className="card-text fs-2 col">Total a pagar:</h3>
+                                </div>
+                                <div className='col-6'>
+                                    <h3 className="card-text fs-2 col">$ {sum.toLocaleString('en-US')}</h3>
+                                </div>
+                            </div>
                         </div>
                     </div>                                        
-                    :                       
-                    <div>
-                        
-                    <div key={products[0].id} className="card-body bg-dark text-ligth border">
-                        <h6>{products[0].name}</h6>
-                        <h5>$ {(products[0].price * products[0].cantidad).toLocaleString('en-US') }</h5>
-                    </div>
-                        <div className="card-body bg-dark text-ligth">
-                            <h3 className="card-text fs-3">Total a pagar:</h3>
-                            <h3 className="card-text fs-3">$ {sum.toLocaleString('en-US')}</h3>
+                    :
+                    <div className='container-fluid d-grid'>         
+                        <div key={products[0].id} className="card-body text-dark border row w-100 shadow ">
+                            <div className='col'>
+                                <h5>{products[0].name}</h5>
+                                <h5>Tickets: {products[0].cantidad}</h5>
+                            </div>
+                            <div className='col'>
+                                <h5>Valor Unitario</h5>
+                                <h5>$ {(products[0].price).toLocaleString('en-US')}</h5>
+                            </div>
+                            <div className='col'>
+                                <h5>Valor</h5>
+                                <h5>$ {(products[0].price * products[0].cantidad).toLocaleString('en-US')}</h5>
+                            </div>
                         </div>
-                    </div>        
+                        <div className="container-fluid bg-dark text-light d-grid mt-4 totalP ">
+                            <div className='row'>
+                                <div className='col-6'>
+                                    <h3 className="card-text fs-2 col">Total a pagar:</h3>
+                                </div>
+                                <div className='col-6'>
+                                    <h3 className="card-text fs-2 col">$ {sum.toLocaleString('en-US')}</h3>
+                                </div>
+                            </div>
+                        </div>     
+                    </div>           
                     }
                 </div>
                 <div>
-                    <a href='/payment' className='btn btn-success' >Continuar</a>
+                    <a href='/payment' className='btn btn-success mt-3 btnCheck' >Continuar</a>
                 </div>
             </div>
                 :

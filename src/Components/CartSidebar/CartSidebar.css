@@ -20,7 +20,8 @@
     /* display: block; */
     object-fit: cover;
     background: #fff;
-    height: 80px;
+    height: 20px;
+    opacity: 0.5;
 }
 .cardCart{
     margin-bottom: 20px !important;
@@ -28,6 +29,7 @@
 
 .cardCart:hover{
     color: orange;
+    font-size:xx-large;
 }
 
 /* .cardCart{
@@ -69,7 +71,7 @@
 }
 
 .resumen{
-    background-color: #d8f3dc !important ;
+    background-color: #f1f9f1 !important ;
     border: none !important;
     border-radius: 10px !important;
 }

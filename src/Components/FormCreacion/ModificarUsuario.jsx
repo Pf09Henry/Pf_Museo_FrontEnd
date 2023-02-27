@@ -24,7 +24,7 @@ function ModificarUsuario(){
   const dispatch = useDispatch();
   const [nameEvent, setName] = useState("")
   const eventos = useSelector((state) => state.users);
-  const [id, setId] = useState("693ba2e0-cea2-485d-84bd-a695d6eeef27");
+  const [id, setId] = useState("");
   const [initLoading, setInitLoading] = useState(true);
   const [data, setData] = useState([]);
   const [list, setList] = useState([]);
@@ -102,8 +102,8 @@ function ModificarUsuario(){
   setId(e)
   const eventoFiltrado= eventos.filter(ev => ev.id === e)
   setValues(eventoFiltrado[0]);
-  console.log(eventoFiltrado[0])
-  console.log(inicialValues)
+/*   console.log(eventoFiltrado[0])
+  console.log(inicialValues) */
  }
 
  
@@ -111,7 +111,7 @@ function ModificarUsuario(){
 
   
   const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+   /*  console.log('Received values of form: ', values); */
 
     
 
@@ -161,6 +161,7 @@ function ModificarUsuario(){
   const [componentDisabled, setComponentDisabled] = useState(true);
   const onFormLayoutChange = ({ disabled }) => {
     setComponentDisabled(disabled);
+
   };
 
   const agregarFoto = (e) => {
@@ -250,7 +251,7 @@ return(
       name="username"
       
     >
-      <Input  placeholder={inicialValues.name}/>
+      <Input  placeholder={inicialValues.name} />
     </Form.Item>
 
     <Form.Item
@@ -258,6 +259,7 @@ return(
       name="upload"
      
     >
+
      <input type='file' onChange={agregarFoto} />
     </Form.Item>
 

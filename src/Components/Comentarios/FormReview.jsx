@@ -32,8 +32,11 @@ export default function FormReview({user, idEvent}){
 
     let { id } = useParams();
     console.log(id)
+
+
     useEffect (()=>{
         dispatch(getUsers());
+        searchIdUser(user.name)
     },[dispatch]) 
 
     function searchIdUser(name){
@@ -96,10 +99,19 @@ export default function FormReview({user, idEvent}){
         };
 
 
+      /*    function searchIdUser(user){
+            
+            let usuarioEncontrado = usuarios.filter(el => el.email === user.email)
+    
+            return usuarioEncontrado[0].id
+    
+        } */
+ 
+
 
     return(
         <div>
-        
+    
             <Form
                 className="form-review"
                 name="basic"
