@@ -27,6 +27,7 @@ const initialState = {
     categorias: [],
     guias: [],
     users: [],
+    usersAll: [],
     cart: [],
     mail: [],
     guidesDetail: [],
@@ -236,6 +237,11 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 users: action.payload
             };
+        case 'GET_USERS_ALL':
+                return {
+                    ...state,
+                    usersAll: action.payload
+                };
 
         case 'ADD_TO_CART':
             const carritoLocalStorage = localStorage.getItem('CART_V1')

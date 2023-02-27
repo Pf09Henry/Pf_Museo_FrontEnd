@@ -141,13 +141,21 @@ export function getGuidesById(id) {
 
 export function getUsers() {
     return async function (dispatch) {
-
       let json = await axios.get("https://pfmuseobackend.up.railway.app/users");
       dispatch({
         type: 'GET_USERS',
         payload: json.data
       })
+    }
+}
 
+export function getUsersAll() {
+    return async function (dispatch) {
+      let json = await axios.get("https://pfmuseobackend.up.railway.app/allusers");
+      dispatch({
+        type: 'GET_USERS_ALL',
+        payload: json.data
+      })
     }
 }
 
