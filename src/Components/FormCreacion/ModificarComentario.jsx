@@ -75,7 +75,8 @@ function ModificarComentario(){
       title: 'Éxito',
       text: 'Tu actividad se creó con éxito',
       icon: 'success',
-      confirmButtonText: 'OK'
+      confirmButtonText: 'OK',
+      confirmButtonColor: "#035d03"
     })
 
 
@@ -96,7 +97,8 @@ function ModificarComentario(){
           title: 'Ups!',
           text: "Uno o mas datos no fueron cargados",
           icon: 'error',
-          confirmButtonText: 'OK'
+          confirmButtonText: 'OK',
+          confirmButtonColor: "#035d03"
         })
     };
   const [componentDisabled, setComponentDisabled] = useState(true);

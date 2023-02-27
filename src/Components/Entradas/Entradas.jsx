@@ -23,7 +23,8 @@ export default function Entradas() {
             title: 'Upss',
             text: 'Inicia sesión para ver tu carrito!',
             icon: 'info',
-            confirmButtonText: 'OK'
+            confirmButtonText: 'OK',
+            confirmButtonColor: "#035d03"
         })
 
     }
@@ -37,7 +38,8 @@ export default function Entradas() {
                 icon: 'success',
                 title: 'Producto agregado al carrito',
                 showConfirmButton: false,
-                timer: 1500
+                timer: 1500,
+                confirmButtonColor: "#035d03"
             })
             saveProducts([...products, producto])
         }

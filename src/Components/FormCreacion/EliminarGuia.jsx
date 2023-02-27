@@ -60,7 +60,8 @@ function BorrarGuia(){
     title: 'Éxito',
     text: 'Tu guia se elimino con éxito',
     icon: 'success',
-    confirmButtonText: 'OK'
+    confirmButtonText: 'OK',
+    confirmButtonColor: "#035d03"
   })
  }
 
@@ -75,7 +76,8 @@ function BorrarGuia(){
       title: 'Éxito',
       text: 'Tu guia se elimino con éxito',
       icon: 'success',
-      confirmButtonText: 'OK'
+      confirmButtonText: 'OK',
+      confirmButtonColor: "#035d03"
     })
 
 
@@ -94,7 +96,8 @@ function BorrarGuia(){
           title: 'Ups!',
           text: "No se encuentra el guia",
           icon: 'error',
-          confirmButtonText: 'OK'
+          confirmButtonText: 'OK',
+          confirmButtonColor: "#035d03"
         })
     };
 

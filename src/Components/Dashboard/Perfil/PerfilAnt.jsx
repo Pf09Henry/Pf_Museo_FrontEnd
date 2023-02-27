@@ -162,7 +162,7 @@ useEffect(()=>{
              
                 <Meta
              avatar={<Avatar src={t.user.image} alt={t.user.name} />}
-                title={t.id}
+                title={t.event.name}
                 description={
                     <div>
                     

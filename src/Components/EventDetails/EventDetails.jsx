@@ -69,7 +69,8 @@ export default function EventDetails({roleUser}) {
                 title: 'Upss',
                 text: 'Producto ya se encuentra en el carrito puedes modificarlo desde allí',
                 icon: 'warning',
-                confirmButtonText: 'OK'
+                confirmButtonText: 'OK',
+                confirmButtonColor: "#035d03"
             })
         } else {
             saveProducts([...products, producto])
@@ -77,7 +78,8 @@ export default function EventDetails({roleUser}) {
                 title: 'OK',
                 text: 'Producto agregado al carrito',
                 icon: 'success',
-                confirmButtonText: 'OK'
+                confirmButtonText: 'OK',
+                confirmButtonColor: "#035d03"
             })
         }
     }

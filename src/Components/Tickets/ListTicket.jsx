@@ -101,7 +101,8 @@ export default function ListTicket(){
           title: 'Éxito',
           text: 'El estado del ticket fue cambiado',
           icon: 'success',
-          confirmButtonText: 'OK'
+          confirmButtonText: 'OK',
+          confirmButtonColor: "#035d03"
         })
      
     
@@ -120,7 +121,8 @@ export default function ListTicket(){
               title: 'Ups!',
               text: "Uno o mas datos no fueron cargados",
               icon: 'error',
-              confirmButtonText: 'OK'
+              confirmButtonText: 'OK',
+              confirmButtonColor: "#035d03"
             })
         };
 
