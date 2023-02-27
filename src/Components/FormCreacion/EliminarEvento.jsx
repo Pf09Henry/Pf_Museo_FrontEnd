@@ -20,7 +20,7 @@ function Borrar(){
   const dispatch = useDispatch();
   const [nameEvent, setName] = useState("")
   const eventos = useSelector((state) => state.eventos);
-  const [id, setId] = useState("10350ea1-3161-48fc-a56c-deaf713d3743");
+  const [id, setId] = useState("");
   const [initLoading, setInitLoading] = useState(true);
   const [list, setList] = useState([]);
 
