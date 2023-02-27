@@ -61,7 +61,13 @@ function CrearGuia(){
       dispatch(postGuide(valores))
        
     } else {
-      return alert(" A tu guia le faltan detalles");
+      return Swal.fire({
+        title: 'Ups!',
+        text: "A tu guia le faltan detalles",
+        icon: 'error',
+        confirmButtonText: 'OK',
+        confirmButtonColor: "#035d03"
+      })
     }
     console.log(inicialValues)
   };

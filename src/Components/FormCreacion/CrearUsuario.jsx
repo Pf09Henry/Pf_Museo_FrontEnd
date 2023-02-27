@@ -30,7 +30,7 @@ function CrearUsuario(){
 
   
   const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+    /* onsole.log('Received values of form: ', values); */
  
     let valores={
       name:values.username,
@@ -63,9 +63,15 @@ function CrearUsuario(){
       dispatch(postUser(valores))
        
     } else {
-      return alert(" A tu usuario le faltan detalles");
+      return Swal.fire({
+        title: 'Ups!',
+        text: "A tu usuario le faltan detalles",
+        icon: 'error',
+        confirmButtonText: 'OK',
+        confirmButtonColor: "#035d03"
+      })
     }
-    console.log(inicialValues)
+/*     console.log(inicialValues) */
   };
   
   const onFinishFailed = (errorInfo) => {
