@@ -69,7 +69,8 @@ export default function EventDetails({ roleUser }) {
                 title: 'Upss',
                 text: 'Producto ya se encuentra en el carrito puedes modificarlo desde allí',
                 icon: 'warning',
-                confirmButtonText: 'OK'
+                confirmButtonText: 'OK',
+                confirmButtonColor: "#035d03"
             })
         } else {
             saveProducts([...products, producto])
@@ -77,7 +78,8 @@ export default function EventDetails({ roleUser }) {
                 title: 'OK',
                 text: 'Producto agregado al carrito',
                 icon: 'success',
-                confirmButtonText: 'OK'
+                confirmButtonText: 'OK',
+                confirmButtonColor: "#035d03"
             })
         }
     }
@@ -198,12 +200,16 @@ export default function EventDetails({ roleUser }) {
                     </div>
 
 
-                    {/* {isAuthenticated && <FormReview user={user} idEvent={id} />}
+{/* 
+                {isAuthenticated && <FormReview user={user} idEvent={id} />}
+
                 {!isAuthenticated && <FormReviewInvitado/>}
                 
                 <h5 className="comentarios-opiniones">Comentarios y opiniones</h5>
                 <Rate defaultValue={raiting(id)} disabled={componentDisabled}/>
-                <Opiniones roleUser={roleUser}/> */}
+
+                <Opiniones roleUser={roleUser}/>
+ */}
 
                 </div>
 

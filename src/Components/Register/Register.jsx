@@ -89,7 +89,8 @@ export default function Register() {
             title: '',
             text: 'Tu cuenta ya se encuentra registrada',
             icon: 'success',
-            confirmButtonText: 'OK'
+            confirmButtonText: 'OK',
+            confirmButtonColor: "#035d03"
           });
         }
       }
@@ -134,7 +135,8 @@ export default function Register() {
           title: 'Ok!',
           text: 'Tu cuenta ya se ha registrado con Exito!',
           icon: 'success',
-          confirmButtonText: 'OK'
+          confirmButtonText: 'OK',
+          confirmButtonColor: "#035d03"
         }).then(function(){
           window.location.href = `/`
       })

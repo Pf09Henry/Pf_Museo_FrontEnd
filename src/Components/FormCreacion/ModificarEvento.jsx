@@ -175,7 +175,8 @@ function Modificar(){
       title: 'Éxito',
       text: 'Tu evento se modificó con éxito',
       icon: 'success',
-      confirmButtonText: 'OK'
+      confirmButtonText: 'OK',
+      confirmButtonColor: "#035d03"
     })
 
 
@@ -196,7 +197,8 @@ function Modificar(){
           title: 'Ups!',
           text: "Uno o mas datos no fueron cargados",
           icon: 'error',
-          confirmButtonText: 'OK'
+          confirmButtonText: 'OK',
+          confirmButtonColor: "#035d03"
         })
     };
   const [componentDisabled, setComponentDisabled] = useState(true);

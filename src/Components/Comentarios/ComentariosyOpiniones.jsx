@@ -57,7 +57,8 @@ export default function Opiniones({roleUser}){
         title: 'Éxito',
         text: 'El comentario se elimino con éxito',
         icon: 'success',
-        confirmButtonText: 'OK'
+        confirmButtonText: 'OK',
+        confirmButtonColor: "#035d03"
       }).then(function(){
         window.location.href = `/event/${id}`
     })

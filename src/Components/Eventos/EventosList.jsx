@@ -47,7 +47,8 @@ export default function EventoList() {
             title: 'Upss',
             text: 'Inicia sesión para ver tu carrito!',
             icon: 'info',
-            confirmButtonText: 'OK'
+            confirmButtonText: 'OK',
+            confirmButtonColor: "#035d03"
         })
 
     }
