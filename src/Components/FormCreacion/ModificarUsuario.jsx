@@ -70,19 +70,11 @@ function ModificarUsuario(){
 
 
   function buscarNombre(e){
-    console.log(e.target.value)
-    setName(e.target.value)
+   /*  console.log(e.target.value) */
+    dispatch(getUserName(e.target.value));
   }
 
-  useEffect (()=>{
-    dispatch(getUserName(nameEvent));
-  },[dispatch, nameEvent]) 
 
-  
- useEffect (()=>{
-    dispatch(getUserById(id))
-    console.log("este id le estoy pasando", id)
-  },[dispatch, id])
 
   useEffect (()=>{
     (async () => {
@@ -102,6 +94,8 @@ function ModificarUsuario(){
   setId(e)
   const eventoFiltrado= eventos.filter(ev => ev.id === e)
   setValues(eventoFiltrado[0]);
+  dispatch(getUserById(e))
+ /*  console.log("este id le estoy pasando", id) */
 /*   console.log(eventoFiltrado[0])
   console.log(inicialValues) */
  }

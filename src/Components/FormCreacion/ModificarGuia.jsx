@@ -37,17 +37,10 @@ function ModificarGuia(){
   function buscarNombre(e){
     console.log(e.target.value)
     setName(e.target.value)
+    dispatch(getGuidesName(e.target.value));
   }
 
-  useEffect (()=>{
-    dispatch(getGuidesName(nameEvent));
-  },[dispatch, nameEvent]) 
-
   
- useEffect (()=>{
-    dispatch(getGuidesById(id))
-    console.log("este id le estoy pasando", id)
-  },[dispatch, id])
 
   useEffect (()=>{
    (async () => {
@@ -67,6 +60,7 @@ function ModificarGuia(){
   setId(e)
   const eventoFiltrado= eventos.filter(ev => ev.id === e)
   setValues(eventoFiltrado[0]);
+  dispatch(getGuidesById(e))
   console.log(eventoFiltrado[0])
   console.log(inicialValues)
  }
