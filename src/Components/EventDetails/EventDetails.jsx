@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getEventsById, getReview,  /*addToCart*/ } from "../../Actions/AppActions/appActions";
 import './../EventDetails/EventDetail.css'
-import { Tag, Rate, Button } from 'antd';
+import { Tag, Rate, Button ,InputNumber} from 'antd';
 /* import Stars from "../Comentarios/Stars";
 import CommentForm from "../Comentarios/CommentForm"; */
 import { useAuth0 } from "@auth0/auth0-react";
@@ -13,6 +13,7 @@ import { CartContext } from "../../Context";
 import FormReview from "../Comentarios/FormReview";
 import FormReviewInvitado from "../Comentarios/FormReviewInvitado";
 import Opiniones from "../Comentarios/ComentariosyOpiniones";
+import Swal from 'sweetalert2';
 
 export default function EventDetails({roleUser}) {
     const usuario = useSelector((state) => state.users);
@@ -23,7 +24,8 @@ export default function EventDetails({roleUser}) {
     const [cantidad, setCantidad] = useState(1)
 
     const handleCantidad = (e) => {
-        setCantidad(e.target.value)
+        console.log(e)
+        setCantidad(e)
     }
 
     const detalles = useSelector((state) => state.details);
@@ -62,9 +64,20 @@ export default function EventDetails({roleUser}) {
         }
         const productInCart = products.filter(pr => pr.id === producto.id)
         if (productInCart.length) {
-            alert('Producto ya se encuentra en el carrito puedes modificarlo desde allí')
+            Swal.fire({
+                title: 'Upss',
+                text: 'Producto ya se encuentra en el carrito puedes modificarlo desde allí',
+                icon: 'warning',
+                confirmButtonText: 'OK'
+            })
         } else {
             saveProducts([...products, producto])
+            Swal.fire({
+                title: 'OK',
+                text: 'Producto agregado al carrito',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            })
         }
     }
 
@@ -85,13 +98,13 @@ export default function EventDetails({roleUser}) {
     }
     
     
-    const userBanned = usuario.filter((e) => e.email === user.email)
+ /*    const userBanned = usuario.filter((e) => e.email === user.email)
     if (userBanned) {
         if (userBanned[0].isBanned) {
             var baneado = true
-            leyenda = 'Estas baneado,'
+            leyenda = 'Estas baneado'
         }
-    }
+    } */
 
     return (
         <div>
@@ -111,6 +124,10 @@ export default function EventDetails({roleUser}) {
                             <p className="card-text detalle-evento-info">{detalles[0].information} </p>
                         </div>
 
+
+
+
+                    <div className="contenedor-info-evento-tickets">
                         <div>
                             {detalles[0].availability < 10 ? <p>Quedan pocas entradas! No te quedes afuera!</p> : null}
                             <h5>Cupos disponibles: <Tag color="#2d8c04" className="precio-evento">{detalles[0].availability} </Tag></h5>
@@ -131,9 +148,10 @@ export default function EventDetails({roleUser}) {
                         {isAuthenticated &&
                             <div>
                                 <div className="">
-                                    <label htmlFor="Quanty">Cantidad</label>
-                                    <input id="Quanty" type="range" min={0} max={5} defaultValue={1} onChange={handleCantidad} />
-                                    <span>{cantidad}</span>
+                                    <label clasName="cantidad-entradas" htmlFor="Quanty">Cantidad</label>
+                                    <InputNumber min={1} max={10} onChange={handleCantidad} defaultValue={1} />
+                      {/* <input id="Quanty" type="range" min={0} max={5} defaultValue={1} onChange={handleCantidad} /> */}
+                                  {/*   <span>{cantidad}</span> */}
                                 </div>
                                 <div className="card-body d-flex">
                                     <label htmlFor="">Precio total</label>
@@ -148,9 +166,10 @@ export default function EventDetails({roleUser}) {
                                 </div>
                             </div>
                         }
+                        </div>
 
 
-                        {!fechaValida || baneado ? (
+                        {!fechaValida /* || baneado */ ? (
                         <h5> {leyenda} no puedes hacer comentarios.</h5>
                         ) : (
 
