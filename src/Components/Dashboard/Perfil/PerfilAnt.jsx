@@ -31,9 +31,9 @@ const PerfilAnt = () => {
 
 
   function searchIdTicket(){
-    let usuarioEncontrado = usuarios.filter(el => el.name === user.name)
-    let reviewEncontrado = review.filter(re => re.user.name === usuarioEncontrado[0].name)
-    let ticketEncontrado = ticketsBase.filter(t => t.user.name === usuarioEncontrado[0].name)
+    let usuarioEncontrado = usuarios.filter(el => el.email === user.email)
+    let reviewEncontrado = review.filter(re => re.user.email === usuarioEncontrado[0].email)
+    let ticketEncontrado = ticketsBase.filter(t => t.user.email === usuarioEncontrado[0].email)
     setTicket(ticketEncontrado)
     setReview(reviewEncontrado)
     return ticketEncontrado
@@ -56,9 +56,10 @@ useEffect(()=>{
 
 
   function searchIdUser(name){
-    let usuarioEncontrado = usuarios.filter(el => el.name === name)
+    let usuarioEmail =usuarios.filter(el => el.email === user.email)
+  /*   let usuarioEncontrado = usuarioEmail.filter(el => el.name === name) */
     /* console.log(usuarioEncontrado[0]) */
-    return usuarioEncontrado[0]
+    return usuarioEmail[0]
   }
 
  /*  const [open, setOpen] = useState(false);
