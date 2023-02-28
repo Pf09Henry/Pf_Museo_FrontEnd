@@ -6,6 +6,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { CartContext } from '../../Context';
 //import { removeToCart } from '../../Actions/AppActions/appActions'
 import { GiAmmoniteFossil } from 'react-icons/gi'
+import { Avatar, Divider, List, Skeleton } from 'antd';
+import InfiniteScroll from 'react-infinite-scroll-component';
+
+
 
 export default function CartSidebar() {
     const { products, saveProducts } = React.useContext(CartContext)
@@ -44,7 +48,15 @@ export default function CartSidebar() {
 
 
     return (
-        isAuthenticated && (<div className="offcanvas offcanvas-end" id="cart">
+      
+        isAuthenticated && 
+       <div className="offcanvas offcanvas-end" id="cart">
+     <InfiniteScroll
+        dataLength={products}
+          hasMore={true}
+          height={680}
+          
+        >
             <div className="offcanvas-header d-grid">
                 <div className='row'>
                     <div className="offcanvas-title container-fluid col-11 ">
@@ -120,8 +132,11 @@ export default function CartSidebar() {
                         <h3 className='badge bg-dark text-wrap fw-bold fs-4 mt-4' >No hay productos agregados al carrito de compras</h3>
                     </div>
                 }
-
+    
             </div>
-        </div>)
+            </InfiniteScroll>
+        </div>
+       
     )
+
 }

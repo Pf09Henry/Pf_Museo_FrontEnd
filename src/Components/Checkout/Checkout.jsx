@@ -8,6 +8,10 @@ import { Avatar, Card, List } from 'antd';
 import logo from '../../Imagenes/logo circular.png'
 import VirtualList from 'rc-virtual-list';
 
+
+
+
+
 export default function Checkout (){
 
     const {products, saveProducts} = React.useContext(CartContext)
@@ -51,6 +55,7 @@ export default function Checkout (){
     const ContainerHeight = 250
 
     return(
+    
         <div className='d-grid' >
             
             {products && products.length>0 ? 
