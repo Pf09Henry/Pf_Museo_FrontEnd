@@ -20,7 +20,6 @@ export default function Paypal() {
     //esto es para detectar el user que hace la compra
     function findUserID(name) {
         let findUser = usuario.filter((e) => e.name === user.name)
-        console.log("USUARIO", findUser[0].id)
         return findUser[0].id
     }
 
@@ -39,7 +38,6 @@ export default function Paypal() {
         idEvent.push(products[i].id)
         total = total + (acount[i] * amount[i])
     }
-    console.log("esto es total! :", total)
 
 
 
@@ -55,9 +53,7 @@ export default function Paypal() {
         })
     }
 
-    console.log("ide evento ", idEvent)
-    console.log("ticket", ticket)
-
+   
 
 
     function findEventCupos(id) {
@@ -66,19 +62,14 @@ export default function Paypal() {
         return (findEvent[0].availability)
 
     }
-    // let id = "52db0c75-febb-417f-a2a1-142c9e3e72a8"
-    // console.log(findEventCupos(id))
-
-
-    /*  console.log('Aqui los :', ticket) */
+    
 
 
 
     useEffect(() => {
         window.paypal.Buttons({
             createOrder: (data, actions, err) => {
-                /* console.log("1: ", data)
-                console.log("2: ", actions) */
+               
                 const order = actions.order.create({
                     intent: "CAPTURE",
                     purchase_units: [
@@ -91,7 +82,6 @@ export default function Paypal() {
                         },
                     ]
                 })
-                /*  console.log("esto es order: ", order) */
                 return order
             },
             onCancel: (data) => {
@@ -103,7 +93,7 @@ export default function Paypal() {
                     confirmButtonColor: "#035d03"
                 })
 
-                console.log(data)
+                
             },
             onApprove: async (data, actions) => {
                 
@@ -124,32 +114,29 @@ export default function Paypal() {
                         const putEvento = {
                             availability: cupos,
                         }
-                        console.log(findEventCupos(idEvent[i]))
-                        console.log("cupos: ", cupos)
-                        console.log(putEvento)
+                        
+                        
                         let datosEmail = {
                             mail: user.email,
                             subject: "Pago Paypal",
                             message: "Su compra fue concretada de manera exitosa!",
-                            ticket: ticket[i]
+                            ticket: ticket[i],
+                            event: info[i]
                         }
                         dispatch(postTicket(ticket[i]))
                         dispatch(putEvent(putEvento, idEvent[i]))
-                        // dispatch(postMail(datosEmail))
-                        // console.log("Esto es ticket:" , ticket[i]);
-                        // console.log("Esto es datosEmail:" , datosEmail);
-                        // console.log("Esto es putEvento:" , putEvento);
+                        dispatch(postMail(datosEmail))
+                       
                     }
 
 
                     saveProducts([])
                 }
                 navigate('/eventos')
-                /*      console.log(data) */
                 //>>aca podemos accionar cualquier lógica necesaria que le indique al user que todo funcionó<<
             },
             onError: (err) => {
-                /* console.log(err) */
+                
             }
         })
             .render(paypal.current)
