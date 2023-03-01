@@ -54,7 +54,7 @@ import Entradas from './Components/Entradas/Entradas';
 
 //import { CartContext } from './Context';
 import { useDispatch, useSelector } from "react-redux";
-import { getEvents, getReview, getRoles, getTicketId, getTickets, getUsers, getUsersAll } from '../src/Actions/AppActions/appActions';
+import { getEvents, getReview, getRoles, getSubscription, getTicketId, getTickets, getUsers, getUsersAll } from '../src/Actions/AppActions/appActions';
 import Perfil from './Components/Dashboard/Perfil/Perfil';
 import DashUser from './Components/Dashboard/DashUser/DashboardUser';
 import areaGeo from './Components/areaGeo/areaGeo';
@@ -73,6 +73,7 @@ function App() {
   const tickets = useSelector((state) => state.tickets)
   const review = useSelector((state) => state.review)
   const role = useSelector((state) => state.role);
+  const subscription = useSelector((state) => state.subscriptions)
   const [roleUser, setRolUser] = useState('')
   useEffect(() => {
     (async () => {
@@ -82,6 +83,7 @@ function App() {
       await dispatch(getEvents());
       await dispatch(getRoles());
       await dispatch(getUsersAll());
+      await dispatch(getSubscription())
     })();
   }, [])
 
@@ -98,11 +100,9 @@ function App() {
         if (usuario[i].email === user.email) {
           existeMailDb = true;
           let userRole = usuario[i].roleId;
-          console.log('aqui el roleId:', userRole)
           for (let i = 0; i < role.length; i++) {
             if (role[i].id === userRole) {
               var roleName = role[i].name;
-              console.log('Aqui el nombre del role:', roleName)
             }
           }
         }

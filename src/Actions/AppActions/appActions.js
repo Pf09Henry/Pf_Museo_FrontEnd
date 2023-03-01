@@ -24,6 +24,16 @@ export function getTickets() {
     }
 }
 
+export function getSubscription() {
+    return async function (dispatch) {
+        var json = await axios.get('https://pfmuseobackend.up.railway.app/subscription');
+        return dispatch({
+            type: 'GET_SUBSCRIPTION',
+            payload: json.data
+        })
+    }
+}
+
 export function getRoles() {
     return async function (dispatch) {
         var json = await axios.get('https://pfmuseobackend.up.railway.app/role');
@@ -191,10 +201,10 @@ export function getUserName(name) {
         try {
             if (name) {
                 let response = await axios.get('https://pfmuseobackend.up.railway.app/users');
-              console.log(response.data)
+              
                 let events = response.data;
                 let filteredEvents = events.filter(e => e.name.toLowerCase().includes(name.toLowerCase()));
-                console.log(filteredEvents)
+                
                 return dispatch({
                     type: 'GET_USERS',
                     payload: filteredEvents
@@ -293,6 +303,17 @@ export function postUser(payload) {
     }
 }
 
+export function postSubscription(payload){
+    return async function(dispatch){
+        const response = await axios.post('https://pfmuseobackend.up.railway.app/subscription/post', payload)
+        console.log(response)
+        return dispatch({
+            type: "POST_SUBSCRIPTION",
+            payload: response
+        })
+    }
+}
+
 export function postTicket(payload) {
     return async function (dispatch) {
         const json = await axios.post('https://pfmuseobackend.up.railway.app/ticket/post', payload)
@@ -368,6 +389,21 @@ export function putTicket(payload, id) {
           /*   console.log(response) */
             return dispatch({
                 type: 'PUT_TICKET',
+                response
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export function putSubscription(payload, id) {
+    return async function (dispatch) {
+        try {
+            var response = await axios.put(`https://pfmuseobackend.up.railway.app/subscription/put/${id}`, payload);
+          /*   console.log(response) */
+            return dispatch({
+                type: 'PUT_SUBSCRIPTION',
                 response
             })
         } catch (error) {

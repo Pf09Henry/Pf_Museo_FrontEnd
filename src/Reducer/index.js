@@ -35,6 +35,7 @@ const initialState = {
     tickets: [],
     ticketsDetail: [],
     role: [],
+    subscriptions: [],
 }
 
 
@@ -52,6 +53,12 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 categorias: action.payload
 
+            }
+
+        case "GET_SUBSCRIPTION":
+            return {
+                ...state,
+                subscriptions: action.payload
             }
 
         case 'GET_ROLE':
@@ -117,6 +124,13 @@ function rootReducer(state = initialState, action) {
                 eventos: action.payload
             }
 
+        case "POST_SUBSCRIPTION":
+            return {
+                ...state,
+                subscriptions: action.payload
+            }
+
+
         case 'POST_REVIEW':
             return {
                 ...state,
@@ -162,13 +176,13 @@ function rootReducer(state = initialState, action) {
                 eventos: statusFilteredelete
             }
 
-            case 'DELETE_REVIEW':
-                const allReviewdelete = state.review;
-                const statusFilterdelete = allReviewdelete.filter(el => el.id !== action.payload)
-                return {
-                    ...state,
-                    review: statusFilterdelete
-                }
+        case 'DELETE_REVIEW':
+            const allReviewdelete = state.review;
+            const statusFilterdelete = allReviewdelete.filter(el => el.id !== action.payload)
+            return {
+                ...state,
+                review: statusFilterdelete
+            }
 
         case 'DELETE_GUIDE':
             const allguidesdelete = state.guias;
@@ -246,10 +260,10 @@ function rootReducer(state = initialState, action) {
                 users: action.payload
             };
         case 'GET_USERS_ALL':
-                return {
-                    ...state,
-                    usersAll: action.payload
-                };
+            return {
+                ...state,
+                usersAll: action.payload
+            };
 
         case 'ADD_TO_CART':
             const carritoLocalStorage = localStorage.getItem('CART_V1')

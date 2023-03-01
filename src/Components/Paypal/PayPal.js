@@ -1,10 +1,10 @@
-import axios from 'axios';
-import React, { useRef, useEffect, useContext, useState } from 'react'
+// import axios from 'axios';
+import React, { useRef, useEffect, useContext } from 'react'
 import { CartContext } from '../../Context/index';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getEvents, postTicket, putEvent, postMail } from '../../Actions/AppActions/appActions';
+import { postTicket, putEvent, postMail } from '../../Actions/AppActions/appActions';
 import Swal from 'sweetalert2';
 
 
@@ -13,6 +13,7 @@ export default function Paypal() {
     const { user } = useAuth0();
     const usuario = useSelector((state) => state.users)
     const eventos = useSelector((state) => state.eventos)
+    // const subscripcion = useSelector((state)=> state.subscriptions)
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { products, saveProducts } = useContext(CartContext);
@@ -62,7 +63,15 @@ export default function Paypal() {
         return (findEvent[0].availability)
 
     }
-    
+    //  function findSubsCupos(id){        
+    //     for (let i = 0; i < subscripcion.length; i++) {
+    //         if (subscripcion[i].email === user.email && subscripcion[i].status === true) {
+    //            if(subscripcion[i].cupo > 0){
+    //             let cupoMayor = true
+    //            }                
+    //         } 
+    //     }
+    //  }
 
 
 
@@ -114,6 +123,7 @@ export default function Paypal() {
                         const putEvento = {
                             availability: cupos,
                         }
+
                         
                         
                         let datosEmail = {
