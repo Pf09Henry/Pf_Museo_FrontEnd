@@ -58,6 +58,25 @@ export default function EventoList() {
         setCurrent(1)
     }
 
+    const pasarFecha = (activity) => {
+        let actual = new Date();
+        let dateDetalle = activity.endDay.split("/", 3);
+        let diaDetalle = dateDetalle[0];
+        let mesDetalle = dateDetalle[1];
+        let añoDetalle = dateDetalle[2];
+        let fechaEvento = new Date(añoDetalle, mesDetalle - 1, diaDetalle);
+        var fechaValida = false;
+        if (actual.getTime() > fechaEvento.getTime()) {
+            fechaValida = true        
+        }
+        
+        return fechaValida
+    }
+
+    
+
+    
+
 
     return (<div className='evento'>
         <div >
@@ -73,7 +92,9 @@ export default function EventoList() {
         </div>
         <div className="list-card-eventos" pageOne={pageOne}>
             {currentEvents?.length > 0 ? (
+                
                 currentEvents?.map((activity, index) =>
+                    
                     <Link to={`/event/${activity.id}`}>
                         <Card
                             className="carta-evento-list"
@@ -85,6 +106,7 @@ export default function EventoList() {
 
                             cover={<img className="img-list-card" alt="example" src={activity.img} />}
                         >
+                            {console.log(pasarFecha(activity))}
                             <Meta title={activity.name}
 
                                 description={
@@ -94,7 +116,9 @@ export default function EventoList() {
                                         <Tag color="#015129">{activity.category[0].name}</Tag>
                                         <hr></hr>
                                         <Tag color="#87d068">${activity.price}</Tag>
-                                        {isAuthenticated ? <Button className="btn-carrito" ><MdShoppingCart /></Button> : <Button className="btn-carrito" onClick={clickAuth}><MdShoppingCart /></Button>}
+                                        {(!pasarFecha(activity)) ? (isAuthenticated ? <Button className="btn-carrito" ><MdShoppingCart /></Button>:<Button className="btn-carrito" onClick={clickAuth}><MdShoppingCart /></Button>) : (<></>)}
+                                        
+                                        {/* {isAuthenticated ? <Button className="btn-carrito" ><MdShoppingCart /></Button> : <Button className="btn-carrito" onClick={clickAuth}><MdShoppingCart /></Button>} */}
 
                                         <br />
 
@@ -116,4 +140,3 @@ export default function EventoList() {
         </div>
     </div>)
 }
-
