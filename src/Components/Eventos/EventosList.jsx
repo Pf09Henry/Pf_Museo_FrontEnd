@@ -14,6 +14,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import { MdShoppingCart } from 'react-icons/md'
 import { CartContext } from "../../Context";
 import Swal from 'sweetalert2';
+import EventsCarousel from "../Carrousel/EventsCarousel";
 const { Meta } = Card;
 
 
@@ -58,6 +59,9 @@ export default function EventoList() {
         <div >
             <h1 className="eventos-disponibles">Eventos</h1>
         </div>
+        
+        <EventsCarousel/>
+        
 
         <div>
             <Filtros />
