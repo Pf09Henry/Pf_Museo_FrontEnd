@@ -9,6 +9,7 @@ import PrecioEntrda from './PrecioEntrada'
 
 
 
+
 export default function InfoGeneral() {
     return (
         <div className='container-fluid d-flex-wrap' >
@@ -82,6 +83,7 @@ export default function InfoGeneral() {
                             <span className="visually-hidden">Next</span>
                         </button>
                     </div>
+                    
 
 
                 </div>
