@@ -7,7 +7,7 @@ import './../Filtros/Filtros.css'
 
 
 
-export default function Filtros() {
+export default function Filtros({pageOne}) {
     const dispatch = useDispatch();
     const [setCurrentPage] = useState(1);
     const [continent, setContinent] = useState('All');
@@ -15,9 +15,7 @@ export default function Filtros() {
     const [disabled, setDisabled] = useState(false);
     const onChange = (checked) => {
       setDisabled(checked);
-    };
-
-    
+    };    
 
     useEffect(() => {
         dispatch(getCategories());
@@ -29,22 +27,24 @@ export default function Filtros() {
         if (e.target.value === "All") {
             dispatch(getCategories());
         }
+        pageOne(1)
     }
 
     function onClickRadioOrder(e) {
         setOrder(e.target.value)
         dispatch(orderByName(e.target.value))
+        pageOne(1)
     }
 
     function handleFilterContinent(e) {
         dispatch(filterEventByCategory(e.target.value)); //va a tomar como payload el valor de cada uno de los value de las option del select
+        pageOne(1)
     }
-
 
     function handleSort(e) {
         setOrder(e.target.value);
         dispatch(orderByName(e.target.value))
-        setCurrentPage(1); // cuando hago el ordenamiento lo hago desde la pagina 1, 
+        pageOne(1); // cuando hago el ordenamiento lo hago desde la pagina 1, 
         //setOrder(e.target.value) // setOrden es un estado local que en un inicio va a estar vacio, para cuando seteo en la pagina 1, me modifica el estado local y renderiza
     };
     ////////////////////////////////REVISAR

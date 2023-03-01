@@ -23,11 +23,11 @@ export default function EventoList() {
     const detalles = useSelector((state) => state.details);
     const [currentPage, setCurrent] = useState(1);
     const eventsPerPage = 4;
-    const {products, saveProducts} = React.useContext(CartContext)
+    const { products, saveProducts } = React.useContext(CartContext)
     const indexOfLastEvet = currentPage * eventsPerPage;
     const indexOfFirstEvet = indexOfLastEvet - eventsPerPage;
     const currentEvents = Eventos.slice(indexOfFirstEvet, indexOfLastEvet);
-    const {isAuthenticated, user} = useAuth0();
+    const { isAuthenticated, user } = useAuth0();
     const pagination = currentPage => {
         setCurrent(currentPage)
     };
@@ -37,12 +37,12 @@ export default function EventoList() {
     }, [dispatch])
 
 
-    const handleAddToCart = () =>{
+    const handleAddToCart = () => {
         const productos = products.concat(detalles)
         saveProducts(productos)
     }
 
-    function clickAuth(){
+    function clickAuth() {
         Swal.fire({
             title: 'Upss',
             text: 'Inicia sesión para ver tu carrito!',
@@ -53,6 +53,10 @@ export default function EventoList() {
 
     }
 
+    const pageOne = () => {
+        setCurrent(1)
+    }
+
 
     return (<div className='evento'>
         <div >
@@ -60,10 +64,10 @@ export default function EventoList() {
         </div>
 
         <div>
-            <Filtros />
-            <SearchBar />
+            <Filtros pageOne={pageOne}/>
+            <SearchBar/>
         </div>
-        <div className="list-card-eventos">
+        <div className="list-card-eventos" pageOne={pageOne}>
             {currentEvents?.length > 0 ? (
                 currentEvents?.map((activity, index) =>
                     <Link to={`/event/${activity.id}`}>
@@ -83,11 +87,11 @@ export default function EventoList() {
                                     <div>
                                         <Tag color="green">{activity.startDay} - {activity.endDay}</Tag>
                                         <br></br>
-                                         <Tag color="#015129">{activity.category[0].name}</Tag>
-                                        <hr></hr> 
-                                        <Tag color="#87d068">${activity.price}</Tag> 
-                                        {isAuthenticated ? <Button  className="btn-carrito" ><MdShoppingCart /></Button> : <Button  className="btn-carrito"  onClick={clickAuth}><MdShoppingCart /></Button>}
-                                        
+                                        <Tag color="#015129">{activity.category[0].name}</Tag>
+                                        <hr></hr>
+                                        <Tag color="#87d068">${activity.price}</Tag>
+                                        {isAuthenticated ? <Button className="btn-carrito" ><MdShoppingCart /></Button> : <Button className="btn-carrito" onClick={clickAuth}><MdShoppingCart /></Button>}
+
                                         <br />
 
                                     </div>
@@ -103,6 +107,7 @@ export default function EventoList() {
                 eventos={Eventos.length}
                 pagination={pagination}
                 currentPage={currentPage}
+                pageOne={pageOne}
             />
         </div>
     </div>)
