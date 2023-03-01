@@ -1,7 +1,7 @@
 .contenedor-dashboard{
     display: flex;
     flex-direction: column;
-    margin: 5rem;
+    margin: 2rem;
     
 }
 
@@ -10,6 +10,7 @@
     display: flex;
    flex-direction: row;
    justify-content: space-around;
+   margin-bottom: 2rem;
 }
 
 .card-dashboard{
@@ -27,6 +28,16 @@
 
 ol{
     display: block !important;
+}
+
+.contenedorCartasFinance{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-finance{
+    margin: 4.5rem;
 }
 
 
