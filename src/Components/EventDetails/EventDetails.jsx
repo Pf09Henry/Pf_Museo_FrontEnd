@@ -130,8 +130,6 @@ export default function EventDetails({ roleUser }) {
                             <p className="card-text detalle-evento-info">{detalles[0].information} </p>
                         </div>
 
-
-
                         {fechaValida ? (
                             <h5> El evento ha finalizado!</h5>
                         ) : (
@@ -156,7 +154,7 @@ export default function EventDetails({ roleUser }) {
                                 {isAuthenticated &&
                                     <div>
                                         <div className="">
-                                            <label clasName="cantidad-entradas" htmlFor="Quanty">Cantidad</label>
+                                            <label className="cantidad-entradas" htmlFor="Quanty">Cantidad</label>
                                             <InputNumber min={1} max={10} onChange={handleCantidad} defaultValue={1} />
                                             {/* <input id="Quanty" type="range" min={0} max={5} defaultValue={1} onChange={handleCantidad} /> */}
                                             {/*   <span>{cantidad}</span> */}
@@ -174,6 +172,10 @@ export default function EventDetails({ roleUser }) {
                                         </div>
                                     </div>
                                 }
+                                <br />
+                                <Button type="button" className="btn btn-outline-success btn-secundario" onClick={() => window.history.back()}>
+                                    <span>Volver Atrás</span>
+                                </Button>
                             </div>
                         )
                         }
@@ -182,36 +184,56 @@ export default function EventDetails({ roleUser }) {
 
                         {!fechaValida || baneado ? (
                             <h5> {leyenda} no puedes hacer comentarios.</h5>
+
                         ) : (
 
 
                             <div >
+                                {isAuthenticated ? (
+                                    <div className='coment-rate'>
+                                        <FormReview user={user} idEvent={id} />
 
-                                {isAuthenticated && <FormReview user={user} idEvent={id} />}
-                                {!isAuthenticated && <FormReviewInvitado />}
+                                    </div>
+
+                                ) : (
+                                    <div className='form-inv'>
+
+                                        <FormReviewInvitado />
+                                    </div>
+                                )}
+                                {/* {isAuthenticated && <FormReview user={user} idEvent={id} />}
+                                {!isAuthenticated && <FormReviewInvitado />} */}
 
 
                                 <h5 className="comentarios-opiniones">Comentarios y opiniones</h5>
                                 <Rate defaultValue={raiting(id)} disabled={componentDisabled} />
                                 <Opiniones />
+
+                                <br />
+                                <div>
+                                    <Button type="button" className="btn btn-outline-success btn-secundario" onClick={() => window.history.back()}>
+                                        <span>Volver Atrás</span>
+                                    </Button>
+                                </div>
+
                             </div>)}
 
                         {/*     <Stars />
                 <br></br>
-                <CommentForm /> */}
+            <CommentForm /> */}
                     </div>
 
 
-{/* 
+                    {/* 
                 {isAuthenticated && <FormReview user={user} idEvent={id} />}
-
+                
                 {!isAuthenticated && <FormReviewInvitado/>}
                 
                 <h5 className="comentarios-opiniones">Comentarios y opiniones</h5>
                 <Rate defaultValue={raiting(id)} disabled={componentDisabled}/>
-
+                
                 <Opiniones roleUser={roleUser}/>
- */}
+            */}
 
                 </div>
 
