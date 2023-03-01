@@ -1,41 +1,55 @@
 import React from 'react'
 import './Membership.css'
 import tarjeta from '../../Imagenes/tarjeta.png'
-import { Button } from 'antd'
-import { CartContext } from '../../Context'
+// import { Button } from 'antd'
+// import { CartContext } from '../../Context'
 import { Link } from "react-router-dom";
 import { useEffect } from 'react';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
+import PaypalSubscription from '../Paypal/PayPalSubscripcion'
+import { useSelector } from 'react-redux'
+import { useAuth0 } from '@auth0/auth0-react'
 
 
 
 export default function Membership() {
 
-    const { products, saveProducts } = React.useContext(CartContext)
+    const { user } = useAuth0();
+   
+    const subscripcion = useSelector((state => state.subscriptions))
 
-    const handleAddToCart = (producto) => {
-        const productInCart = products.filter(pr => pr.id === producto.id)
-      if (productInCart.length) {
-            Swal.fire({
-                icon: 'warning',
-                title: 'Producto ya se encuentra en el carrito puedes modificarlo desde allí',
-                showConfirmButton: false,
-                timer: 1500,
-                confirmButtonColor: "#035d03"
-            })
+    // const { products, saveProducts } = React.useContext(CartContext)
+
+    // const handleAddToCart = (producto) => {
+    //     const productInCart = products.filter(pr => pr.id === producto.id)
+    //   if (productInCart.length) {
+    //         Swal.fire({
+    //             icon: 'warning',
+    //             title: 'Producto ya se encuentra en el carrito puedes modificarlo desde allí',
+    //             showConfirmButton: false,
+    //             timer: 1500,
+    //             confirmButtonColor: "#035d03"
+    //         })
            
-        } else {
-            Swal.fire({
-                icon: 'success',
-                title: 'Producto agregado al carrito',
-                showConfirmButton: false,
-                timer: 1500,
-                confirmButtonColor: "#035d03"
-            })
-            const newProducts = [...products, producto];
-            saveProducts(newProducts);
-        }
-    };
+    //     } else {
+    //         Swal.fire({
+    //             icon: 'success',
+    //             title: 'Producto agregado al carrito',
+    //             showConfirmButton: false,
+    //             timer: 1500,
+    //             confirmButtonColor: "#035d03"
+    //         })
+    //         const newProducts = [...products, producto];
+    //         saveProducts(newProducts);
+    //     }
+    // };
+
+    var estado = false
+    for (let i = 0; i < subscripcion.length; i++) {
+        if (subscripcion[i].email === user.email && subscripcion[i].typeSubscription === 'Socio-Paleo' && subscripcion[i].status === true) {
+            estado = true
+        } 
+    }
 
 
     // const handleAddToCart = (e) => {
@@ -74,7 +88,9 @@ export default function Membership() {
                     <br />
                     <br />
                     <div>
-                        <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ img: tarjeta, id: "socio-paleo", name: "PALEO", price: 2000, cantidad: 1 })} >Agregar al Carrito</Button>
+                    {estado ?(<h3>Estas subscrito</h3>)
+                       :( <PaypalSubscription name='Socio-Paleo' acount='2000' cupo='2' />)}
+                        {/* <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ img: tarjeta, id: "socio-paleo", name: "PALEO", price: 2000, cantidad: 1 })} >Agregar al Carrito</Button> */}
                         <br />
                         <br />
                         <Link to='/socios'>
