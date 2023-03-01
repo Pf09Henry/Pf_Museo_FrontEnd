@@ -131,3 +131,12 @@ a{
  
  }
 
+.coment-rate{
+    /* flex-direction: column; */
+    /* flex-wrap: wrap; */
+    /* align-items: center; */
+    /* margin-right: 3rem; */
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
