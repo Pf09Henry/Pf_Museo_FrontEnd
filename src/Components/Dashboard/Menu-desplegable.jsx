@@ -55,11 +55,11 @@ export default function MenuDesplegable() {
         
         <SubMenu icon={ <SlPeople />} title="Usuarios" >
 
-                <Menu.Item icon={<SlPlus /> }>
+               {/*  <Menu.Item icon={<SlPlus /> }>
                  
                     <span>Agregar</span>
                     <Link to="/dashoboard-user-agregar"></Link>
-                </Menu.Item>
+                </Menu.Item> */}
 
                 <Menu.Item icon={<SlPencil /> }>
                      
