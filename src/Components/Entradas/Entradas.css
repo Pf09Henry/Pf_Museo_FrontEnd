@@ -17,3 +17,167 @@
 .btn-secundario {
     margin-right: 10px;
   }
+
+   /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 200px;
+    border: 1px solid #f1f1f1;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+    background-image: url('https://i0.wp.com/eltallerdehector.com/wp-content/uploads/2022/07/Luffy-png.png?fit=800%2C800&ssl=1');
+    background-color: #bbb;
+    color: black;
+    background-size: cover;
+}
+
+/* Style the back side */
+.flip-card-back {
+    background-image: url('/src/Imagenes/Pictures_Biologia/BiologicaPataLargarto.jpg') !important;
+    background-size: cover;
+    color: whitesmoke;
+    transform: rotateY(180deg);
+} 
+
+
+/*   ---------------------------------------------     */
+
+
+.flipCardEntry{
+    background: transparent !important;
+    /* position: relative !important; */
+    perspective: 1000px !important;
+    width: 300px;
+    height: 300px;
+    margin-bottom: 10px;
+    
+}
+
+.flip-card-entry-inner{
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+    text-align: center !important;
+    transition: transform 0.8s !important;
+    transform-style: preserve-3d !important;  
+    border-radius: 20px;
+}
+
+.flipCardEntry:hover .flip-card-entry-inner {
+    transform: rotateY(180deg) !important;
+    
+}
+
+.flip-card-entry-front, .flip-card-entry-back {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    -webkit-backface-visibility: hidden !important; /* Safari */
+    backface-visibility: hidden !important;
+    
+}
+
+.flip-card-entry-front{
+    background-image: url('/src/Imagenes/Pictures_Biologia/BiologicaPataLargarto.jpg') !important;
+    background-size: cover !important;
+    border-radius: 20px !important;
+    border: none !important;
+    background-color: black !important;
+}
+
+.flip-card-entry-back{
+    
+    background-image: url('/src/Imagenes/Pictures_Biologia/LagartoUno.jpg') !important;
+    border: none;
+    background-size: cover !important;
+    font-size: xx-large !important;
+    transform: rotateY(180deg) !important;
+    border-radius: 20px;
+}
+
+
+.flip-card-entry-front-dos, .flip-card-entry-back-dos {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    -webkit-backface-visibility: hidden !important; /* Safari */
+    backface-visibility: hidden !important;
+    
+}
+
+
+.flip-card-entry-front-dos{
+    background-image: url('/src/Imagenes/Pictures_Biologia/LagartoTres.jpg') !important;
+    background-size: cover !important;
+    border-radius: 20px !important;
+    border: none !important;
+    background-color: black !important;
+}
+
+.flip-card-entry-back-dos{
+    
+    background-image: url('/src/Imagenes/Pictures_Biologia/SapoUno.jpg') !important;
+    border: none;
+    background-size: cover !important;
+    font-size: xx-large !important;
+    transform: rotateY(180deg) !important;
+    border-radius: 20px;
+
+}
+
+.flip-card-entry-front-tres, .flip-card-entry-back-tres {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    -webkit-backface-visibility: hidden !important; /* Safari */
+    backface-visibility: hidden !important;
+    
+}
+
+
+.flip-card-entry-front-tres{
+    background-image: url('/src/Imagenes/Pictures_Biologia/Buho.jpg') !important;
+    background-size: cover !important;
+    border-radius: 20px !important;
+    border: none !important;
+    background-color: black !important;
+}
+
+.flip-card-entry-back-tres{
+    
+    background-image: url('/src/Imagenes/Pictures_Biologia/BiologiaSeis.jpg') !important;    
+    border: none;
+    background-size: cover !important;
+    font-size: xx-large !important;
+    transform: rotateY(180deg) !important;
+    border-radius: 20px;
+
+}
