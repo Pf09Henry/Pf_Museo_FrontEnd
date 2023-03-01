@@ -41,7 +41,6 @@ export default function Footer() {
                     <div className='col-lg-2 d-flex align-content-center flex-wrap justify-content-around align-items-center gap-2 py-5 '>
                         <a href="https://www.facebook.com/museopatagonico" target='_blank' rel='noreferrer noopener' className='text-light' ><BsFacebook size={40} /></a>
                         <a href='https://www.instagram.com/museopatagonico' target='_blank' rel='noreferrer noopener' className='text-light'><BsInstagram size={40} /></a>
-                        <a href=' ' className='btn btn-outline-light'>Español</a>
                     </div>
                 </div>
             </div>

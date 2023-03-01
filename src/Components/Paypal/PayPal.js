@@ -117,6 +117,8 @@ export default function Paypal() {
                         confirmButtonColor: "#035d03"
                     })
                     
+                    navigate("/eventos")
+                    saveProducts([])
 
                     for (let i = 0; i < ticket.length; i++) {
                         let cupos = findEventCupos(idEvent[i]) - parseInt(amount[i])
@@ -138,11 +140,7 @@ export default function Paypal() {
                         dispatch(postMail(datosEmail))
                        
                     }
-
-
-                    saveProducts([])
                 }
-                navigate('/eventos')
                 //>>aca podemos accionar cualquier lógica necesaria que le indique al user que todo funcionó<<
             },
             onError: (err) => {
