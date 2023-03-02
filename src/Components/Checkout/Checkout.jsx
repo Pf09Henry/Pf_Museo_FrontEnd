@@ -62,7 +62,7 @@ export default function Checkout (){
 
             <div className="container my-4" >
                 <div className='row w-100' >
-                    <h1 className="display-5 lh-1 mb-4">Carrito <TiShoppingCart/></h1>
+                    <h3 className="display-5 lh-1 mb-4">Carrito <TiShoppingCart/></h3>
                 </div>
                 <div className='row '>
                     <List
@@ -172,16 +172,18 @@ export default function Checkout (){
                 
 
                 <div className="container-fluid text-dark gap-3 ">
-                    {/* <h1 className='fs-1' >Resumen</h1> */}
+                    {/* <h3 className='fs-1' >Resumen</h3> */}
                     {products.length> 1 ?
-                    <div>
+                    <div className='resumen-carrito'>
+                         <h3>Resumen de compra</h3>
                         <List
-                            header={<h1>Resumen</h1>}
+                            /* header={<h3>Resumen</h3>} */
+                        
                         >
-                            
+                           
                             <VirtualList
                             data={products}
-                            height={ContainerHeight}
+                            /* height={ContainerHeight} */
                             itemHeight={10}
                             itemKey="id"
                             //onScroll={onScroll}
@@ -194,15 +196,17 @@ export default function Checkout (){
                                 />
                                 <div>{`$ ${(item.price * item.cantidad).toLocaleString('en-US')}`}</div>
                                 </List.Item>
+
                                 )}
+
                             </VirtualList>
                         </List>
-                            <div className='row bg-success rounded-5 text-light'>
-                                <div className='col-6'>
-                                    <h3 className="card-text fs-2 col text-light ">Total a pagar:</h3>
-                                </div>
-                                <div className='col-6'>
-                                    <h3 className="card-text fs-2 col text-light ">$ {sum.toLocaleString('en-US')}</h3>
+                            <div className='row rounded-5 total-a-pagar'>
+                                {/* <div >
+                                    <h3 className="card-text fs-2 col">Total a pagar:</h3>
+                                </div> */}
+                                <div >
+                                    <p className="card-text fs-4 col total-a-pagar">Total:  $ {sum.toLocaleString('en-US')}</p>
                                 </div>
                             </div>
                         </div>
@@ -266,7 +270,7 @@ export default function Checkout (){
                     }
                 </div>
                 <div>
-                    <a href='/payment' className='btn btn-success mt-3 btnCheck' >Continuar</a>
+                    <a href='/payment' className='btn btn-success mt-3 btnCheck' >Pagar</a>
                 </div>
             </div>
                 :

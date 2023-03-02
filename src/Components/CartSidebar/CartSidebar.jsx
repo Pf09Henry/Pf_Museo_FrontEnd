@@ -6,7 +6,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { CartContext } from '../../Context';
 //import { removeToCart } from '../../Actions/AppActions/appActions'
 import { GiAmmoniteFossil } from 'react-icons/gi'
-import { Avatar, Divider, List, Skeleton } from 'antd';
+import {BsFillCartPlusFill} from 'react-icons/bs'
+import { Avatar, Divider, List, Skeleton, Tag } from 'antd';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 
@@ -57,10 +58,10 @@ export default function CartSidebar() {
           height={680}
           
         >
-            <div className="offcanvas-header d-grid">
+            <div className="offcanvas-header d-grid ">
                 <div className='row'>
                     <div className="offcanvas-title container-fluid col-11 ">
-                        <h2 className='text-wrap fw-bold '><GiAmmoniteFossil /> Detalle Carrito</h2>
+                        <h2 className='text-wrap fw-bold '>Detalle Compra</h2>
                     </div>
                     <div className='col-1'>
                         <button className="btn btn-danger" data-bs-dismiss="offcanvas">X</button>
@@ -72,18 +73,18 @@ export default function CartSidebar() {
 
                 {products && products.length > 0 ?
                     <div className=''>
-                        <div className='card mt-4'>
+                        <div className='mt-4 carta-carrito'>
                             {products.map((product, index) => (
                                 <div className='card cardCart' key={product.id}>
                                     <div>
-                                        <h5><strong>{product.name}</strong></h5>
+                                        <h5>{product.name}</h5>
                                     </div>
                                     <img src={product.img} alt={`picFrom${product.name}`} />
 
                                     <div className='d-grid card bg-success text-dark aling-items-center resumen' >
                                         <div className='row'>
                                             <div className='col-7' >
-                                                <h3><strong> Valor ${(product.price * product.cantidad).toLocaleString('en-US')} </strong></h3>
+                                                <div className='carrito-letras'> Valor ${(product.price * product.cantidad).toLocaleString('en-US')}</div>
                                             </div>
                                             <div className='col-5 d-flex gap-1'>
                                                 <button value={product.id}
@@ -105,9 +106,9 @@ export default function CartSidebar() {
                             <div className=''>
                                 <div className='' >
                                     {products.length > 1 ?
-                                        <h1 className='Total '>Total: <sub>$</sub> {sum.toLocaleString('en-US')}</h1>
+                                        <h5 className='Total '>Total: $ {sum.toLocaleString('en-US')}</h5>
                                         :
-                                        <h1 className='Total'>Total: <sub>$</sub>{(products[0].price * products[0].cantidad).toLocaleString('en-US')}</h1>
+                                        <h5 className='Total '>Total: ${(products[0].price * products[0].cantidad).toLocaleString('en-US')}</h5>
                                         //original
                                         // <a href="/checkout"><h1 className='btn btn-primary col fs-4 btnTotal '>Total: <sub>$</sub> {sum.toLocaleString('en-US')}</h1></a>
                                         // :                       
@@ -127,9 +128,12 @@ export default function CartSidebar() {
                     </div>
                     :
 
-                    <div className='card-body' >
-                        <img className='img-fluid mx-auto' src="https://img.freepik.com/premium-vector/cute-baby-triceratops-cartoon-character-animal-dino-isolated_138676-3160.jpg" alt="sad" />
-                        <h3 className='badge bg-dark text-wrap fw-bold fs-4 mt-4' >No hay productos agregados al carrito de compras</h3>
+                    <div className='sin-compras' >
+                        {/* <img className='img-fluid mx-auto' src="https://img.freepik.com/premium-vector/cute-baby-triceratops-cartoon-character-animal-dino-isolated_138676-3160.jpg" alt="sad" /> */}
+                        
+                        <BsFillCartPlusFill className='carrito'/>
+                        
+                        <h3>No hay productos agregados al carrito de compras</h3>
                     </div>
                 }
     
