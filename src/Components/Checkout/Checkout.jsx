@@ -241,32 +241,42 @@ export default function Checkout (){
                     //     </div>
                     // </div>                                        
                     :
-                    <div className='container-fluid d-grid'>         
-                        <div key={products[0].id} className="card-body text-dark border row w-100 shadow ">
-                            <div className='col'>
-                                <h5>{products[0].name}</h5>
-                                <h5>Tickets: {products[0].cantidad}</h5>
-                            </div>
-                            <div className='col'>
-                                <h5>Valor Unitario</h5>
-                                <h5>$ {(products[0].price).toLocaleString('en-US')}</h5>
-                            </div>
-                            <div className='col'>
-                                <h5>Valor</h5>
-                                <h5>$ {(products[0].price * products[0].cantidad).toLocaleString('en-US')}</h5>
-                            </div>
-                        </div>
-                        <div className="container-fluid d-grid mt-4 totalP ">
-                            <div className='row'>
-                                <div className='col-6'>
-                                    <h3 className="card-text text-light fs-2 col">Total a pagar:</h3>
-                                </div>
-                                <div className='col-6'>
-                                    <h3 className="card-text fs-2 col text-light">$ {sum.toLocaleString('en-US')}</h3>
-                                </div>
-                            </div>
-                        </div>     
-                    </div>           
+                    <div className='resumen-carrito'>
+                    <h3>Resumen de compra</h3>
+                   <List
+                       /* header={<h3>Resumen</h3>} */
+                   
+                   >
+                      
+                       <VirtualList
+                       data={products}
+                       /* height={ContainerHeight} */
+                       itemHeight={10}
+                       itemKey="id"
+                       //onScroll={onScroll}
+                       >
+                       {(item) => (
+                           <List.Item key={item.email}>
+                           <List.Item.Meta
+                               avatar={<Avatar src={item.img} />}
+                               title={item.name}
+                           />
+                           <div>{`$ ${(item.price * item.cantidad).toLocaleString('en-US')}`}</div>
+                           </List.Item>
+
+                           )}
+
+                       </VirtualList>
+                   </List>
+                       <div className='row rounded-5 total-a-pagar'>
+                           {/* <div >
+                               <h3 className="card-text fs-2 col">Total a pagar:</h3>
+                           </div> */}
+                           <div >
+                               <p className="card-text fs-4 col total-a-pagar">Total:  $ {sum.toLocaleString('en-US')}</p>
+                           </div>
+                       </div>
+                   </div>      
                     }
                 </div>
                 <div>
