@@ -15,10 +15,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 export default function Entradas() {
 
     const { products, saveProducts } = React.useContext(CartContext)
-    const {isAuthenticated, user} = useAuth0();
+    const { isAuthenticated, user } = useAuth0();
 
 
-    function clickAuth(){
+    function clickAuth() {
         Swal.fire({
             title: 'Upss',
             text: 'Inicia sesión para ver tu carrito!',
@@ -32,7 +32,13 @@ export default function Entradas() {
     const handleAddToCart = (producto) => {
         const productInCart = products.filter(pr => pr.id === producto.id)
         if (productInCart.length) {
-            alert('Producto ya se encuentra en el carrito puedes modificarlo desde allí')
+            Swal.fire({
+                title: 'Upss',
+                text: 'Producto ya se encuentra en el carrito puedes modificarlo desde allí',
+                icon: 'warning',
+                confirmButtonText: 'OK',
+                confirmButtonColor: "#035d03"
+            })
         } else {
             Swal.fire({
                 icon: 'success',
@@ -45,7 +51,7 @@ export default function Entradas() {
         }
     };
 
-    let date = new Date().toJSON().slice(0,10)
+    let date = new Date().toJSON().slice(0, 10)
 
     useEffect(() => {
         window.scrollTo(0, 130);
@@ -55,69 +61,78 @@ export default function Entradas() {
     return (
         <main>
             <div className="container-fluid px-4 py-1" id="custom-cards">
-                
+
                 <h2 className="pb-2 my-4 fw-bold display-5 text-success ">Entradas</h2>
 
                 {/* <div className="row row-cols-1 row-cols-md-3 align-items-center g-4 py-5"> */}
                 <div className="d-grid h-100 align-items-center">
-                <div className='row' >                
-                    <div className="col flipCardEntry">
+                    <div className='row' >
+                        <div className="col flipCardEntry">
                             <div className="flip-card-entry-inner shadow ">
                                 <div className="flip-card-entry-front">
                                     <img src={logo} alt="Logo" width="32" height="32" className="rounded-circle border border-white my-1" />
-                                    <img src='/src/Imagenes/Pictures_Biologia/BiologicaPataLargarto.jpg' alt='' />
+                                    <img className='pata-lagarto' src='/src/Imagenes/Pictures_Biologia/BiologicaPataLargarto.jpg' alt='' />
                                     <h3 className="mt-3 mb-4 display-6 fw-bold text-light">Semana</h3>
                                 </div>
                                 <div className=' container  flip-card-entry-back' >
                                     <h4 className='pt-4 mt-3 mb-4 display-6 fw-bold text-dark' >Valor: $ 500</h4>
                                     <h4 className="pt-2 mt-1 mb-4  lh-1 fw-bold text-dark">Martes a Viernes</h4>
-                                    <div className='container overflow-hidden' >
-                                        {isAuthenticated ? <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ img: pata, id: "entry-week", name: "Entrada Semana", price: 500, cantidad: 1, fecha:date })} >Agregar al Carrito</Button> : <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }}  onClick={clickAuth} >Agregar al Carrito</Button>}
+                                    <div className='container overflow-hidden'>
+                                        <div className='d-flex justify-content-center'>
+                                            {isAuthenticated
+                                                ? <Button type="primary" className="btn-block text-wrap text-center" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ img: pata, id: "entry-week", name: "Entrada Semana", price: 500, cantidad: 1, fecha: date })} >Agregar al Carrito</Button>
+                                                : <Button type="primary" className="btn-block text-wrap text-center" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={clickAuth} >Agregar al Carrito</Button>
+                                            }
+                                        </div>
                                     </div>
                                 </div>
-                                
+
                             </div>
                         </div>
 
 
 
 
-                    <div className="col flipCardEntry">
-                        <div className="flip-card-entry-inner shadow ">
-                            <div className="flip-card-entry-front-dos">
-                                <img src={logo} alt="Logo" width="32" height="32" className="rounded-circle border border-white my-1" />
-                                <h3 className="mt-3 mb-4 display-6 fw-bold text-dark">Fin de Semana</h3>
-                            </div>
-                            <div className=' flip-card-entry-back-dos' >
-                                <h4 className='pt-4 mt-3 mb-4 display-6 fw-bold text-dark'>Valor: $ 800</h4>
-                                <h4 className="pt-2 mt-1 mb-4 lh-1 fw-bold text-dark">Sábado y Domingo</h4>
-                                <div className='container overflow-hidden' >
-                                    {isAuthenticated ? <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ img: pata, id: "entry-week", name: "Entrada Semana", price: 500, cantidad: 1, fecha:date })} >Agregar al Carrito</Button> : <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }}  onClick={clickAuth} >Agregar al Carrito</Button>}
+                        <div className="col flipCardEntry">
+                            <div className="flip-card-entry-inner shadow ">
+                                <div className="flip-card-entry-front-dos">
+                                    <img src={logo} alt="Logo" width="32" height="32" className="rounded-circle border border-white my-1" />
+                                    <h3 className="mt-3 mb-4 display-6 fw-bold text-dark">Fin de Semana</h3>
                                 </div>
-                            </div>                           
-                        </div>
-                    </div>
-
-                    <div className="col flipCardEntry">
-                        <div className="flip-card-entry-inner shadow ">
-                            <div className="flip-card-entry-front-tres">
-                                <img src={logo} alt="Logo" width="32" height="32" className="rounded-circle border border-white my-1" />
-                                <h3 className="mt-3 mb-4 display-6 fw-bold text-light">Vacaciones</h3>
-                            </div>
-                            <div className=' flip-card-entry-back-tres' >
-                                <h4 className='pt-4 mt-3 mb-5 display-6 fw-bold text-light'>Valor: $ 900</h4>
-                                {/* <h4 className="pt-2 mt-1 mb-4 display-6 lh-1 fw-bold text-light ">Sábado y Domingo</h4> */}
-                                <div className='container overflow-hidden' >
-                                    {isAuthenticated ? <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ img: pata, id: "entry-week", name: "Entrada Semana", price: 500, cantidad: 1, fecha:date })} >Agregar al Carrito</Button> : <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103" }}  onClick={clickAuth} >Agregar al Carrito</Button>}
+                                <div className=' flip-card-entry-back-dos' >
+                                    <h4 className='pt-4 mt-3 mb-4 display-6 fw-bold text-dark'>Valor: $ 800</h4>
+                                    <h4 className="pt-2 mt-1 mb-4 lh-1 fw-bold text-dark">Sábado y Domingo</h4>
+                                    <div className='container overflow-hidden' >
+                                        {isAuthenticated
+                                            ? <Button type="primary" className="btn-block text-wrap text-center" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ img: lagarto, id: "entry-weekend", name: "Entrada Fin de Semana", price: 800, cantidad: 1, fecha: date })} >Agregar al Carrito</Button>
+                                            : <Button type="primary" className="btn-block text-wrap text-center" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={clickAuth} >Agregar al Carrito</Button>}
+                                    </div>
                                 </div>
-                            </div>                           
+                            </div>
                         </div>
-                    </div>
+
+                        <div className="col flipCardEntry">
+                            <div className="flip-card-entry-inner shadow ">
+                                <div className="flip-card-entry-front-tres">
+                                    <img src={logo} alt="Logo" width="32" height="32" className="rounded-circle border border-white my-1" />
+                                    <h3 className="mt-3 mb-4 display-6 fw-bold text-light">Vacaciones</h3>
+                                </div>
+                                <div className=' flip-card-entry-back-tres' >
+                                    <h4 className='pt-4 mt-3 mb-5 display-6 fw-bold text-light'>Valor: $ 900</h4>
+                                    {/* <h4 className="pt-2 mt-1 mb-4 display-6 lh-1 fw-bold text-light ">Sábado y Domingo</h4> */}
+                                    <div className='container overflow-hidden' >
+                                        {isAuthenticated
+                                            ? <Button type="primary" className="btn-block text-wrap text-center" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={() => handleAddToCart({ img: buho, id: "holidays", name: "Entrada Vacaciones", price: 900, cantidad: 1, fecha: date })} >Agregar al Carrito</Button>
+                                            : <Button type="primary" className="btn-block text-wrap text-center" style={{ backgroundColor: "rgb(56, 102, 103" }} onClick={clickAuth} >Agregar al Carrito</Button>}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
 
 
 
-                    {/* <div className="col flipCardEntry">
+                        {/* <div className="col flipCardEntry">
                         <div className="flip-card-entry-inner shadow">
                             <div className='flip-card-entry-front-tres'>
                                 <img src={logo} alt="Logo" width="32" height="32" className="" />
@@ -135,7 +150,7 @@ export default function Entradas() {
 
 
 
-{/* 
+                {/* 
                 <div class="flip-card">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
