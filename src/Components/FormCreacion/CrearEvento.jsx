@@ -120,14 +120,12 @@ function Crear(){
     
 
 return(
-  <div className='contenedor-form'>
+  <div className='contenedor-form crear-evento'>
     <h3 className='titulo-form-evento'>Crear Evento</h3>
     <hr></hr>
     <Form
     name="basic"
-    labelCol={{
-      span: 8,
-    }}
+    
     wrapperCol={{
       span: 16,
     }}
@@ -140,6 +138,7 @@ return(
     onFinish={onFinish}
     onFinishFailed={onFinishFailed}
     autoComplete="off"
+    className='crear-evento'
   >
 
     <Form.Item

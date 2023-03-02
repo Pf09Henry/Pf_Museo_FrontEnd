@@ -56,7 +56,7 @@ export default function Checkout (){
 
     return(
     
-        <div className='d-grid' >
+        <div className='d-grid contenedor-compra' >
             
             {products && products.length>0 ? 
 
@@ -64,7 +64,7 @@ export default function Checkout (){
                 <div className='row w-100' >
                     <h3 className="display-5 lh-1 mb-4">Carrito <TiShoppingCart/></h3>
                 </div>
-                <div className='row '>
+                <div className='row wrap'>
                     <List
                         style={{   
                             width:'100%',
@@ -83,7 +83,7 @@ export default function Checkout (){
                         }}
                         dataSource={products}
                         renderItem= {(pr)=> (
-                            <List.Item>
+                            <List.Item >
                                 <Card
                                     key={pr.id}
                                     hoverable={true}

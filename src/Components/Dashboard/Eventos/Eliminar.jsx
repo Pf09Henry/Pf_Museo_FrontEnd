@@ -13,7 +13,7 @@ export default function EliminarEvento() {
 
   return (
     <Layout
-    className='layout-dashboard'
+    className='layout-dashboard-perfil'
       style={{
         minHeight: '250vh',
       }}

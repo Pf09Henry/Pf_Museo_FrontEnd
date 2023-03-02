@@ -8,9 +8,9 @@ import PerfilAnt from "./PerfilAnt";
 export default function Perfil(){
     return(
         <Layout
-        className='layout-dashboard'
+        className='layout-dashboard-perfil'
           style={{
-            minHeight: '250vh',
+            minHeight: '300vh',
           }}
         >
     
