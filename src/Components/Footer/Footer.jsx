@@ -2,11 +2,12 @@ import React from 'react'
 //import logo from '../../Imagenes/pluma.png'
 import { BsFacebook, BsInstagram } from 'react-icons/bs'
 import pluma from '../../Imagenes/pluma.png'
+import './Footer.css'
 
 export default function Footer() {
     return (
-        <footer className='bg-dark py5'>
-            <div className='container-xl'>
+        <footer className='bg-dark py5 footer-pag'>
+            <div className='container-xl '>
                 <div className='row align-items-start text-light'>
 
 

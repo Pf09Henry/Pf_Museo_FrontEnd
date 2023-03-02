@@ -13,6 +13,7 @@
     opacity: .9;
 }
 
+
 .products img {
     border-radius: 4px;
     width: 100%;
@@ -20,25 +21,29 @@
     /* display: block; */
     object-fit: cover;
     background: #fff;
-    height: 20px;
-    opacity: 0.5;
+    height: 6rem;
+  /*   opacity: 0.5; */
 }
-.cardCart{
+/* .cardCart{
     margin-bottom: 20px !important;
-}
+} */
 
-.cardCart:hover{
+/* .cardCart:hover{
     color: orange;
     font-size:xx-large;
-}
+} */
 
-/* .cardCart{
+.cardCart{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     border-radius: 10px;
     background-color: #d8f3dc;
-} */
+} 
+
+.cardCart{
+    margin-bottom: 1rem;
+}
 
 .subCard{
     height: 100px;
@@ -84,7 +89,7 @@
 .btnAdd:hover{
     background-color: green !important;
     color: white !important;
-    font-size:large !important;
+   /*  font-size:large !important; */
 }
 
 .btnRm{
@@ -95,7 +100,7 @@
 .btnRm:hover{
     background-color: #ce4257 !important;
     color: white !important;
-    font-size:large !important;
+   /*  font-size:large !important; */
 }
 
 
@@ -115,4 +120,25 @@
 .btnCleanCart:hover{
     background-color: #720026 !important;
     color: #fff;
+}
+
+.carrito-letras{
+    padding-top:3px ;
+    font-size: 20px;
+}
+
+.carta-carrito{
+    margin:2rem;
+
+}
+
+.carrito{
+    font-size: 35px;
+    color:rgb(2, 56, 2)
+}
+
+.sin-compras{
+    padding: 1rem;
+    margin:2rem;
+    border: 1px solid rgba(128, 128, 128, 0.244)
 }

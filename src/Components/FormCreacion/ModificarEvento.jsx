@@ -53,19 +53,19 @@ function Modificar(){
 
 
   function buscarNombre(e){
-    console.log(e.target.value)
+ 
     setName(e.target.value)
+    dispatch(getEventsById(id))
   }
 
   useEffect (()=>{
     dispatch(getEventsName(nameEvent));
   },[dispatch, nameEvent]) 
-
+/* 
   
  useEffect (()=>{
-    dispatch(getEventsById(id))
-    console.log("este id le estoy pasando", id)
-  },[dispatch, id])
+    
+  },[dispatch, id]) */
 
   useEffect (()=>{
     (async () => {
@@ -87,7 +87,7 @@ function Modificar(){
       count = count + 3 
     }
    
-    console.log(count)
+
   };
 
 
@@ -141,23 +141,24 @@ function Modificar(){
  
   
   const onFinish = (values) => {
-    console.log('Received values of form: ', values);
- 
+    /* console.log('Received values of form: ', values); */
+    if(values.dias){
+      console.log(values.dias[0])
       let diaIn=(values.dias[0].$d).toString()
       let diaInicio=diaIn.slice(4,15)
       let diaF=(values.dias[1].$d).toString()
       let diaFin=diaF.slice(4,15)
 
     let valores={
-      name:values.username,
-      startDay:diaInicio,
-      endDay:diaFin,
-      price: values.precio,
-      img:values.upload,
-      information:values.description,
-      guide:values.selectGuia,
-      availability:values.availability,
-      category:values.select
+      name:values.username || inicialValues.name,
+      startDay:diaInicio || inicialValues.startDay,
+      endDay:diaFin || inicialValues.endDay,
+      price: values.precio || inicialValues.price,
+      img:values.upload || inicialValues.img,
+      information:values.description || inicialValues.information,
+      guide:values.selectGuia || inicialValues.guide,
+      availability:values.availability || inicialValues.availability,
+      category:values.select || inicialValues.category
       }
 
     setValues({
@@ -177,22 +178,77 @@ function Modificar(){
       icon: 'success',
       confirmButtonText: 'OK',
       confirmButtonColor: "#035d03"
-    })
 
-
+      
+    }) 
     var form = true;
 
     if (form) {
       dispatch(putEvent(valores, id))
 
     } else {
-      return alert(" A tu actividad le faltan detalles");
+      return Swal.fire({
+        title: 'Upss!',
+        text: 'A tu actividad le faltan detalles',
+        icon: 'error',
+        confirmButtonText: 'OK',
+        confirmButtonColor: "#035d03"
+      }) 
     }
+
+    } else {
+      let valores={
+        name:values.username || inicialValues.name,
+        price: values.precio || inicialValues.price,
+        img:values.upload || inicialValues.img,
+        information:values.description || inicialValues.information,
+        guide:values.selectGuia || inicialValues.guide,
+        availability:values.availability || inicialValues.availability,
+        category:values.select || inicialValues.category
+        }
+  
+      setValues({
+      name:values.username,
+      price: values.precio,
+      img:values.upload,
+      availability:values.availability,
+      information:values.description,
+      guide:[{name:values.selectGuia}],
+      category:[{name:values.select}]
+      })
+      Swal.fire({
+        title: 'Éxito',
+        text: 'Tu evento se modificó con éxito',
+        icon: 'success',
+        confirmButtonText: 'OK',
+        confirmButtonColor: "#035d03"
+      }) 
+
+    
+    form = true;
+    if (form) {
+      dispatch(putEvent(valores, id))
+
+    } else {
+      return Swal.fire({
+        title: 'Upss!',
+        text: 'A tu actividad le faltan detalles',
+        icon: 'error',
+        confirmButtonText: 'OK',
+        confirmButtonColor: "#035d03"
+      }) 
+    }
+
+    }
+      
+
+
+    
 
   };
   
   const onFinishFailed = (errorInfo) => {
-      console.log('Failed:', errorInfo);
+    /*   console.log('Failed:', errorInfo); */
       Swal.fire({
           title: 'Ups!',
           text: "Uno o mas datos no fueron cargados",

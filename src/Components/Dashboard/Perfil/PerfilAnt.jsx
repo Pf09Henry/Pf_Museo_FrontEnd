@@ -2,7 +2,7 @@ import { Avatar, Button, Card, Col, Divider, Drawer, List, Row, Spin } from 'ant
 import './PerfilAnt.css'
 import React, {useEffect, useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getUsers , getTickets, getReview} from './../../../Actions/AppActions/appActions';
+import { getUsers , getTickets, getReview, getSubscription} from './../../../Actions/AppActions/appActions';
 import { useAuth0 } from "@auth0/auth0-react";
 import Meta from 'antd/es/card/Meta';
 
@@ -25,9 +25,11 @@ const PerfilAnt = () => {
   const usuarios = useSelector((state) => state.users);
   const ticketsBase = useSelector((state) => state.tickets);
   const review = useSelector((state) => state.review);
+  const suscripciones = useSelector((state) => state.subscriptions)
   const [ticket,setTicket] = useState([])
   const [reviewCom,setReview] = useState([])
   const [loading, setLoading] = useState(true);
+  const [suscription, setSuscription] = useState(["No tenes ninguna suscripción"])
 
 
   function searchIdTicket(){
@@ -36,14 +38,22 @@ const PerfilAnt = () => {
     let ticketEncontrado = ticketsBase.filter(t => t.user.email === usuarioEncontrado[0].email)
     setTicket(ticketEncontrado)
     setReview(reviewEncontrado)
+    const suscripcion = suscripciones.find(suscripcion => suscripcion.email === user.email);
+    if(suscripcion){
+      const typeSubscription = suscripcion.typeSubscription;
+      setSuscription(typeSubscription)
+    }
+   
     return ticketEncontrado
   }
 
+  
 
 
   useEffect(()=>{
    dispatch(getTickets())
    dispatch(getReview())
+   dispatch(getSubscription())
   },[dispatch])
 
 useEffect(()=>{
@@ -102,6 +112,11 @@ useEffect(()=>{
           </Col>
           <Col span={12}>
             <DescriptionItem title='Email' content={user.email} />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+          <DescriptionItem title='Suscripción' content={suscription}/>
           </Col>
         </Row>
         
