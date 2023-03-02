@@ -34,6 +34,7 @@ ol{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .card-finance{
@@ -51,6 +52,23 @@ ol{
     margin: 0rem !important;
     
 }
+
+.ant-select-selector{
+    width: 50% !important;
+}
+
+.ant-select-arrow{
+    display: none !important;
+}
+
+.contenedorCartasFinance{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
+
 
 }
 

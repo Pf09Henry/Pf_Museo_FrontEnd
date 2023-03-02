@@ -331,7 +331,7 @@ return(
               
             />
            
-            <Button onClick={()=>setDatos(item.id)}>Datos</Button>
+            <Button clasName="boton-datos"onClick={()=>setDatos(item.id)}>Datos</Button>
            
           </Skeleton>
         </List.Item>

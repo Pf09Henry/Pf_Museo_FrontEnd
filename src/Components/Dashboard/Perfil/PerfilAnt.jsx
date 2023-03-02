@@ -97,31 +97,30 @@ useEffect(()=>{
           </List>    
    
    {/*    <Drawer width={640} placement="right" closable={false} onClose={onClose} open={open}> */}
-        <p
+        <h6
           className="site-description-item-profile-p"
           style={{
             marginBottom: 24,
           }}
         >
           Datos Personales
-        </p>
-        
-        <Row>
-          <Col span={12}>
-            <DescriptionItem title='Nombre Completo' content={user.name} />
-          </Col>
-          <Col span={12}>
-            <DescriptionItem title='Email' content={user.email} />
-          </Col>
-        </Row>
+        </h6>
+        <hr></hr>
         <Row>
           <Col>
-          <DescriptionItem title='Suscripción' content={suscription}/>
+            <DescriptionItem title='Nombre Completo' content={user.name} />
+         <hr></hr>
+            <DescriptionItem title='Email' content={user.email} />
+            <hr></hr>
+            <DescriptionItem title='Suscripción' content={suscription}/>
+            <hr></hr>
           </Col>
         </Row>
+      
         
         
-        <p className="site-description-item-profile-p">Comentarios</p>
+        <h6 className="site-description-item-profile-p">Comentarios</h6>
+        <hr></hr>
         <Row>
         <div className="list-tickets">
         {loading ? (
@@ -158,7 +157,8 @@ useEffect(()=>{
         </Row>
     
        
-        <p className="site-description-item-profile-p">Tickets</p>
+        <h6 className="site-description-item-profile-p">Tickets</h6>
+        <hr></hr>
         <Row>
         <div className="list-tickets">
              {loading ? (

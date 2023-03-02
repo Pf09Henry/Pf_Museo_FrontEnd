@@ -48,3 +48,13 @@
     display: flex;
     justify-content: end;
 }
+
+.contenedor-compra{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ant-row{
+    flex-wrap: wrap !important;
+}
+

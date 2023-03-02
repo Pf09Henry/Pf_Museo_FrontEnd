@@ -207,7 +207,7 @@ export default function EventDetails({ roleUser }) {
 
                                 <h5 className="comentarios-opiniones">Comentarios y opiniones</h5>
                                 <Rate defaultValue={raiting(id)} disabled={componentDisabled} />
-                                <Opiniones />
+                                <Opiniones roleUser={roleUser}/>
 
                                 <br />
                                 <div>

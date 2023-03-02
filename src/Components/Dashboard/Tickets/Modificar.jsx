@@ -11,7 +11,7 @@ export default function AgregarUsuario() {
 
   return (
     <Layout
-    className='layout-dashboard'
+    className='layout-dashboard-perfil'
       style={{
         minHeight: '250vh',
       }}

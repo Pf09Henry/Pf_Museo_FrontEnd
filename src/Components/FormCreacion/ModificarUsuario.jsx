@@ -323,7 +323,7 @@ return(
         offset: 6,
       }}
     >
-      <Button type="primary" htmlType="submit" className='btn-secundario' style={{backgroundColor:"rgb(56, 102, 103"}}>
+      <Button type="primary" htmlType="submit" className='btn-secundario btn-form-mod' style={{backgroundColor:"rgb(56, 102, 103"}}>
        Modificar
       </Button>
     </Form.Item>
