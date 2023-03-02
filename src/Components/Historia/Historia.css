@@ -53,3 +53,70 @@
     width: 100%;
     margin-left: auto;
 }
+
+
+.bgImg-1,
+.bgImg-2,
+.bgImg-3{
+    position: relative;
+    background-attachment: fixed;
+    /* background-position: center; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* height: 50vh; */
+}
+
+.bgImg-1{
+    background-image: url('../../Imagenes/Pictures_fachada_museo/MuseoFachada1.jpg');
+    min-height: 70vh;
+    background-position: center;
+}
+.bgImg-2{
+    background-image: url('../../Imagenes/Pictures_Geologica/Exploracion.jpg');
+    min-height: 30vh;
+    background-position: center;
+}
+.bgImg-3{
+    background-image: url('../../Imagenes/Pictures_areas/equipoMuseo.jpg');
+    min-height: 30vh;
+    background-position: center;
+}
+
+.caption{
+    position: absolute !important;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+}
+
+.sectionUno{
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 200px;
+}
+
+@media screen and (max-width: 700px) {
+    .sectionUno {
+        padding: 0 0 0 0;
+    }
+  }
+
+.badgeImagen{
+    background-color: rgb(92, 152, 89) !important;
+}
+
+.containerTextArea{
+    border: none !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.objs ::marker {
+    color:  rgb(92, 152, 89) !important;  
+
+}
