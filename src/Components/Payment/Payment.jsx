@@ -58,14 +58,30 @@ export default function Payment() {
                         </div>
                     </div>
                     :                       
-                    <div className='container-fluid d-grid position-relative mb-2 '>       
-                    <div key={products[0].id} className="card-body bg-light rounded-4 text-success border">
-                        <h3 className='text-success' >{`${products[0].name}: $ ${(products[0].price * products[0].cantidad).toLocaleString('en-US')}`}</h3>
+                    <div>
+                    <List>
+                    <VirtualList
+                    data={products}
+                    /* height={ContainerHeight} */
+                    itemHeight={10}
+                    itemKey="id"
+                    //onScroll={onScroll}
+                    >
+                    {(item) => (
+                        <List.Item key={item.email}>
+                        <List.Item.Meta
+                            avatar={<Avatar src={item.img} />}
+                            title={item.name}
+                        />
+                        <div>{`$ ${(item.price * item.cantidad).toLocaleString('en-US')}`}</div>
+                        </List.Item>
+                        )}
+                        </VirtualList>
+                    </List>
+                    <div className="total-a-pagar-paypal">
+                        <h3 className="card-text fs-3 ">Total a pagar: $ {sum.toLocaleString('en-US')}</h3>
                     </div>
-                        <div className="card-body  rounded-5  my-2">
-                            <h3 className="card-text fs-3 ">Total a pagar: $ {sum.toLocaleString('en-US')}</h3>
-                        </div>
-                    </div>        
+                </div>      
                     }
                 </div>
                 <div className='card col contenedor-paypal'>
