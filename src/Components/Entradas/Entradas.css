@@ -108,10 +108,13 @@
 .flip-card-entry-front{
     background-image: url('/src/Imagenes/Pictures_Biologia/BiologicaPataLargarto.jpg') !important;
     background-size: cover !important;
+    background-position: center center;
+    background-repeat: no-repeat;
     border-radius: 20px !important;
     border: none !important;
     background-color: black !important;
 }
+
 
 .flip-card-entry-back{
     
@@ -121,6 +124,7 @@
     font-size: xx-large !important;
     transform: rotateY(180deg) !important;
     border-radius: 20px;
+    background-position: center center;
 }
 
 
@@ -140,6 +144,7 @@
     border-radius: 20px !important;
     border: none !important;
     background-color: black !important;
+    background-position: center center;
 }
 
 .flip-card-entry-back-dos{
@@ -150,6 +155,7 @@
     font-size: xx-large !important;
     transform: rotateY(180deg) !important;
     border-radius: 20px;
+    background-position: center center;
 
 }
 
@@ -169,6 +175,7 @@
     border-radius: 20px !important;
     border: none !important;
     background-color: black !important;
+    background-position: center center;
 }
 
 .flip-card-entry-back-tres{
@@ -179,5 +186,7 @@
     font-size: xx-large !important;
     transform: rotateY(180deg) !important;
     border-radius: 20px;
+    background-position: center center;
 
 }
+
