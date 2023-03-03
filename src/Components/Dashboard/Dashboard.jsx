@@ -184,6 +184,15 @@ export default function Dashboard(){
                   <Select.Option value="febrero" > <Button onClick={() => filtroMes('febrero')}>Febreo</Button></Select.Option>
                   <Select.Option value="marzo" > <Button onClick={() => filtroMes('marzo')}>Marzo</Button></Select.Option>
                   <Select.Option value="abril" > <Button onClick={() => filtroMes('abril')}>Abril</Button></Select.Option>
+                  <Select.Option value="mayo" > <Button onClick={() => filtroMes('mayo')}>Mayo</Button></Select.Option>
+                  <Select.Option value="junio" > <Button onClick={() => filtroMes('junio')}>Junio</Button></Select.Option>
+                  <Select.Option value="julio" > <Button onClick={() => filtroMes('julio')}>Julio</Button></Select.Option>
+                  <Select.Option value="agosto" > <Button onClick={() => filtroMes('agosto')}>Agosto</Button></Select.Option>
+                  <Select.Option value="septiembre" > <Button onClick={() => filtroMes('septiembre')}>Septiembre</Button></Select.Option>
+                  <Select.Option value="octubre" > <Button onClick={() => filtroMes('octubre')}>Octubre</Button></Select.Option>
+                  <Select.Option value="noviembre" > <Button onClick={() => filtroMes('noviembre')}>Noviembre</Button></Select.Option>
+                  <Select.Option value="diciembre" > <Button onClick={() => filtroMes('diciembre')}>Diciembre</Button></Select.Option>
+                
                 </Select>
               </Form.Item>
         <div className="card-dashboard">

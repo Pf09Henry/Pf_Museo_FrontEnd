@@ -307,11 +307,11 @@ return(
       <Select placeholder={inicialValues.roleId}>
     
         <Option value="aacaef0e-fd5b-4d0f-ac88-bbffa0a1fe87">Usuario</Option>
-        <Option value="5da99330-f614-4936-aed7-1927ce59eb2a">Finanzas</Option>
-        <Option value="0a646fd3-e17b-42ab-84c0-c812fb2aeb5a">Super Administrador</Option>
+      {/*   <Option value="5da99330-f614-4936-aed7-1927ce59eb2a">Finanzas</Option>
+        <Option value="0a646fd3-e17b-42ab-84c0-c812fb2aeb5a">Super Administrador</Option> */}
         <Option value="8d199072-b4e7-4142-8d30-7653987afa7d">Administrador</Option>
-        <Option value="745f6f0f-857d-48f7-8d5b-70df556b1a59">Creador de contenido</Option>
-        <Option value="0095673c-9bf3-4c10-bd78-9d0194f5e045">Suscriptor</Option>
+     {/*    <Option value="745f6f0f-857d-48f7-8d5b-70df556b1a59">Creador de contenido</Option>
+        <Option value="0095673c-9bf3-4c10-bd78-9d0194f5e045">Suscriptor</Option> */}
       </Select>
     </Form.Item>
 
