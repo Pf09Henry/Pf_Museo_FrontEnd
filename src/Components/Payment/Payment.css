@@ -11,3 +11,39 @@
    width: 60%;
    padding-bottom: 2rem;
 }
+
+.payment-btn{
+    margin-left: 8rem;
+    background-color: rgba(3, 86, 3, 0.658);
+    color:white;
+    width: 50%;
+}
+
+
+@media (max-width: 1000px) {
+    .payment-btn{
+        margin-left: 0px !important;
+        background-color: rgba(3, 86, 3, 0.658);
+        color:white;
+        width: 100% !important;
+    }
+
+    .contenedor-payment{
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    .contenedor-paypal{
+        margin-left: 0px !important;
+        padding-top: 2rem;
+    }
+
+    .contenedor-check{
+        width: 100% !important;
+        margin-bottom: 2rem;
+     }
+
+   
+     
+}

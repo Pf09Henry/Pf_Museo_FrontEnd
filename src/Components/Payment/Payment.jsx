@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 
 import './Payment.css'
+import { Button } from 'antd';
 
 
 export default function Payment() {
@@ -129,7 +130,7 @@ export default function Payment() {
     return (
         isAuthenticated && (
         
-        <div className='container-fluid d-grid position-relative mb-2'>
+        <div className='container-fluid d-grid position-relative mb-2 containerA"'>
 
             <div className='row contenedor-payment'>
                 <div className=" card text-light col-8 gap-3 contenedor-check">
@@ -200,12 +201,13 @@ export default function Payment() {
                         )}
                         </VirtualList>
                     </List>
-                    <div className="total-a-pagar-paypal">
+                  {/*  { <div className="total-a-pagar-paypal">
                         <h3 className="card-text fs-3 ">Total a pagar: $ {sum.toLocaleString('en-US')}</h3>
-                    </div>
+                    </div>} */}
 
-                        <div className="card-body bg-success rounded-5 text-light my-2">
-                            <h3 className="card-text fs-3 text-light">Total a pagar: $ {(cantidad === 1 || cantidad === 9 ? sum : sum - desc).toLocaleString('en-US')}</h3>
+                    <div className="total-a-pagar-paypal">
+                            <h3 className="card-text fs-3 ">Total a pagar: $ {(cantidad === 1 || cantidad === 9 ? sum : sum - desc).toLocaleString('en-US')}</h3>
+
                         </div>
                     </div>        
 
@@ -214,7 +216,7 @@ export default function Payment() {
                 <div className='card col contenedor-paypal'>
                     <h3 className='card-title'>Medio de Pago</h3>
 
-                    <button className="card-text fs-3" onClick={(e)=>handleClick(e)} disabled={click}>GENERAR ORDEN</button>
+                    <Button className="btn-secundario payment-btn" onClick={(e)=>handleClick(e)} disabled={click}>GENERAR ORDEN</Button>
                         {
                             click === true ? <div>
                             <FaCcPaypal className='mt-5' size={100} color='blue' />
