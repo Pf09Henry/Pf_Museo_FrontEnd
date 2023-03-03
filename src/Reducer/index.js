@@ -231,8 +231,8 @@ function rootReducer(state = initialState, action) {
             }
 
         case 'FILTER_EVENT_BY_PRICE':
-            const filterPrice = action.payload === 'ascprec' ?
-                state.eventos.sort(function (a, b) {
+            const filterPrice = action.payload === 'max' ?
+                [...state.eventos].sort(function (a, b) {
                     if (a.price < b.price) {
                         return 1;
                     }
@@ -241,7 +241,7 @@ function rootReducer(state = initialState, action) {
                     }
                     return 0;
                 }) :
-                state.eventos.sort(function (a, b) {
+                [...state.eventos].sort(function (a, b) {
                     if (a.price < b.price) {
                         return -1;
                     }

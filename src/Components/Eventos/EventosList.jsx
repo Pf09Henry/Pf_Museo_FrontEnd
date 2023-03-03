@@ -134,7 +134,6 @@ export default function EventoList() {
                 eventos={Eventos.length}
                 pagination={pagination}
                 currentPage={currentPage}
-                pageOne={pageOne}
             />
         </div>
     </div>)
