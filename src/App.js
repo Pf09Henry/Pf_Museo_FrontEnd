@@ -146,6 +146,7 @@ function App() {
 
             <Route path='/event/:id' element={<EventDetails roleUser={roleName} />} />
             <Route path='*' element={<Error404 />} />
+            
 
             <Route path='/socios' element={<PricingTable />} />
             <Route path='/membership-basico' element={<MembershipBasic />} />

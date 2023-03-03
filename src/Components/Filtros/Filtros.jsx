@@ -7,15 +7,15 @@ import './../Filtros/Filtros.css'
 
 
 
-export default function Filtros({pageOne}) {
+export default function Filtros({ pageOne }) {
     const dispatch = useDispatch();
     const [setCurrentPage] = useState(1);
     const [continent, setContinent] = useState('All');
     const [order, setOrder] = useState('');
     const [disabled, setDisabled] = useState(false);
     const onChange = (checked) => {
-      setDisabled(checked);
-    };    
+        setDisabled(checked);
+    };
 
     useEffect(() => {
         dispatch(getCategories());
@@ -53,28 +53,34 @@ export default function Filtros({pageOne}) {
 
 
     function handleSortPop(e) {
-        setOrder(e.target.value);
+        e.preventDefault()
+        // setOrder(e.target.value);
         dispatch(filterEventByPrice(e.target.value));
-        setCurrentPage(1); // cuando hago el ordenamiento lo hago desde la pagina 1, 
+        pageOne(1); // cuando hago el ordenamiento lo hago desde la pagina 1, 
         //setOrder(e.target.value) // setOrden es un estado local que en un inicio va a estar vacio, para cuando seteo en la pagina 1, me modifica el estado local y renderiza
     };
-
-
-
-
-
- 
- 
-
-
+    
 
     return (
-        <div className="menudefiltros">
-      
+        <div className="divContenedor">
 
-            {/* <div className='col-md-8 filtrado'> */}
-            {/* <div className="categoria"> */}
-            {/* <div><p className="menu-title">Filtro por categoría</p></div> */}
+
+            <select
+                className="selectFil"
+                onChange={(e) => handleFilterContinent(e)}
+                defaultValue='All'
+            >
+                <option value="All" >
+                    Todas las Categorias
+                </option>
+                <option value="Social">Social</option>
+                <option value="Arte">Arte</option>
+                <option value="Ciencias">Ciencias</option>
+                <option value="Ecológico">Ecológico</option>
+            </select>
+
+
+            {/*         
             <div className="menu-input-filtro"><input type='radio' checked={continent === 'All' ? true : false} onClick={e => {
                 onClickRadio(e);
                 dispatch(getEvents(''));
@@ -85,17 +91,35 @@ export default function Filtros({pageOne}) {
             <div className="menu-input-filtro"><input type='radio' checked={continent === 'Arte' ? true : false} onClick={e => onClickRadio(e)} onChange={e => handleFilterContinent(e)} value='Arte' /><p className="menu-p">Arte</p></div>
             <div className="menu-input-filtro"> <input type='radio' checked={continent === 'Ciencias' ? true : false} onClick={e => onClickRadio(e)} onChange={e => handleFilterContinent(e)} value='Ciencias' /><p className="menu-p">Ciencias</p> </div>
             <div className="menu-input-filtro"> <input type='radio' checked={continent === 'Ecológico' ? true : false} onClick={e => onClickRadio(e)} onChange={e => handleFilterContinent(e)} value='Ecológico' /><p className="menu-p">Ecológico</p> </div>
-            {/* </div>
+           */}
+            <select
+                className="selectFil"
+                onChange={(e) => handleSort(e)}
+                defaultValue=''
+            >
+                <option value="" disabled >Orden Alfabetico</option>
+                <option value="asc">Nombres Ascendente</option>
+                <option value="desc">Nombres Descendente</option>
+            </select>
 
-            <div className="nombre"> */}
-            {/* <p className="menu-title">Filtros ordenamiento</p> */}
+            <select
+                className="selectFil"
+                onChange={(e) =>handleSortPop(e)}
+                defaultValue='precio'
+            >
+                <option value='precio' disabled>Orden por Precio</option>
+                <option value='max'>Mayor Precio</option>
+                <option value='min'>Menor Precio</option>
+            </select>
+
+            {/* 
             <div className="menu-input-filtro"><input type='radio' value='asc' checked={order === 'asc' ? true : false} onClick={e => onClickRadioOrder(e)} onChange={e => handleSort(e)} /><p >Nombres ascendente</p></div>
             <div className="menu-input-filtro"><input type='radio' value='desc' checked={order === 'desc' ? true : false} onClick={e => onClickRadioOrder(e)} onChange={e => handleSort(e)} /><p >Nombres descendente</p></div>
             <div className="menu-input-filtro"><input type='radio' value='ascprec' checked={order === 'ascprec' ? true : false} onClick={e => onClickRadioOrder(e)} onChange={e => handleSortPop(e)} /><p >Mayor precio</p></div>
             <div className="menu-input-filtro"><input type='radio' value='descprec' checked={order === 'descprec' ? true : false} onClick={e => onClickRadioOrder(e)} onChange={e => handleSortPop(e)} /><p >Menor precio</p></div>
-            {/* </div> */}
+ */}
 
-  
+
 
         </div>
 
