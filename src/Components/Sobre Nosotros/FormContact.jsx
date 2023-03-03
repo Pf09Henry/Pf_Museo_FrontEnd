@@ -60,6 +60,7 @@ export default function FormContact() {
 
 
     function handleSubmit() {
+        console.log(data)
         setData({
             name: data.name,
             email: data.email,
@@ -82,6 +83,7 @@ export default function FormContact() {
     }
     return (
         <div className="contenedor-form">
+            <h3>Contactanos</h3>
             <Form
                 {...formItemLayout}
                 form={form}
