@@ -31,6 +31,8 @@ export default function Footer() {
                         <a href='/history' className='text-light text-decoration-none'>Acerca</a>
                         <a href='/history' className='text-light text-decoration-none'>Historia</a>
                         <a href='/general' className='text-light text-decoration-none'>Contacto</a>
+                        <a href='/nosotros' className='text-light text-decoration-none'>Nosotros</a>
+                        {/* <a href='/formulario' className='text-light text-decoration-none'>Formulario</a> */}
                     </nav>
                     <nav className='col-md-2 d-grid gap-2 me-auto'>
                         <h2 className='text-light' >Colecciones</h2>
@@ -52,3 +54,4 @@ export default function Footer() {
         </footer>
     )
 }
+

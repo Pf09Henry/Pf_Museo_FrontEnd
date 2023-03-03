@@ -58,13 +58,19 @@ import { getEvents, getReview, getRoles, getSubscription, getTicketId, getTicket
 import Perfil from './Components/Dashboard/Perfil/Perfil';
 import DashUser from './Components/Dashboard/DashUser/DashboardUser';
 import areaGeo from './Components/areaGeo/areaGeo';
-import { Spin } from 'antd';
+import { Form, Spin } from 'antd';
 import SpinPage from './Components/Spin/Spin';
 import FormContact from './Components/Sobre Nosotros/FormContact';
 
 // import { useNavigate } from "react-router";
+// import AboutButton from './Components/AboutButton/AboutButton';
+import AboutButtons from './Components/AboutButton/AboutButton';
+import Nosotros from './Components/Nosotros/Nosotros';
+import Contacto from './Components/Contacto/Form';
+
 
 function App() {
+  
   //const {products, saveProducts} = React.useContext(CartContext)
   const { isLoading, isAuthenticated, user } = useAuth0();
   const dispatch = useDispatch();
@@ -87,6 +93,7 @@ function App() {
       await dispatch(getSubscription())
     })();
   }, [])
+  
 
   if (isLoading) {
     return (
@@ -119,6 +126,8 @@ function App() {
           <Nav />
           <Routes>
             <Route path='/' element={<Home />} />
+            {/* <Route path='/formulario' element={<Contacto />} />  */}
+            <Route path= '/nosotros' element={<Nosotros />} />
             <Route path='/register' element={<Register />} />
             {/* <Route path='/login' element={<Login />} /> */}
             <Route path='/profile' element={<AuthenticationGuard component={Profile} />} />
@@ -185,6 +194,8 @@ function App() {
               <Route path='/' element={<Home />} />
               <Route path='/register' element={<Register />} />
               <Route path='*' element={<Error404 />} />
+             
+              
             </Routes>
             <Footer />
           </CartProvider>
@@ -196,4 +207,7 @@ function App() {
 
 
 export default App;
+
+
+
 
