@@ -125,7 +125,7 @@ function App() {
           <Nav />
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/formulario' element={<Contacto />} /> 
+            {/* <Route path='/formulario' element={<Contacto />} />  */}
             <Route path= '/nosotros' element={<Nosotros />} />
             <Route path='/register' element={<Register />} />
             {/* <Route path='/login' element={<Login />} /> */}

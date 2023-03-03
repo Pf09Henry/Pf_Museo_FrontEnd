@@ -24,17 +24,26 @@ const { Meta } = Card;
 
 const AboutButton = ({ linkedin, github, name,image }) => {
   return (
+   
     <div className="button">
+      
       <Card
         style={{
-          width: 300,
+          width: 270,
+          margin:50,
+          padding:10,
+          borderRadius:30,
+          
+          
+          
+
           
 
         }}
         cover={
           <img style={{
-
-            borderRadius:500,
+            
+            borderRadius:400,
             
           }}
             alt="example"
@@ -50,7 +59,7 @@ const AboutButton = ({ linkedin, github, name,image }) => {
           <Button href={github} target="_blank" icon={<GithubOutlined />} />,
         ]}
       >
-        <Meta title={name} />
+        <Meta title={name}  />
       </Card>
     </div>
   );
