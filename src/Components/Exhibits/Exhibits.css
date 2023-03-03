@@ -47,4 +47,10 @@ margin: auto;   }
 #paleo {
    padding-top: 0%;
  }
+
+
+ .backgroundDiv{
+   background-color:  rgba(243, 243, 243, 0.822);
+   padding-top: 15px;
+ }
   

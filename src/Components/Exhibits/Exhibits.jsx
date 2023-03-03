@@ -15,7 +15,7 @@ export default function Exhibits() {
             <br />
             <div className="card mb-3" >
                 <div className="row g-0">
-                    <div className="col-md-8">
+                    <div className="backgroundDiv">
                         {/* <div className="col-md-4"> */}
                         <img className="card-paleo" src={paleo} alt="paleo" />
                         {/* </div> */}
@@ -35,7 +35,7 @@ export default function Exhibits() {
 
             < div className="card mb-3" >
                 <div className="row g-0">
-                    <div className="col-md-8">
+                    <div className="backgroundDiv">
                         {/* <div className="col-md-4"> */}
                         <img className="card-mineral" src={mineral} alt="mineral" />
                         {/* </div> */}
@@ -56,7 +56,7 @@ export default function Exhibits() {
 
             <div id='BZZ' className="card mb-3 bio" >
                 <div className="row g-0">
-                    <div className="col-md-8">
+                    <div className="backgroundDiv">
                         {/* <div className="col-md-4"> */}
                         <img className="card-bio" src={biodiversidad} alt="biodiversidad" />
                         {/* </div> */}
@@ -77,7 +77,7 @@ export default function Exhibits() {
 
             <div className="card mb-3" >
                 <div className="row g-0">
-                    <div className="col-md-8">
+                    <div className="backgroundDiv">
                         {/* <div className="col-md-4"> */}
                         <img className="card-geologia" src={geologia} alt="geologia" />
                         {/* </div> */}
@@ -99,7 +99,7 @@ export default function Exhibits() {
 
             <div className="card mb-3" >
                 <div className="row g-0">
-                    <div className="col-md-8">
+                    <div className="backgroundDiv">
                         {/* <div className="col-md-4"> */}
                         <img className="card-fundador" src={fundador} alt="fundador" />
                         {/* </div> */}
