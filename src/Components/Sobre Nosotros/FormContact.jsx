@@ -68,7 +68,7 @@ export default function FormContact() {
             mensaje: data.mensaje,
         })
         let mailer = {
-            mail: 'erikaladner5@gmail.com',
+            mail: 'pf09henry@gmail.com',
             subject: data.asunto,
             message: data.name + " se acaba de comunicar, y quiere que lo contactemos mediante el mail: " + data.email + "\n Su mensaje fue: " + data.mensaje,
         };
@@ -82,7 +82,7 @@ export default function FormContact() {
         }).then(navigate('/'))
     }
     return (
-        <div className="containerA">
+        <div className="contenedor-form-contacto">
             <h3>Contactanos</h3>
             <Form
                 {...formItemLayout}
