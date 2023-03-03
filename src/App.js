@@ -60,6 +60,7 @@ import DashUser from './Components/Dashboard/DashUser/DashboardUser';
 import areaGeo from './Components/areaGeo/areaGeo';
 import { Spin } from 'antd';
 import SpinPage from './Components/Spin/Spin';
+import FormContact from './Components/Sobre Nosotros/FormContact';
 
 // import { useNavigate } from "react-router";
 
@@ -131,7 +132,7 @@ function App() {
             <Route path='/culture' element={<Culture />} />
             <Route path='/holidays' element={<Holidays />} />
             <Route path='/night' element={<Night />} />
-            {/* <Route path='/register' element={<Register />} /> */}
+            <Route path='/contacto' element={<FormContact />} />
 
 
             <Route path='/history' element={<Historia />} />
