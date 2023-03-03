@@ -21,16 +21,16 @@ export default function AboutUs() {
                             <h4 className='nameA'>Erika Noelia Ladner</h4>
                             <h5 className='nameA'>Aptitudes</h5>
                             <div className='aptitudes'>
-                                <div><img src={JsHtml} width='180px' height='70px' alt="js" /></div>
-                                <div><img src={reactnode} width='120px' height='60px' alt="ReactNode" /></div>
+                                <div><img src={JsHtml} width='180px' height='70px' alt="js" className='icon'/></div>
+                                <div><img src={reactnode} width='120px' height='60px' alt="ReactNode" className='icon'/></div>
                                 <div>
-                                    <img src={antd} width='60px' height='60px' alt="antd" />
-                                    <img src={bootstrap} width='60px' height='60px' alt="bootstrap" />
+                                    <img src={antd} width='60px' height='60px' alt="antd"className='icon' />
+                                    <img src={bootstrap} width='60px' height='60px' alt="bootstrap"className='icon' />
                                 </div>
                                 <div>
-                                    <img src={Express} width='60px' height='60px' alt="Express" />
-                                    <img src={sequelize} width='60px' height='60px' alt="sequelize" />
-                                    <img src={postgres} width='60px' height='60px' alt="postgres" />
+                                    <img src={Express} width='60px' height='60px' alt="Express" className='icon'/>
+                                    <img src={sequelize} width='60px' height='60px' alt="sequelize"className='icon' />
+                                    <img src={postgres} width='60px' height='60px' alt="postgres" className='icon'/>
                                 </div>
                             </div>
                             <h6 className='nameA'>Contacto</h6>
@@ -47,16 +47,16 @@ export default function AboutUs() {
                             <h4 className='nameA'>Dario Balmaceda </h4>
                             <h5 className='nameA'>Aptitudes</h5>
                             <div className='aptitudes'>
-                                <div><img src={JsHtml} width='180px' height='70px' alt="js" /></div>
-                                <div><img src={reactnode} width='120px' height='60px' alt="ReactNode" /></div>
+                                <div><img src={JsHtml} width='180px' height='70px' alt="js" className='icon'/></div>
+                                <div><img src={reactnode} width='120px' height='60px' alt="ReactNode" className='icon'/></div>
                                 <div>
-                                    <img src={antd} width='60px' height='60px' alt="antd" />
-                                    <img src={bootstrap} width='60px' height='60px' alt="bootstrap" />
+                                    <img src={antd} width='60px' height='60px' alt="antd"className='icon' />
+                                    <img src={bootstrap} width='60px' height='60px' alt="bootstrap"className='icon' />
                                 </div>
                                 <div>
-                                    <img src={Express} width='60px' height='60px' alt="Express" />
-                                    <img src={sequelize} width='60px' height='60px' alt="sequelize" />
-                                    <img src={postgres} width='60px' height='60px' alt="postgres" />
+                                    <img src={Express} width='60px' height='60px' alt="Express" className='icon'/>
+                                    <img src={sequelize} width='60px' height='60px' alt="sequelize"className='icon' />
+                                    <img src={postgres} width='60px' height='60px' alt="postgres" className='icon'/>
                                 </div>
                             </div>
                         </div>
@@ -73,16 +73,16 @@ export default function AboutUs() {
                             <h4 className='nameA'>Gabriel Pérez</h4>
                             <h5 className='nameA'>Aptitudes</h5>
                             <div className='aptitudes'>
-                                <div><img src={JsHtml} width='180px' height='70px' alt="js" /></div>
-                                <div><img src={reactnode} width='120px' height='60px' alt="ReactNode" /></div>
+                                <div><img src={JsHtml} width='180px' height='70px' alt="js" className='icon'/></div>
+                                <div><img src={reactnode} width='120px' height='60px' alt="ReactNode" className='icon'/></div>
                                 <div>
-                                    <img src={antd} width='60px' height='60px' alt="antd" />
-                                    <img src={bootstrap} width='60px' height='60px' alt="bootstrap" />
+                                    <img src={antd} width='60px' height='60px' alt="antd"className='icon' />
+                                    <img src={bootstrap} width='60px' height='60px' alt="bootstrap"className='icon' />
                                 </div>
                                 <div>
-                                    <img src={Express} width='60px' height='60px' alt="Express" />
-                                    <img src={sequelize} width='60px' height='60px' alt="sequelize" />
-                                    <img src={postgres} width='60px' height='60px' alt="postgres" />
+                                    <img src={Express} width='60px' height='60px' alt="Express" className='icon'/>
+                                    <img src={sequelize} width='60px' height='60px' alt="sequelize"className='icon' />
+                                    <img src={postgres} width='60px' height='60px' alt="postgres" className='icon'/>
                                 </div>
                             </div>
                         </div>
@@ -99,16 +99,16 @@ export default function AboutUs() {
                             <h4 className='nameA'>David Gabriel Barboza</h4>
                             <h5 className='nameA'>Aptitudes</h5>
                             <div className='aptitudes'>
-                                <div><img src={JsHtml} width='180px' height='70px' alt="js" /></div>
-                                <div><img src={reactnode} width='120px' height='60px' alt="ReactNode" /></div>
+                                <div><img src={JsHtml} width='180px' height='70px' alt="js" className='icon'/></div>
+                                <div><img src={reactnode} width='120px' height='60px' alt="ReactNode" className='icon'/></div>
                                 <div>
-                                    <img src={antd} width='60px' height='60px' alt="antd" />
-                                    <img src={bootstrap} width='60px' height='60px' alt="bootstrap" />
+                                    <img src={antd} width='60px' height='60px' alt="antd"className='icon' />
+                                    <img src={bootstrap} width='60px' height='60px' alt="bootstrap"className='icon' />
                                 </div>
                                 <div>
-                                    <img src={Express} width='60px' height='60px' alt="Express" />
-                                    <img src={sequelize} width='60px' height='60px' alt="sequelize" />
-                                    <img src={postgres} width='60px' height='60px' alt="postgres" />
+                                    <img src={Express} width='60px' height='60px' alt="Express" className='icon'/>
+                                    <img src={sequelize} width='60px' height='60px' alt="sequelize"className='icon' />
+                                    <img src={postgres} width='60px' height='60px' alt="postgres" className='icon'/>
                                 </div>
                             </div>
                         </div>
@@ -125,16 +125,16 @@ export default function AboutUs() {
                             <h4 className='nameA'>Jheyson Vargas</h4>
                             <h5 className='nameA'>Aptitudes</h5>
                             <div className='aptitudes'>
-                                <div><img src={JsHtml} width='180px' height='70px' alt="js" /></div>
-                                <div><img src={reactnode} width='120px' height='60px' alt="ReactNode" /></div>
+                                <div><img src={JsHtml} width='180px' height='70px' alt="js" className='icon'/></div>
+                                <div><img src={reactnode} width='120px' height='60px' alt="ReactNode" className='icon'/></div>
                                 <div>
-                                    <img src={antd} width='60px' height='60px' alt="antd" />
-                                    <img src={bootstrap} width='60px' height='60px' alt="bootstrap" />
+                                    <img src={antd} width='60px' height='60px' alt="antd"className='icon' />
+                                    <img src={bootstrap} width='60px' height='60px' alt="bootstrap"className='icon' />
                                 </div>
                                 <div>
-                                    <img src={Express} width='60px' height='60px' alt="Express" />
-                                    <img src={sequelize} width='60px' height='60px' alt="sequelize" />
-                                    <img src={postgres} width='60px' height='60px' alt="postgres" />
+                                    <img src={Express} width='60px' height='60px' alt="Express" className='icon'/>
+                                    <img src={sequelize} width='60px' height='60px' alt="sequelize"className='icon' />
+                                    <img src={postgres} width='60px' height='60px' alt="postgres" className='icon'/>
                                 </div>
                             </div>
                         </div>
@@ -151,16 +151,16 @@ export default function AboutUs() {
                             <h4 className='nameA'>Brayan Mendoza</h4>
                             <h5 className='nameA'>Aptitudes</h5>
                             <div className='aptitudes'>
-                                <div><img src={JsHtml} width='180px' height='70px' alt="js" /></div>
-                                <div><img src={reactnode} width='120px' height='60px' alt="ReactNode" /></div>
+                                <div><img src={JsHtml} width='180px' height='70px' alt="js" className='icon'/></div>
+                                <div><img src={reactnode} width='120px' height='60px' alt="ReactNode" className='icon'/></div>
                                 <div>
-                                    <img src={antd} width='60px' height='60px' alt="antd" />
-                                    <img src={bootstrap} width='60px' height='60px' alt="bootstrap" />
+                                    <img src={antd} width='60px' height='60px' alt="antd"className='icon' />
+                                    <img src={bootstrap} width='60px' height='60px' alt="bootstrap"className='icon' />
                                 </div>
                                 <div>
-                                    <img src={Express} width='60px' height='60px' alt="Express" />
-                                    <img src={sequelize} width='60px' height='60px' alt="sequelize" />
-                                    <img src={postgres} width='60px' height='60px' alt="postgres" />
+                                    <img src={Express} width='60px' height='60px' alt="Express" className='icon'/>
+                                    <img src={sequelize} width='60px' height='60px' alt="sequelize"className='icon' />
+                                    <img src={postgres} width='60px' height='60px' alt="postgres" className='icon'/>
                                 </div>
                             </div>
                         </div>
@@ -178,16 +178,16 @@ export default function AboutUs() {
                             <h4 className='nameA'>Emiliano Villa</h4>
                             <h5 className='nameA'>Aptitudes</h5>
                             <div className='aptitudes'>
-                                <div><img src={JsHtml} width='180px' height='70px' alt="js" /></div>
-                                <div><img src={reactnode} width='120px' height='60px' alt="ReactNode" /></div>
+                                <div><img src={JsHtml} width='180px' height='70px' alt="js" className='icon'/></div>
+                                <div><img src={reactnode} width='120px' height='60px' alt="ReactNode" className='icon'/></div>
                                 <div>
-                                    <img src={bootstrap} width='60px' height='60px' alt="bootstrap" />
-                                    <img src={Express} width='60px' height='60px' alt="Express" />
+                                    <img src={antd} width='60px' height='60px' alt="antd"className='icon' />
+                                    <img src={bootstrap} width='60px' height='60px' alt="bootstrap"className='icon' />
                                 </div>
                                 <div>
-                                    <img src={antd} width='60px' height='60px' alt="antd" />
-                                    <img src={sequelize} width='60px' height='60px' alt="sequelize" />
-                                    <img src={postgres} width='60px' height='60px' alt="postgres" />
+                                    <img src={Express} width='60px' height='60px' alt="Express" className='icon'/>
+                                    <img src={sequelize} width='60px' height='60px' alt="sequelize"className='icon' />
+                                    <img src={postgres} width='60px' height='60px' alt="postgres" className='icon'/>
                                 </div>
                             </div>
                         </div>
@@ -205,17 +205,18 @@ export default function AboutUs() {
                             <h4 className='nameA'>Alan Delgado</h4>
                             <h5 className='nameA'>Aptitudes</h5>
                             <div className='aptitudes'>
-                                <div><img src={JsHtml} width='180px' height='70px' alt="js" /></div>
-                                <div><img src={reactnode} width='120px' height='60px' alt="ReactNode" /></div>
+                                <div><img src={JsHtml} width='180px' height='70px' alt="js" className='icon'/></div>
+                                <div><img src={reactnode} width='120px' height='60px' alt="ReactNode" className='icon'/></div>
                                 <div>
-                                    <img src={bootstrap} width='60px' height='60px' alt="bootstrap" />
-                                    <img src={Express} width='60px' height='60px' alt="Express" />
+                                    <img src={antd} width='60px' height='60px' alt="antd"className='icon' />
+                                    <img src={bootstrap} width='60px' height='60px' alt="bootstrap"className='icon' />
                                 </div>
                                 <div>
-                                    <img src={antd} width='60px' height='60px' alt="antd" />
-                                    <img src={sequelize} width='60px' height='60px' alt="sequelize" />
-                                    <img src={postgres} width='60px' height='60px' alt="postgres" />
+                                    <img src={Express} width='60px' height='60px' alt="Express" className='icon'/>
+                                    <img src={sequelize} width='60px' height='60px' alt="sequelize"className='icon' />
+                                    <img src={postgres} width='60px' height='60px' alt="postgres" className='icon'/>
                                 </div>
+                           
                             </div>
                         </div>
                         <h6 className='nameA'>Contacto</h6>
@@ -228,7 +229,7 @@ export default function AboutUs() {
                 </div>
             </div>
             <a href="/contacto">
-                <button className='buttonContacto'><h3 className='h3'>Contactanos</h3></button>
+                <button className='buttonContacto'><h3 className='buttonContacto h3'>Contactanos</h3></button>
             </a>
         </div>
     )

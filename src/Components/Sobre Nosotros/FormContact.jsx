@@ -82,6 +82,7 @@ export default function FormContact() {
     }
     return (
         <div className="contenedor-form">
+            <h3>Contactanos</h3>
             <Form
                 {...formItemLayout}
                 form={form}
