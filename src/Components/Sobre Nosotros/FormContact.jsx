@@ -60,6 +60,7 @@ export default function FormContact() {
 
 
     function handleSubmit() {
+        console.log(data)
         setData({
             name: data.name,
             email: data.email,
