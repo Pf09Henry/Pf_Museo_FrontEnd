@@ -73,7 +73,7 @@ export default function Membership() {
                         <li> 1 credenciales personalizada</li>
                         <li> Ingreso gratuito con dos acompañante</li>
                         <li> Inscripción gratuita a la biblioteca</li>
-                        <li> Ingreso gratuito a 1 eventos cultural (a eleccion del socio)</li>
+                        <li> 10% de descuento en eventos culturales</li>
                         <li> 15% de descuento en la tienda-librería</li>
                         <li> 15% de descuento en cafetería</li>
                         <li> 15% de descuento en cursos y actividades</li>
