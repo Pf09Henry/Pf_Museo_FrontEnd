@@ -36,3 +36,25 @@
 .btnCheck:hover{
     background-color: #00425B !important;
 }
+
+.resumen-carrito{
+   margin: 2rem;
+   padding: 2rem;
+   border-radius: 1rem;
+    border: 1px solid rgba(128, 128, 128, 0.325);
+}
+
+.total-a-pagar{
+    display: flex;
+    justify-content: end;
+}
+
+.contenedor-compra{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ant-row{
+    flex-wrap: wrap !important;
+}
+

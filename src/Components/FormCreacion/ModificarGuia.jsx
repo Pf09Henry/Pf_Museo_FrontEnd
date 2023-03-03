@@ -195,7 +195,7 @@ return(
 
 
   <Form.Item
-      label="Foto del evento"
+      label="Foto del guia"
       name="upload"
      
     >

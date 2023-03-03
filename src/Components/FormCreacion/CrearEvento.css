@@ -17,3 +17,91 @@
 .lista-eventos-small{
     width:20rem
 }
+
+@media (max-width: 600px) {
+
+    .contenedor-form{
+        display: flex;
+        flex-direction: column;
+        overflow: hidden !important;
+        justify-content: end !important;
+        align-self: flex-end !important;
+    }
+
+ /*   .ant-select-selector{
+    margin-left: 6rem !important;
+   } */
+  
+   .ant-list{
+    width: 150px !important;
+    padding: 1rem !important;
+    margin: 0px !important;
+   }
+ 
+   #username-buscado{
+    width:200px ;
+    margin-left: 0.5rem !important;
+   }
+   .ant-row{
+    display: flex !important;
+    flex-wrap: wrap !important;
+    
+   }
+
+  .ant-form-horizontal{
+    display: flex;
+    flex-direction: column;
+    justify-content: end !important;
+    flex-wrap: wrap;
+    overflow: hidden !important;
+   }
+   .ant-col{
+    width: 50% !important;
+   }
+
+
+   .ant-form-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left:30px !important;
+    flex-wrap: wrap;
+   }
+
+   .ant-form-item-required{
+    display: flex;
+    justify-content: center;
+    margin-left:30px !important;
+   }
+
+   .ant-input{
+    width: 50% !important;
+    margin-left: 2rem !important;
+   }
+
+   .ant-select-selector{
+    margin-left: 2rem !important;
+   }
+
+   .ant-picker{
+    width: 50% !important;
+    margin-left: 2rem !important;   
+   }
+
+   #basic_upload{
+    width:70% !important;
+    margin-left: 2rem !important;  
+   }
+
+   .boton-datos{
+    width: 80%;
+   }
+
+   .ant-card{
+    height: 400px !important;
+   }
+   
+   /* .btn-form-mod{
+    margin-left: rem !important;
+   } */
+ }

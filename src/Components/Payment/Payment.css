@@ -1,0 +1,13 @@
+.contenedor-payment{
+    margin:2rem
+}
+
+.contenedor-paypal{
+    margin-left: 1rem;
+    padding-top: 2rem;
+}
+
+.contenedor-check{
+   width: 60%;
+   padding-bottom: 2rem;
+}

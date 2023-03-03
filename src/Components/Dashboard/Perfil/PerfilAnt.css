@@ -38,4 +38,45 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
   }
+
+  .ant-card{
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 600px) {
+  
+    .ticket{
+      height: 300px !important;
+      width: 150px !important;
+    }
+
+    .ant-card-meta-detail{
+      display: flex;
+      flex-wrap: wrap !important;
+    }
+
+    .ant-card-meta{
+      display: flex;
+      flex-direction: column !important;
+    }
+    .ant-list-item-meta{
+
+      flex-wrap: wrap;
+      display: flex;
+      flex-direction: column !important;
+    }
+
+    .site-description-item-profile-wrapper{
+      overflow: hidden;
+      display: flex;
+      flex-wrap: wrap !important;
+    }
+
+    .layout-dashboard-perfil{
+      min-height: 600vh !important
+    }
+ 
+ }

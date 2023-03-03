@@ -105,8 +105,7 @@ export default function EventoList() {
                             key={activity.id}
 
                             cover={<img className="img-list-card" alt="example" src={activity.img} />}
-                        >
-                            {console.log(pasarFecha(activity))}
+                        >                            
                             <Meta title={activity.name}
 
                                 description={

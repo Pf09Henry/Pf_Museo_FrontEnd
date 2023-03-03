@@ -1,3 +1,4 @@
+
 import React from 'react'
 //import { useSelector } from 'react-redux'
 //import InformationCheckout from '../informationCheckout/InformationCheckout'
@@ -56,15 +57,15 @@ export default function Checkout (){
 
     return(
     
-        <div className='d-grid' >
+        <div className='d-grid contenedor-compra' >
             
             {products && products.length>0 ? 
 
             <div className="container my-4" >
                 <div className='row w-100' >
-                    <h1 className="display-5 lh-1 mb-4">Carrito <TiShoppingCart/></h1>
+                    <h3 className="display-5 lh-1 mb-4">Carrito <TiShoppingCart/></h3>
                 </div>
-                <div className='row '>
+                <div className='row wrap'>
                     <List
                         style={{   
                             width:'100%',
@@ -83,7 +84,7 @@ export default function Checkout (){
                         }}
                         dataSource={products}
                         renderItem= {(pr)=> (
-                            <List.Item>
+                            <List.Item >
                                 <Card
                                     key={pr.id}
                                     hoverable={true}
@@ -172,16 +173,18 @@ export default function Checkout (){
                 
 
                 <div className="container-fluid text-dark gap-3 ">
-                    {/* <h1 className='fs-1' >Resumen</h1> */}
+                    {/* <h3 className='fs-1' >Resumen</h3> */}
                     {products.length> 1 ?
-                    <div>
+                    <div className='resumen-carrito'>
+                         <h3>Resumen de compra</h3>
                         <List
-                            header={<h1>Resumen</h1>}
+                            /* header={<h3>Resumen</h3>} */
+                        
                         >
-                            
+                           
                             <VirtualList
                             data={products}
-                            height={ContainerHeight}
+                            /* height={ContainerHeight} */
                             itemHeight={10}
                             itemKey="id"
                             //onScroll={onScroll}
@@ -194,15 +197,17 @@ export default function Checkout (){
                                 />
                                 <div>{`$ ${(item.price * item.cantidad).toLocaleString('en-US')}`}</div>
                                 </List.Item>
+
                                 )}
+
                             </VirtualList>
                         </List>
-                            <div className='row bg-success rounded-5 text-light'>
-                                <div className='col-6'>
-                                    <h3 className="card-text fs-2 col text-light ">Total a pagar:</h3>
-                                </div>
-                                <div className='col-6'>
-                                    <h3 className="card-text fs-2 col text-light ">$ {sum.toLocaleString('en-US')}</h3>
+                            <div className='row rounded-5 total-a-pagar'>
+                                {/* <div >
+                                    <h3 className="card-text fs-2 col">Total a pagar:</h3>
+                                </div> */}
+                                <div >
+                                    <p className="card-text fs-4 col total-a-pagar">Total:  $ {sum.toLocaleString('en-US')}</p>
                                 </div>
                             </div>
                         </div>
@@ -237,36 +242,46 @@ export default function Checkout (){
                     //     </div>
                     // </div>                                        
                     :
-                    <div className='container-fluid d-grid'>         
-                        <div key={products[0].id} className="card-body text-dark border row w-100 shadow ">
-                            <div className='col'>
-                                <h5>{products[0].name}</h5>
-                                <h5>Tickets: {products[0].cantidad}</h5>
-                            </div>
-                            <div className='col'>
-                                <h5>Valor Unitario</h5>
-                                <h5>$ {(products[0].price).toLocaleString('en-US')}</h5>
-                            </div>
-                            <div className='col'>
-                                <h5>Valor</h5>
-                                <h5>$ {(products[0].price * products[0].cantidad).toLocaleString('en-US')}</h5>
-                            </div>
-                        </div>
-                        <div className="container-fluid d-grid mt-4 totalP ">
-                            <div className='row'>
-                                <div className='col-6'>
-                                    <h3 className="card-text text-light fs-2 col">Total a pagar:</h3>
-                                </div>
-                                <div className='col-6'>
-                                    <h3 className="card-text fs-2 col text-light">$ {sum.toLocaleString('en-US')}</h3>
-                                </div>
-                            </div>
-                        </div>     
-                    </div>           
+                    <div className='resumen-carrito'>
+                    <h3>Resumen de compra</h3>
+                   <List
+                       /* header={<h3>Resumen</h3>} */
+                   
+                   >
+                      
+                       <VirtualList
+                       data={products}
+                       /* height={ContainerHeight} */
+                       itemHeight={10}
+                       itemKey="id"
+                       //onScroll={onScroll}
+                       >
+                       {(item) => (
+                           <List.Item key={item.email}>
+                           <List.Item.Meta
+                               avatar={<Avatar src={item.img} />}
+                               title={item.name}
+                           />
+                           <div>{`$ ${(item.price * item.cantidad).toLocaleString('en-US')}`}</div>
+                           </List.Item>
+
+                           )}
+
+                       </VirtualList>
+                   </List>
+                       <div className='row rounded-5 total-a-pagar'>
+                           {/* <div >
+                               <h3 className="card-text fs-2 col">Total a pagar:</h3>
+                           </div> */}
+                           <div >
+                               <p className="card-text fs-4 col total-a-pagar">Total:  $ {sum.toLocaleString('en-US')}</p>
+                           </div>
+                       </div>
+                   </div>      
                     }
                 </div>
                 <div>
-                    <a href='/payment' className='btn btn-success mt-3 btnCheck' >Continuar</a>
+                    <a href='/payment' className='btn btn-success mt-3 btnCheck' >Pagar</a>
                 </div>
             </div>
                 :
@@ -295,3 +310,5 @@ export default function Checkout (){
         </div>
     )
 }
+
+

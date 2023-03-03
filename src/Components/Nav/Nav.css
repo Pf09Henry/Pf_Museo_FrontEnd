@@ -42,7 +42,8 @@
 }
 
 .btn-primary{
-    background-color: rgb(55, 102, 103) !important
+    background-color: rgb(55, 102, 103) !important;
+    border: none !important;
 }
 
 .btn-primary:hover {
@@ -59,10 +60,10 @@
 }
 
 .foto-login{
-    width:45px;
-    height: 45px;
+    width:42px;
+    height: 42px;
     border-radius: 20px;
-    margin-right: 1rem;
+    
 }
 .foto-login:hover{
     transform: scale(1.2);

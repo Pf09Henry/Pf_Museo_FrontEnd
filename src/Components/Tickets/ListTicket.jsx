@@ -191,11 +191,9 @@ ticket.slice(page-1,page+3).map((t) =>
  
     
            <Card
-                className="ticket"
+                className="ticket-dashboard"
                 key={t.id}
-                style={{
-                width: 300,
-                }}
+               
               
           
             >

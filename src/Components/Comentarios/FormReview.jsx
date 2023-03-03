@@ -1,32 +1,32 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getReview, getUsers, postReview } from "../../Actions/AppActions/appActions";
 import Swal from 'sweetalert2'
 import {
     Button,
-     Form,
+    Form,
     Input,
     Rate,
-  
-  } from 'antd';
+
+} from 'antd';
 import './FormReview.css'
 import { right } from "@popperjs/core";
 
 
-export default function FormReview({user, idEvent}){
+export default function FormReview({ user, idEvent }) {
 
     const usuarios = useSelector((state) => state.users);
     const dispatch = useDispatch();
-    const [form, setForm ] = useState({
-        commentary:"",
-        score:3,
-        userId:"",
-        eventId:""
+    const [form, setForm] = useState({
+        commentary: "",
+        score: 3,
+        userId: "",
+        eventId: ""
     })
     const { TextArea } = Input;
 
-  
+
 
 
 
@@ -34,100 +34,100 @@ export default function FormReview({user, idEvent}){
     console.log(id)
 
 
-    useEffect (()=>{
+    useEffect(() => {
         dispatch(getUsers());
         searchIdUser()
-    },[dispatch]) 
+    }, [dispatch])
 
-    function searchIdUser(){
+    function searchIdUser() {
         console.log(usuarios)
         let usuarioEncontrado = usuarios.filter(el => el.email === user.email)
         console.log(usuarioEncontrado[0].id)
         return usuarioEncontrado[0].id
     }
 
-    function inputStar(value){
+    function inputStar(value) {
         setForm({
-            score:value
+            score: value
         })
         console.log(value)
     }
 
     const onFinish = (values) => {
         console.log('Received values of form: ', values);
-     
-        let valores={
-            commentary:values.comentario,
-            score:values.score,
-            userId:searchIdUser(),
-            eventId:id
-          }
-          console.log(valores)
-        
+
+        let valores = {
+            commentary: values.comentario,
+            score: values.score,
+            userId: searchIdUser(),
+            eventId: id
+        }
+        console.log(valores)
+
         setForm({
-            commentary:values.comentario,
-            score:values.score,
-            userId:searchIdUser(),
-            eventId:id
+            commentary: values.comentario,
+            score: values.score,
+            userId: searchIdUser(),
+            eventId: id
         })
         Swal.fire({
-          title: 'Éxito',
-          text: 'Tu puntaje y comentario se enviaron con éxito!',
-          icon: 'success',
-          confirmButtonText: 'OK',
-          confirmButtonColor: "#035d03"
-        }).then(function(){
+            title: 'Éxito',
+            text: 'Tu puntaje y comentario se enviaron con éxito!',
+            icon: 'success',
+            confirmButtonText: 'OK',
+            confirmButtonColor: "#035d03"
+        }).then(function () {
             window.location.href = `/event/${idEvent}`
         })
-     
-    
-    
+
+
+
         var form = true;
-    
+
         if (form) {
-        dispatch(postReview(valores))
+            dispatch(postReview(valores))
         }
-      };
-      
-      const onFinishFailed = (errorInfo) => {
-          console.log('Failed:', errorInfo);
-          Swal.fire({
-              title: 'Ups!',
-              text: "Uno o mas datos no fueron cargados",
-              icon: 'error',
-              confirmButtonText: 'OK',
-              confirmButtonColor: "#035d03"
-            })
-        };
+    };
+
+    const onFinishFailed = (errorInfo) => {
+        console.log('Failed:', errorInfo);
+        Swal.fire({
+            title: 'Ups!',
+            text: "Uno o mas datos no fueron cargados",
+            icon: 'error',
+            confirmButtonText: 'OK',
+            confirmButtonColor: "#035d03"
+        })
+    };
 
 
-      /*    function searchIdUser(user){
-            
-            let usuarioEncontrado = usuarios.filter(el => el.email === user.email)
-    
-            return usuarioEncontrado[0].id
-    
-        } */
- 
+    /*    function searchIdUser(user){
+          
+          let usuarioEncontrado = usuarios.filter(el => el.email === user.email)
+  
+          return usuarioEncontrado[0].id
+  
+      } */
 
 
-    return(
+
+    return (
         <div>
-    
+
             <Form
                 className="form-review"
                 name="basic"
                 labelCol={{
-                span: 8,
+                    span: 8,
                 }}
                 wrapperCol={{
-                span: 16,
+                    span: 16,
                 }}
                 style={{
-                maxWidth: 600,
+                    maxWidth: 600,
                 }}
                 initialValues={{
-                remember: true,
+                    remember: true,
                 }}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
@@ -135,50 +135,51 @@ export default function FormReview({user, idEvent}){
             >
 
 
-            <Form.Item
-            style={{
-            width:200,
-        
-            }}
-            name="score"
-            rules={[
-                {
-                  required: true,
-                  message: 'Por favor dejá un puntaje',
-                },
-              ]}
-            >
-            <Rate  defaultValue={form.score} onChange={(value)=>inputStar(value)}/>
-            
-            </Form.Item>
+                <Form.Item
+                    style={{
+                        width: 200,
 
-            <Form.Item name="comentario"     rules={[
-                    {
-                      required: true,
-                      message: 'Por favor dejá un comentario',
-                    },
-                  ]}>
-            <TextArea
-                showCount
-                maxLength={600}
-                style={{
-                width:200,
-                height: 120,
-                marginBottom: 24,
-                }}
-            
-                placeholder="Dejanos tu comenatrio"
-            />
-            </Form.Item>
-            <Form.Item
-                wrapperCol={{
-                    span: 12,
-                    offset: 6,
-                }}
+                    }}
+                    name="score"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Por favor dejá un puntaje',
+                        },
+                    ]}
                 >
-                <Button type="primary" htmlType="submit" className='btn-secundario' style={{backgroundColor:"rgb(56, 102, 103"}}>
-                Enviar
-                </Button>
+                    <Rate className='rate' defaultValue={form.score} onChange={(value) => inputStar(value)} />
+
+                </Form.Item>
+
+                <Form.Item name="comentario" rules={[
+                    {
+                        required: true,
+                        message: 'Por favor dejá un comentario',
+                    },
+                ]}>
+                    <TextArea
+                        showCount
+                        maxLength={600}
+                        style={{
+                            width: 250,
+                            height: 120,
+                            marginBottom: 24,
+                            marginLeft: -60
+                        }}
+
+                        placeholder="Dejanos tu comenatrio"
+                    />
+                </Form.Item>
+                <Form.Item
+                    wrapperCol={{
+                        span: 12,
+                        offset: 6,
+                    }}
+                >
+                    <Button type="primary" htmlType="submit" className='btn-secundario' style={{ backgroundColor: "rgb(56, 102, 103", marginLeft: -30 }}>
+                        Enviar
+                    </Button>
                 </Form.Item>
 
             </Form>
