@@ -57,7 +57,7 @@ const App = () => {
         user: { asunto: "", email: "", mensaje: "", nombre: "" },
       }}
       style={{
-        maxWidth: 1600,
+        maxWidth: 1470,
         marginTop: 60,
       }}
       validateMessages={validateMessages}

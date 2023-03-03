@@ -29,7 +29,7 @@ const AboutButton = ({ linkedin, github, name,image }) => {
       
       <Card
         style={{
-          width: 270,
+          width: 230,
           margin:50,
           padding:10,
           borderRadius:30,
