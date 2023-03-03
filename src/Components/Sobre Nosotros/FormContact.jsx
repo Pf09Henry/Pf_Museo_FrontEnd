@@ -68,7 +68,7 @@ export default function FormContact() {
             mensaje: data.mensaje,
         })
         let mailer = {
-            mail: 'pf09henry@gmail.com',
+            mail: 'MuseoPatagonicoCNjuanCaSal2023@gmail.com',
             subject: data.asunto,
             message: data.name + " se acaba de comunicar, y quiere que lo contactemos mediante el mail: " + data.email + "\n Su mensaje fue: " + data.mensaje,
         };
