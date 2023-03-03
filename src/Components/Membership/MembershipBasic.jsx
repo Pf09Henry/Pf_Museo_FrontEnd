@@ -77,9 +77,9 @@ export default function Membership() {
 
 
     return (
-        <div className="card mb-3">
+        <div className="card mb-3 ">
             <div className="row g-0">
-                <div className="col-md-8">
+                <div className="col">
                     <div className='tarjet-txt'>
                         <div className="image-wrapper">
                             <img className="tarjeta" src={tarjeta} alt="tarjeta" />
@@ -89,7 +89,7 @@ export default function Membership() {
                             <li> Entrada directa, gratuita e ilimitada</li>
                             <li>1 credenciales personalizada</li>
                             <li> Ingreso gratuito con un acompañante</li>
-                            <li> Inscripción gratuita a la biblioteca</li>
+                            {/* <li> Inscripción gratuita a la biblioteca</li> */}
                             <li> 5% de descuento en eventos culturales</li>
                             <li> 5% de descuento en la tienda-librería</li>
                             <li> 5% de descuento en cafetería</li>

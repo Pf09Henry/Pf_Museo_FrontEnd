@@ -55,7 +55,7 @@ function BorrarUsuario(){
  function setDatos(e){
   setId(e)
   const eventoFiltrado= eventos.filter(ev => ev.id === e)
-  console.log(eventoFiltrado[0])
+ /*  console.log(eventoFiltrado[0]) */
   Swal.fire({
     title: 'Éxito',
     text: 'El usuario se elimino con éxito',
@@ -91,7 +91,7 @@ function BorrarUsuario(){
   };
   
   const onFinishFailed = (errorInfo) => {
-      console.log('Failed:', errorInfo);
+     /*  console.log('Failed:', errorInfo); */
       Swal.fire({
           title: 'Ups!',
           text: "No se encuentra el usuario",

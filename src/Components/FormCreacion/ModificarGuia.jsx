@@ -35,7 +35,7 @@ function ModificarGuia(){
 
 
   function buscarNombre(e){
-    console.log(e.target.value)
+  /*   console.log(e.target.value) */
     setName(e.target.value)
     dispatch(getGuidesName(e.target.value));
   }
@@ -61,14 +61,14 @@ function ModificarGuia(){
   const eventoFiltrado= eventos.filter(ev => ev.id === e)
   setValues(eventoFiltrado[0]);
   dispatch(getGuidesById(e))
-  console.log(eventoFiltrado[0])
-  console.log(inicialValues)
+ /*  console.log(eventoFiltrado[0])
+  console.log(inicialValues) */
  }
   
 
   
   const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+   /*  console.log('Received values of form: ', values); */
  
     let valores={
       name:values.username,
@@ -98,7 +98,7 @@ function ModificarGuia(){
   };
   
   const onFinishFailed = (errorInfo) => {
-      console.log('Failed:', errorInfo);
+    /*   console.log('Failed:', errorInfo); */
       Swal.fire({
           title: 'Ups!',
           text: "Uno o mas datos no fueron cargados",

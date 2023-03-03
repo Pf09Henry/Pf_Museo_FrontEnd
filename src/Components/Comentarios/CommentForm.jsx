@@ -51,9 +51,9 @@ export default function CommentForm({ commentInitial, buttonText, buttonSend }) 
 
 
     function searchIdUser(user){
-        console.log(user)
+      /*   console.log(user) */
         let usuarioEncontrado = usuarios.filter(el => el.email === user.email)
-        console.log('ESTAS BANEADO?',usuarioEncontrado[0].isBanned)
+        /* console.log('ESTAS BANEADO?',usuarioEncontrado[0].isBanned) */
         return usuarioEncontrado[0].isBanned
 
     }

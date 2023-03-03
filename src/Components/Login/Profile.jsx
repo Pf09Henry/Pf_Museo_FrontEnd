@@ -14,7 +14,7 @@ export function Profile() {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const usuario = useSelector((state) => state.users);
   const role = useSelector((state) => state.role);
-  console.log(role)
+/*   console.log(role) */
 
   const navigate = useNavigate();
 
@@ -34,13 +34,13 @@ export function Profile() {
     for (let i = 0; i < usuario.length; i++) {
       if (usuario[i].email === user.email) {
          userRole = usuario[i].roleId;
-        console.log('aqui el roleId:',userRole)
+      /*   console.log('aqui el roleId:',userRole) */
       }
     }
     for(let i = 0; i < role.length; i++){
       if(role[i].id === userRole){
-        roleName = role[i].name;
-        console.log('Aqui el nombre del role:',roleName)        
+        roleName = role[i].name;/* 
+        console.log('Aqui el nombre del role:',roleName)   */      
       }
     }
   }

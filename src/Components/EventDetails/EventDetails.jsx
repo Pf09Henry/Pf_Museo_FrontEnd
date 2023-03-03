@@ -24,7 +24,7 @@ export default function EventDetails({ roleUser }) {
     const [cantidad, setCantidad] = useState(1)
 
     const handleCantidad = (e) => {
-        console.log(e)
+      /*   console.log(e) */
         setCantidad(e)
     }
 
@@ -36,7 +36,7 @@ export default function EventDetails({ roleUser }) {
     function raiting(id) {
         let ratings = []
         for (let i = 0; i < review.length; i++) {
-            console.log(review[i].eventId)
+           /*  console.log(review[i].eventId) */
             if (review[i].eventId === id) {
                 ratings.push(review[i].score)
             }
@@ -97,7 +97,7 @@ export default function EventDetails({ roleUser }) {
     if (actual.getTime() > fechaEvento.getTime()) {
         fechaValida = true
     } else {
-        console.log(fechaValida)
+       /*  console.log(fechaValida) */
         leyenda = 'Aun no finaliza el evento, '
     }
 

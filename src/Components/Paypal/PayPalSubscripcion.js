@@ -37,7 +37,7 @@ export default function PaypalSubscription({name, acount,cupo}) {
 
    
 
-    console.log("comprobanter", comprobante)
+   /*  console.log("comprobanter", comprobante) */
     
     useEffect(() => {
         window.paypal.Buttons({
@@ -56,7 +56,7 @@ export default function PaypalSubscription({name, acount,cupo}) {
                         },
                     ]
                 })
-                console.log("esto es order: ", order) 
+               /*  console.log("esto es order: ", order)  */
                 return order
             },
             onCancel: (data) => {
@@ -68,7 +68,7 @@ export default function PaypalSubscription({name, acount,cupo}) {
                     confirmButtonColor: "#035d03"
                 })
 
-                console.log(data)
+             /*    console.log(data) */
             },
             onApprove: async (data, actions) => {
                 

@@ -12,7 +12,7 @@ export default function areaGeo() {
         <div>
 
             <br />
-            <div className="card-body">
+            <div className="card-body geo">
                 <h1 className="card-title">Area de Geología y Mineralógica</h1>
                 <br />
                 <p className="card-text">La colección de Geología se compone de las Secciones de Mineralogía y Petrología (MPCN- MyP.) y la Colección Geología Aplicada (MPCN-GA). Fue fundada por la donación de Eduardo Jawerbaum compuesta por Rocas y Minerales de todo el mundo, posteriormente las donaciones de López Bueno y Andrés Oteiza incrementaron las colecciones y el aporte de Mina Capillitas de la donación de un ejemplar de Rodocrosita constituyeron al MPCN en una de las colecciones mineralógicas más importantes de la Patagonia. La colección de Geología fue inicialmente curada por el geólogo Lic. Rubén Barbieri† hasta el 2012. Estas colecciones son incrementadas anualmente por otras donaciones y ejemplares recolectados en los trabajos de campo que realizan todos los años los miembros del MPCN. La Sala de Minerales de la exhibición del Museo es una de las más destacadas y elogiadas por los visitantes nacionales, extranjeros y estudiantes que anualmente visitan el Museo.</p>
