@@ -64,9 +64,9 @@ import FormContact from './Components/Sobre Nosotros/FormContact';
 
 // import { useNavigate } from "react-router";
 // import AboutButton from './Components/AboutButton/AboutButton';
-import AboutButtons from './Components/AboutButton/AboutButton';
-import Nosotros from './Components/Nosotros/Nosotros';
-import Contacto from './Components/Contacto/Form';
+
+import AboutUs from './Components/Sobre Nosotros/AboutUs';
+
 
 
 function App() {
@@ -127,7 +127,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             {/* <Route path='/formulario' element={<Contacto />} />  */}
-            <Route path= '/nosotros' element={<Nosotros />} />
+            <Route path= '/nosotros' element={<AboutUs />} />
             <Route path='/register' element={<Register />} />
             {/* <Route path='/login' element={<Login />} /> */}
             <Route path='/profile' element={<AuthenticationGuard component={Profile} />} />

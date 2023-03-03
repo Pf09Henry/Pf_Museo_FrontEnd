@@ -73,10 +73,10 @@ export default function Filtros({ pageOne }) {
                 <option value="All" >
                     Todas las Categorias
                 </option>
-                <option value="Social">Social</option>
-                <option value="Arte">Arte</option>
-                <option value="Ciencias">Ciencias</option>
-                <option value="Ecológico">Ecológico</option>
+                <option className="opcionFil" value="Social">Social</option>
+                <option className="opcionFil" value="Arte">Arte</option>
+                <option className="opcionFil" value="Ciencias">Ciencias</option>
+                <option className="opcionFil" value="Ecológico">Ecológico</option>
             </select>
 
 
