@@ -31,7 +31,6 @@ export default function Footer() {
                         <a href='/history' className='text-light text-decoration-none'>Acerca</a>
                         <a href='/history' className='text-light text-decoration-none'>Historia</a>
                         <a href='/general' className='text-light text-decoration-none'>Contacto</a>
-                        <a href='/nosotros' className='text-light text-decoration-none'>Nosotros</a>
                         {/* <a href='/formulario' className='text-light text-decoration-none'>Formulario</a> */}
                     </nav>
                     <nav className='col-md-2 d-grid gap-2 me-auto'>
@@ -44,6 +43,7 @@ export default function Footer() {
                     <div className='col-lg-2 d-flex align-content-center flex-wrap justify-content-around align-items-center gap-2 py-5 '>
                         <a href="https://www.facebook.com/museopatagonico" target='_blank' rel='noreferrer noopener' className='text-light' ><BsFacebook size={40} /></a>
                         <a href='https://www.instagram.com/museopatagonico' target='_blank' rel='noreferrer noopener' className='text-light'><BsInstagram size={40} /></a>
+                        <a href='/nosotros' className='text-light text-decoration-none'>Nuestro Equipo</a>
                     </div>
                 </div>
             </div>
