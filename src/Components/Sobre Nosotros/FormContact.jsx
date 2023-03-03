@@ -95,7 +95,7 @@ export default function FormContact() {
                     message: data.mensaje,
                 }}
                 style={{
-                    maxWidth: 600,
+                    
                 }}
                 scrollToFirstError
             >
@@ -125,7 +125,7 @@ export default function FormContact() {
                 </Form.Item>
 
                 <Form.Item
-                    label="Correo Electronico"
+                    label="E-mail "
                     rules={[{ required: true, type: `email`, message: `Por favor ingresa tu email.` }]}
                     name="email"
                 >
