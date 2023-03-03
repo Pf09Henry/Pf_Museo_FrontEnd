@@ -83,7 +83,7 @@ export default function Register() {
       await dispatch(getUsers());
       for (let i = 0; i < usuario.length; i++) {
         if (usuario[i].email === data.email) {
-          console.log('Todos los users 2', usuario[i]);
+          
           navigate("/")
           return Swal.fire({
             title: '',
@@ -106,18 +106,18 @@ export default function Register() {
       
       const handleSubmit = async () => {
         if (isAuthenticated) {
-          console.log(usersAll)
-          console.log(user.email)
+          
+          
           var userEncontrado;
           for(let i = 0; i < usersAll.length; i++){
             if(usersAll[i].email === user.email){
-              console.log('entro', userEncontrado)
+              
               userEncontrado = usersAll[i];
             }          
           }
-          console.log('aqui user',userEncontrado)
+          
           if (userEncontrado) {
-            console.log('Todos los userId', userEncontrado.id)
+            
         const putUsers = {
           status: true
         }

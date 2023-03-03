@@ -25,7 +25,7 @@ export default function Paypal({desc, cantidad}) {
     }
 
     if(products && desc){
-        console.log("tiene si")
+        
     }
 
     
@@ -46,12 +46,12 @@ export default function Paypal({desc, cantidad}) {
         total = total + (acount[i] * amount[i])
     }
 
-    // console.log(desc)
+    // 
     //     if(desc != 0){
-    //         console.log("aca! ")
-    //         console.log(desc)
+    //         
+    //         
     //         total = total - desc
-    //         console.log(total)
+    //         
     //     }
     
 
@@ -87,14 +87,14 @@ export default function Paypal({desc, cantidad}) {
     //     }
     //  }
 
-    console.log(total)
-    console.log("cantidad! ",cantidad)
-    console.log(desc)
+    
+    
+    
     useEffect(() => {
         
-        console.log("renderizo!")
+        
         if(cantidad  > 1 && cantidad < 5){
-            console.log("primer if")
+            
             window.paypal.Buttons({
                 createOrder: (data, actions, err) => {
                    
@@ -110,7 +110,7 @@ export default function Paypal({desc, cantidad}) {
                             },
                         ]
                     })
-                    console.log(total)
+                    
                     return order
                 },
                 onCancel: (data) => {
@@ -171,7 +171,7 @@ export default function Paypal({desc, cantidad}) {
         }
 
         else if(cantidad  === "1"){
-            console.log("segundo if")
+            
             window.paypal.Buttons({
                 createOrder: (data, actions, err) => {
                    
@@ -187,7 +187,7 @@ export default function Paypal({desc, cantidad}) {
                             },
                         ]
                     })
-                    console.log(total)
+                    
                     return order
                 },
                 onCancel: (data) => {
@@ -248,7 +248,7 @@ export default function Paypal({desc, cantidad}) {
         }
 
         else if(cantidad  === 9 ){
-            console.log("tercer if")
+            
             window.paypal.Buttons({
                 createOrder: (data, actions, err) => {
                    
@@ -264,7 +264,7 @@ export default function Paypal({desc, cantidad}) {
                             },
                         ]
                     })
-                    console.log(total)
+                    
                     return order
                 },
                 onCancel: (data) => {

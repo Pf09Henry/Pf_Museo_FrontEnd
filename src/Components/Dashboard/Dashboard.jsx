@@ -77,7 +77,7 @@ export default function Dashboard(){
             1: contarScores(1),
           };
           setEvRanking(scoreCounts);
-        /*   console.log(evRanking) */
+        /*   
           
         }, [list]);
 
@@ -163,7 +163,7 @@ export default function Dashboard(){
               count++;
             }
           }
-          /* console.log((evRanking[5] * 100) /list.length ) */
+          /* 
           return count;
           
         }
@@ -172,7 +172,7 @@ export default function Dashboard(){
         const cuposTotales = event.reduce((acumulado, evento) => acumulado + evento.availability, 0);
         const ticketsVendidos = tick.reduce((acumulado, ticket) => acumulado + ticket.amount, 0);
         const sumTickets = tick.reduce((total, ticket) => total + ticket.totalOfPurchase, 0)
-      /*   console.log(`Se vendieron ${ticketsVendidos} y Quedan ${cuposTotales} cupos en total`); */
+      /*   
       
 
     return(

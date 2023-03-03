@@ -57,11 +57,11 @@ export default function Membership() {
     
     var estado = false
     for (let i = 0; i < subscripcion.length; i++) {
-        console.log(subscripcion[i].typeSubscription)
-        console.log(subscripcion[i].status)
+        
+        
         
         if (subscripcion[i].email === user.email && subscripcion[i].typeSubscription === 'Socio-Basic' && subscripcion[i].status === true) {
-            // console.log('entrooooo aal if')
+            // 
             estado = true
         } 
     }

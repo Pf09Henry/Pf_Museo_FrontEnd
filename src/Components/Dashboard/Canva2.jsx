@@ -40,7 +40,7 @@ export default function Canva2(){
 		  1: contarScores(1),
 		};
 		setEvRanking(scoreCounts);
-/* 		console.log(evRanking) */
+/* 		
 		
 	  }, [list]);
 
@@ -51,7 +51,7 @@ export default function Canva2(){
 			count++;
 		  }
 		}
-/* 		console.log((evRanking[5] * 100) /list.length ) */
+/* 		
 		return count;
 		
 	  }

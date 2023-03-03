@@ -68,7 +68,7 @@ useEffect(()=>{
   function searchIdUser(name){
     let usuarioEmail =usuarios.filter(el => el.email === user.email)
   /*   let usuarioEncontrado = usuarioEmail.filter(el => el.name === name) */
-    /* console.log(usuarioEncontrado[0]) */
+    /* 
     return usuarioEmail[0]
   }
 

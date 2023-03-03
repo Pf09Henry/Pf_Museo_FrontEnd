@@ -5,7 +5,7 @@ import axios from "axios"
 export function getEvents() {
     return async function (dispatch) {
         var json = await axios.get('https://pfmuseobackend.up.railway.app/events');
-       /*  console.log(json.data) */
+       /*  
         return dispatch({
             type: 'GET_EVENTS',
             payload: json.data
@@ -16,7 +16,7 @@ export function getEvents() {
 export function getTickets() {
     return async function (dispatch) {
         var json = await axios.get('https://pfmuseobackend.up.railway.app/ticket');
-       /*  console.log(json.data) */
+       /*  
         return dispatch({
             type: 'GET_TICKETS',
             payload: json.data
@@ -37,7 +37,7 @@ export function getSubscription() {
 export function getRoles() {
     return async function (dispatch) {
         var json = await axios.get('https://pfmuseobackend.up.railway.app/role');
-       /*  console.log(json.data) */
+       /*  
         return dispatch({
             type: 'GET_ROLE',
             payload: json.data
@@ -50,7 +50,7 @@ export function getEventsName(name) {
     return async function (dispatch) {
         if (name) {
             let response = await axios.get('https://pfmuseobackend.up.railway.app/events');
-           /*  console.log(response.data) */
+           /*  
             let events = response.data;
             let filteredEvents = events.filter(e => e.name.toLowerCase().includes(name.toLowerCase()));
             return dispatch({
@@ -65,7 +65,7 @@ export function getGuidesName(name) {
     return async function (dispatch) {
         if (name) {
             let response = await axios.get('https://pfmuseobackend.up.railway.app/guides');
-           /*  console.log(response.data) */
+           /*  
             let events = response.data;
             let filteredEvents = events.filter(e => e.name.toLowerCase().includes(name.toLowerCase()));
             return dispatch({
@@ -87,7 +87,7 @@ export function getEventsById(id) {
                 payload: json.data
             })
         } catch (error) {
-            console.log(error)
+            
         }
     }
 }
@@ -96,7 +96,7 @@ export function getTicketId(id) {
     return async function (dispatch) {
         if (id) {
             let response = await axios.get('https://pfmuseobackend.up.railway.app/ticket');
-           /*  console.log(response.data) */
+           /*  
             let tickets = response.data;
             let filteredTickets = tickets.filter(e => e.id.includes(id));
             return dispatch({
@@ -111,7 +111,7 @@ export function getTicketEmail(email) {
     return async function (dispatch) {
         if (email) {
             let response = await axios.get('https://pfmuseobackend.up.railway.app/ticket');
-           /*  console.log(response.data) */
+           /*  
             let tickets = response.data;
             let filteredTickets = tickets.filter(e => e.user.email.includes(email));
             return dispatch({
@@ -128,7 +128,7 @@ export function getTicketEmail(email) {
 export function getCategories() {
     return async function (dispatch) {
         var json = await axios.get('https://pfmuseobackend.up.railway.app/category');
-       /*  console.log(json.data) */
+       /*  
         return dispatch({
             type: 'GET_CATEGORIES',
             payload: json.data
@@ -142,7 +142,7 @@ export function getCategories() {
 export function getGuides() {
     return async function (dispatch) {
         var json = await axios.get('https://pfmuseobackend.up.railway.app/guides');
-       /*  console.log(json.data) */
+       /*  
         return dispatch({
             type: 'GET_GUIDES',
             payload: json.data
@@ -159,7 +159,7 @@ export function getGuidesById(id) {
                 payload: json.data
             })
         } catch (error) {
-            console.log(error)
+            
         }
     }
 }
@@ -213,7 +213,7 @@ export function getUserName(name) {
             else return "No hay usuarios con ese nombre"
             
         } catch (error) {
-            console.log(error)
+            
         }
         
     }
@@ -228,7 +228,7 @@ export function getUserById(id) {
                 payload: json.data
             })
         } catch (error) {
-            console.log(error)
+            
         }
     }
 }
@@ -262,7 +262,7 @@ export function orderByName(payload) {
 export function postEvent(payload) {
     return async function (dispatch) {
         const response = await axios.post('https://pfmuseobackend.up.railway.app/event/post', payload)
-        /* console.log(response) */
+        /* 
         return {
             type: 'POST_EVENT',
             response
@@ -273,7 +273,7 @@ export function postEvent(payload) {
 export function postCategory(payload) {
     return async function (dispatch) {
         const response = await axios.post('https://pfmuseobackend.up.railway.app/category/post', payload)
-       /*  console.log(response) */
+       /*  
         return {
             type: 'POST_CATEGORY',
             response
@@ -284,7 +284,7 @@ export function postCategory(payload) {
 export function postGuide(payload) {
     return async function (dispatch) {
         const response = await axios.post('https://pfmuseobackend.up.railway.app/guide/post', payload)
-       /*  console.log(response) */
+       /*  
         return {
             type: 'POST_GUIDE',
             response
@@ -295,7 +295,7 @@ export function postGuide(payload) {
 export function postUser(payload) {
     return async function (dispatch) {
         const response = await axios.post('https://pfmuseobackend.up.railway.app/users/post', payload)
-       /*  console.log(response) */
+       /*  
         return dispatch({
             type: 'POST_USER',
             payload: response
@@ -306,7 +306,7 @@ export function postUser(payload) {
 export function postSubscription(payload){
     return async function(dispatch){
         const response = await axios.post('https://pfmuseobackend.up.railway.app/subscription/post', payload)
-        console.log(response)
+        
         return dispatch({
             type: "POST_SUBSCRIPTION",
             payload: response
@@ -317,7 +317,7 @@ export function postSubscription(payload){
 export function postTicket(payload) {
     return async function (dispatch) {
         const json = await axios.post('https://pfmuseobackend.up.railway.app/ticket/post', payload)
-       /*  console.log(json) */
+       /*  
         return dispatch({
             type: 'POST_TICKETS',
             payload: json
@@ -328,7 +328,7 @@ export function postTicket(payload) {
 export function postReview(payload) {
     return async function (dispatch) {
         const response = await axios.post('https://pfmuseobackend.up.railway.app/review/post', payload)
-       /*  console.log(response) */
+       /*  
         return dispatch({
             type: 'POST_REVIEW',
             payload: response
@@ -347,7 +347,7 @@ export function putEvent(payload, id) {
                 response
             })
         } catch (error) {
-            console.log(error)
+            
         }
     }
 }
@@ -356,13 +356,13 @@ export function putGuide(payload, id) {
     return async function (dispatch) {
         try {
             var response = await axios.put(`https://pfmuseobackend.up.railway.app/guides/put/${id}`, payload);
-          /*   console.log(response) */
+          /*   
             return dispatch({
                 type: 'PUT_GUIDE',
                 response
             })
         } catch (error) {
-            console.log(error)
+            
         }
     }
 }
@@ -371,13 +371,13 @@ export function putUser(payload, id) {
     return async function (dispatch) {
         try {
             var response = await axios.put(`https://pfmuseobackend.up.railway.app/users/put/${id}`, payload);
-          /*   console.log(response) */
+          /*   
             return dispatch({
                 type: 'PUT_USER',
                 response
             })
         } catch (error) {
-            console.log(error)
+            
         }
     }
 }
@@ -386,13 +386,13 @@ export function putTicket(payload, id) {
     return async function (dispatch) {
         try {
             var response = await axios.put(`https://pfmuseobackend.up.railway.app/tickets/put/${id}`, payload);
-          /*   console.log(response) */
+          /*   
             return dispatch({
                 type: 'PUT_TICKET',
                 response
             })
         } catch (error) {
-            console.log(error)
+            
         }
     }
 }
@@ -401,13 +401,13 @@ export function putSubscription(payload, id) {
     return async function (dispatch) {
         try {
             var response = await axios.put(`https://pfmuseobackend.up.railway.app/subscription/put/${id}`, payload);
-          /*   console.log(response) */
+          /*   
             return dispatch({
                 type: 'PUT_SUBSCRIPTION',
                 response
             })
         } catch (error) {
-            console.log(error)
+            
         }
     }
 }
@@ -417,13 +417,13 @@ export function deleteEvent(id) {
     return async function (dispatch) {
         try {
             var response = await axios.delete(`https://pfmuseobackend.up.railway.app/events/delete/${id}`);
-          /*   console.log(response) */
+          /*   
             return dispatch({
                 type: 'DELETE_EVENT',
                 payload: id
             })
         } catch (error) {
-            console.log(error)
+            
         }
     }
 }
@@ -432,13 +432,13 @@ export function deleteGuide(id) {
     return async function (dispatch) {
         try {
             var response = await axios.delete(`https://pfmuseobackend.up.railway.app/guides/delete/${id}`);
-          /*   console.log(response) */
+          /*   
             return dispatch({
                 type: 'DELETE_GUIDE',
                 payload: id
             })
         } catch (error) {
-            console.log(error)
+            
         }
     }
 }
@@ -446,16 +446,16 @@ export function deleteGuide(id) {
 
 export function deleteReview(id) {
     return async function (dispatch) {
-        console.log(id)
+        
         try {
             var response = await axios.delete(`https://pfmuseobackend.up.railway.app/review/delete/${id}`);
-            console.log(response) 
+            
             return dispatch({
                 type: 'DELETE_REVIEW',
                 payload: id
             })
         } catch (error) {
-            console.log("error",error)
+            
         }
     }
 }
@@ -464,13 +464,13 @@ export function deleteUser(id) {
     return async function (dispatch) {
         try {
             var response = await axios.delete(`https://pfmuseobackend.up.railway.app/users/delete/${id}`);
-          /*   console.log(response) */
+          /*   
             return dispatch({
                 type: 'DELETE_USERS',
                 payload: id
             })
         } catch (error) {
-            console.log(error)
+            
         }
     }
 }
@@ -485,7 +485,7 @@ export function addToCart(payload) {
                 payload: payload
             })
         } catch (error) {
-            console.log(error)
+            
         }
     }
 }
@@ -498,7 +498,7 @@ export function removeToCart(id) {
                 payload: id
             })
         } catch (error) {
-            console.log(error)
+            
         }
     }
 }
@@ -508,7 +508,7 @@ export function removeToCart(id) {
 export function postMail(payload) {
     return async function (dispatch) {
         const json = await axios.post('https://pfmuseobackend.up.railway.app/send_email', payload)
-        console.log(json)
+        
         return dispatch({
             type: 'POST_EMAIL',
             payload: json
@@ -523,7 +523,7 @@ export function postMail(payload) {
 //   export function postUser(payload) {
 //     return async function () {
 //         const res = await axios.post('http:localhost:3001/users/post', payload)
-//         console.log(res)
+//         
 //         return {
 //             type: 'POST_USER',
 //             payload: res.data

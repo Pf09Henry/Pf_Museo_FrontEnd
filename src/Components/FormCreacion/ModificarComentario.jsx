@@ -44,7 +44,7 @@ function ModificarComentario(){
 
   
   const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+    
  
       let diaIn=(values.dias[0].$d).toString()
       let diaInicio=diaIn.slice(4,15)
@@ -88,11 +88,11 @@ function ModificarComentario(){
     } else {
       
     }
-    console.log(inicialValues)
+    
   };
   
   const onFinishFailed = (errorInfo) => {
-      console.log('Failed:', errorInfo);
+      
       Swal.fire({
           title: 'Ups!',
           text: "Uno o mas datos no fueron cargados",

@@ -26,7 +26,7 @@ export default function Login(){
   
 }
 //   function onFinish(values){
-//     console.log('Received values of form: ', values);
+//     
 //   };
 
 //   return (

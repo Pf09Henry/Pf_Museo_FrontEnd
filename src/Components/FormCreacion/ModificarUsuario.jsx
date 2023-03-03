@@ -102,9 +102,9 @@ function ModificarUsuario(){
   const eventoFiltrado= eventos.filter(ev => ev.id === e)
   setValues(eventoFiltrado[0]);
   dispatch(getUserById(e))
- /*  console.log("este id le estoy pasando", id) */
-/*   console.log(eventoFiltrado[0])
-  console.log(inicialValues) */
+ /*  
+/*   
+  
  }
 
  
@@ -112,7 +112,7 @@ function ModificarUsuario(){
 
   
   const onFinish = (values) => {
-   /*  console.log('Received values of form: ', values); */
+   /*  
 
     
 
@@ -152,7 +152,7 @@ function ModificarUsuario(){
   };
   
   const onFinishFailed = (errorInfo) => {
-      console.log('Failed:', errorInfo);
+      
       Swal.fire({
           title: 'Ups!',
           text: "Uno o mas datos no fueron cargados",

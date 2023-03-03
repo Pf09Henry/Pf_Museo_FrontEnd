@@ -52,7 +52,7 @@ export default function Opiniones({roleUser}){
 
     function deleteComment(e){
    
-      console.log(e)
+      
       Swal.fire({
         title: 'Éxito',
         text: 'El comentario se elimino con éxito',

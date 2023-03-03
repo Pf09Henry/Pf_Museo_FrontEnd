@@ -27,7 +27,7 @@ function BorrarGuia(){
 
 
   function buscarNombre(e){
-    console.log(e.target.value)
+    
     setName(e.target.value)
   }
 
@@ -38,7 +38,7 @@ function BorrarGuia(){
   
  useEffect (()=>{
     dispatch(getGuidesById(id))
-    console.log("este id le estoy pasando", id)
+    
   },[dispatch, id])
 
   useEffect (()=>{
@@ -55,7 +55,7 @@ function BorrarGuia(){
  function setDatos(e){
   setId(e)
   const eventoFiltrado= eventos.filter(ev => ev.id === e)
-  console.log(eventoFiltrado[0])
+  
   Swal.fire({
     title: 'Éxito',
     text: 'Tu guia se elimino con éxito',
@@ -91,7 +91,7 @@ function BorrarGuia(){
   };
   
   const onFinishFailed = (errorInfo) => {
-      console.log('Failed:', errorInfo);
+      
       Swal.fire({
           title: 'Ups!',
           text: "No se encuentra el guia",

@@ -24,7 +24,7 @@ const SmallEvent = () => {
 
 
   function buscarNombre(e){
-    console.log(e.target.value)
+    
     setName(e.target.value)
   }
 

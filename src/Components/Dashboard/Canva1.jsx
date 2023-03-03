@@ -60,7 +60,7 @@ export default function Canva1(){
 		
 		};
 		setEvRanking(scoreCounts);
-	/* 	console.log("ticket por categoria",evRanking) */
+	/* 	
 		
 	  }, [list]);
 
@@ -71,7 +71,7 @@ export default function Canva1(){
 			count++;
 		  }
 		}
-	/* 	console.log("lista tickets",list) */
+	/* 	
 		return count;
 		
 	  }
@@ -92,8 +92,8 @@ export default function Canva1(){
 		return acumulador;
 	  }, cuposPorCategoria);
 	  
-	  console.log(cuposPorCategoria);
-	  console.log(tickets)
+	  
+	  
 	}
 
 	
@@ -102,7 +102,7 @@ export default function Canva1(){
 		function ticketAvail(){
 		tickets.forEach(ticket => {
 		const evento = event.find(evento => evento.id === ticket.event.id);
-		console.log(tickets) // Buscamos el evento correspondiente al ticket
+		
 		if (evento) { // Si se encuentra el evento, acumulamos los valores de tickets vendidos por categoría
 			const { category } = evento;
 			if (!ticketsVendidosPorCategoria[category[0].name]) {
@@ -117,7 +117,7 @@ export default function Canva1(){
 		
 		
 		setCantEv(ticketsVendidosPorCategoria)
-		console.log("CANTIDAD",cantEv)
+		
 		}
 
 
@@ -139,7 +139,7 @@ export default function Canva1(){
 	  const eventName = "Evento 2";
 	const eventCategory = getCategoryFromEventName(eventName, event);
 
-	/* console.log(`La categoría del evento ${eventName} es: ${eventCategory}`); */
+	/* 
 
 
 

@@ -31,7 +31,7 @@ export default function FormReview({ user, idEvent }) {
 
 
     let { id } = useParams();
-    console.log(id)
+    
 
 
     useEffect(() => {
@@ -40,9 +40,9 @@ export default function FormReview({ user, idEvent }) {
     }, [dispatch])
 
     function searchIdUser() {
-        console.log(usuarios)
+        
         let usuarioEncontrado = usuarios.filter(el => el.email === user.email)
-        console.log(usuarioEncontrado[0].id)
+        
         return usuarioEncontrado[0].id
     }
 
@@ -50,11 +50,11 @@ export default function FormReview({ user, idEvent }) {
         setForm({
             score: value
         })
-        console.log(value)
+        
     }
 
     const onFinish = (values) => {
-        console.log('Received values of form: ', values);
+        
 
         let valores = {
             commentary: values.comentario,
@@ -62,7 +62,7 @@ export default function FormReview({ user, idEvent }) {
             userId: searchIdUser(),
             eventId: id
         }
-        console.log(valores)
+        
 
         setForm({
             commentary: values.comentario,
@@ -90,7 +90,7 @@ export default function FormReview({ user, idEvent }) {
     };
 
     const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
+        
         Swal.fire({
             title: 'Ups!',
             text: "Uno o mas datos no fueron cargados",

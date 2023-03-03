@@ -32,10 +32,10 @@ export default function Payment() {
     var desc = 0;
 
     let typeSubs;
-    console.log(subscription)
+    
     if(isAuthenticated){
         for(let i = 0; i<subscription.length; i++){
-            console.log(subscription[i].status)
+            
             if(subscription[i].email === user.email && subscription[i].status === true){
                 typeSubs = subscription[i].typeSubscription
             }
@@ -59,10 +59,10 @@ export default function Payment() {
         SetCantidad(e.target.value)
     }
 
-    console.log(typeSubs)
+    
 
     function selctOption(typeSubs , setDeisabled){
-        console.log(typeSubs , setDeisabled)
+        
         if(typeSubs === "Socio-Eco"){
             return (<>
                 <select onChange={(e) => handleChange(e)} disabled={setDeisabled}>
@@ -93,37 +93,37 @@ export default function Payment() {
     
     
 
-    console.log(cantidad)
+    
 
     function agregarDescuento(sum){
-        console.log(sum)
+        
         if(cantidad === "2"){
-            console.log("entro")
+            
             desc = sum * 10 / 100 
         } else if(cantidad === "3"){
-            console.log("entro")
+            
             desc = sum * 15 / 100 
         }else if(cantidad === "4"){
-            console.log("entro")
+            
             desc = sum * 5 / 100 
         }
         else if(cantidad === "1"){
-            console.log("entro")
+            
             desc = 0
         }
     }
-    console.log(cantidad)
+    
     function handleClick(e){
         if(cantidad === undefined){
-            console.log("alla")
+            
             SetCantidad(9)
         }
         setClick(true)
         disableClick = true
     }
-    console.log(click)
-    console.log(typeSubs)
-    console.log(cantidad)
+    
+    
+    
     
     
     return (
