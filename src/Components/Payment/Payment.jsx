@@ -71,7 +71,7 @@ export default function Payment() {
                     <option value={1}>No</option>
                 </select>
             </>)
-        }else if(typeSubs === "Socio-Basico"){
+        }else if(typeSubs === "Socio-Basic"){
             return (<>
                 <select onChange={(e) => handleChange(e)} disabled={setDeisabled}>
                     <option value={5}>Selecciona una opcion</option>
@@ -122,6 +122,8 @@ export default function Payment() {
         disableClick = true
     }
     console.log(click)
+    console.log(typeSubs)
+    console.log(cantidad)
     
     
     return (
