@@ -152,7 +152,7 @@ function ModificarUsuario(){
   };
   
   const onFinishFailed = (errorInfo) => {
-      console.log('Failed:', errorInfo);
+  /*     console.log('Failed:', errorInfo); */
       Swal.fire({
           title: 'Ups!',
           text: "Uno o mas datos no fueron cargados",

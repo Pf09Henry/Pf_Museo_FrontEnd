@@ -27,15 +27,15 @@ export default function ListTicket(){
 
 
   function TicketList(estado) {
-    console.log("tickets",ticketsFiltrados)
+   /*  console.log("tickets",ticketsFiltrados) */
   
     // Creamos los filtros para cada estado
     const aprobados = tickets.filter(ticket => ticket.statusOfPurchase === 'aprobado');
     const pendientes = tickets.filter(ticket => ticket.statusOfPurchase === 'pendiente');
     const rechazados = tickets.filter(ticket => ticket.statusOfPurchase === 'rechazado');
     const cancelados = tickets.filter(ticket => ticket.statusOfPurchase === 'cancelado');
-    console.log("APROBADOS",aprobados)
-    console.log("PENDIENTES",pendientes)
+  /*   console.log("APROBADOS",aprobados)
+    console.log("PENDIENTES",pendientes) */
     // Seleccionamos el filtro correspondiente
    
 
@@ -73,7 +73,7 @@ export default function ListTicket(){
 
 
     function buscaremailTicket(e){
-        console.log(e.target.value)
+     /*    console.log(e.target.value) */
 
         setEmail(e.target.value)
       }
@@ -85,13 +85,13 @@ export default function ListTicket(){
 
 
       const onFinish = (values) => {
-        console.log('Received values of form: ', values);
+       /*  console.log('Received values of form: ', values); */
      
         let valores={
           statusOfPurchase:values.rol,
           id:inicialState.id
           }
-          console.log(valores)
+        /*   console.log(valores) */
         
         setForm({
           estado:values.estado
@@ -116,7 +116,7 @@ export default function ListTicket(){
       };
       
       const onFinishFailed = (errorInfo) => {
-          console.log('Failed:', errorInfo);
+        /*   console.log('Failed:', errorInfo); */
           Swal.fire({
               title: 'Ups!',
               text: "Uno o mas datos no fueron cargados",

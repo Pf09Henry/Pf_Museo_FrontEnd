@@ -65,11 +65,11 @@ function CrearCategoria(){
         confirmButtonColor: "#035d03"
       })
     }
-    console.log(inicialValues)
+/*     console.log(inicialValues) */
   };
   
   const onFinishFailed = (errorInfo) => {
-      console.log('Failed:', errorInfo);
+  /*     console.log('Failed:', errorInfo); */
       Swal.fire({
           title: 'Ups!',
           text: "Uno o mas datos no fueron cargados",

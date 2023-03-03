@@ -63,7 +63,7 @@ export default function Membership() {
     return (
         <div className="card mb-3">
             <div className="row g-0">
-                <div className="col-md-8">
+                <div className="col">
                     <div className="image-wrapper">
                         <img className="tarjeta" src={tarjeta} alt="tarjeta" />
                     </div>
@@ -74,10 +74,10 @@ export default function Membership() {
                         <li> Ingreso gratuito con dos acompañante</li>
                         <li> Inscripción gratuita a la biblioteca</li>
                         <li> 10% de descuento en eventos culturales</li>
-                        <li> 15% de descuento en la tienda-librería</li>
-                        <li> 15% de descuento en cafetería</li>
-                        <li> 15% de descuento en cursos y actividades</li>
-                        <li> 15% de descuento en talleres familiares</li>
+                        <li> 10% de descuento en la tienda-librería</li>
+                        <li> 10% de descuento en cafetería</li>
+                        <li> 10% de descuento en cursos y actividades</li>
+                        <li> 10% de descuento en talleres familiares</li>
                         <br />
                         <h4>Costo: $1000 / Mes</h4>
                         <br />

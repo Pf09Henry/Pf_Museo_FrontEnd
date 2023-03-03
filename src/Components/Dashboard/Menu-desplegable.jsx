@@ -132,16 +132,16 @@ export default function MenuDesplegable() {
                 <Link to="/dashoboard-guias-modificar"></Link>
             </Menu.Item>
 
-            <Menu.Item icon={<SlTrash /> }>
+         {/*    <Menu.Item icon={<SlTrash /> }>
             
                 <span>Borrar</span>
                 <Link to="/dashoboard-guias-borrar"></Link>
-            </Menu.Item>
+            </Menu.Item> */}
 
         </SubMenu>  
 
 
-        <SubMenu icon={< BiCategory />} title="Categorias" >
+       {/*  <SubMenu icon={< BiCategory />} title="Categorias" >
 
             <Menu.Item icon={<SlPlus /> }>
             
@@ -150,7 +150,7 @@ export default function MenuDesplegable() {
             </Menu.Item>
 
 
-        </SubMenu>  
+        </SubMenu>   */}
 
         <SubMenu icon={< FaTicketAlt />} title="Tickets" >
 

@@ -47,12 +47,12 @@ export default function PricingTable(prop) {
                             <li >
                                 <strong >1</strong> Acompañante por Credencial
                             </li>
-                            <li className="tachado">
+                        {/*     <li className="tachado">
                                 <strong></strong> Invitacion a Eventos
                             </li>
                             <li>
                                 <strong></strong> Inscripción a Biblioteca
-                            </li>
+                            </li> */}
                         </ul>
                         <div class="buy-button-box">
                             <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103)" }}>
@@ -77,7 +77,7 @@ export default function PricingTable(prop) {
                             </div>
                         </div>
                         <div class="badge-box">
-                            <span>Off 15% <div>Descuentos generales</div></span>
+                            <span>Off 10% <div>Descuentos generales</div></span>
                         </div>
                         <ul>
                             <li>
@@ -89,12 +89,12 @@ export default function PricingTable(prop) {
                             <li >
                                 <strong >2</strong> Acompañantes por Credencial
                             </li>
-                            <li>
+                           {/*  <li>
                                 <strong>1</strong> Invitacion a Eventos
                             </li>
                             <li>
                                 <strong></strong> Inscripción a Biblioteca
-                            </li>
+                            </li> */}
                         </ul>
                         <div class="buy-button-box">
                             <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103)" }}>
@@ -119,7 +119,7 @@ export default function PricingTable(prop) {
                             </div>
                         </div>
                         <div class="badge-box">
-                            <span>Off 25% <div>Descuentos generales</div></span>
+                            <span>Off 15% <div>Descuentos generales</div></span>
                         </div>
                         <ul>
                             <li>
@@ -131,12 +131,12 @@ export default function PricingTable(prop) {
                             <li >
                                 <strong >3</strong> Acompañantes por Credencial
                             </li>
-                            <li>
+                          {/*   <li>
                                 <strong>2</strong> Invitacion a Eventos
-                            </li>
-                            <li>
+                            </li> */}
+                           {/*  <li>
                                 <strong></strong> Inscripción a Biblioteca
-                            </li>
+                            </li> */}
                         </ul>
                         <div class="buy-button-box">
                             <Button type="primary" style={{ backgroundColor: "rgb(56, 102, 103)" }}>

@@ -25,7 +25,7 @@ export default function Paypal({desc, cantidad}) {
     }
 
     if(products && desc){
-        console.log("tiene si")
+      /*   console.log("tiene si") */
     }
 
     
@@ -87,14 +87,14 @@ export default function Paypal({desc, cantidad}) {
     //     }
     //  }
 
-    console.log(total)
+    /* console.log(total)
     console.log("cantidad! ",cantidad)
-    console.log(desc)
+    console.log(desc) */
     useEffect(() => {
         
-        console.log("renderizo!")
+       /*  console.log("renderizo!") */
         if(cantidad  > 1 && cantidad < 5){
-            console.log("primer if")
+          /*   console.log("primer if") */
             window.paypal.Buttons({
                 createOrder: (data, actions, err) => {
                    
@@ -110,7 +110,7 @@ export default function Paypal({desc, cantidad}) {
                             },
                         ]
                     })
-                    console.log(total)
+               /*      console.log(total) */
                     return order
                 },
                 onCancel: (data) => {
@@ -171,7 +171,7 @@ export default function Paypal({desc, cantidad}) {
         }
 
         else if(cantidad  === "1"){
-            console.log("segundo if")
+           /*  console.log("segundo if") */
             window.paypal.Buttons({
                 createOrder: (data, actions, err) => {
                    
@@ -187,7 +187,7 @@ export default function Paypal({desc, cantidad}) {
                             },
                         ]
                     })
-                    console.log(total)
+                  /*   console.log(total) */
                     return order
                 },
                 onCancel: (data) => {
@@ -248,7 +248,7 @@ export default function Paypal({desc, cantidad}) {
         }
 
         else if(cantidad  === 9 ){
-            console.log("tercer if")
+           /*  console.log("tercer if") */
             window.paypal.Buttons({
                 createOrder: (data, actions, err) => {
                    
@@ -264,7 +264,7 @@ export default function Paypal({desc, cantidad}) {
                             },
                         ]
                     })
-                    console.log(total)
+                /*     console.log(total) */
                     return order
                 },
                 onCancel: (data) => {

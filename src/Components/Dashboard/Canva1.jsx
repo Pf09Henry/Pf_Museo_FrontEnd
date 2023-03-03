@@ -92,8 +92,8 @@ export default function Canva1(){
 		return acumulador;
 	  }, cuposPorCategoria);
 	  
-	  console.log(cuposPorCategoria);
-	  console.log(tickets)
+/* 	  console.log(cuposPorCategoria);
+	  console.log(tickets) */
 	}
 
 	
@@ -102,7 +102,7 @@ export default function Canva1(){
 		function ticketAvail(){
 		tickets.forEach(ticket => {
 		const evento = event.find(evento => evento.id === ticket.event.id);
-		console.log(tickets) // Buscamos el evento correspondiente al ticket
+	/* 	console.log(tickets) // Buscamos el evento correspondiente al ticket */
 		if (evento) { // Si se encuentra el evento, acumulamos los valores de tickets vendidos por categoría
 			const { category } = evento;
 			if (!ticketsVendidosPorCategoria[category[0].name]) {
@@ -117,7 +117,7 @@ export default function Canva1(){
 		
 		
 		setCantEv(ticketsVendidosPorCategoria)
-		console.log("CANTIDAD",cantEv)
+		/* console.log("CANTIDAD",cantEv) */
 		}
 
 

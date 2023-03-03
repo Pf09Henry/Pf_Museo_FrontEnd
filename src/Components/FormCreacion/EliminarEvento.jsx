@@ -30,7 +30,7 @@ function Borrar(){
 
 
   function buscarNombre(e){
-    console.log(e.target.value)
+   /*  console.log(e.target.value) */
     setName(e.target.value)
   }
 
@@ -41,7 +41,7 @@ function Borrar(){
   
  useEffect (()=>{
     dispatch(getEventsById(id))
-    console.log("este id le estoy pasando", id)
+/*     console.log("este id le estoy pasando", id) */
   },[dispatch, id])
 
   useEffect (()=>{
@@ -58,7 +58,7 @@ function Borrar(){
  function setDatos(e){
   setId(e)
   const eventoFiltrado= eventos.filter(ev => ev.id === e)
-  console.log(eventoFiltrado[0])
+ /*  console.log(eventoFiltrado[0]) */
   Swal.fire({
     title: 'Éxito',
     text: 'Tu evento se elimino con éxito',
@@ -93,7 +93,7 @@ function Borrar(){
   };
   
   const onFinishFailed = (errorInfo) => {
-      console.log('Failed:', errorInfo);
+    /*   console.log('Failed:', errorInfo); */
       Swal.fire({
           title: 'Ups!',
           text: "No se encuentra el evento",
