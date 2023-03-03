@@ -1,17 +1,55 @@
-.divContenedor{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3rem;
-    margin: 5px;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-}
-
 .selectFil{
     border: transparent;
     border-radius: 8px;
-
 }
+
+.opcionFil{
+    border: transparent;
+    border-radius: 8px;
+}
+
+
+select {  
+    gap: 3rem;
+    margin: 5px;    
+    outline: 0;
+    border: transparent;
+    border-radius: 8px;
+    box-shadow: none;
+    padding: 0 1em;
+    color: #fff;
+    background-color:rgb(1, 81, 41);
+  }
+ 
+  select::-ms-expand {
+    display: none;
+  }
+    
+  .select {
+    position: relative;
+    display: flex;
+    width: 40px;
+    height: 3em;
+    border-radius: .25em;
+    overflow: hidden;
+  }
+ 
+  .select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1em;
+    background-color: rgb(135, 208, 104);
+    transition: .25s all ease;
+    pointer-events: none;
+  }
+ 
+  .select:hover::after {
+    color:  rgb(135, 208, 104);;
+  }
+  
+ 
+  
 
 
