@@ -172,65 +172,14 @@ export default function AboutUs() {
                         </div>
                     </div>
                 </div>
-                <div>
-                    <div className='cardAbout card6'>
-                        <div>
-                            <h4 className='nameA'>Emiliano Villa</h4>
-                            <h5 className='nameA'>Aptitudes</h5>
-                            <div className='aptitudes'>
-                                <div><img src={JsHtml} width='180px' height='70px' alt="js" className='icon'/></div>
-                                <div><img src={reactnode} width='120px' height='60px' alt="ReactNode" className='icon'/></div>
-                                <div>
-                                    <img src={antd} width='60px' height='60px' alt="antd"className='icon' />
-                                    <img src={bootstrap} width='60px' height='60px' alt="bootstrap"className='icon' />
-                                </div>
-                                <div>
-                                    <img src={Express} width='60px' height='60px' alt="Express" className='icon'/>
-                                    <img src={sequelize} width='60px' height='60px' alt="sequelize"className='icon' />
-                                    <img src={postgres} width='60px' height='60px' alt="postgres" className='icon'/>
-                                </div>
-                            </div>
-                        </div>
-                        <h6 className='nameA'>Contacto</h6>
-                        <div className='iconsA'>
-                            <a href='https://www.linkedin.com/in/emiliano-villa-686364241/'><BsLinkedin className='buttonGitLink' /></a>
-                            <a href='https://github.com/e0212'><BsGithub className='buttonGitLink' /></a>
-
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div className='cardAbout card7'>
-                        <div>
-                            <h4 className='nameA'>Alan Delgado</h4>
-                            <h5 className='nameA'>Aptitudes</h5>
-                            <div className='aptitudes'>
-                                <div><img src={JsHtml} width='180px' height='70px' alt="js" className='icon'/></div>
-                                <div><img src={reactnode} width='120px' height='60px' alt="ReactNode" className='icon'/></div>
-                                <div>
-                                    <img src={antd} width='60px' height='60px' alt="antd"className='icon' />
-                                    <img src={bootstrap} width='60px' height='60px' alt="bootstrap"className='icon' />
-                                </div>
-                                <div>
-                                    <img src={Express} width='60px' height='60px' alt="Express" className='icon'/>
-                                    <img src={sequelize} width='60px' height='60px' alt="sequelize"className='icon' />
-                                    <img src={postgres} width='60px' height='60px' alt="postgres" className='icon'/>
-                                </div>
-                           
-                            </div>
-                        </div>
-                        <h6 className='nameA'>Contacto</h6>
-                        <div className='iconsA'>
-                            <a href='http://www.linkedin.com/in/alan-delgado8'><BsLinkedin className='buttonGitLink' /></a>
-                            <a href='https://github.com/DelgadoAlan'><BsGithub className='buttonGitLink' /></a>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+             
+            <div>
             <a href="/contacto">
                 <button className='buttonContacto'><h3 className='buttonContacto h3'>Contactanos</h3></button>
             </a>
+            </div>
+       
+        </div>
         </div>
     )
 }

@@ -1,8 +1,8 @@
 .containerA{
     height: 100%;
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(4, 55fr);
+    width: 80%;
+   display: flex;
+    flex-wrap: wrap;
     margin: auto;
     border: 5px;
     padding: 5px;
@@ -10,16 +10,16 @@
     align-self: center;
     justify-content: center; 
     margin-top: 20px; 
-    margin-left: 3rem;
+    
     margin-bottom: 2rem;
-    margin-right: 1rem;
+  
 }
 
 .buttonContacto{
     background-color: rgb(55, 103, 55) !important;
     border: transparent;
     border-radius: 8px;
-    margin-left: 43%;
+    
     margin-top: 10px;
     margin-bottom: 2rem;
     display: flex;
@@ -52,7 +52,7 @@
 }
 
 .cardAbout:hover {
-    height: 460px;
+    height: 520px;
     width: 300px;
     background: rgba(186, 199, 185, 0.575);
     border: transparent;
