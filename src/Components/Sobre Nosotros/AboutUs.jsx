@@ -174,12 +174,12 @@ export default function AboutUs() {
                 </div>
              
             <div>
-            <a href="/contacto">
-                <button className='buttonContacto'><h3 className='buttonContacto h3'>Contactanos</h3></button>
-            </a>
             </div>
        
         </div>
+            <a href="/contacto">
+                <button className='buttonContacto'><h3 className='buttonContacto h3'>Contactanos</h3></button>
+            </a>
         </div>
     )
 }
